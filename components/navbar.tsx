@@ -1,20 +1,31 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [councilDropdown, setCouncilDropdown] = useState(false)
   const router = useRouter()
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // Check authentication status
     const authStatus = localStorage.getItem('isAuthenticated') === 'true'
     setIsAuthenticated(authStatus)
+
+    // Close dropdown when clicking outside
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setCouncilDropdown(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
   const handleAuthAction = () => {
@@ -29,15 +40,23 @@ export default function Navbar() {
     }
   }
 
-  const navItems = [
+  const navItemsBefore = [
     { label: "Home", href: "/" },
     { label: "Updates", href: "/updates" },
     { label: "Events", href: "/events" },
     { label: "Blogs", href: "/blogs" },
+  ]
+
+  const navItemsAfter = [
     { label: "Communities", href: "/communities" },
-    { label: "Council & Team", href: "/council" },
     { label: "PYQS", href: "/pyqs" },
     { label: "Resources", href: "/resources" },
+  ]
+
+  const councilYears = [
+    { year: "2025-2026", href: "/council?year=2025-2026" },
+    { year: "2024-2025", href: "/council?year=2024-2025" },
+    { year: "2023-2024", href: "/council?year=2023-2024" },
   ]
 
   return (
@@ -58,7 +77,43 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            {navItems.map((item) => (
+            {navItemsBefore.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="px-4 py-2 text-sm text-white/80 hover:text-primary transition rounded-lg hover:bg-white/5"
+              >
+                {item.label}
+              </Link>
+            ))}
+            
+            {/* Council Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setCouncilDropdown(!councilDropdown)}
+                className="px-4 py-2 text-sm text-white/80 hover:text-primary transition rounded-lg hover:bg-white/5 flex items-center gap-1"
+              >
+                Council & Team
+                <ChevronDown size={16} className={`transition-transform ${councilDropdown ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {councilDropdown && (
+                <div className="absolute top-full mt-2 w-48 glass-dark rounded-lg border border-primary/30 overflow-hidden shadow-xl">
+                  {councilYears.map((item) => (
+                    <Link
+                      key={item.year}
+                      href={item.href}
+                      onClick={() => setCouncilDropdown(false)}
+                      className="block px-4 py-3 text-sm text-white/80 hover:text-primary hover:bg-white/5 transition border-b border-white/5 last:border-b-0"
+                    >
+                      {item.year}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {navItemsAfter.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
@@ -99,6 +154,33 @@ export default function Navbar() {
                   {item.label}
                 </Link>
               ))}
+              
+              {/* Council Mobile Submenu */}
+              <div className="pt-2 border-t border-white/10">
+                <p className="px-3 py-2 text-white/60 text-xs uppercase tracking-wider">Council & Team</p>
+                {councilYears.map((item) => (
+                  <Link
+                    key={item.year}
+                    href={item.href}
+                    className="block px-3 py-2 pl-6 text-white/80 hover:text-primary hover:bg-white/5 rounded-lg transition text-sm"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.year}
+                  </Link>
+                ))}
+              </div>
+
+              {navItemsAfter.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="block px-3 py-2 text-white/80 hover:text-primary hover:bg-white/5 rounded-lg transition"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+
               <Button 
                 onClick={() => {
                   handleAuthAction()

@@ -1,15 +1,24 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { X, Mail, Linkedin, Phone } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 
 export default function CouncilPage() {
-  const [selectedYear, setSelectedYear] = useState("2025-2026")
+  const searchParams = useSearchParams()
+  const yearParam = searchParams.get('year')
+  const [selectedYear, setSelectedYear] = useState(yearParam || "2025-2026")
   const [selectedTeam, setSelectedTeam] = useState("UHC")
   const [selectedMember, setSelectedMember] = useState(null)
+
+  useEffect(() => {
+    if (yearParam) {
+      setSelectedYear(yearParam)
+    }
+  }, [yearParam])
 
   const yearData = {
     "2025-2026": {
@@ -158,42 +167,25 @@ export default function CouncilPage() {
 
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <p className="text-primary text-sm uppercase tracking-widest mb-4">Leadership</p>
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
               Council & <span className="text-primary">Team</span>
             </h1>
-            <p className="text-white/70">Meet the dedicated leaders driving Nallamala House forward</p>
+            <p className="text-white/70 mb-6">Meet the dedicated leaders driving Nallamala House forward</p>
+            <p className="text-primary text-xl font-semibold">{selectedYear}</p>
           </div>
 
-          {/* Year Selector */}
-          <div className="flex justify-center gap-3 mb-8 flex-wrap">
-            {["2025-2026", "2024-2025", "2023-2024"].map((year) => (
-              <button
-                key={year}
-                onClick={() => {
-                  setSelectedYear(year)
-                  setSelectedTeam("UHC")
-                }}
-                className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-                  selectedYear === year ? "bg-primary text-black" : "bg-white/10 text-white hover:bg-white/20"
-                }`}
-              >
-                {year}
-              </button>
-            ))}
-          </div>
-
-          {/* Team Selector */}
+          {/* Team Tabs - Now at the Top */}
           <div className="flex justify-center gap-3 mb-12 flex-wrap">
             {Object.entries(teamLabels).map(([key, label]) => (
               <button
                 key={key}
                 onClick={() => setSelectedTeam(key)}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
                   selectedTeam === key
-                    ? "bg-primary/30 text-primary border border-primary"
-                    : "bg-white/5 text-white/70 hover:bg-white/10 border border-white/10"
+                    ? "bg-primary text-black"
+                    : "glass-dark text-white/70 hover:text-white border border-white/10 hover:border-primary/30"
                 }`}
               >
                 {label}

@@ -1,10 +1,48 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Play } from "lucide-react"
+
+function useCountAnimation(end: number, duration: number = 2000) {
+  const [count, setCount] = useState(0)
+  const [hasAnimated, setHasAnimated] = useState(false)
+  const elementRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true)
+          let startTime: number | null = null
+          const animate = (currentTime: number) => {
+            if (!startTime) startTime = currentTime
+            const progress = Math.min((currentTime - startTime) / duration, 1)
+            setCount(Math.floor(progress * end))
+            if (progress < 1) {
+              requestAnimationFrame(animate)
+            }
+          }
+          requestAnimationFrame(animate)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [end, duration, hasAnimated])
+
+  return { count, elementRef }
+}
 
 export default function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false)
+  const members = useCountAnimation(500)
+  const events = useCountAnimation(50)
+  const regions = useCountAnimation(7)
 
   return (
     <section id="video-section" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
@@ -71,16 +109,16 @@ export default function VideoSection() {
 
           {/* Stats below video */}
           <div className="grid grid-cols-3 gap-4 mt-12">
-            <div className="text-center">
-              <p className="text-3xl font-serif font-bold text-primary">500+</p>
+            <div className="text-center" ref={members.elementRef}>
+              <p className="text-3xl font-serif font-bold text-primary">{members.count}+</p>
               <p className="text-white/70 text-sm">Members</p>
             </div>
-            <div className="text-center">
-              <p className="text-3xl font-serif font-bold text-primary">50+</p>
+            <div className="text-center" ref={events.elementRef}>
+              <p className="text-3xl font-serif font-bold text-primary">{events.count}+</p>
               <p className="text-white/70 text-sm">Events</p>
             </div>
-            <div className="text-center">
-              <p className="text-3xl font-serif font-bold text-primary">7</p>
+            <div className="text-center" ref={regions.elementRef}>
+              <p className="text-3xl font-serif font-bold text-primary">{regions.count}</p>
               <p className="text-white/70 text-sm">Regions</p>
             </div>
           </div>

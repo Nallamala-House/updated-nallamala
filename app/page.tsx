@@ -6,7 +6,6 @@ import HeroSection from "@/components/hero-section"
 import VideoSection from "@/components/video-section"
 import AboutSection from "@/components/about-section"
 import RegionalCarousel from "@/components/regional-carousel"
-import CommunitiesSection from "@/components/communities-section"
 import UpdatesSection from "@/components/updates-section"
 import Footer from "@/components/footer"
 
@@ -43,13 +42,10 @@ export default function Home() {
         <AboutSection />
       </div>
       <div className="scroll-animate">
-        <RegionalCarousel />
-      </div>
-      <div className="scroll-animate">
-        <CommunitiesSection />
-      </div>
-      <div className="scroll-animate">
         <UpdatesSection />
+      </div>
+      <div className="scroll-animate">
+        <RegionalCarousel />
       </div>
       <Footer />
     </main>

@@ -1,6 +1,56 @@
 "use client"
 
+import { useState, useEffect, useRef } from "react"
+
+function useCountAnimation(end: number, duration: number = 2000) {
+  const [count, setCount] = useState(0)
+  const [hasAnimated, setHasAnimated] = useState(false)
+  const elementRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true)
+          let startTime: number | null = null
+          const animate = (currentTime: number) => {
+            if (!startTime) startTime = currentTime
+            const progress = Math.min((currentTime - startTime) / duration, 1)
+            setCount(Math.floor(progress * end))
+            if (progress < 1) {
+              requestAnimationFrame(animate)
+            }
+          }
+          requestAnimationFrame(animate)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [end, duration, hasAnimated])
+
+  return { count, elementRef }
+}
+
 export default function AboutSection() {
+  const stats = [
+    { end: 4500, label: "Active Members", suffix: "+" },
+    { end: 50, label: "Distinguished Alumni", suffix: "+" },
+    { end: 5, label: "Active Communities", suffix: "" },
+    { end: 120, label: "Events Hosted", suffix: "+" },
+    { end: 15, label: "Team Size", suffix: "+" },
+    { end: 100, label: "Meetups Organized", suffix: "+" },
+  ]
+
+  const animatedStats = stats.map(stat => ({
+    ...stat,
+    animation: useCountAnimation(stat.end)
+  }))
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
@@ -48,20 +98,14 @@ export default function AboutSection() {
 
           {/* Right Stats Grid */}
           <div className="grid grid-cols-2 gap-6">
-            {[
-              { number: "4500+", label: "Active Members" },
-              { number: "50+", label: "Distinguished Alumni" },
-              { number: "5", label: "Active Communities" },
-              { number: "120+", label: "Events Hosted" },
-              { number: "15+", label: "Team Size" },
-              { number: "100+", label: "Meetups Organized" },
-            ].map((stat) => (
+            {animatedStats.map((stat, index) => (
               <div
                 key={stat.label}
+                ref={stat.animation.elementRef}
                 className="glass-dark p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 text-center group"
               >
                 <div className="text-3xl md:text-4xl font-serif font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
-                  {stat.number}
+                  {stat.animation.count}{stat.suffix}
                 </div>
                 <p className="text-white/70 text-sm">{stat.label}</p>
               </div>
