@@ -12,8 +12,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary via-primary to-primary/60 rounded-lg flex items-center justify-center">
-              <span className="text-black font-bold text-lg font-serif">🦁</span>
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
+              <img 
+                src="/images/nallamala_house_iit_madras_logo.jpg" 
+                alt="Nallamala House Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <p className="text-white/70 text-sm">
               Nallamala House - A beacon of excellence and community at IIT Madras

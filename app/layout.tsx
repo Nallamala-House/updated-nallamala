@@ -15,21 +15,8 @@ export const metadata: Metadata = {
     "Nallamala House - A prestigious student housing community at IIT Madras fostering excellence, innovation, and community spirit.",
   generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    icon: "/images/nallamala_house_iit_madras_logo.jpg",
+    apple: "/images/nallamala_house_iit_madras_logo.jpg",
   },
 }
 

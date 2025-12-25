@@ -7,7 +7,7 @@ export default function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false)
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+    <section id="video-section" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
       {/* Background animation */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20 animate-pulse"></div>
@@ -56,7 +56,7 @@ export default function VideoSection() {
               {isPlaying && (
                 <iframe
                   className="w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
                   title="Life at Nallamala"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

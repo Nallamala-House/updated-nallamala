@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function RegionalCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [rotation, setRotation] = useState(0)
   const [autoPlay, setAutoPlay] = useState(true)
 
   const galleries = [
@@ -58,74 +58,105 @@ export default function RegionalCarousel() {
     },
   ]
 
+  // Auto-rotate every 4 seconds
   useEffect(() => {
     if (!autoPlay) return
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % galleries.length)
+      setRotation((prev) => prev - 72) // 360/5 = 72 degrees per item
     }, 4000)
     return () => clearInterval(interval)
-  }, [autoPlay, galleries.length])
+  }, [autoPlay])
 
   const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + galleries.length) % galleries.length)
+    setRotation((prev) => prev + 72)
     setAutoPlay(false)
+    setTimeout(() => setAutoPlay(true), 8000)
   }
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % galleries.length)
+    setRotation((prev) => prev - 72)
     setAutoPlay(false)
-  }
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index)
-    setAutoPlay(false)
+    setTimeout(() => setAutoPlay(true), 8000)
   }
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-black">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <p className="text-primary text-sm uppercase tracking-widest mb-4">Regional Network</p>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
             Regional <span className="text-primary">Meetup Gallery</span>
           </h2>
-          <p className="text-white/70 text-lg">Click on any image to see the complete story</p>
+          <p className="text-white/70 text-lg">Experience our nationwide community</p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative group">
-          {/* Main carousel */}
-          <div className="relative w-full h-96 md:h-[500px] rounded-2xl overflow-hidden border-2 border-primary/30 group-hover:border-primary/60 transition-all duration-300">
-            {galleries.map((gallery, index) => (
-              <div
-                key={gallery.id}
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  index === currentIndex ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <img
-                  src={gallery.image || "/placeholder.svg"}
-                  alt={gallery.title}
-                  className="w-full h-full object-cover"
-                />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                {/* Content overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <p className="text-primary text-sm uppercase tracking-widest mb-2">{gallery.region}</p>
-                      <h3 className="text-2xl md:text-3xl font-serif font-bold text-white mb-2">{gallery.title}</h3>
-                      <p className="text-white/80 text-sm mb-4">{gallery.date}</p>
-                    </div>
-                    <Link href={`/gallery/${gallery.id}`} className="flex-shrink-0">
-                      <Button className="bg-primary hover:bg-primary/90 text-black font-semibold">View Details</Button>
+        {/* 3D Carousel */}
+        <div className="relative w-full h-[500px] flex items-center justify-center">
+          <div 
+            className="w-full h-full flex items-center justify-center"
+            style={{ 
+              perspective: "1400px",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                width: "400px",
+                height: "350px",
+                transformStyle: "preserve-3d",
+                transform: `rotateY(${rotation}deg)`,
+                transition: "transform 1s ease-in-out",
+              }}
+            >
+              {galleries.map((gallery, index) => {
+                const angle = (360 / galleries.length) * index
+                
+                return (
+                  <div
+                    key={gallery.id}
+                    style={{
+                      position: "absolute",
+                      width: "400px",
+                      height: "350px",
+                      left: "0",
+                      top: "0",
+                      transformStyle: "preserve-3d",
+                      transform: `rotateY(${-angle}deg) translateZ(500px)`,
+                    }}
+                  >
+                    <Link href={`/gallery/${gallery.id}`}>
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          transformStyle: "preserve-3d",
+                        }}
+                        className="rounded-xl overflow-hidden border-2 border-primary/40 hover:border-primary shadow-2xl bg-black cursor-pointer transition-all hover:scale-105"
+                      >
+                      {/* Image */}
+                      <div className="h-[280px] w-full bg-gray-900">
+                        <img
+                          src={gallery.image || "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop"}
+                          alt={gallery.title}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop"
+                          }}
+                        />
+                      </div>
+                      
+                      {/* Info */}
+                      <div className="h-[70px] bg-black border-t border-primary/30 p-4 flex flex-col justify-center">
+                        <h3 className="text-white font-bold text-base mb-1">{gallery.title}</h3>
+                        <p className="text-primary text-xs">{gallery.region} • {gallery.date}</p>
+                      </div>
+                      </div>
                     </Link>
                   </div>
-                </div>
-              </div>
-            ))}
+                )
+              })}
+            </div>
           </div>
 
           {/* Navigation Buttons */}
@@ -133,32 +164,19 @@ export default function RegionalCarousel() {
             onClick={goToPrevious}
             onMouseEnter={() => setAutoPlay(false)}
             onMouseLeave={() => setAutoPlay(true)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-primary/80 hover:bg-primary text-black p-2 rounded-full transition-all duration-300 transform hover:scale-110"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-50 bg-primary hover:bg-primary/90 text-black p-3 rounded-full transition-all shadow-lg"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={28} />
           </button>
 
           <button
             onClick={goToNext}
             onMouseEnter={() => setAutoPlay(false)}
             onMouseLeave={() => setAutoPlay(true)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-primary/80 hover:bg-primary text-black p-2 rounded-full transition-all duration-300 transform hover:scale-110"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-50 bg-primary hover:bg-primary/90 text-black p-3 rounded-full transition-all shadow-lg"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={28} />
           </button>
-
-          {/* Dot Indicators */}
-          <div className="flex justify-center gap-3 mt-8">
-            {galleries.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  index === currentIndex ? "w-8 h-3 bg-primary" : "w-3 h-3 bg-white/30 hover:bg-white/50"
-                }`}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>

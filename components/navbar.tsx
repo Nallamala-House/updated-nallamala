@@ -23,8 +23,12 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary via-primary to-primary/60 rounded-lg flex items-center justify-center">
-              <span className="text-black font-bold text-lg font-serif">🦁</span>
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
+              <img 
+                src="/images/nallamala_house_iit_madras_logo.jpg" 
+                alt="Nallamala House Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="hidden sm:inline text-white font-serif font-bold">Nallamala House</span>
           </Link>
