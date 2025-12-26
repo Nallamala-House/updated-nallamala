@@ -104,7 +104,7 @@ export default function CouncilPage() {
           email: "pavithra@nallamala.house",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/pavithra-chakravarthy",
-          image: "/images/2025-26/website_manager_2.jpg",
+          image: "/images/2025-26/website_manager_2.jpeg",
           bio: "Oversees content management, user experience, and ensures our website reflects the vibrant spirit of Nallamala House.",
         },
         {
