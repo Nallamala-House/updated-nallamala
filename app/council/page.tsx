@@ -133,25 +133,36 @@ export default function CouncilPage() {
       COMMUNITY: [
         {
           id: 10,
-          name: "Nikhil Bhat",
-          role: "Community Lead",
-          message: "Enhancing engagement and fostering community spirit.",
-          email: "nikhil.community@nallamala.house",
+          name: "Kratika",
+          role: "Secretary - Literary & Oratory Community",
+          message: "Fostering creativity through words and expression.",
+          email: "kratika@nallamala.house",
           phone: "+91-XXXXXXXXXX",
-          linkedin: "linkedin.com/in/nikhil-bhat",
-          image: "/professional-portrait-nikhil-regional.jpg",
-          bio: "Nikhil leads community initiatives and organizes events to enhance engagement and foster a stronger sense of belonging among members.",
+          linkedin: "linkedin.com/in/kratika",
+          image: "/images/2025-26/lo_club.jpg",
+          bio: "Kratika leads the Literary & Oratory Community, organizing engaging events and activities that celebrate the power of language, literature, and public speaking.",
         },
         {
           id: 11,
-          name: "Pooja Singh",
-          role: "Community Lead",
-          message: "Connecting communities and building lasting bonds.",
-          email: "pooja.community@nallamala.house",
+          name: "Shashi Kumar Singh",
+          role: "Secretary - Shunya-IITM BS Developers Club",
+          message: "Building the future through code and innovation.",
+          email: "shashi@nallamala.house",
           phone: "+91-XXXXXXXXXX",
-          linkedin: "linkedin.com/in/pooja-singh",
-          image: "/professional-portrait-pooja-regional.jpg",
-          bio: "Pooja drives community engagement initiatives and frequently organizes events to strengthen the sense of community among house members.",
+          linkedin: "linkedin.com/in/shashi-kumar-singh",
+          image: "/images/2025-26/shunya_club.jpg",
+          bio: "Shashi Kumar Singh heads the Shunya-IITM BS Developers Club, driving technical excellence and fostering a culture of innovation among aspiring developers.",
+        },
+        {
+          id: 12,
+          name: "Harsh Kumar",
+          role: "Secretary - AI-ML : AIDW",
+          message: "Pioneering artificial intelligence and machine learning.",
+          email: "harsh@nallamala.house",
+          phone: "+91-XXXXXXXXXX",
+          linkedin: "linkedin.com/in/harsh-kumar",
+          image: "/images/2025-26/aidw_club.jpg",
+          bio: "Harsh Kumar leads AI-ML : AIDW community, organizing workshops and projects that explore the cutting-edge world of artificial intelligence and machine learning.",
         },
       ],
     },
@@ -182,8 +193,8 @@ export default function CouncilPage() {
   }
 
   const teamLabels = {
-    UHC: "Council",
-    LHC: "Regional Coordinators",
+    UHC: "UHC",
+    LHC: "LHC",
     WEBOPS: "Web Operations",
     COMMUNITY: "Community Leaders",
   }
@@ -238,9 +249,9 @@ export default function CouncilPage() {
 
           {/* Team Description */}
           {teamDescriptions[selectedTeam] && (
-            <div className="mb-12 max-w-4xl mx-auto">
-              <div className="glass-dark p-6 rounded-xl border border-primary/20">
-                <p className="text-white/80 leading-relaxed text-center">
+            <div className="mb-12 max-w-5xl mx-auto">
+              <div className="glass-dark p-8 rounded-2xl border-2 border-primary/30 shadow-xl">
+                <p className="text-white/90 leading-relaxed text-center text-base">
                   {teamDescriptions[selectedTeam]}
                 </p>
               </div>
