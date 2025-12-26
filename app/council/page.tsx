@@ -25,25 +25,26 @@ export default function CouncilPage() {
       UHC: [
         {
           id: 1,
-          name: "Arjun Singh",
+          name: "Nikhil Kumar",
           role: "Secretary",
           message: "Leading with vision and purpose to create lasting impact.",
-          email: "arjun@nallamala.house",
+          email: "nikhil@nallamala.house",
           phone: "+91-XXXXXXXXXX",
-          linkedin: "linkedin.com/in/arjun-singh",
-          image: "/professional-portrait-arjun.jpg",
-          bio: "With 4 years of experience in student leadership, Arjun has successfully coordinated multiple large-scale initiatives and fostered a culture of excellence within the community.",
+          linkedin: "linkedin.com/in/nikhil-kumar",
+          image: "/images/2025-26/sec.jpg",
+          bio: "With exceptional leadership skills, Nikhil has successfully coordinated multiple large-scale initiatives and fostered a culture of excellence within the community.",
         },
         {
           id: 2,
-          name: "Priya Sharma",
+          name: "Jitesh Kumar",
           role: "Deputy Secretary",
           message: "Empowering our community through effective coordination.",
-          email: "priya@nallamala.house",
+          email: "jitesh@nallamala.house",
           phone: "+91-XXXXXXXXXX",
-          linkedin: "linkedin.com/in/priya-sharma",
-          image: "/professional-portrait-priya.jpg",
-          bio: "Priya brings strategic thinking and organizational excellence to her role, ensuring seamless coordination across all departments.",
+          linkedin: "linkedin.com/in/jitesh-kumar",
+          image: "/images/2025-26/deputy_sec.jpg",
+          bio: "Jitesh brings strategic thinking and organizational excellence to his role, ensuring seamless coordination across all departments.",
+          objectPosition: "center 99%",
         },
       ],
       LHC: [
@@ -129,28 +130,28 @@ export default function CouncilPage() {
           bio: "Designs stunning graphics, posters, and visual content that represents our house's creativity and excellence.",
         },
       ],
-      REGIONAL: [
+      COMMUNITY: [
         {
-          id: 7,
+          id: 10,
           name: "Nikhil Bhat",
-          role: "North Regional Lead",
-          message: "Expanding our presence across the nation.",
-          email: "nikhil.north@nallamala.house",
+          role: "Community Lead",
+          message: "Enhancing engagement and fostering community spirit.",
+          email: "nikhil.community@nallamala.house",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/nikhil-bhat",
           image: "/professional-portrait-nikhil-regional.jpg",
-          bio: "Nikhil manages regional operations and ensures seamless coordination across all zones.",
+          bio: "Nikhil leads community initiatives and organizes events to enhance engagement and foster a stronger sense of belonging among members.",
         },
         {
-          id: 8,
+          id: 11,
           name: "Pooja Singh",
-          role: "South Regional Lead",
-          message: "Connecting communities across regions.",
-          email: "pooja.south@nallamala.house",
+          role: "Community Lead",
+          message: "Connecting communities and building lasting bonds.",
+          email: "pooja.community@nallamala.house",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/pooja-singh",
           image: "/professional-portrait-pooja-regional.jpg",
-          bio: "Pooja oversees Southern region operations and drives regional engagement initiatives.",
+          bio: "Pooja drives community engagement initiatives and frequently organizes events to strengthen the sense of community among house members.",
         },
       ],
     },
@@ -170,21 +171,28 @@ export default function CouncilPage() {
       ],
       LHC: [],
       WEBOPS: [],
-      REGIONAL: [],
+      COMMUNITY: [],
     },
     "2023-2024": {
       UHC: [],
       LHC: [],
       WEBOPS: [],
-      REGIONAL: [],
+      COMMUNITY: [],
     },
   }
 
   const teamLabels = {
-    UHC: "Upper House Council",
-    LHC: "Lower House Council",
+    UHC: "Council",
+    LHC: "Regional Coordinators",
     WEBOPS: "Web Operations",
-    REGIONAL: "Regional Leaders",
+    COMMUNITY: "Community Leaders",
+  }
+
+  const teamDescriptions = {
+    UHC: "The House Council, often referred to as the Upper House Council (UHC), is an integral part of our student governing body. It comprises the Secretary and Deputy Secretary of the house. The Council acts as the governing body of our community, organizing events, upholding traditions, and ensuring a thriving, inclusive environment for all residents. Our members are committed to fostering a vibrant and engaging atmosphere within the house.",
+    LHC: "The Regional Coordinators, often referred to as the Lower House Council (LHC), are an essential part of our student governing body. The Lower House Council serves as the key point of contact between house members and the governing bodies. They are the driving force behind the successful execution of meetups and events, addressing member queries, and ensuring that every member's voice is heard.",
+    WEBOPS: "The WebOps team, led by the Web Admin, comprises five dedicated members working under their supervision. The team includes a Website Manager, Video Editor, Graphic Designers, and Developers. They form the core technical team responsible for managing and maintaining all digital and technical aspects of our house, ensuring smooth operation and high-quality output.",
+    COMMUNITY: "These are the leaders of our official communities. They are the ones who frequently organize events within the houses to enhance engagement and foster a stronger sense of community among members.",
   }
 
   const members = yearData[selectedYear]?.[selectedTeam] || []
@@ -212,7 +220,7 @@ export default function CouncilPage() {
           </div>
 
           {/* Team Tabs - Now at the Top */}
-          <div className="flex justify-center gap-3 mb-12 flex-wrap">
+          <div className="flex justify-center gap-3 mb-8 flex-wrap">
             {Object.entries(teamLabels).map(([key, label]) => (
               <button
                 key={key}
@@ -227,6 +235,17 @@ export default function CouncilPage() {
               </button>
             ))}
           </div>
+
+          {/* Team Description */}
+          {teamDescriptions[selectedTeam] && (
+            <div className="mb-12 max-w-4xl mx-auto">
+              <div className="glass-dark p-6 rounded-xl border border-primary/20">
+                <p className="text-white/80 leading-relaxed text-center">
+                  {teamDescriptions[selectedTeam]}
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* Members Grid */}
           {members.length > 0 ? (
