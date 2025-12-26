@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
+import { Instagram, Linkedin } from "lucide-react"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -50,22 +50,32 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Follow Us</h4>
             <div className="flex gap-4">
               {[
-                { icon: Facebook, href: "#" },
-                { icon: Instagram, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Twitter, href: "#" },
+                { icon: Instagram, href: "https://www.instagram.com/nallamala_iitm/" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/nallamala-house-iit-madras/posts/?feedView=all" },
               ].map((social, idx) => {
                 const Icon = social.icon
                 return (
                   <a
                     key={idx}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 rounded-lg bg-primary/20 hover:bg-primary/30 text-primary flex items-center justify-center transition"
                   >
                     <Icon size={18} />
                   </a>
                 )
               })}
+              <a
+                href="https://www.youtube.com/@NallamalaHouseIITMBS"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-lg bg-primary/20 hover:bg-primary/30 text-primary flex items-center justify-center transition"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -74,8 +84,10 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 mt-8">
           {/* Developer Credits */}
           <div className="text-center mb-6">
-            <p className="text-white/60 text-sm">
-              Special thanks to developers of the website{" "}
+            <p className="text-white/60 text-sm mb-2">
+              Special thanks to developers of the website
+            </p>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
               <a 
                 href="https://linkedin.com/in/arya-mukherjee" 
                 target="_blank" 
@@ -84,7 +96,7 @@ export default function Footer() {
               >
                 Arya Mukherjee
               </a>
-              {" "}
+              <span className="text-white/40">•</span>
               <a 
                 href="https://linkedin.com/in/prodhosh-vs" 
                 target="_blank" 
@@ -93,7 +105,7 @@ export default function Footer() {
               >
                 Prodhosh VS
               </a>
-              {" "}
+              <span className="text-white/40">•</span>
               <a 
                 href="https://linkedin.com/in/pavithra-chakravarthy" 
                 target="_blank" 
@@ -102,7 +114,7 @@ export default function Footer() {
               >
                 Pavithra Chakravarthy
               </a>
-            </p>
+            </div>
           </div>
           
           <div className="flex flex-col md:flex-row justify-between items-center">
