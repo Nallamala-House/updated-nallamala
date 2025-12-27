@@ -76,7 +76,14 @@ export default function GPACalculator() {
     if (!selectedCourse) return
 
     try {
-      const score = calculateScore(selectedCourse.id, formValues)
+      let score = calculateScore(selectedCourse.id, formValues)
+      
+      // Add bonus marks only if base score is >= 40
+      const bonusMarks = formValues.Bonus || 0
+      if (score >= 40 && bonusMarks > 0) {
+        score = Math.min(score + bonusMarks, 100)
+      }
+      
       const grade = assignGrade(score)
       setCalculatedScore(score)
       setCalculatedGrade(grade)
@@ -127,110 +134,175 @@ export default function GPACalculator() {
             <p className="text-white/70 text-lg">Calculate your course scores and grades</p>
           </div>
 
-          {/* Degree Selection */}
-          <div className="glass-dark rounded-xl p-6 border border-primary/30 mb-6">
-            <label className="block text-white font-semibold mb-3 flex items-center">
-              <GraduationCap className="w-5 h-5 mr-2 text-primary" />
-              Select Degree Program
-            </label>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <button
-                onClick={() => handleDegreeChange("data-science")}
-                className={`p-4 rounded-lg border-2 transition-all duration-300 ${
-                  selectedDegree === "data-science"
-                    ? "border-primary bg-primary/10 text-white"
-                    : "border-primary/30 bg-black/30 text-white/70 hover:border-primary/50"
-                }`}
-              >
-                <span className="font-semibold">Data Science & Applications</span>
-              </button>
-              <button
-                onClick={() => handleDegreeChange("electronic-systems")}
-                className={`p-4 rounded-lg border-2 transition-all duration-300 ${
-                  selectedDegree === "electronic-systems"
-                    ? "border-primary bg-primary/10 text-white"
-                    : "border-primary/30 bg-black/30 text-white/70 hover:border-primary/50"
-                }`}
-              >
-                <span className="font-semibold">Electronic Systems</span>
-              </button>
-            </div>
-          </div>
+          {/* Selection Cards */}
+          <div className="glass-dark rounded-xl p-8 border border-primary/30 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Degree Program */}
+              <div>
+                <label className="block text-white/70 text-sm mb-3 flex items-center gap-2">
+                  <GraduationCap className="w-4 h-4 text-primary" />
+                  Degree Program
+                </label>
+                <select
+                  value={selectedDegree}
+                  onChange={(e) => handleDegreeChange(e.target.value as "data-science" | "electronic-systems")}
+                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'right 1rem center',
+                    backgroundSize: '1.5rem',
+                  }}
+                >
+                  <option value="">Select Degree</option>
+                  <option value="data-science">Data Science</option>
+                  <option value="electronic-systems">Electronic Systems</option>
+                </select>
+              </div>
 
-          {/* Level Selection */}
-          {selectedDegree && (
-            <div className="glass-dark rounded-xl p-6 border border-primary/30 mb-6">
-              <label className="block text-white font-semibold mb-3 flex items-center">
-                <BookOpen className="w-5 h-5 mr-2 text-primary" />
-                Select Course Level
-              </label>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {availableLevels.map((level) => (
-                  <button
-                    key={level}
-                    onClick={() => handleLevelChange(level)}
-                    className={`p-4 rounded-lg border-2 transition-all duration-300 ${
-                      selectedLevel === level
-                        ? "border-primary bg-primary/10 text-white"
-                        : "border-primary/30 bg-black/30 text-white/70 hover:border-primary/50"
-                    }`}
-                  >
-                    <span className="font-semibold capitalize">{level}</span>
-                  </button>
-                ))}
+              {/* Course Level */}
+              <div>
+                <label className="block text-white/70 text-sm mb-3 flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-primary" />
+                  Course Level
+                </label>
+                <select
+                  value={selectedLevel}
+                  onChange={(e) => handleLevelChange(e.target.value as "foundation" | "diploma" | "degree")}
+                  disabled={!selectedDegree}
+                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors appearance-none cursor-pointer"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'right 1rem center',
+                    backgroundSize: '1.5rem',
+                  }}
+                >
+                  <option value="">Select Level</option>
+                  {availableLevels.map((level) => (
+                    <option key={level} value={level} className="capitalize">
+                      {level.charAt(0).toUpperCase() + level.slice(1)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Course Name */}
+              <div>
+                <label className="block text-white/70 text-sm mb-3 flex items-center gap-2">
+                  <Calculator className="w-4 h-4 text-primary" />
+                  Course Name
+                </label>
+                <select
+                  value={selectedCourse?.id || ""}
+                  onChange={(e) => handleCourseChange(e.target.value)}
+                  disabled={!selectedLevel || availableCourses.length === 0}
+                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors appearance-none cursor-pointer"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'right 1rem center',
+                    backgroundSize: '1.5rem',
+                  }}
+                >
+                  <option value="">Select Course</option>
+                  {availableCourses.map((course) => (
+                    <option key={course.id} value={course.id}>
+                      {course.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
-          )}
-
-          {/* Course Selection */}
-          {selectedLevel && availableCourses.length > 0 && (
-            <div className="glass-dark rounded-xl p-6 border border-primary/30 mb-6">
-              <label className="block text-white font-semibold mb-3">Select Course</label>
-              <select
-                value={selectedCourse?.id || ""}
-                onChange={(e) => handleCourseChange(e.target.value)}
-                className="w-full p-3 rounded-lg bg-black border border-primary/30 text-white focus:outline-none focus:border-primary"
-              >
-                <option value="">Choose a course...</option>
-                {availableCourses.map((course) => (
-                  <option key={course.id} value={course.id}>
-                    {course.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
+          </div>
 
           {/* Course Formula & Input Fields */}
           {selectedCourse && (
             <>
-              {/* Formula Display */}
-              <div className="glass-dark rounded-xl p-6 border border-primary/30 mb-6">
-                <h3 className="text-white font-semibold mb-2">Grading Formula</h3>
-                <p className="text-primary font-mono text-sm break-all">{selectedCourse.formula}</p>
+              {/* Course Info Card */}
+              <div className="glass-dark rounded-xl p-8 border border-primary/30 mb-6">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Calculator className="w-8 h-8 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-white font-semibold text-2xl mb-2">{selectedCourse.name}</h3>
+                    <p className="text-white/60">
+                      Enter your scores below to calculate your final grade. All fields are optional - leave empty for 0.
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-black/50 rounded-lg p-4 border border-primary/20">
+                  <p className="text-white/50 text-xs mb-2">Grading Formula</p>
+                  <p className="text-primary font-mono text-sm">{selectedCourse.formula}</p>
+                </div>
               </div>
 
               {/* Input Fields */}
-              <div className="glass-dark rounded-xl p-6 border border-primary/30 mb-6">
-                <h3 className="text-white font-semibold mb-4">Enter Your Scores</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="glass-dark rounded-xl p-8 border border-primary/30 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {selectedCourse.formFields.map((field) => (
                     <div key={field.id}>
-                      <label className="block text-white/90 mb-2">
+                      <label className="block text-white/70 text-sm mb-3 flex items-center gap-2">
+                        <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
                         {field.label}
-                        <span className="text-white/50 text-sm ml-2">({field.description})</span>
+                        <svg className="w-3 h-3 text-white/40 ml-auto cursor-help" fill="none" stroke="currentColor" viewBox="0 0 24 24" title={field.description}>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
                       </label>
-                      <input
-                        type="number"
-                        min="0"
-                        max={field.max}
-                        value={formValues[field.id] || ""}
-                        onChange={(e) => handleInputChange(field.id, e.target.value)}
-                        placeholder={`Max: ${field.max}`}
-                        className="w-full p-3 rounded-lg bg-black border border-primary/30 text-white focus:outline-none focus:border-primary"
-                      />
+                      <div className="relative">
+                        <input
+                          type="number"
+                          min="0"
+                          max={field.max}
+                          step="0.01"
+                          value={formValues[field.id] || ""}
+                          onChange={(e) => handleInputChange(field.id, e.target.value)}
+                          placeholder={`0-${field.max}`}
+                          className="w-full p-3 pr-12 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                        />
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                          {formValues[field.id] ? (
+                            <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+                              <svg className="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            </div>
+                          ) : (
+                            <div className="w-6 h-6 rounded-full border-2 border-white/20"></div>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   ))}
+                </div>
+
+                {/* Bonus Marks Field - Common for all courses */}
+                <div className="mt-6 pt-6 border-t border-primary/20">
+                  <label className="block text-white/70 text-sm mb-3 flex items-center gap-2">
+                    <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                    </svg>
+                    Bonus Marks
+                    <svg className="w-3 h-3 text-white/40 ml-auto cursor-help" fill="none" stroke="currentColor" viewBox="0 0 24 24" title="Bonus marks (0-5) are added only if base score is 40 or above">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </label>
+                  <div className="relative max-w-md">
+                    <input
+                      type="number"
+                      min="0"
+                      max={5}
+                      step="0.5"
+                      value={formValues.Bonus || ""}
+                      onChange={(e) => handleInputChange("Bonus", e.target.value)}
+                      placeholder="0-5"
+                      className="w-full p-3 pr-12 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                    />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 text-sm">/5</div>
+                  </div>
                 </div>
               </div>
 

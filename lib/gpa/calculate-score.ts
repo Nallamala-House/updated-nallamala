@@ -1,6 +1,8 @@
 import { courseData } from "./course-data"
 
 export function calculateScore(courseId: string, values: Record<string, number>): number {
+  let baseScore = 0
+
   switch (courseId) {
     // Foundation Level
     case "mds1":
@@ -393,16 +395,25 @@ export function calculateScore(courseId: string, values: Record<string, number>)
       )
 
     case "control-eng":
-      return 0.1 * values.GAA + 0.5 * values.F + 0.2 * values.Qz1 + 0.2 * values.Qz2
+      baseScore = 0.1 * values.GAA + 0.5 * values.F + 0.2 * values.Qz1 + 0.2 * values.Qz2
+      break
 
     default:
       // For any course ID not explicitly handled, try to use the formula from courseData
       const course = courseData.find((c) => c.id === courseId)
       if (course) {
         // This is a simplified fallback that assumes a standard formula
-        // It won't work for all courses but provides some resilience
-        return (values.GAA || 0) * 0.1 + (values.F || 0) * 0.5 + (values.Qz1 || 0) * 0.2 + (values.Qz2 || 0) * 0.2
+        baseScore = (values.GAA || 0) * 0.1 + (values.F || 0) * 0.5 + (values.Qz1 || 0) * 0.2 + (values.Qz2 || 0) * 0.2
+      } else {
+        throw new Error(`Unknown course ID: ${courseId}`)
       }
-      throw new Error(`Unknown course ID: ${courseId}`)
   }
+
+  // Apply bonus marks only if base score >= 40
+  const bonus = values.Bonus || 0
+  if (baseScore >= 40 && bonus > 0) {
+    baseScore = Math.min(baseScore + bonus, 100)
+  }
+
+  return baseScore
 }
