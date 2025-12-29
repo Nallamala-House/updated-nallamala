@@ -5,7 +5,7 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
-import { Calendar, Share2 } from "lucide-react"
+import { Calendar, Share2, X } from "lucide-react"
 
 type EventTab = "current" | "upcoming" | "past"
 
@@ -26,6 +26,7 @@ export default function Events() {
   const [activeTab, setActiveTab] = useState<EventTab>("current")
   const [search, setSearch] = useState("")
   const [expandedId, setExpandedId] = useState<number | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id)
@@ -315,7 +316,10 @@ const pastEvents: EventItem[] = [
               hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20
               transition-all duration-300 flex flex-col"
             >
-              <div className="relative h-72 bg-gradient-to-br from-primary/5 to-black overflow-hidden flex-shrink-0">
+              <div 
+                className="relative h-93 bg-gradient-to-br from-primary/5 to-black overflow-hidden flex-shrink-0 cursor-pointer"
+                onClick={() => setSelectedImage(event.image)}
+              >
                 <Image
                   src={event.image}
                   alt={event.title}
@@ -391,6 +395,30 @@ const pastEvents: EventItem[] = [
           ))}
         </div>
       </div>
+
+      {/* Image Popup Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-6xl max-h-[90vh] w-full h-full">
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 text-white hover:text-primary transition p-2 bg-black/50 rounded-full"
+            >
+              <X size={32} />
+            </button>
+            <Image
+              src={selectedImage}
+              alt="Event image"
+              fill
+              className="object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
 
       <Footer />
     </main>
