@@ -272,7 +272,7 @@ const pastEvents: EventItem[] = [
       <div className="max-w-[1400px] mx-auto px-2 pt-24 pb-20">
         {/* Header */}
         <div className="text-center mb-14">
-          <h1 className="text-5xl font-bold text-white mb-4">
+          <h1 className="text-5xl font-serif font-bold text-white mb-4">
             House <span className="text-primary">Events</span>
           </h1>
 
