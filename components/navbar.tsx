@@ -55,10 +55,10 @@ export default function Navbar() {
   ]
 
   const councilYears = [
-    { year: "Present", href: "/council?year=2025-2026", external: false },
-    { year: "2024-2025", href: "/council?year=2024-2025", external: false },
-    { year: "2023-2024", href: "https://sites.google.com/student.onlinedegree.iitm.ac.in/nallamala/house-council/2023-24", external: true },
-    { year: "2022-2023", href: "https://sites.google.com/student.onlinedegree.iitm.ac.in/nallamala/house-council/2022-23", external: true },
+    { year: "Present", href: "/council?year=2025-26", external: false },
+    { year: "2024-25", href: "/council?year=2024-25", external: false },
+    { year: "2023-24", href: "https://sites.google.com/student.onlinedegree.iitm.ac.in/nallamala/house-council/2023-24", external: true },
+    { year: "2022-23", href: "https://sites.google.com/student.onlinedegree.iitm.ac.in/nallamala/house-council/2022-23", external: true },
   ]
 
   return (
