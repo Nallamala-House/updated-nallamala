@@ -40,7 +40,7 @@ export default function CouncilPage() {
           email: "nikhil@nallamala.house",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/nikhil-kumar",
-          image: null, // TODO: Add photo when available
+          image: "/images/2025-26/sec.png", 
           bio: "With exceptional leadership skills, Nikhil has successfully coordinated multiple large-scale initiatives and fostered a culture of excellence within the community.",
         },
         {
