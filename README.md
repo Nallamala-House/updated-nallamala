@@ -1,30 +1,46 @@
-# Nallamala House website
+# Nallamala House Website
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+Official website for Nallamala House, IIT Madras.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/prodhoshvs2025-8980s-projects/v0-nallamala-house-website)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/dWN3qHZNcZm)
+## Getting Started
 
-## Overview
+### Prerequisites
+- Node.js 18+ 
+- pnpm
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+### Setup
 
-## Deployment
+1. Clone the repository:
+```bash
+git clone <repo-url>
+cd nallamala-house-website
+```
 
-Your project is live at:
+2. Install dependencies:
+```bash
+pnpm install
+```
 
-**[https://vercel.com/prodhoshvs2025-8980s-projects/v0-nallamala-house-website](https://vercel.com/prodhoshvs2025-8980s-projects/v0-nallamala-house-website)**
+3. Run development server:
+```bash
+pnpm dev
+```
 
-## Build your app
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Continue building your app on:
+## Project Structure
 
-**[https://v0.app/chat/dWN3qHZNcZm](https://v0.app/chat/dWN3qHZNcZm)**
+- **app/** - Next.js pages and routes
+- **components/** - Reusable React components
+- **lib/** - Utility functions and helpers
+- **public/** - Static assets (images, etc.)
+- **styles/** - CSS files
 
-## How It Works
+## Build & Deploy
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+```bash
+pnpm build
+pnpm start
+```
+
+Deployed on Vercel: [nallamala-house-website](https://vercel.com/prodhoshvs2025-8980s-projects/v0-nallamala-house-website)
