@@ -39,7 +39,7 @@ export default function Blogs() {
       excerpt: "Blog about Nallamala Forest",
       image: "/images/blogs/nallamala-forest.jpeg",
       category: "Nature",
-      date: "April 17, 2024",
+      date: "December 27, 2025",
       author: "Content Team",
       readTime: "7 min read",
       externalLink: "https://docs.google.com/document/d/1Lae85mICvhP0oSN1IC_dJ9WkOCIhQyaVmbfjod0spH4/edit?tab=t.0"
