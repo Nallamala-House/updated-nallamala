@@ -32,6 +32,17 @@ export default function Blogs() {
       date: "April 16, 2024",
       author: "Security Team",
       readTime: "10 min read"
+    },
+    {
+      slug: "nallamala-forest",
+      title: "Nallamala Forest",
+      excerpt: "Blog about Nallamala Forest",
+      image: "/images/blogs/nallamala-forest.jpeg",
+      category: "Nature",
+      date: "April 17, 2024",
+      author: "Content Team",
+      readTime: "7 min read",
+      externalLink: "https://docs.google.com/document/d/1Lae85mICvhP0oSN1IC_dJ9WkOCIhQyaVmbfjod0spH4/edit?tab=t.0"
     }
   ]
 
@@ -45,6 +56,7 @@ export default function Blogs() {
   const categoryColors: { [key: string]: string } = {
     "Quantum AI": "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
     "Dark Web": "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
+    "Nature": "bg-green-500/20 text-green-300 border-green-500/30",
   }
 
   return (
@@ -123,6 +135,10 @@ export default function Blogs() {
                     ) : blog.slug === "how-to-access-dark-web" ? (
                       <>
                         How To Access <span className="text-yellow-400">Dark Web</span>?
+                      </>
+                    ) : blog.slug === "nallamala-forest" ? (
+                      <>
+                        <span className="text-yellow-400">Nallamala</span> Forest
                       </>
                     ) : (
                       blog.title

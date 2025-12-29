@@ -116,7 +116,7 @@ export default function Footer() {
             </p>
             <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
               <a 
-                href="https://linkedin.com/in/arya-mukherjee" 
+                href="https://www.linkedin.com/in/mukherjee-arya/?originalSubdomain=in" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:text-primary/80 transition"
@@ -125,7 +125,7 @@ export default function Footer() {
               </a>
               <span className="text-white/40">•</span>
               <a 
-                href="https://linkedin.com/in/prodhosh-vs" 
+                href="https://www.linkedin.com/in/prodhoshvs/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:text-primary/80 transition"
@@ -134,7 +134,7 @@ export default function Footer() {
               </a>
               <span className="text-white/40">•</span>
               <a 
-                href="https://linkedin.com/in/pavithra-chakravarthy" 
+                href="https://www.linkedin.com/in/pavithra-chakravarthy-98a940312/?originalSubdomain=in" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:text-primary/80 transition"
