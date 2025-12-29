@@ -388,4 +388,3 @@ const pastEvents: EventItem[] = [
     </main>
   )
 }
-
