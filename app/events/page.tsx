@@ -87,59 +87,100 @@ export default function Events() {
  /* ---------------- PAST EVENTS ---------------- */
 const pastEvents: EventItem[] = [
   {
-    id: 5,
-    title: "Speaker Session: The Future of Digital Marketing",
+    id: 23,
+    title: "AES Full Syllabus Revision",
+    date: "17 December",
+    image: "/images/events/19.png",
     description:
-      "An insightful speaker session featuring Sujata Hansda on digital marketing trends, AI, automation, and future career opportunities.",
-    date: "Mar 21, 2025",
-    location: "House Auditorium",
-    image: "/images/events/1.png",
-    attendees: "100+",
+      "A complete revision session for Analog Electronic Systems.",
   },
   {
-    id: 6,
-    title: "Abstract Allegory – The Final Showdown",
+    id: 22,
+    title: "AI GENESIS – Careers in Agentic AI",
+    date: "15 November",
+    image: "/images/events/18.png",
     description:
-      "A captivating celebration of creativity and spontaneous storytelling. Using abstract paintings as prompts, participants delivered impromptu narrations, blending visual art with expressive oration and sparking engaging discussions.",
-    date: "Mar 6, 2025",
-    location: "House Auditorium",
-    image: "/images/events/2.png",
+      "Career-focused session on opportunities in Agentic AI.",
   },
   {
-    id: 7,
-    title: "Talk-Sick Night",
+    id: 21,
+    title: "Nostalgia Night",
+    date: "14 November",
+    image: "/images/events/17.png",
     description:
-      "An evening packed with laughter, stories, and unforgettable moments. Participants shared hilarious, embarrassing, and unbelievable experiences in a relaxed and inclusive storytelling space that celebrated genuine expression and connection.",
-    date: "Apr 4, 2025",
-    location: "House Common Area",
-    image: "/images/events/3.png",
+      "A fun interactive night revisiting childhood memories.",
   },
   {
-    id: 8,
-    title: "Bio.pptx 1.0",
+    id: 20,
+    title: "AI GENESIS – Agentic AI Framework",
+    date: "12 November",
+    image: "/images/events/16.png",
     description:
-      "A term-wise presentation competition fostering research-driven thinking and scientific communication. Participants explored topics at the intersection of biology, space sciences, and sustainability, encouraging interdisciplinary learning and innovation.",
-    date: "Mar 18 – Apr 8, 2025",
-    location: "Online",
-    image: "/images/events/4.png",
+      "Hands-on session on building Agentic AI frameworks.",
   },
   {
-    id: 9,
-    title: "Ethical Hacking Workshop",
+    id: 19,
+    title: "AI GENESIS – Intro to AI Agents",
+    date: "10 November",
+    image: "/images/events/15.png",
     description:
-      "An intensive 2-day hands-on workshop introducing participants to ethical hacking, penetration testing, cybersecurity, and live hacking demonstrations.",
-    date: "Apr 15–16, 2025",
-    location: "Hybrid",
-    image: "/images/events/5.png",
+      "Introductory session on AI Agents featuring Dr. Dhaval Mehta.",
   },
   {
-    id: 10,
-    title: "DataSphere: Mastering Big Tech & GenAI",
+    id: 18,
+    title: "Python OPPE Discussion Session",
+    date: "7 November",
+    image: "/images/events/14.png",
     description:
-      "A speaker session offering deep insights into Big Data, AI, and Generative AI.",
-    date: "Apr 19, 2025",
-    location: "Online",
-    image: "/images/events/6.png",
+      "A focused discussion session clarifying Python OPPE concepts.",
+  },
+  {
+    id: 17,
+    title: "JANMANTHAN: Bihar Edition",
+    date: "3 November",
+    image: "/images/events/13.png",
+    description:
+      "A youth dialogue unpacking political manifestos and governance priorities.",
+  },
+  {
+    id: 16,
+    title: "Unraveling Nature’s Code through Quantum Computing",
+    date: "16 October",
+    image: "/images/events/12.png",
+    description:
+      "A speaker session by Dr. Monika Aggarwal (IIT Delhi) on quantum computing and natural systems.",
+  },
+  {
+    id: 15,
+    title: "Navrang 2.0",
+    date: "23 Sept – 1 Oct",
+    image: "/images/events/11.png",
+    description:
+      "A vibrant Navratri celebration across 9+ cities with garba, dandiya, and festive energy.",
+  },
+  {
+    id: 14,
+    title: "Noor-e-Sama 2.0",
+    date: "Virtual Event",
+    image: "/images/events/10.png",
+    description:
+      "A virtual evening celebrating Shayari and spoken poetry through powerful performances.",
+  },
+  {
+    id: 13,
+    title: "Tri-Color Trails 2.0",
+    date: "6–14 August",
+    image: "/images/events/9.png",
+    description:
+      "A nationwide cultural initiative spanning 12 cities across 11 states, celebrating unity in diversity.",
+  },
+  {
+    id: 12,
+    title: "3-Day Python OPPE Revision Bootcamp",
+    date: "17–19 July",
+    image: "/images/events/8.png",
+    description:
+      "A 3-day intensive Python OPPE revision bootcamp featuring structured sessions, hands-on practice, and expert guidance.",
   },
   {
     id: 11,
@@ -151,102 +192,62 @@ const pastEvents: EventItem[] = [
     image: "/images/events/7.png",
   },
   {
-    id: 12,
-    title: "3-Day Python OPPE Revision Bootcamp",
-    date: "17–19 July",
-    image: "/images/events/8.png",
+    id: 10,
+    title: "DataSphere: Mastering Big Tech & GenAI",
     description:
-      "A 3-day intensive Python OPPE revision bootcamp featuring structured sessions, hands-on practice, and expert guidance.",
+      "A speaker session offering deep insights into Big Data, AI, and Generative AI.",
+    date: "Apr 19, 2025",
+    location: "Online",
+    image: "/images/events/6.png",
   },
   {
-    id: 13,
-    title: "Tri-Color Trails 2.0",
-    date: "6–14 August",
-    image: "/images/events/9.png",
+    id: 9,
+    title: "Ethical Hacking Workshop",
     description:
-      "A nationwide cultural initiative spanning 12 cities across 11 states, celebrating unity in diversity.",
+      "An intensive 2-day hands-on workshop introducing participants to ethical hacking, penetration testing, cybersecurity, and live hacking demonstrations.",
+    date: "Apr 15–16, 2025",
+    location: "Hybrid",
+    image: "/images/events/5.png",
   },
   {
-    id: 14,
-    title: "Noor-e-Sama 2.0",
-    date: "Virtual Event",
-    image: "/images/events/10.png",
+    id: 8,
+    title: "Bio.pptx 1.0",
     description:
-      "A virtual evening celebrating Shayari and spoken poetry through powerful performances.",
+      "A term-wise presentation competition fostering research-driven thinking and scientific communication. Participants explored topics at the intersection of biology, space sciences, and sustainability, encouraging interdisciplinary learning and innovation.",
+    date: "Mar 18 – Apr 8, 2025",
+    location: "Online",
+    image: "/images/events/4.png",
   },
   {
-    id: 15,
-    title: "Navrang 2.0",
-    date: "23 Sept – 1 Oct",
-    image: "/images/events/11.png",
+    id: 7,
+    title: "Talk-Sick Night",
     description:
-      "A vibrant Navratri celebration across 9+ cities with garba, dandiya, and festive energy.",
+      "An evening packed with laughter, stories, and unforgettable moments. Participants shared hilarious, embarrassing, and unbelievable experiences in a relaxed and inclusive storytelling space that celebrated genuine expression and connection.",
+    date: "Apr 4, 2025",
+    location: "House Common Area",
+    image: "/images/events/3.png",
   },
   {
-    id: 16,
-    title: "Unraveling Nature’s Code through Quantum Computing",
-    date: "16 October",
-    image: "/images/events/12.png",
+    id: 6,
+    title: "Abstract Allegory – The Final Showdown",
     description:
-      "A speaker session by Dr. Monika Aggarwal (IIT Delhi) on quantum computing and natural systems.",
+      "A captivating celebration of creativity and spontaneous storytelling. Using abstract paintings as prompts, participants delivered impromptu narrations, blending visual art with expressive oration and sparking engaging discussions.",
+    date: "Mar 6, 2025",
+    location: "House Auditorium",
+    image: "/images/events/2.png",
   },
   {
-    id: 17,
-    title: "JANMANTHAN: Bihar Edition",
-    date: "3 November",
-    image: "/images/events/13.png",
+    id: 5,
+    title: "Speaker Session: The Future of Digital Marketing",
     description:
-      "A youth dialogue unpacking political manifestos and governance priorities.",
-  },
-  {
-    id: 18,
-    title: "Python OPPE Discussion Session",
-    date: "7 November",
-    image: "/images/events/14.png",
-    description:
-      "A focused discussion session clarifying Python OPPE concepts.",
-  },
-  {
-    id: 19,
-    title: "AI GENESIS – Intro to AI Agents",
-    date: "10 November",
-    image: "/images/events/15.png",
-    description:
-      "Introductory session on AI Agents featuring Dr. Dhaval Mehta.",
-  },
-  {
-    id: 20,
-    title: "AI GENESIS – Agentic AI Framework",
-    date: "12 November",
-    image: "/images/events/16.png",
-    description:
-      "Hands-on session on building Agentic AI frameworks.",
-  },
-  {
-    id: 21,
-    title: "Nostalgia Night",
-    date: "14 November",
-    image: "/images/events/17.png",
-    description:
-      "A fun interactive night revisiting childhood memories.",
-  },
-  {
-    id: 22,
-    title: "AI GENESIS – Careers in Agentic AI",
-    date: "15 November",
-    image: "/images/events/18.png",
-    description:
-      "Career-focused session on opportunities in Agentic AI.",
-  },
-  {
-    id: 23,
-    title: "AES Full Syllabus Revision",
-    date: "17 December",
-    image: "/images/events/19.png",
-    description:
-      "A complete revision session for Analog Electronic Systems.",
+      "An insightful speaker session featuring Sujata Hansda on digital marketing trends, AI, automation, and future career opportunities.",
+    date: "Mar 21, 2025",
+    location: "House Auditorium",
+    image: "/images/events/1.png",
+    attendees: "100+",
   },
 ]
+
 
 
   const events =
@@ -424,4 +425,8 @@ const pastEvents: EventItem[] = [
     </main>
   )
 }
+
+
+
+
 

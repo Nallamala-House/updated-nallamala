@@ -99,7 +99,7 @@ export default function Navbar() {
               </button>
               
               {councilDropdown && (
-                <div className="absolute top-full mt-2 w-48 glass-dark rounded-lg border border-primary/30 overflow-hidden shadow-xl">
+                <div className="absolute top-full mt-2 w-48 bg-black rounded-lg border border-primary/30 overflow-hidden shadow-xl">
                   {councilYears.map((item) => (
                     item.external ? (
                       <a
