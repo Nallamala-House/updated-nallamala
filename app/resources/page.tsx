@@ -20,7 +20,7 @@ export default function Resources() {
 
   if (isLoading) {
     return (
-      <main className="min-h-screen bg-black flex flex-col">
+      <main className="min-h-screen flex flex-col">
         <Navbar />
         <div className="flex-1 flex items-center justify-center">
           <div className="text-white">Loading...</div>

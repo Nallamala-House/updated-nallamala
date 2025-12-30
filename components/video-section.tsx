@@ -45,7 +45,7 @@ export default function VideoSection() {
   const regions = useCountAnimation(7)
 
   return (
-    <section id="video-section" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+    <section id="video-section" className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background animation */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20 animate-pulse"></div>
@@ -105,22 +105,6 @@ export default function VideoSection() {
 
             {/* Border glow effect */}
             <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-          </div>
-
-          {/* Stats below video */}
-          <div className="grid grid-cols-3 gap-4 mt-12">
-            <div className="text-center" ref={members.elementRef}>
-              <p className="text-3xl font-serif font-bold text-primary">{members.count}+</p>
-              <p className="text-white/70 text-sm">Members</p>
-            </div>
-            <div className="text-center" ref={events.elementRef}>
-              <p className="text-3xl font-serif font-bold text-primary">{events.count}+</p>
-              <p className="text-white/70 text-sm">Events</p>
-            </div>
-            <div className="text-center" ref={regions.elementRef}>
-              <p className="text-3xl font-serif font-bold text-primary">{regions.count}</p>
-              <p className="text-white/70 text-sm">Regions</p>
-            </div>
           </div>
         </div>
       </div>
