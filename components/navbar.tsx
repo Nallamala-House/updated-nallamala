@@ -158,7 +158,7 @@ export default function Navbar() {
         {isOpen && (
           <div className="lg:hidden bg-black/50 backdrop-blur-lg border-t border-primary/20">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((item) => (
+              {navItemsBefore.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}

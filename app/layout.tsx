@@ -37,7 +37,7 @@ export default function RootLayout({
           height: '100vh', 
           zIndex: -1,
           pointerEvents: 'none',
-          opacity: 0.9
+          opacity: 0.7
         }}>
           <Beams
             beamWidth={3}

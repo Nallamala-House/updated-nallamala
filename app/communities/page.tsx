@@ -92,14 +92,15 @@ export default function CommunitiesPage() {
     },
     {
       id: 4,
-      name: "Grand Master Guild",
+      name: "Grandmaster's Guild",
+      slug: "grandmasters-guild",
       category: "Chess",
       icon: Trophy,
       description: "Mastering the game of chess and strategic thinking.",
       color: "from-purple-600 to-purple-400",
-      image: "/placeholder.svg?key=qzyyl",
+      image: "/images/communities/chess.png",
       fullDescription:
-        "The Grand Master Guild brings together chess enthusiasts of all levels. We host tournaments, analysis sessions, and friendly matches that celebrate the game's strategic depth.",
+        "Grandmaster's Guild - Nallamala houses the official chess community.",
       members: 80,
       foundedYear: 2018,
       achievements: [
@@ -117,53 +118,29 @@ export default function CommunitiesPage() {
     },
     {
       id: 5,
-      name: "Art Canvas",
-      category: "Art",
-      icon: Trophy,
-      description: "Unleashing creativity through visual arts and design.",
-      color: "from-orange-600 to-orange-400",
-      image: "/placeholder.svg?key=7wo10",
-      fullDescription:
-        "Art Canvas is our creative haven for visual artists and designers. We organize exhibitions, workshops, and collaborative projects that celebrate artistic expression.",
-      members: 110,
-      foundedYear: 2017,
-      achievements: [
-        "Organized 5 exhibitions with 30+ active artists",
-        "3 collaborative mural projects",
-        "Art classes for beginners",
-        "Regional art competition winners",
-      ],
-      events: [
-        { title: "Digital Art Workshop", date: "Jan 2025" },
-        { title: "Community Art Exhibition", date: "Feb 2025" },
-        { title: "Life Drawing Session", date: "Mar 2025" },
-      ],
-      leads: ["Arjun Kumar", "Priya Sharma", "Vikram Nair"],
-    },
-    {
-      id: 6,
-      name: "Tech Innovators",
-      category: "Technology",
+      name: "CIFER",
+      slug: "cifer",
+      category: "Finance",
       icon: Zap,
-      description: "Building the future through technology and entrepreneurship.",
-      color: "from-cyan-600 to-cyan-400",
-      image: "/placeholder.svg?key=idg4r",
+      description: "Building strong financial awareness and leadership among students.",
+      color: "from-yellow-600 to-yellow-400",
+      image: "/images/communities/cifer.png",
       fullDescription:
-        "Tech Innovators focuses on emerging technologies and entrepreneurial ventures. We incubate ideas and support members in building tech startups.",
-      members: 85,
-      foundedYear: 2020,
+        "CIFER (Nallamala Finance Community) is a student-led initiative dedicated to building strong financial awareness, practical understanding, and leadership among students.",
+      members: 200,
+      foundedYear: 2023,
       achievements: [
-        "Incubated 5 tech startups",
-        "Hackathon winners in 2023 and 2024",
-        "Industry mentorship program",
-        "Technology talks series",
+        "Growing network of 200+ active members",
+        "Focus on practical financial education",
+        "Supporting aspiring entrepreneurs",
+        "Market analysis and investment workshops",
       ],
       events: [
-        { title: "Startup Pitch Night", date: "Jan 2025" },
-        { title: "Blockchain Workshop", date: "Feb 2025" },
-        { title: "Innovation Summit", date: "Mar 2025" },
+        { title: "Inaugural Session", date: "Oct 2023" },
+        { title: "Investment Basics Workshop", date: "Feb 2025" },
+        { title: "Startup Finance Seminar", date: "Mar 2025" },
       ],
-      leads: ["Dev Kapoor", "Anjali Verma", "Nikhil Bhat"],
+      leads: ["Finance Team"],
     },
   ]
 
@@ -215,8 +192,8 @@ export default function CommunitiesPage() {
                     />
                   </div>
 
-                  {/* Icon - Use actual image for Chapters & Verses, AIDW, and Shunya */}
-                  {community.slug === "chapters-verses" || community.slug === "aidw" || community.slug === "shunya" ? (
+                  {/* Icon - Use actual image for Chapters & Verses, AIDW, Shunya, Grandmaster's Guild, and CIFER */}
+                  {community.slug === "chapters-verses" || community.slug === "aidw" || community.slug === "shunya" || community.slug === "grandmasters-guild" || community.slug === "cifer" ? (
                     <div className="w-12 h-12 rounded-full mb-4 overflow-hidden border-2 border-primary/50">
                       <img
                         src={community.image}

@@ -202,7 +202,7 @@ const Beams = ({
           roughness: 0.3,
           metalness: 0.3,
           uSpeed: { shared: true, mixed: true, linked: true, value: speed },
-          envMapIntensity: 10,
+          envMapIntensity: 20,
           uNoiseIntensity: noiseIntensity,
           uScale: scale
         }
@@ -216,7 +216,7 @@ const Beams = ({
         <PlaneNoise ref={meshRef} material={beamMaterial} count={beamNumber} width={beamWidth} height={beamHeight} />
         <DirLight color={lightColor} position={[0, 3, 10]} />
       </group>
-      <ambientLight intensity={1} />
+      <ambientLight intensity={2.5} />
       <PerspectiveCamera makeDefault position={[0, 0, 20]} fov={30} />
     </CanvasWrapper>
   );
@@ -302,7 +302,7 @@ const DirLight = ({ position, color }) => {
     cam.far = 64;
     dir.current.shadow.bias = -0.004;
   }, []);
-  return <directionalLight ref={dir} color={color} intensity={1} position={position} />;
+  return <directionalLight ref={dir} color={color} intensity={3} position={position} />;
 };
 
 export default Beams;

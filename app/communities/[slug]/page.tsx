@@ -163,7 +163,90 @@ The challenge encouraged out-of-the-box thinking, teamwork, and practical applic
 The community serves as a space to dive into cutting-edge technological discussions, sharpen coding skills through interactive speaker sessions, and work on meaningful open-source projects with real-world impact. From beginners taking their first steps into coding to experienced developers refining their craft, Shunya welcomes everyone with equal enthusiasm.
 
 Recognized as one of the most active student communities, Shunya thrives on collaboration, continuous learning, and peer-to-peer growth. By connecting tech enthusiasts and fostering hands-on experiences, the community inspires its members to push boundaries, turn ideas into reality, and write the code of tomorrow—together.`,
+    events: [
+      {
+        id: 1,
+        title: "DSA Triathlon 2.0",
+        date: "2025",
+        guest: "Powered by Innovation Labs | FetchAI",
+        description: `DSA Triathlon 2.0 was successfully conducted in Paradox, the technical and coding ecosystem of IIT Madras BS, in collaboration with Shunya and Nallamala House.
+
+Powered by Innovation Labs | FetchAI, a global pioneer in AI × Blockchain innovation, the event followed a three-level competitive format and featured carefully curated Data Structures and Algorithms problems. The challenges were designed to assess participants' problem-solving abilities, logical reasoning, and coding efficiency across varying difficulty levels.
+
+The event witnessed active participation from students and fostered a competitive yet engaging learning environment, contributing to the growth of technical skills and competitive programming culture within Paradox.`,
+        image: "/images/communities/events/triathlon.png"
+      },
+      {
+        id: 2,
+        title: "Tech Discussion Session with Vanshika Pandey",
+        date: "2025",
+        guest: "Vanshika Pandey, Software Development Engineer at JP Morgan Chase",
+        description: `An exclusive tech discussion session with Vanshika Pandey was successfully conducted by Shunya.
+
+The session focused on careers in technology and software development, offering valuable insights into navigating the rapidly evolving tech industry. Vanshika Pandey, currently working as a Software Development Engineer at JP Morgan Chase, shared her professional journey and practical guidance for students aiming to build strong careers in tech.
+
+With expertise spanning technologies such as Python, JavaScript, ReactJS, AngularJS, Git/GitHub, C++, and more, the session proved to be both informative and engaging. Participants actively interacted and gained clarity on skill development, industry expectations, and career growth strategies.
+
+The event fostered meaningful learning and mentorship, reflecting Shunya's commitment to creating impactful technical discussions and knowledge-sharing opportunities for students.`,
+        image: "/images/communities/events/guest_talk.png"
+      },
+      {
+        id: 3,
+        title: "Seminar Session with Akshaj Padmakar",
+        date: "2025",
+        guest: "Akshaj Padmakar, Former Competitive Coding Head at IIT Guwahati, Product Engineer at Sprinklr",
+        description: `A seminar session featuring Akshaj Padmakar was successfully conducted by Shunya – The Coding and Developers Club.
+
+Akshaj Padmakar, former Competitive Coding Head at IIT Guwahati and an upcoming Product Engineer at Sprinklr, shared valuable insights from his academic and professional journey. The session focused on competitive programming, product engineering, and navigating career paths in the tech industry.
+
+The discussion catered to both beginners and experienced learners, offering practical advice, real-world perspectives, and motivation for students aspiring to grow in technology and engineering roles. Participants actively engaged during the session, making it an informative and enriching experience.
+
+The event reflected Shunya's continued efforts to bring industry-relevant knowledge and meaningful learning opportunities to students.`,
+        image: "/images/communities/events/seminar.jpg"
+      }
+    ]
+  },
+  "grandmasters-guild": {
+    name: "Grandmaster's Guild",
+    shortDescription: "Nallamala houses the official chess community.",
+    image: "/images/communities/chess.png",
+    color: "from-purple-600 to-purple-400",
+    membershipForm: "https://docs.google.com/forms/d/e/1FAIpQLSeoYlVvpI7QmmNOknWcJiUrmKKpR3r0zl33Fc9ILKjRQ1psRg/viewform",
+    instagram: "https://www.instagram.com/grandmastersguild/",
+    linkedin: "https://www.linkedin.com/company/grandmastersguild/",
+    aboutUs: `Grandmaster's Guild is the official chess community of Nallamala House, bringing together chess enthusiasts of all skill levels. Whether you're a beginner learning the basics or an experienced player looking to refine your strategies, the guild provides a welcoming space for everyone passionate about the game.
+
+The community is dedicated to promoting chess as a strategic and intellectual pursuit, hosting tournaments, analysis sessions, and friendly matches that foster competitive spirit and camaraderie. Through regular events and collaborative learning, members develop their tactical thinking, strategic planning, and competitive skills.
+
+Recognized as a hub for chess culture within IIT Madras BS, Grandmaster's Guild celebrates the timeless game while creating opportunities for players to grow, compete, and connect with fellow chess lovers.`,
     events: []
+  },
+  "cifer": {
+    name: "CIFER",
+    shortDescription: "Building strong financial awareness, practical understanding, and leadership among students.",
+    image: "/images/communities/cifer.png",
+    color: "from-yellow-600 to-yellow-400",
+    membershipForm: "https://docs.google.com/forms/d/e/1FAIpQLSfCge_fE_cl-QVgdxbS2choNkcxXnenN2FIl9dptT5SE5Fl2w/viewform",
+    instagram: "https://www.instagram.com/cifer.iitm/",
+    aboutUs: `CIFER (Nallamala Finance Community) is a student-led initiative dedicated to building strong financial awareness, practical understanding, and leadership among students. With a growing network of 200+ active members, the community serves as a collaborative space for individuals interested in financial markets, corporate finance, entrepreneurship, and real-world money management.
+
+CIFER focuses on developing a practical perspective on finance by exposing students to market dynamics, business finance, investment principles, financial decision-making, and economic trends. The community encourages discussions around how financial strategies influence businesses, startups, and long-term growth, helping members connect financial concepts with real-life scenarios.
+
+A core pillar of CIFER is fostering an entrepreneurial and startup-driven mindset. The community actively supports aspiring founders by guiding them through the financial aspects of building a venture from understanding capital requirements and budgeting to funding strategies, investor readiness, and scaling businesses sustainably. Members gain insight into how financial planning and discipline play a critical role in startup success.`,
+    events: [
+      {
+        id: 1,
+        title: "Inaugural Session of Cifer",
+        date: "30th October 2023",
+        guest: "Prof. M. Thenmozhi, Head of the Department of Management Studies (DOMS), IIT Madras",
+        description: `The Inaugural Session of Cifer was successfully conducted on 30th October 2023, marking the beginning of a new platform focused on finance, investments, and financial markets.
+
+The session featured Prof. M. Thenmozhi, Head of the Department of Management Studies (DOMS), IIT Madras, as the distinguished speaker. She shared valuable insights drawn from her extensive experience in finance and analysis, offering participants a deeper understanding of financial markets and analytical thinking.
+
+The session provided students with an enriching learning experience and set a strong foundation for Cifer's future initiatives. Participants gained meaningful perspectives on finance and investment, making the inaugural event both informative and impactful.`,
+        image: "/images/communities/events/session.jpg"
+      }
+    ]
   }
 }
 
