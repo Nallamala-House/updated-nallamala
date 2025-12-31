@@ -106,11 +106,13 @@ export default function GPACalculator() {
     setCalculatedGrade(null)
   }
 
-  const handleInputChange = (fieldId: string, value: string) => {
+  const handleInputChange = (fieldId: string, value: string, maxValue: number) => {
     const numValue = parseFloat(value) || 0
+    // Clamp value between 0 and max
+    const clampedValue = Math.max(0, Math.min(numValue, maxValue))
     setFormValues((prev) => ({
       ...prev,
-      [fieldId]: numValue,
+      [fieldId]: clampedValue,
     }))
   }
 
@@ -397,7 +399,12 @@ export default function GPACalculator() {
                           max={field.max}
                           step="0.01"
                           value={formValues[field.id] || ""}
-                          onChange={(e) => handleInputChange(field.id, e.target.value)}
+                          onChange={(e) => handleInputChange(field.id, e.target.value, field.max)}
+                          onBlur={(e) => {
+                            const val = parseFloat(e.target.value) || 0
+                            if (val > field.max) handleInputChange(field.id, field.max.toString(), field.max)
+                            if (val < 0) handleInputChange(field.id, "0", field.max)
+                          }}
                           placeholder={`0-${field.max}`}
                           className="w-full p-3 pr-12 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
                         />
@@ -435,7 +442,12 @@ export default function GPACalculator() {
                       max={5}
                       step="0.5"
                       value={formValues.Bonus || ""}
-                      onChange={(e) => handleInputChange("Bonus", e.target.value)}
+                      onChange={(e) => handleInputChange("Bonus", e.target.value, 5)}
+                      onBlur={(e) => {
+                        const val = parseFloat(e.target.value) || 0
+                        if (val > 5) handleInputChange("Bonus", "5", 5)
+                        if (val < 0) handleInputChange("Bonus", "0", 5)
+                      }}
                       placeholder="0-5"
                       className="w-full p-3 pr-12 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
                     />
