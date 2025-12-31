@@ -91,7 +91,7 @@ export default function Events() {
     {
       id: 23,
       title: "AES Full Syllabus Revision",
-      date: "17 December",
+      date: "17 December 2025",
       image: "/images/events/19.png",
       description: (
         <>
@@ -105,7 +105,7 @@ export default function Events() {
     {
       id: 22,
       title: "AI GENESIS – Careers in Agentic AI",
-      date: "15 November",
+      date: "15 November 2025",
       image: "/images/events/18.png",
       description: (
         <>
@@ -127,7 +127,7 @@ export default function Events() {
      {
     id: 21,
     title: "Nostalgia Night",
-    date: "14 November",
+    date: "14 November 2025",
     image: "/images/events/17.png",
     description: (
       <>
@@ -141,7 +141,7 @@ export default function Events() {
   {
     id: 20,
     title: "AI GENESIS – Agentic AI Framework",
-    date: "12 November",
+    date: "12 November 2025",
     image: "/images/events/16.png",
     description: (
       <>
@@ -156,21 +156,21 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
   {
     id: 19,
     title: "AI GENESIS – Intro to AI Agents",
-    date: "10 November",
+    date: "10 November 2025",
     image: "/images/events/15.png",
     description: (
       <>
         Introductory session on AI Agents featuring Dr. Dhaval Mehta. AI GENESIS marked the beginning of an insightful learning series focused on the rapidly evolving field of AI Agents. Organized by Nilgiri, Sundarbans, and Nallamala Houses in collaboration with CodeCrafters, the inaugural session introduced participants to one of the most significant emerging trends in artificial intelligence.
-The kickoff session, titled “Intro to AI Agents”, was conducted on 10th November and featured Dr. Dhaval Mehta as the guest speaker. The session broke down the fundamental concepts of AI agents, helping participants understand their structure, capabilities, and real-world relevance. Dr. Mehta’s clear explanations and practical insights made complex ideas accessible to learners from diverse technical backgrounds.
-The event successfully set the foundation for the AI GENESIS series, sparking curiosity and enthusiasm among attendees. It empowered participants with a strong conceptual starting point to explore the future potential of AI agents and emerging intelligent systems.
-Recording link : https://youtu.be/esmuGxoiBJA?si=abaRV3rYWOJzlruq
+        The kickoff session, titled “Intro to AI Agents”, was conducted on 10th November and featured Dr. Dhaval Mehta as the guest speaker. The session broke down the fundamental concepts of AI agents, helping participants understand their structure, capabilities, and real-world relevance. Dr. Mehta’s clear explanations and practical insights made complex ideas accessible to learners from diverse technical backgrounds.
+        The event successfully set the foundation for the AI GENESIS series, sparking curiosity and enthusiasm among attendees. It empowered participants with a strong conceptual starting point to explore the future potential of AI agents and emerging intelligent systems.
+        Recording link : https://youtu.be/esmuGxoiBJA?si=abaRV3rYWOJzlruq
       </>
     ),
   },
   {
     id: 18,
     title: "Python OPPE Discussion Session",
-    date: "7 November",
+    date: "7 November 2025",
     image: "/images/events/14.png",
     description: (
       <>
@@ -184,12 +184,12 @@ Recording link : https://youtu.be/esmuGxoiBJA?si=abaRV3rYWOJzlruq
   {
     id: 17,
     title: "JANMANTHAN: Bihar Edition",
-    date: "3 November",
+    date: "3 November 2025",
     image: "/images/events/13.png",
     description: (
       <>
         A youth dialogue unpacking political manifestos and governance priorities.JANMANTHAN: Bihar Edition was a thought-provoking youth dialogue organized by Nallamala House in collaboration with Veritas, creating a platform where ideas met impact and young voices led meaningful conversations on Bihar’s future. Held on 3rd November 2025, the event brought together participants for in-depth discussions on political manifestos, public promises, and governance priorities.
-Through structured debates and collaborative sessions, participants critically unpacked manifestos to understand their real-world implications, engaged in open discussions to share diverse perspectives, and collectively contributed to shaping a People’s Manifesto that reflected youth aspirations. The event encouraged informed dialogue, civic awareness, and constructive engagement, empowering attendees to think critically and voice their opinions with confidence.
+      Through structured debates and collaborative sessions, participants critically unpacked manifestos to understand their real-world implications, engaged in open discussions to share diverse perspectives, and collectively contributed to shaping a People’s Manifesto that reflected youth aspirations. The event encouraged informed dialogue, civic awareness, and constructive engagement, empowering attendees to think critically and voice their opinions with confidence.
 
       </>
     ),
@@ -197,7 +197,7 @@ Through structured debates and collaborative sessions, participants critically u
   {
     id: 16,
     title: "Unraveling Nature’s Code through Quantum Computing",
-    date: "16 October",
+    date: "16 October 2025",
     image: "/images/events/12.png",
     description: (
       <>
@@ -504,7 +504,7 @@ Through structured debates and collaborative sessions, participants critically u
 {
   id: 33,
   title: "Tech Discussion Session with Vanshika Pandey",
-  date: "2025",
+  date: "17 March 2024",
   image: "/images/events/29.png",
   description: (
     <>
@@ -521,7 +521,7 @@ Through structured debates and collaborative sessions, participants critically u
 {
   id: 34,
   title: "Seminar Session with Akshaj Padmakar",
-  date: "2025",
+  date: "11th February 2024",
   image: "/images/events/30.png",
   description: (
     <>
@@ -538,12 +538,34 @@ Through structured debates and collaborative sessions, participants critically u
 
   ];
 
+   /* ---------------- HELPER: Parse Dates ---------------- */
+  const parseEventDate = (dateStr: string) => {
+    // Try to extract a parsable date, fallback to 1970 if invalid
+    const match = dateStr.match(/\d{1,2} [A-Za-z]+ \d{4}/) // e.g., "18 March 2025"
+    if (match) return new Date(match[0])
+    // Fallback: try year only
+    const yearMatch = dateStr.match(/\d{4}/)
+    return yearMatch ? new Date(Number(yearMatch[0]), 0, 1) : new Date(1970, 0, 1)
+  }
+
+  /* ---------------- SORT EVENTS NEWEST TO OLDEST ---------------- */
+  const sortedCurrentEvents = [...currentEvents].sort(
+    (a, b) => parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
+  )
+  const sortedUpcomingEvents = [...upcomingEvents].sort(
+    (a, b) => parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
+  )
+  const sortedPastEvents = [...pastEvents].sort(
+    (a, b) => parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
+  )
+
+  /* ---------------- FILTERED EVENTS BASED ON TAB & SEARCH ---------------- */
   const events =
     activeTab === "current"
-      ? currentEvents
+      ? sortedCurrentEvents
       : activeTab === "upcoming"
-      ? upcomingEvents
-      : pastEvents
+      ? sortedUpcomingEvents
+      : sortedPastEvents
 
   const filteredEvents = events.filter((event) =>
     event.title.toLowerCase().includes(search.toLowerCase())
