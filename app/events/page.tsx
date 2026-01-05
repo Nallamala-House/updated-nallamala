@@ -66,7 +66,7 @@ export default function Events() {
       title: "New Year Gala 2026",
       description:
         "Ring in the new year with an elegant gala featuring live music, dinner, and dancing.",
-      date: "Dec 31, 2025",
+      date: "31 Dec 2025",
       location: "Main Hall",
       image:
         "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=1200&fit=crop",
@@ -77,7 +77,7 @@ export default function Events() {
       title: "AI/ML Workshop",
       description:
         "Hands-on workshop on latest AI developments and machine learning techniques.",
-      date: "Jan 8, 2026",
+      date: "8 Jan 2026",
       location: "Tech Lab",
       image:
         "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=1200&fit=crop",
@@ -123,7 +123,7 @@ export default function Events() {
         </>
       ),
     },
-    // Continue copying all previous pastEvents from id 21 to 5
+  
      {
     id: 21,
     title: "Nostalgia Night",
@@ -146,9 +146,9 @@ export default function Events() {
     description: (
       <>
         Hands-on session on building Agentic AI frameworks.AI GENESIS, an initiative by Nallamala , Nilgiri, and Sundarbans Houses in collaboration with CodeCrafters, successfully continued its learning journey with Session 2, following the strong response to its introductory session on AI Agents. This session shifted the focus from theory to hands-on learning, offering participants a practical deep dive into Agentic AI.
-Conducted on 12th November, the session titled “Learning Agentic AI by Building an Agentic AI Framework” was led by Siddhant Pandey, an AI Research Engineer at Codebasics. Participants were guided through the core principles of agentic systems by actively building an Agentic AI framework, helping them understand how intelligent agents are designed, structured, and deployed in real-world applications.
-The session proved to be highly engaging and skill-oriented, enabling learners to bridge the gap between conceptual understanding and practical implementation. As part of the AI GENESIS series, this event strengthened participants’ confidence in working with modern AI paradigms and reinforced the series’ goal of preparing learners for the next wave of artificial intelligence.
-Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
+    Conducted on 12th November, the session titled “Learning Agentic AI by Building an Agentic AI Framework” was led by Siddhant Pandey, an AI Research Engineer at Codebasics. Participants were guided through the core principles of agentic systems by actively building an Agentic AI framework, helping them understand how intelligent agents are designed, structured, and deployed in real-world applications.
+    The session proved to be highly engaging and skill-oriented, enabling learners to bridge the gap between conceptual understanding and practical implementation. As part of the AI GENESIS series, this event strengthened participants’ confidence in working with modern AI paradigms and reinforced the series’ goal of preparing learners for the next wave of artificial intelligence.
+    Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
 
       </>
     ),
@@ -209,23 +209,11 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
       </>
     ),
   },
-  {
-    id: 15,
-    title: "Navrang 2.0",
-    date: "23 Sept – 1 Oct",
-    image: "/images/events/11.png",
-    description: (
-      <>
-        A vibrant Navratri celebration across 9+ cities with garba, dandiya, and festive energy. Navrang 2.0 was a vibrant Navratri celebration curated by Boundless, bringing together music, dance, and festive traditions across 9+ cities in India. Conducted from 23rd September to 1st October, the event transformed cities into hubs of color, rhythm, and cultural energy. From energetic garba circles to the electrifying beats of dandiya, Navrang 2.0 created unforgettable festive nights filled with joy, togetherness, and celebration.
-        The initiative served as a tribute to community spirit and cultural unity, celebrating the essence of Navratri through shared stories, traditions, and joyful gatherings. Cities including Mumbai, Delhi, Hyderabad, Nagpur, Kolkata, Jaipur, Ahmedabad, Lucknow, and Patna came alive with festive enthusiasm. Adding to its nationwide reach, People’s Choice additions—Gorakhpur, Jamshedpur, Chennai, and Indore—made Navrang 2.0 even more inclusive and community-driven.Navrang 2.0 successfully captured the true spirit of Navratri by fostering connection, cultural pride, and collective celebration. The event left participants with lasting memories and strengthened the bond between communities through the universal language of music, dance, and tradition.
-
-      </>
-    ),
-  },
+  
   {
     id: 14,
     title: "Noor-e-Sama 2.0",
-    date: "Virtual Event",
+    date: "15 February 2025",
     image: "/images/events/10.png",
     description: (
       <>
@@ -237,7 +225,7 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
   {
     id: 13,
     title: "Tri-Color Trails 2.0",
-    date: "6–14 August",
+    date: "6–14 August 2025",
     image: "/images/events/9.png",
     description: (
       <>
@@ -249,7 +237,7 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
   {
     id: 12,
     title: "3-Day Python OPPE Revision Bootcamp",
-    date: "17–19 July",
+    date: "17–19 July 2025",
     image: "/images/events/8.png",
     description: (
       <>
@@ -261,7 +249,7 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
   {
     id: 11,
     title: "The Science of Self: Insights from the Bhagavad Gita",
-    date: "Apr 23, 2025",
+    date: "23 April 2025",
     location: "Online",
     image: "/images/events/7.png",
     description: (
@@ -277,24 +265,9 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
     ),
   },
   {
-    id: 10,
-    title: "DataSphere: Mastering Big Tech & GenAI",
-    date: "Apr 19, 2025",
-    location: "Online",
-    image: "/images/events/6.png",
-    description: (
-      <>
-        A speaker session offering deep insights into Big Data, AI, and Generative AI. The speaker session “DataSphere: Mastering Big Tech & GenAI” was successfully conducted on April 19, 2025, offering participants a deep dive into the evolving world of Big Data, Artificial Intelligence, and Generative AI.
-        Led by Nishchay Agrawal, Senior Data Engineer at Walmart, the session provided valuable insights into building a successful career in top tech companies. Drawing from his extensive industry experience, the speaker discussed essential skills for data and AI roles, career transition strategies, and the real-world application of cutting-edge technologies such as Databricks, Delta Lake, and LangChain.
-        Participants gained clarity on career pathways in Big Data and GenAI, understood current industry trends, and engaged actively during the interactive Q&A session, making the event both informative and engaging. The session proved to be a valuable learning experience for aspiring data professionals looking to break into leading tech organizations.
-
-      </>
-    ),
-  },
-  {
     id: 9,
     title: "Ethical Hacking Workshop",
-    date: "Apr 15–16, 2025",
+    date: "15–16 Apr 2025",
     location: "Hybrid",
     image: "/images/events/5.png",
     description: (
@@ -313,7 +286,7 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
   {
     id: 8,
     title: "Bio.pptx 1.0",
-    date: "Mar 18 – Apr 8, 2025",
+    date: " 18 March – 8 April 2025",
     location: "Online",
     image: "/images/events/4.png",
     description: (
@@ -329,7 +302,7 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
   {
     id: 7,
     title: "Talk-Sick Night",
-    date: "Apr 4, 2025",
+    date: "4 Apr 2025",
     location: "House Common Area",
     image: "/images/events/3.png",
     description: (
@@ -345,7 +318,7 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
   {
     id: 6,
     title: "Abstract Allegory – The Final Showdown",
-    date: "Mar 6, 2025",
+    date: "6 March 2025",
     location: "House Auditorium",
     image: "/images/events/2.png",
     description: (
@@ -361,7 +334,7 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
   {
     id: 5,
     title: "Speaker Session: The Future of Digital Marketing",
-    date: "Mar 21, 2025",
+    date: "21 March 2025",
     location: "House Auditorium",
     image: "/images/events/1.png",
     description: (
@@ -374,60 +347,7 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
       </>
     ),
   },
-  {
-      id: 24,
-      title: "Chapters Unlocked",
-      date: "18 February 2024",
-      image: "/images/events/20.png",
-      description: (
-        <>
-          Chapters Unlocked marked the inaugural ceremony and book talk session of our literary journey, held as an engaging virtual event on Google Meet. The session featured an insightful conversation with Ms. Riya Jhamb, who shared her perspectives on storytelling, reading culture, and her latest literary work. Participants had the opportunity to dive deep into discussions on literature, exchange ideas with fellow book lovers, and engage in meaningful conversations in a warm and inclusive environment. With Ms. Riya’s vibrant Instagram community of over 20,000 readers, the event successfully brought together a diverse audience united by a love for books. The session concluded as an enriching and inspiring experience, setting the tone for many more literary conversations to come.
-        </>
-      ),
-    },
-    {
-    id: 25,
-    title: "Harry Potter: Watch Party",
-    date: "29 March 2024 | 7:00 PM",
-    image: "/images/events/21.png",
-    description: (
-      <>
-        The Harry Potter: Watch Party was a magical movie night where participants stepped into the enchanting world of Harry Potter and the Philosopher’s Stone. The virtual screening brought together Potterheads to relive the wonder of Hogwarts School of Witchcraft and Wizardry.
-        <br />
-        As Harry, Ron, and Hermione embarked on their unforgettable journey, viewers experienced themes of friendship, bravery, and the enduring power of love. The event witnessed an overwhelming response, with over 172 participants tuning in, making it a memorable and highly successful community gathering.
-        <br />
-        Filled with nostalgia, excitement, and shared moments of magic, the watch party truly celebrated the timeless charm of the wizarding world. 🪄🍿✨
-      </>
-    ),
-  },
-  {
-    id: 26,
-    title: "Dastaan-e-Alfaaz",
-    date: "Weekly Series 2024",
-    image: "/images/events/22.png",
-    description: (
-      <>
-        Dastaan-e-Alfaaz is a poetic Urdu phrase that translates to “Story of Words.” It represents the art of weaving emotions, experiences, and imagination into verses that resonate far beyond their surface meaning.
-        <br />
-        Chapters & Verses proudly presents the Dastaan-e-Alfaaz series—an ongoing literary initiative that brings soulful Urdu shayari to your Sundays. Each edition features thoughtfully crafted verses by our talented community members, celebrating the beauty and depth of expression through words.
-        <br />
-        Join us on Instagram as we paint a canvas of emotions with every carefully chosen line, inviting you to pause, reflect, and feel. ✨ Anticipate the magic—unfolding weekly. 💫
-      </>
-    ),
-  },
-  {
-    id: 27,
-    title: "Unscripted Pages",
-    date: "24 November 2024 | 8:00 PM",
-    image: "/images/events/23.png",
-    description: (
-      <>
-        Unscripted Pages was a collaborative literary competition designed to celebrate creative writing, expression, and presentation. The event unfolded across two rounds, beginning with written submissions based on given themes. Shortlisted participants then advanced to a live Google Meet session, where finalists presented their work and brought their words to life.
-        <br />
-        The competition fostered confidence, creativity, and meaningful literary exchange, making it an engaging and memorable experience for all involved.
-      </>
-    ),
-  },
+  
   {
     id: 28,
     title: "Noor-e-Sama — A Night of Shayari",
@@ -486,56 +406,6 @@ Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
     </>
   ),
 },
-{
-  id: 32,
-  title: "DSA Triathlon 2.0",
-  date: "Paradox, IIT Madras BS",
-  image: "/images/events/28.png",
-  description: (
-    <>
-      DSA Triathlon 2.0 was successfully conducted in Paradox, the technical and coding ecosystem of IIT Madras BS, in collaboration with Shunya and Nallamala House.
-      <br />
-      Powered by Innovation Labs | FetchAI, the event followed a three-level competitive format and featured carefully curated Data Structures and Algorithms problems. The challenges were designed to assess participants’ problem-solving abilities, logical reasoning, and coding efficiency across varying difficulty levels.
-      <br />
-      The event witnessed active participation from students and fostered a competitive yet engaging learning environment, contributing to the growth of technical skills and competitive programming culture within Paradox.
-    </>
-  ),
-},
-{
-  id: 33,
-  title: "Tech Discussion Session with Vanshika Pandey",
-  date: "17 March 2024",
-  image: "/images/events/29.png",
-  description: (
-    <>
-      An exclusive tech discussion session with Vanshika Pandey was successfully conducted by Shunya. The session focused on careers in technology and software development, offering valuable insights into navigating the rapidly evolving tech industry.
-      <br />
-      Vanshika Pandey, currently working as a Software Development Engineer at JP Morgan Chase, shared her professional journey and practical guidance for students aiming to build strong careers in tech.
-      <br />
-      With expertise spanning technologies such as Python, JavaScript, ReactJS, AngularJS, Git/GitHub, C++, and more, the session proved to be both informative and engaging. Participants actively interacted and gained clarity on skill development, industry expectations, and career growth strategies.
-      <br />
-      The event fostered meaningful learning and mentorship, reflecting Shunya’s commitment to creating impactful technical discussions and knowledge-sharing opportunities for students.
-    </>
-  ),
-},
-{
-  id: 34,
-  title: "Seminar Session with Akshaj Padmakar",
-  date: "11th February 2024",
-  image: "/images/events/30.png",
-  description: (
-    <>
-      A seminar session featuring Akshaj Padmakar was successfully conducted by Shunya – The Coding and Developers Club.
-      <br />
-      Akshaj Padmakar, former Competitive Coding Head at IIT Guwahati and an upcoming Product Engineer at Sprinklr, shared valuable insights from his academic and professional journey. The session focused on competitive programming, product engineering, and navigating career paths in the tech industry.
-      <br />
-      The discussion catered to both beginners and experienced learners, offering practical advice, real-world perspectives, and motivation for students aspiring to grow in technology and engineering roles. Participants actively engaged during the session, making it an informative and enriching experience.
-      <br />
-      The event reflected Shunya’s continued efforts to bring industry-relevant knowledge and meaningful learning opportunities to students. Grandmaster's Guild - Nallamala House official chess community.
-    </>
-  ),
-},
-
   ];
 
    /* ---------------- HELPER: Parse Dates ---------------- */
