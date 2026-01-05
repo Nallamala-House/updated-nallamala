@@ -94,6 +94,19 @@ export default function Events() {
   const pastEvents: EventItem[] = [
     // All previous past events (id: 23 to 5) go here, unchanged
     {
+      id: 24,
+      title: "Talent Hunt",
+      date: "28 December 2025",
+      image: "/images/events/31.png",
+      description: (
+        <>
+          Nallamala Talent Hunt was a vibrant talent showcase that provided students with an open platform to express their creativity and skills. Held on 28th December, the event brought together participants with diverse talents, including singing, painting, storytelling, poetry, coding projects, photography, and more.
+          The session celebrated individuality and creativity, encouraging participants to perform without boundaries or limitations. Each performance reflected passion, confidence, and originality, creating an engaging and supportive environment for both performers and the audience.
+          Nallamala Talent Hunt successfully fostered a sense of community and artistic expression, leaving participants inspired and motivated. The event stood as a testament to the diverse talents within the student community and the power of providing a stage where creativity can truly shine.
+        </>
+      ),
+    },
+    {
       id: 23,
       title: "AES Full Syllabus Revision",
       date: "17 December 2025",
