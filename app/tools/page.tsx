@@ -41,14 +41,8 @@ export default function Tools() {
   ]
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-black">
       <Navbar />
-      
-      {/* Background animations */}
-      <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute top-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
-      </div>
 
       {!isAuthenticated ? (
         <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 min-h-screen">
@@ -86,7 +80,16 @@ export default function Tools() {
           </div>
 
           {/* Tools Grid */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="relative grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Coming Soon Overlay */}
+            <div className="absolute inset-0 z-10 flex items-center justify-center backdrop-blur-sm bg-black/30 rounded-3xl">
+              <div className="text-center px-6 py-12 glass-dark rounded-2xl border-2 border-primary/40 shadow-2xl max-w-md mx-4">
+                <div className="text-6xl mb-4">🚀</div>
+                <h3 className="text-4xl font-serif font-bold text-primary mb-3">Coming Soon</h3>
+                <p className="text-white/70 text-lg">We're working hard to bring you amazing tools. Stay tuned!</p>
+              </div>
+            </div>
+            
             {tools.map((tool, index) => (
               <Link 
                 key={index}

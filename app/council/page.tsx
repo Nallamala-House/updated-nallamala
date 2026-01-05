@@ -237,7 +237,6 @@ export default function CouncilPage() {
           name: "Naman Shyamsukha",
           role: "Secretary",
           message: "Building on our legacy of excellence.",
-          email: "nallamala-sec@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/naman-shyamsukha",
           image: "/images/2024-25/sec.png",
@@ -248,7 +247,6 @@ export default function CouncilPage() {
           name: "Abhay Kumar",
           role: "Deputy Secretary",
           message: "Empowering our community through effective coordination.",
-          email: "nallamala-ds@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/abhay-kumar",
           image: "/images/2024-25/dep_sec.jpg",
@@ -259,7 +257,6 @@ export default function CouncilPage() {
           name: "Krishnan Lakshmi Narayana",
           role: "Web Admin",
           message: "Managing and maintaining our digital presence.",
-          email: "nallamala-webad@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/krishnan-lakshmi-narayana",
           image: "/images/2024-25/web_admin.png",
@@ -272,7 +269,6 @@ export default function CouncilPage() {
             id: 20,
             name: "Vishal Singh Baraiya",
             role: "WebDev",
-            email: "vishal@nallamala.house",
             image: null, // TODO: Add photo when available
           },
         ],
@@ -281,28 +277,24 @@ export default function CouncilPage() {
             id: 21,
             name: "Aishwanee Basu",
             role: "Management Member",
-            email: "aishwanee@nallamala.house",
             image: "/images/2024-25/aishwanee_basu.png",
           },
           {
             id: 22,
             name: "Satyam Saurabh",
             role: "Management Member",
-            email: "satyam@nallamala.house",
             image: "/images/2024-25/satyam_saurabh.png",
           },
           {
             id: 23,
             name: "Raiyan Ahmed",
             role: "Management Member",
-            email: "raiyan@nallamala.house",
             image: "/images/2024-25/raiyan_ahmed.png",
           },
           {
             id: 24,
             name: "Nikhil Kumar",
             role: "Management Member",
-            email: "nikhil.mgmt@nallamala.house",
             image: "/images/2024-25/nikhil_kumar.png",
           },
         ],
@@ -311,21 +303,18 @@ export default function CouncilPage() {
             id: 25,
             name: "Ashutosh Solanke",
             role: "Content Writer",
-            email: "ashutosh@nallamala.house",
             image: "/images/2024-25/ashutosh_solanke.png",
           },
           {
             id: 26,
             name: "Priyanka Dalal",
             role: "Content Writer",
-            email: "priyanka@nallamala.house",
             image: "/images/2024-25/priyanka_dalal.png",
           },
           {
             id: 27,
             name: "Vanshika Tiwari",
             role: "Content Writer",
-            email: "vanshika@nallamala.house",
             image: "/images/2024-25/vanshika_tiwari.png",
           },
         ],
@@ -334,14 +323,12 @@ export default function CouncilPage() {
             id: 28,
             name: "Kundan Kumar",
             role: "Design Team Member",
-            email: "kundan@nallamala.house",
             image: "/images/2024-25/kundan_kumar.png",
           },
           {
             id: 29,
             name: "Anindya Mukhopadhyay",
             role: "Design Team Member",
-            email: "anindya@nallamala.house",
             image: "/images/2024-25/anindya_mukhopadhyay.png",
           },
         ],
@@ -351,56 +338,48 @@ export default function CouncilPage() {
           id: 30,
           name: "Harikrishnan D",
           role: "Regional Coordinator - Bengaluru",
-          email: "23f3000295@ds.study.iitm.ac.in",
           image: "/images/2024-25/harikrishnan_d.jpg",
         },
         {
           id: 32,
           name: "Jitesh Kumar",
           role: "Regional Coordinator - Chennai",
-          email: "23f3000519@es.study.iitm.ac.in",
           image: "/images/2024-25/jitesh_kumar.jpg",
         },
         {
           id: 33,
           name: "Lakshya Patel",
           role: "Regional Coordinator - Delhi",
-          email: "23f3001274@ds.study.iitm.ac.in",
           image: "/images/2024-25/lakshya_patel.png",
         },
         {
           id: 34,
           name: "Ankala Lakshmi Prabhasini",
           role: "Regional Coordinator - Hyderabad",
-          email: "24f2002884@ds.study.iitm.ac.in",
           image: "/images/2024-25/ankala_lakshmi_prabhasini.jpg",
         },
         {
           id: 37,
           name: "Pushpanjali",
           role: "Regional Coordinator - Patna",
-          email: "22f3002427@ds.study.iitm.ac.in",
           image: "/images/2024-25/pushpanjali.png",
         },
         {
           id: 31,
           name: "Vishal Singh Baraiya",
           role: "Regional Coordinator - Chandigarh",
-          email: "23f2000558@ds.study.iitm.ac.in",
           image: null,
         },
         {
           id: 35,
           name: "Priti Ghosh",
           role: "Regional Coordinator - Kolkata",
-          email: "24f2001576@ds.study.iitm.ac.in",
           image: null,
         },
         {
           id: 36,
           name: "Shashwat Upadhyay",
           role: "Regional Coordinator - Mumbai",
-          email: "23f3002413@ds.study.iitm.ac.in",
           image: null,
         },
       ],
@@ -549,14 +528,6 @@ export default function CouncilPage() {
                       </div>
                       <p className="text-primary text-xs uppercase tracking-widest mb-2">{member.role}</p>
                       <h3 className="text-lg font-serif font-bold text-white mb-2">{member.name}</h3>
-                      {/* Show email for all members */}
-                      <a
-                        href={`mailto:${member.email}`}
-                        className="flex items-center space-x-2 text-white/70 hover:text-primary transition text-sm mt-3"
-                      >
-                        <Mail size={16} className="text-primary" />
-                        <span className="text-xs break-all">{member.email}</span>
-                      </a>
                     </div>
                   )
                 }

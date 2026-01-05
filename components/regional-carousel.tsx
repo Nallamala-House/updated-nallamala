@@ -135,15 +135,12 @@ export default function RegionalCarousel() {
                         className="rounded-xl overflow-hidden border-2 border-primary/40 hover:border-primary shadow-2xl bg-black cursor-pointer transition-all hover:scale-105"
                       >
                       {/* Image */}
-                      <div className="h-[280px] w-full bg-gray-900">
-                        <img
-                          src={gallery.image || "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop"}
-                          alt={gallery.title}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            e.currentTarget.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop"
-                          }}
-                        />
+                      <div className="h-[280px] w-full bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center">
+                        <div className="text-center">
+                          <div className="text-5xl font-bold text-white/20 mb-2">📸</div>
+                          <p className="text-2xl font-serif font-bold text-primary mb-1">Coming Soon</p>
+                          <p className="text-white/50 text-sm">Gallery Updates</p>
+                        </div>
                       </div>
                       
                       {/* Info */}
