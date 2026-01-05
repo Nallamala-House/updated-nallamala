@@ -14,6 +14,7 @@ export default function CouncilPage() {
   const [selectedTeam, setSelectedTeam] = useState(yearParam === "2024-25" ? "COUNCIL" : "UHC")
   const [selectedSubTeam, setSelectedSubTeam] = useState("WEBOPS") // For 2024-25 Team sub-sections
   const [selectedMember, setSelectedMember] = useState(null)
+  const [githubCommits, setGithubCommits] = useState(null)
 
   useEffect(() => {
     if (yearParam) {
@@ -29,6 +30,29 @@ export default function CouncilPage() {
     }
   }, [yearParam])
 
+  // Fetch GitHub commits for Prodhosh across all branches
+  useEffect(() => {
+    if (selectedMember?.github === "https://github.com/PRODHOSH") {
+      // Using GitHub Search API to get all commits by author across all branches
+      fetch('https://api.github.com/search/commits?q=repo:Nallamala-House/updated-nallamala+author:PRODHOSH&per_page=100', {
+        headers: {
+          'Accept': 'application/vnd.github.cloak-preview+json'
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.total_count !== undefined) {
+            setGithubCommits(data.total_count)
+          } else {
+            setGithubCommits(null)
+          }
+        })
+        .catch(() => setGithubCommits(null))
+    } else {
+      setGithubCommits(null)
+    }
+  }, [selectedMember])
+
   const yearData = {
     "2025-26": {
       UHC: [
@@ -40,7 +64,7 @@ export default function CouncilPage() {
           email: "nikhil@nallamala.house",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/nikhil-kumar",
-          image: "/images/2025-26/sec.png", 
+          image: null, 
           bio: "With exceptional leadership skills, Nikhil has successfully coordinated multiple large-scale initiatives and fostered a culture of excellence within the community.",
         },
         {
@@ -48,7 +72,7 @@ export default function CouncilPage() {
           name: "Jitesh Kumar",
           role: "Deputy Secretary",
           message: "Empowering our community through effective coordination.",
-          email: "jitesh@nallamala.house",
+          email: "nallamala-ds@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/jitesh-kumar",
           image: "/images/2025-26/deputy_sec.jpg",
@@ -62,7 +86,7 @@ export default function CouncilPage() {
           name: "Aditya Hrudaya",
           role: "Regional Coordinator - Kolkata",
           message: "Building bridges between residents and leadership.",
-          email: "aditya@nallamala.house",
+          email: "24f2002151@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/aditya-hrudaya",
           image: "/images/2025-26/rc_kolkata.webp",
@@ -73,7 +97,7 @@ export default function CouncilPage() {
           name: "Gopal Krishna",
           role: "Regional Coordinator - Patna",
           message: "Fostering inclusivity and belonging for all.",
-          email: "gopal@nallamala.house",
+          email: "23f3003170@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/gopal-krishna",
           image: "/images/2025-26/rc_patna.png",
@@ -84,7 +108,7 @@ export default function CouncilPage() {
           name: "Esha Hinde",
           role: "Regional Coordinator - Mumbai",
           message: "Connecting communities across Mumbai.",
-          email: "esha@nallamala.house",
+          email: "24f1000185@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/esha-hinde",
           image: "/images/2025-26/rc_mumbai.png",
@@ -95,7 +119,7 @@ export default function CouncilPage() {
           name: "Chandra",
           role: "Regional Coordinator - Hyderabad",
           message: "Strengthening bonds in the Hyderabad region.",
-          email: "chandra@nallamala.house",
+          email: "23f2005636@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/chandra",
           image: "/images/2025-26/rc_hydrebad.jpg",
@@ -106,7 +130,7 @@ export default function CouncilPage() {
           name: "Aaryan Sahu",
           role: "Regional Coordinator - Chandigarh",
           message: "Empowering the Chandigarh community.",
-          email: "aaryan@nallamala.house",
+          email: "24f2001366@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/aaryan-sahu",
           image: "/images/2025-26/rc_chandigarh.jpg",
@@ -117,11 +141,44 @@ export default function CouncilPage() {
           name: "Aravindhaa V",
           role: "Regional Coordinator - Chennai",
           message: "Leading with passion in Chennai.",
-          email: "aravindhaa@nallamala.house",
+          email: "23f2002591@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/aravindhaa-v",
           image: "/images/2025-26/rc_chennai.jpg",
           bio: "Aravindhaa brings dedication and leadership to coordinate activities and strengthen community bonds in the Chennai region.",
+        },
+        {
+          id: 17,
+          name: "SYED MOHD BADAR UL ISLAM",
+          role: "Regional Coordinator - Delhi",
+          message: "Connecting and empowering the Delhi community.",
+          email: "24f1002222@ds.study.iitm.ac.in",
+          phone: "+91-XXXXXXXXXX",
+          linkedin: "linkedin.com/in/syed-badar",
+          image: null,
+          bio: "SYED MOHD BADAR UL ISLAM is committed to fostering community engagement and coordination in the Delhi region.",
+        },
+        {
+          id: 18,
+          name: "Danish Ullah Khan",
+          role: "Regional Coordinator - Bangalore",
+          message: "Building strong connections in Bangalore.",
+          email: "24f2004628@ds.study.iitm.ac.in",
+          phone: "+91-XXXXXXXXXX",
+          linkedin: "linkedin.com/in/danish-khan",
+          image: null,
+          bio: "Danish Ullah Khan works to strengthen community ties and foster engagement in the Bangalore region.",
+        },
+        {
+          id: 19,
+          name: "",
+          role: "Regional Coordinator - Lucknow",
+          message: "Serving the Lucknow community.",
+          email: "lucknow@nallamala.house",
+          phone: "+91-XXXXXXXXXX",
+          linkedin: "linkedin.com/in/coordinator-lucknow",
+          image: null,
+          bio: "Dedicated to coordinating activities and building community engagement in the Lucknow region.",
         },
       ],
       WEBOPS: [
@@ -130,8 +187,7 @@ export default function CouncilPage() {
           name: "Arya Mukherjee",
           role: "Web Admin",
           message: "Managing and maintaining our digital presence.",
-          email: "arya@nallamala.house",
-          phone: "+91-XXXXXXXXXX",
+          email: "nallamala-webad@ds.study.iitm.ac.in",
           linkedin: "linkedin.com/in/arya-mukherjee",
           image: "/images/2025-26/web_admin.jpeg",
           objectPosition: "center 80%",
@@ -142,12 +198,13 @@ export default function CouncilPage() {
           name: "Prodhosh VS",
           role: "Website Manager",
           message: "Crafting seamless digital experiences.",
-          email: "prodhosh@nallamala.house",
-          phone: "+91-XXXXXXXXXX",
-          linkedin: "linkedin.com/in/prodhosh-vs",
+          email: "25f2008986@ds.study.iitm.ac.in",
+          linkedin: "https://www.linkedin.com/in/prodhoshvs/",
+          github: "https://github.com/PRODHOSH",
+          portfolio: "https://prodhosh.netlify.app/",
           image: "/images/2025-26/website_manager.jpg",
           objectPosition: "center 40%",
-          bio: "Oversees content management, user experience, and ensures our website reflects the vibrant spirit of Nallamala House.",
+          bio: "Freshman at IIT Madras (Data Science & Applications). Love collaborating on web dev, WebOps, AI, and ML. Connect with me.",
         },
         {
           id: 9,
@@ -155,7 +212,6 @@ export default function CouncilPage() {
           role: "Website Manager",
           message: "Crafting seamless digital experiences.",
           email: "pavithra@nallamala.house",
-          phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/pavithra-chakravarthy",
           image: "/images/2025-26/website_manager_2.jpeg",
           bio: "Oversees content management, user experience, and ensures our website reflects the vibrant spirit of Nallamala House.",
@@ -165,30 +221,25 @@ export default function CouncilPage() {
           name: "Tanmay Sharma",
           role: "Video Editor",
           message: "Bringing moments to life through visuals.",
-          email: "tanmay@nallamala.house",
-          phone: "+91-XXXXXXXXXX",
-          linkedin: "linkedin.com/in/tanmay-sharma",
+          email: "23f2004801@ds.study.iitm.ac.in",
           image: "/images/2025-26/video_editor.jpg",
-          bio: "Creates compelling video content that captures our events, stories, and the essence of our community.",
+          bio: "I'm a video editor with 3 years of hands-on experience, having completed 7 paid client projects across different content styles. I work confidently with DaVinci Resolve, CapCut, and Filmora, focusing on clean edits, strong pacing, and visually engaging storytelling.",
         },
         {
           id: 8,
           name: "Prithibe Majumder",
           role: "Graphic Designer",
           message: "Designing the visual identity of our house.",
-          email: "prithibe@nallamala.house",
-          phone: "+91-XXXXXXXXXX",
-          linkedin: "linkedin.com/in/prithibe-majumder",
+          email: "23f2004609@ds.study.iitm.ac.in",
           image: "/images/2025-26/graphic_designer.jpg",
-          bio: "Designs stunning graphics, posters, and visual content that represents our house's creativity and excellence.",
+          bio: "I'm a member of the Spotify Club, responsible for graphic design, creating visuals for promotions, events, and digital content while maintaining consistent branding.",
         },
         {
           id: 17,
           name: "Muskan Jha",
           role: "Content Writer",
           message: "Crafting compelling narratives and content.",
-          email: "muskan@nallamala.house",
-          phone: "+91-XXXXXXXXXX",
+          email: "24f1002343@ds.study.iitm.ac.in",
           linkedin: "linkedin.com/in/muskan-jha",
           image:"/images/2025-26/content_writing.png", 
           bio: "Muskan creates engaging written content, articles, and communications that capture the essence of our community and its initiatives.",
@@ -200,33 +251,44 @@ export default function CouncilPage() {
           name: "Kratika",
           role: "Secretary - Literary & Oratory Community",
           message: "Fostering creativity through words and expression.",
-          email: "kratika@nallamala.house",
-          phone: "+91-XXXXXXXXXX",
-          linkedin: "linkedin.com/in/kratika",
+          email: "23f2000414@ds.study.iitm.ac.in",
           image: "/images/2025-26/lo_club.jpg",
-          bio: "Kratika leads the Literary & Oratory Community, organizing engaging events and activities that celebrate the power of language, literature, and public speaking.",
+          bio: "Business Consultant at Apptunix | Dual Degree Holder | Data Enthusiast with a Creative Edge\n\nCurrently working as a Business Consultant at Apptunix while pursuing my MCA from MIET, Meerut and BS in Data Science & Applications from IIT Madras — India's #1 institution (NIRF Ranked).\n\nI'm a Google-certified Data Analyst with hands-on expertise in Excel, Tableau, PowerPoint, HTML, and Python.\n\nI've also contributed to social impact campaigns such as the Mass Awareness Drive by Caring Souls Foundation.\n\nWith strong communication and problem-solving skills, I'm passionate about turning data into action and ideas into value.",
         },
         {
           id: 11,
           name: "Shashi Kumar Singh",
           role: "Secretary - Shunya-IITM BS Developers Club",
           message: "Building the future through code and innovation.",
-          email: "shashi@nallamala.house",
-          phone: "+91-XXXXXXXXXX",
-          linkedin: "linkedin.com/in/shashi-kumar-singh",
-          image: null, // TODO: Add photo when available
-          bio: "Shashi Kumar Singh heads the Shunya-IITM BS Developers Club, driving technical excellence and fostering a culture of innovation among aspiring developers.",
+          email: "23f2003619@ds.study.iitm.ac.in",
+          image: null,
+          bio: "Hosted Multiple Guest Sessions and Competitions throughout. Have hosted all the seasons of DSA Triathlon (one of the most recognised coding competition of IITM Paradox)",
         },
         {
           id: 12,
           name: "Harsh Kumar",
           role: "Secretary - AI-ML : AIDW",
           message: "Pioneering artificial intelligence and machine learning.",
-          email: "harsh@nallamala.house",
-          phone: "+91-XXXXXXXXXX",
-          linkedin: "linkedin.com/in/harsh-kumar",
+          email: "22f3001316@ds.study.iitm.ac.in",
           image: "/images/2025-26/aidw_club.jpg",
-          bio: "Harsh Kumar leads AI-ML : AIDW community, organizing workshops and projects that explore the cutting-edge world of artificial intelligence and machine learning.",
+          bio: "Organized 5+ events in AIDW club and guided 100+ students in AI/ML domain.",
+        },
+        {
+          id: 20,
+          name: "SYED MOHD BADAR UL ISLAM",
+          role: "Secretary - Grandmaster's Guild",
+          message: "Leading strategic minds in competitive gaming.",
+          email: "24f1002222@ds.study.iitm.ac.in",
+          image: null,
+          bio: "Secretary of Grandmaster's Guild, fostering competitive gaming and strategic thinking within the community.",
+        },
+        {
+          id: 21,
+          name: "",
+          role: "Secretary - CIFER",
+          message: "Driving innovation in finance and economics.",
+          image: null,
+          bio: "Secretary of CIFER, promoting financial literacy and economic awareness among students.",
         },
       ],
     },
@@ -500,7 +562,7 @@ export default function CouncilPage() {
 
           {/* Members Grid */}
           {members.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            <div className={`grid gap-6 mb-16 ${selectedYear === "2025-26" && selectedTeam === "UHC" ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-2 lg:grid-cols-3"}`}>
               {members.map((member) => {
                 // For 2024-25 only, show simplified cards (no popup, no about/bio)
                 const isSimplified = selectedYear === "2024-25"
@@ -533,6 +595,46 @@ export default function CouncilPage() {
                 }
 
                 // For 2025-26 and older years, show full cards with popup
+                // Exception: LHC members, Muskan Jha, and specific community members are not clickable
+                const isLHC = selectedTeam === "LHC"
+                const isMuskan = member.id === 17 && member.name === "Muskan Jha"
+                const isNonClickableCommunity = (member.id === 20 || member.id === 21) && selectedTeam === "COMMUNITY"
+                
+                if (isLHC || isMuskan || isNonClickableCommunity) {
+                  return (
+                    <div
+                      key={member.id}
+                      className="glass-dark p-6 rounded-xl border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <div className="mb-4 overflow-hidden rounded-lg aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                        {member.image ? (
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            style={{ objectPosition: member.objectPosition || 'center' }}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <svg className="w-24 h-24 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                          </svg>
+                        )}
+                      </div>
+                      <p className="text-primary text-xs uppercase tracking-widest mb-2">{member.role}</p>
+                      <h3 className="text-lg font-serif font-bold text-white mb-2">{member.name}</h3>
+                      {(isLHC ? member.name : isMuskan) && (
+                        <a 
+                          href={`mailto:${member.email}`}
+                          className="text-white/60 hover:text-primary text-sm mb-2 block transition-colors"
+                        >
+                          {member.email}
+                        </a>
+                      )}
+                      <p className="text-white/70 text-sm italic">{member.message}</p>
+                    </div>
+                  )
+                }
+                
                 return (
                   <button
                     key={member.id}
@@ -614,6 +716,28 @@ export default function CouncilPage() {
                 <p className="text-white/70 leading-relaxed">{selectedMember.bio}</p>
               </div>
 
+              {/* GitHub Stats for Prodhosh */}
+              {selectedMember.github === "https://github.com/PRODHOSH" && (
+                <div className="glass-dark p-6 rounded-xl border border-primary/30">
+                  <h3 className="text-lg font-semibold text-white mb-3">GitHub Contributions</h3>
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <div>
+                      <p className="text-white font-semibold">
+                        {githubCommits !== null ? (
+                          <span className="text-2xl text-primary">{githubCommits}</span>
+                        ) : (
+                          <span className="text-white/50">Loading...</span>
+                        )}
+                        {githubCommits !== null && <span className="text-white/70 text-sm ml-2">commits to Nallamala-House/updated-nallamala</span>}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Contact */}
               <div>
                 <h3 className="text-lg font-semibold text-white mb-3">Get in Touch</h3>
@@ -625,20 +749,52 @@ export default function CouncilPage() {
                     <Mail size={20} className="text-primary" />
                     <span>{selectedMember.email}</span>
                   </a>
-                  <a
-                    href={`tel:${selectedMember.phone}`}
-                    className="flex items-center space-x-3 text-white/70 hover:text-primary transition"
-                  >
-                    <Phone size={20} className="text-primary" />
-                    <span>{selectedMember.phone}</span>
-                  </a>
-                  <a
-                    href={`https://${selectedMember.linkedin}`}
-                    className="flex items-center space-x-3 text-white/70 hover:text-primary transition"
-                  >
-                    <Linkedin size={20} className="text-primary" />
-                    <span>LinkedIn Profile</span>
-                  </a>
+                  {selectedMember.phone && (
+                    <a
+                      href={`tel:${selectedMember.phone}`}
+                      className="flex items-center space-x-3 text-white/70 hover:text-primary transition"
+                    >
+                      <Phone size={20} className="text-primary" />
+                      <span>{selectedMember.phone}</span>
+                    </a>
+                  )}
+                  {selectedMember.linkedin && (
+                    <a
+                      href={selectedMember.linkedin.startsWith('http') ? selectedMember.linkedin : `https://${selectedMember.linkedin}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-3 text-white/70 hover:text-primary transition"
+                    >
+                      <Linkedin size={20} className="text-primary" />
+                      <span>LinkedIn Profile</span>
+                    </a>
+                  )}
+                  {selectedMember.github && (
+                    <a
+                      href={selectedMember.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-3 text-white/70 hover:text-primary transition"
+                    >
+                      <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                      <span>GitHub Profile</span>
+                    </a>
+                  )}
+                  {selectedMember.portfolio && (
+                    <a
+                      href={selectedMember.portfolio}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-3 text-white/70 hover:text-primary transition"
+                    >
+                      <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                      </svg>
+                      <span>Portfolio Website</span>
+                    </a>
+                  )}
                 </div>
               </div>
 
