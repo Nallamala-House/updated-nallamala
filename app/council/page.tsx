@@ -15,6 +15,9 @@ export default function CouncilPage() {
   const [selectedSubTeam, setSelectedSubTeam] = useState("WEBOPS") // For 2024-25 Team sub-sections
   const [selectedMember, setSelectedMember] = useState(null)
   const [githubCommits, setGithubCommits] = useState(null)
+  const [githubPRs, setGithubPRs] = useState(null)
+  const [githubFilesChanged, setGithubFilesChanged] = useState(null)
+  const [githubLinesAdded, setGithubLinesAdded] = useState(null)
 
   useEffect(() => {
     if (yearParam) {
@@ -30,10 +33,10 @@ export default function CouncilPage() {
     }
   }, [yearParam])
 
-  // Fetch GitHub commits for Prodhosh across all branches
+  // Fetch GitHub stats for Prodhosh
   useEffect(() => {
     if (selectedMember?.github === "https://github.com/PRODHOSH") {
-      // Using GitHub Search API to get all commits by author across all branches
+      // Fetch commits count
       fetch('https://api.github.com/search/commits?q=repo:Nallamala-House/updated-nallamala+author:PRODHOSH&per_page=100', {
         headers: {
           'Accept': 'application/vnd.github.cloak-preview+json'
@@ -43,13 +46,64 @@ export default function CouncilPage() {
         .then(data => {
           if (data.total_count !== undefined) {
             setGithubCommits(data.total_count)
-          } else {
-            setGithubCommits(null)
           }
         })
         .catch(() => setGithubCommits(null))
+
+      // Fetch PRs count
+      fetch('https://api.github.com/search/issues?q=repo:Nallamala-House/updated-nallamala+author:PRODHOSH+type:pr')
+        .then(res => res.json())
+        .then(data => {
+          if (data.total_count !== undefined) {
+            setGithubPRs(data.total_count)
+          }
+        })
+        .catch(() => setGithubPRs(null))
+
+      // Fetch commit details to calculate files changed and lines added
+      fetch('https://api.github.com/repos/Nallamala-House/updated-nallamala/commits?author=PRODHOSH&per_page=100')
+        .then(res => res.json())
+        .then(commits => {
+          if (Array.isArray(commits)) {
+            // Fetch detailed stats for each commit
+            const commitPromises = commits.map(commit => 
+              fetch(commit.url).then(res => res.json())
+            )
+            
+            Promise.all(commitPromises)
+              .then(detailedCommits => {
+                let totalFiles = new Set()
+                let totalAdditions = 0
+                
+                detailedCommits.forEach(commit => {
+                  if (commit.files) {
+                    commit.files.forEach(file => {
+                      totalFiles.add(file.filename)
+                    })
+                  }
+                  if (commit.stats) {
+                    totalAdditions += commit.stats.additions
+                  }
+                })
+                
+                setGithubFilesChanged(totalFiles.size)
+                setGithubLinesAdded(totalAdditions)
+              })
+              .catch(() => {
+                setGithubFilesChanged(null)
+                setGithubLinesAdded(null)
+              })
+          }
+        })
+        .catch(() => {
+          setGithubFilesChanged(null)
+          setGithubLinesAdded(null)
+        })
     } else {
       setGithubCommits(null)
+      setGithubPRs(null)
+      setGithubFilesChanged(null)
+      setGithubLinesAdded(null)
     }
   }, [selectedMember])
 
@@ -718,21 +772,69 @@ export default function CouncilPage() {
 
               {/* GitHub Stats for Prodhosh */}
               {selectedMember.github === "https://github.com/PRODHOSH" && (
-                <div className="glass-dark p-6 rounded-xl border border-primary/30">
-                  <h3 className="text-lg font-semibold text-white mb-3">GitHub Contributions</h3>
-                  <div className="flex items-center space-x-3">
-                    <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    <div>
-                      <p className="text-white font-semibold">
-                        {githubCommits !== null ? (
-                          <span className="text-2xl text-primary">{githubCommits}</span>
-                        ) : (
-                          <span className="text-white/50">Loading...</span>
-                        )}
-                        {githubCommits !== null && <span className="text-white/70 text-sm ml-2">commits to Nallamala-House/updated-nallamala</span>}
-                      </p>
+                <div className="glass-dark p-6 rounded-xl border-2 border-primary/40 shadow-2xl">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                      <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                      GitHub Contributions
+                    </h3>
+                    <span className="text-xs text-white/50 bg-white/5 px-3 py-1 rounded-full">updated-nallamala</span>
+                  </div>
+                  
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-4 gap-4">
+                    {/* Commits */}
+                    <div className="bg-gradient-to-br from-primary/20 to-primary/5 p-4 rounded-lg border border-primary/30 hover:border-primary/50 transition-all hover:scale-105">
+                      <div className="flex flex-col items-center text-center">
+                        <svg className="w-8 h-8 text-primary mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                        </svg>
+                        <div className="text-3xl font-bold text-primary mb-1">
+                          {githubCommits !== null ? githubCommits : <span className="text-2xl text-white/30">...</span>}
+                        </div>
+                        <div className="text-xs text-white/60 font-medium">Commits</div>
+                      </div>
+                    </div>
+                    
+                    {/* Pull Requests */}
+                    <div className="bg-gradient-to-br from-purple-500/20 to-purple-500/5 p-4 rounded-lg border border-purple-500/30 hover:border-purple-500/50 transition-all hover:scale-105">
+                      <div className="flex flex-col items-center text-center">
+                        <svg className="w-8 h-8 text-purple-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                        </svg>
+                        <div className="text-3xl font-bold text-purple-400 mb-1">
+                          {githubPRs !== null ? githubPRs : <span className="text-2xl text-white/30">...</span>}
+                        </div>
+                        <div className="text-xs text-white/60 font-medium">Pull Requests</div>
+                      </div>
+                    </div>
+                    
+                    {/* Files Changed */}
+                    <div className="bg-gradient-to-br from-blue-500/20 to-blue-500/5 p-4 rounded-lg border border-blue-500/30 hover:border-blue-500/50 transition-all hover:scale-105">
+                      <div className="flex flex-col items-center text-center">
+                        <svg className="w-8 h-8 text-blue-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <div className="text-3xl font-bold text-blue-400 mb-1">
+                          {githubFilesChanged !== null ? githubFilesChanged : <span className="text-2xl text-white/30">...</span>}
+                        </div>
+                        <div className="text-xs text-white/60 font-medium">Files Changed</div>
+                      </div>
+                    </div>
+                    
+                    {/* Lines of Code */}
+                    <div className="bg-gradient-to-br from-green-500/20 to-green-500/5 p-4 rounded-lg border border-green-500/30 hover:border-green-500/50 transition-all hover:scale-105">
+                      <div className="flex flex-col items-center text-center">
+                        <svg className="w-8 h-8 text-green-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <div className="text-3xl font-bold text-green-400 mb-1">
+                          {githubLinesAdded !== null ? githubLinesAdded.toLocaleString() : <span className="text-2xl text-white/30">...</span>}
+                        </div>
+                        <div className="text-xs text-white/60 font-medium">Lines Added</div>
+                      </div>
                     </div>
                   </div>
                 </div>
