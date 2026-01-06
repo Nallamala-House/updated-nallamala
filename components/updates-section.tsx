@@ -34,7 +34,8 @@ export default function UpdatesSection() {
       image: "/images/updates/magzi.jpeg",
       category: "Event",
       date: "Registration Closes Soon",
-      externalLink: "https://iitmparadox.org/events"
+      externalLink: "https://iitmparadox.org/events",
+      imagePosition: "object-[46%]" 
     },
   ]
 
