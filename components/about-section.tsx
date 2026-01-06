@@ -52,7 +52,7 @@ export default function AboutSection() {
     animation: useCountAnimation(stat.end)
   }))
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">

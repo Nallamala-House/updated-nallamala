@@ -1,98 +1,26 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { X, Zap, Trophy, MessageCircle } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 
 export default function CommunitiesPage() {
+  const router = useRouter()
   const [selectedCommunity, setSelectedCommunity] = useState(null)
 
   const communities = [
     {
       id: 1,
-      name: "Shunya",
-      category: "Coding",
-      icon: Zap,
-      description: "Empowering developers through collaborative coding and innovation.",
-      color: "from-blue-600 to-blue-400",
-      image: "/placeholder.svg?key=fvnud",
-      fullDescription:
-        "Shunya is our premier coding club dedicated to fostering programming excellence and innovation. We organize coding contests, workshops, and collaborative projects that challenge our members to push their technical boundaries.",
-      members: 150,
-      foundedYear: 2015,
-      achievements: [
-        "Hosted 50+ coding workshops",
-        "Organized 10 hackathons with 500+ participants",
-        "Published 20+ technical articles",
-        "Mentored 200+ junior programmers",
-      ],
-      events: [
-        { title: "Winter Coding Marathon", date: "Jan 2025" },
-        { title: "AI Algorithm Workshop", date: "Feb 2025" },
-        { title: "Open Source Contribution Drive", date: "Mar 2025" },
-      ],
-      leads: ["Isha Bhat", "Rohan Sharma", "Priya Kumar"],
-    },
-    {
-      id: 2,
-      name: "Grand Master Guild",
-      category: "Chess",
-      icon: Trophy,
-      description: "Mastering the game of chess and strategic thinking.",
-      color: "from-purple-600 to-purple-400",
-      image: "/placeholder.svg?key=qzyyl",
-      fullDescription:
-        "The Grand Master Guild brings together chess enthusiasts of all levels. We host tournaments, analysis sessions, and friendly matches that celebrate the game's strategic depth.",
-      members: 80,
-      foundedYear: 2018,
-      achievements: [
-        "Organized annual tournament with 100+ participants",
-        "Produced 3 state-level champions",
-        "Weekly grandmaster analysis sessions",
-        "Regional chess league champions 2023",
-      ],
-      events: [
-        { title: "Beginner's Tournament", date: "Jan 2025" },
-        { title: "Rapid Chess Championship", date: "Feb 2025" },
-        { title: "Simultaneous Exhibition", date: "Mar 2025" },
-      ],
-      leads: ["Harsh Verma", "Deepak Iyer", "Meera Singh"],
-    },
-    {
-      id: 3,
-      name: "AIDW",
-      category: "AI-ML",
-      icon: Zap,
-      description: "Exploring artificial intelligence and machine learning frontiers.",
-      color: "from-green-600 to-green-400",
-      image: "/placeholder.svg?key=wlspf",
-      fullDescription:
-        "AIDW (AI Development Workgroup) is at the forefront of AI and ML innovation. We explore cutting-edge technologies and develop real-world applications.",
-      members: 120,
-      foundedYear: 2019,
-      achievements: [
-        "3-part AI workshop series with 200+ attendees",
-        "Published 5 research papers",
-        "Developed 3 ML-based projects",
-        "Partnered with industry leaders",
-      ],
-      events: [
-        { title: "Deep Learning Fundamentals", date: "Jan 2025" },
-        { title: "LLM Applications Workshop", date: "Feb 2025" },
-        { title: "AI Ethics Symposium", date: "Mar 2025" },
-      ],
-      leads: ["Rohan Chakraborty", "Aisha Patel", "Vikram Singh"],
-    },
-    {
-      id: 4,
       name: "Chapters & Verses",
+      slug: "chapters-verses",
       category: "Literary",
       icon: MessageCircle,
       description: "Celebrating literature, writing, and creative expression.",
       color: "from-pink-600 to-pink-400",
-      image: "/placeholder.svg?key=wnuyp",
+      image: "/images/communities/chapters_verses.png",
       fullDescription:
         "Chapters & Verses is our literary hub where writers, readers, and storytellers unite. We celebrate the power of words through readings, discussions, and creative writing events.",
       members: 95,
@@ -111,59 +39,113 @@ export default function CommunitiesPage() {
       leads: ["Maya Singh", "Arjun Kumar", "Sneha Desai"],
     },
     {
-      id: 5,
-      name: "Art Canvas",
-      category: "Art",
-      icon: Trophy,
-      description: "Unleashing creativity through visual arts and design.",
-      color: "from-orange-600 to-orange-400",
-      image: "/placeholder.svg?key=7wo10",
+      id: 2,
+      name: "AIDW",
+      slug: "aidw",
+      category: "AI-ML",
+      icon: Zap,
+      description: "Exploring artificial intelligence and machine learning frontiers.",
+      color: "from-green-600 to-green-400",
+      image: "/images/communities/ai_dw.png",
       fullDescription:
-        "Art Canvas is our creative haven for visual artists and designers. We organize exhibitions, workshops, and collaborative projects that celebrate artistic expression.",
-      members: 110,
-      foundedYear: 2017,
+        "AIDW (AI Development Workgroup) is at the forefront of AI and ML innovation. We explore cutting-edge technologies and develop real-world applications.",
+      members: 120,
+      foundedYear: 2019,
       achievements: [
-        "Organized 5 exhibitions with 30+ active artists",
-        "3 collaborative mural projects",
-        "Art classes for beginners",
-        "Regional art competition winners",
+        "3-part AI workshop series with 200+ attendees",
+        "Published 5 research papers",
+        "Developed 3 ML-based projects",
+        "Partnered with industry leaders",
       ],
       events: [
-        { title: "Digital Art Workshop", date: "Jan 2025" },
-        { title: "Community Art Exhibition", date: "Feb 2025" },
-        { title: "Life Drawing Session", date: "Mar 2025" },
+        { title: "Deep Learning Fundamentals", date: "Jan 2025" },
+        { title: "LLM Applications Workshop", date: "Feb 2025" },
+        { title: "AI Ethics Symposium", date: "Mar 2025" },
       ],
-      leads: ["Arjun Kumar", "Priya Sharma", "Vikram Nair"],
+      leads: ["Rohan Chakraborty", "Aisha Patel", "Vikram Singh"],
     },
     {
-      id: 6,
-      name: "Tech Innovators",
-      category: "Technology",
+      id: 3,
+      name: "Shunya",
+      slug: "shunya",
+      category: "Coding",
       icon: Zap,
-      description: "Building the future through technology and entrepreneurship.",
-      color: "from-cyan-600 to-cyan-400",
-      image: "/placeholder.svg?key=idg4r",
+      description: "Empowering developers through collaborative coding and innovation.",
+      color: "from-blue-600 to-blue-400",
+      image: "/images/communities/shunya.png",
       fullDescription:
-        "Tech Innovators focuses on emerging technologies and entrepreneurial ventures. We incubate ideas and support members in building tech startups.",
-      members: 85,
-      foundedYear: 2020,
+        "Shunya is our premier coding club dedicated to fostering programming excellence and innovation. We organize coding contests, workshops, and collaborative projects that challenge our members to push their technical boundaries.",
+      members: 150,
+      foundedYear: 2015,
       achievements: [
-        "Incubated 5 tech startups",
-        "Hackathon winners in 2023 and 2024",
-        "Industry mentorship program",
-        "Technology talks series",
+        "Hosted 50+ coding workshops",
+        "Organized 10 hackathons with 500+ participants",
+        "Published 20+ technical articles",
+        "Mentored 200+ junior programmers",
       ],
       events: [
-        { title: "Startup Pitch Night", date: "Jan 2025" },
-        { title: "Blockchain Workshop", date: "Feb 2025" },
-        { title: "Innovation Summit", date: "Mar 2025" },
+        { title: "Winter Coding Marathon", date: "Jan 2025" },
+        { title: "AI Algorithm Workshop", date: "Feb 2025" },
+        { title: "Open Source Contribution Drive", date: "Mar 2025" },
       ],
-      leads: ["Dev Kapoor", "Anjali Verma", "Nikhil Bhat"],
+      leads: ["Isha Bhat", "Rohan Sharma", "Priya Kumar"],
+    },
+    {
+      id: 4,
+      name: "Grandmaster's Guild",
+      slug: "grandmasters-guild",
+      category: "Chess",
+      icon: Trophy,
+      description: "Mastering the game of chess and strategic thinking.",
+      color: "from-purple-600 to-purple-400",
+      image: "/images/communities/chess.png",
+      fullDescription:
+        "Grandmaster's Guild - Nallamala houses the official chess community.",
+      members: 80,
+      foundedYear: 2018,
+      achievements: [
+        "Organized annual tournament with 100+ participants",
+        "Produced 3 state-level champions",
+        "Weekly grandmaster analysis sessions",
+        "Regional chess league champions 2023",
+      ],
+      events: [
+        { title: "Beginner's Tournament", date: "Jan 2025" },
+        { title: "Rapid Chess Championship", date: "Feb 2025" },
+        { title: "Simultaneous Exhibition", date: "Mar 2025" },
+      ],
+      leads: ["Harsh Verma", "Deepak Iyer", "Meera Singh"],
+    },
+    {
+      id: 5,
+      name: "CIFER",
+      slug: "cifer",
+      category: "Finance",
+      icon: Zap,
+      description: "Building strong financial awareness and leadership among students.",
+      color: "from-yellow-600 to-yellow-400",
+      image: "/images/communities/cifer.png",
+      fullDescription:
+        "CIFER (Nallamala Finance Community) is a student-led initiative dedicated to building strong financial awareness, practical understanding, and leadership among students.",
+      members: 200,
+      foundedYear: 2023,
+      achievements: [
+        "Growing network of 200+ active members",
+        "Focus on practical financial education",
+        "Supporting aspiring entrepreneurs",
+        "Market analysis and investment workshops",
+      ],
+      events: [
+        { title: "Inaugural Session", date: "Oct 2023" },
+        { title: "Investment Basics Workshop", date: "Feb 2025" },
+        { title: "Startup Finance Seminar", date: "Mar 2025" },
+      ],
+      leads: ["Finance Team"],
     },
   ]
 
   return (
-    <main className="min-h-screen bg-black flex flex-col">
+    <main className="min-h-screen flex flex-col">
       <Navbar />
 
       <div className="flex-1 pt-20 px-4 sm:px-6 lg:px-8">
@@ -187,10 +169,18 @@ export default function CommunitiesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {communities.map((community) => {
               const IconComponent = community.icon
+              const handleClick = () => {
+                if (community.slug) {
+                  router.push(`/communities/${community.slug}`)
+                } else {
+                  setSelectedCommunity(community)
+                }
+              }
+              
               return (
                 <button
                   key={community.id}
-                  onClick={() => setSelectedCommunity(community)}
+                  onClick={handleClick}
                   className="glass-dark p-6 rounded-xl border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:-translate-y-1 text-left cursor-pointer group"
                 >
                   {/* Image */}
@@ -202,12 +192,22 @@ export default function CommunitiesPage() {
                     />
                   </div>
 
-                  {/* Icon */}
-                  <div
-                    className={`w-12 h-12 rounded-lg bg-gradient-to-br ${community.color} mb-4 opacity-80 group-hover:opacity-100 transition flex items-center justify-center`}
-                  >
-                    <IconComponent size={24} className="text-white" />
-                  </div>
+                  {/* Icon - Use actual image for Chapters & Verses, AIDW, Shunya, Grandmaster's Guild, and CIFER */}
+                  {community.slug === "chapters-verses" || community.slug === "aidw" || community.slug === "shunya" || community.slug === "grandmasters-guild" || community.slug === "cifer" ? (
+                    <div className="w-12 h-12 rounded-full mb-4 overflow-hidden border-2 border-primary/50">
+                      <img
+                        src={community.image}
+                        alt={`${community.name} logo`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className={`w-12 h-12 rounded-lg bg-gradient-to-br ${community.color} mb-4 opacity-80 group-hover:opacity-100 transition flex items-center justify-center`}
+                    >
+                      <IconComponent size={24} className="text-white" />
+                    </div>
+                  )}
 
                   <p className="text-primary text-sm uppercase tracking-widest mb-2">{community.category}</p>
                   <h3 className="text-xl font-serif font-bold text-white mb-3">{community.name}</h3>

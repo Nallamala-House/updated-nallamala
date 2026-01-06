@@ -50,10 +50,9 @@ export default function UpdatesSection() {
   )
 
   return (
-    <section id="updates" className="py-24 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Section Heading */}
+    <section id="updates" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
             Latest <span className="text-primary">Updates</span>

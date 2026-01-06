@@ -24,7 +24,7 @@ const gradePointsOptions = [
   { label: "B (8)", value: 8 },
   { label: "C (7)", value: 7 },
   { label: "D (6)", value: 6 },
-  { label: "E (5)", value: 5 },
+  { label: "E (4)", value: 4 },
   { label: "U (0)", value: 0 },
 ]
 
@@ -106,11 +106,13 @@ export default function GPACalculator() {
     setCalculatedGrade(null)
   }
 
-  const handleInputChange = (fieldId: string, value: string) => {
+  const handleInputChange = (fieldId: string, value: string, maxValue: number) => {
     const numValue = parseFloat(value) || 0
+    // Clamp value between 0 and max
+    const clampedValue = Math.max(0, Math.min(numValue, maxValue))
     setFormValues((prev) => ({
       ...prev,
-      [fieldId]: numValue,
+      [fieldId]: clampedValue,
     }))
   }
 
@@ -132,7 +134,7 @@ export default function GPACalculator() {
 
       // Convert grade to grade points and add to semester courses
       const gradeToPoints: Record<string, number> = {
-        'S': 10, 'A': 9, 'B': 8, 'C': 7, 'D': 6, 'E': 5, 'U': 0, 'F': 0
+        'S': 10, 'A': 9, 'B': 8, 'C': 7, 'D': 6, 'E': 4, 'U': 0, 'F': 0
       }
       const gradePoints = gradeToPoints[grade] || 0
 
@@ -243,27 +245,29 @@ export default function GPACalculator() {
           </div>
 
           {/* Tabs */}
-          <div className="glass-dark rounded-xl p-2 border border-primary/30 mb-8 inline-flex gap-2 w-full max-w-md mx-auto">
-            <button
-              onClick={() => setActiveTab("course")}
-              className={`flex-1 py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
-                activeTab === "course"
-                  ? "bg-primary text-black"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              Course Grade
-            </button>
-            <button
-              onClick={() => setActiveTab("semester")}
-              className={`flex-1 py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
-                activeTab === "semester"
-                  ? "bg-primary text-black"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              Semester GPA
-            </button>
+          <div className="flex justify-center mb-8">
+            <div className="glass-dark rounded-xl p-2 border border-primary/30 inline-flex gap-2 w-full max-w-md">
+              <button
+                onClick={() => setActiveTab("course")}
+                className={`flex-1 py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
+                  activeTab === "course"
+                    ? "bg-primary text-black"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                Course Grade
+              </button>
+              <button
+                onClick={() => setActiveTab("semester")}
+                className={`flex-1 py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
+                  activeTab === "semester"
+                    ? "bg-primary text-black"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                Semester GPA
+              </button>
+            </div>
           </div>
 
           {/* Course Grade Calculator */}
@@ -282,7 +286,7 @@ export default function GPACalculator() {
                 <select
                   value={selectedDegree}
                   onChange={(e) => handleDegreeChange(e.target.value as "data-science" | "electronic-systems")}
-                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
+                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 transition-all duration-300 appearance-none cursor-pointer"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -290,9 +294,9 @@ export default function GPACalculator() {
                     backgroundSize: '1.5rem',
                   }}
                 >
-                  <option value="">Select Degree</option>
-                  <option value="data-science">Data Science</option>
-                  <option value="electronic-systems">Electronic Systems</option>
+                  <option value="" style={{backgroundColor: '#000', color: '#fff'}}>Select Degree</option>
+                  <option value="data-science" style={{backgroundColor: '#000', color: '#fff'}}>Data Science</option>
+                  <option value="electronic-systems" style={{backgroundColor: '#000', color: '#fff'}}>Electronic Systems</option>
                 </select>
               </div>
 
@@ -306,7 +310,7 @@ export default function GPACalculator() {
                   value={selectedLevel}
                   onChange={(e) => handleLevelChange(e.target.value as "foundation" | "diploma" | "degree")}
                   disabled={!selectedDegree}
-                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors appearance-none cursor-pointer"
+                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 appearance-none cursor-pointer"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -314,9 +318,9 @@ export default function GPACalculator() {
                     backgroundSize: '1.5rem',
                   }}
                 >
-                  <option value="">Select Level</option>
+                  <option value="" style={{backgroundColor: '#000', color: '#fff'}}>Select Level</option>
                   {availableLevels.map((level) => (
-                    <option key={level} value={level} className="capitalize">
+                    <option key={level} value={level} className="capitalize" style={{backgroundColor: '#000', color: '#fff'}}>
                       {level.charAt(0).toUpperCase() + level.slice(1)}
                     </option>
                   ))}
@@ -333,7 +337,7 @@ export default function GPACalculator() {
                   value={selectedCourse?.id || ""}
                   onChange={(e) => handleCourseChange(e.target.value)}
                   disabled={!selectedLevel || availableCourses.length === 0}
-                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors appearance-none cursor-pointer"
+                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 appearance-none cursor-pointer"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -341,9 +345,9 @@ export default function GPACalculator() {
                     backgroundSize: '1.5rem',
                   }}
                 >
-                  <option value="">Select Course</option>
+                  <option value="" style={{backgroundColor: '#000', color: '#fff'}}>Select Course</option>
                   {availableCourses.map((course) => (
-                    <option key={course.id} value={course.id}>
+                    <option key={course.id} value={course.id} style={{backgroundColor: '#000', color: '#fff'}}>
                       {course.name}
                     </option>
                   ))}
@@ -395,7 +399,12 @@ export default function GPACalculator() {
                           max={field.max}
                           step="0.01"
                           value={formValues[field.id] || ""}
-                          onChange={(e) => handleInputChange(field.id, e.target.value)}
+                          onChange={(e) => handleInputChange(field.id, e.target.value, field.max)}
+                          onBlur={(e) => {
+                            const val = parseFloat(e.target.value) || 0
+                            if (val > field.max) handleInputChange(field.id, field.max.toString(), field.max)
+                            if (val < 0) handleInputChange(field.id, "0", field.max)
+                          }}
                           placeholder={`0-${field.max}`}
                           className="w-full p-3 pr-12 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
                         />
@@ -433,7 +442,12 @@ export default function GPACalculator() {
                       max={5}
                       step="0.5"
                       value={formValues.Bonus || ""}
-                      onChange={(e) => handleInputChange("Bonus", e.target.value)}
+                      onChange={(e) => handleInputChange("Bonus", e.target.value, 5)}
+                      onBlur={(e) => {
+                        const val = parseFloat(e.target.value) || 0
+                        if (val > 5) handleInputChange("Bonus", "5", 5)
+                        if (val < 0) handleInputChange("Bonus", "0", 5)
+                      }}
                       placeholder="0-5"
                       className="w-full p-3 pr-12 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
                     />
@@ -568,7 +582,7 @@ export default function GPACalculator() {
                                 parseFloat(e.target.value)
                               )
                             }
-                            className="w-full p-3 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
+                            className="w-full p-3 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 transition-all duration-300 appearance-none cursor-pointer"
                             style={{
                               backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                               backgroundRepeat: 'no-repeat',
@@ -576,9 +590,9 @@ export default function GPACalculator() {
                               backgroundSize: '1.25rem',
                             }}
                           >
-                            <option value={0}>Select Grade</option>
+                            <option value={0} style={{backgroundColor: '#000', color: '#fff'}}>Select Grade</option>
                             {gradePointsOptions.map((option) => (
-                              <option key={option.value} value={option.value}>
+                              <option key={option.value} value={option.value} style={{backgroundColor: '#000', color: '#fff'}}>
                                 {option.label}
                               </option>
                             ))}
@@ -614,39 +628,42 @@ export default function GPACalculator() {
 
               {/* Results - Always visible when there are valid courses */}
               {semesterGPA !== null && (
-                <div className="glass-dark rounded-xl p-8 border border-primary/30">
-                  <h3 className="text-white font-semibold text-xl mb-6 text-center">
-                    Your Semester GPA
-                  </h3>
-                  <div className="text-center">
-                    <div className="inline-block">
-                      <p className="text-7xl font-bold text-primary mb-2">
-                        {semesterGPA.toFixed(2)}
-                      </p>
-                      <p className="text-white/60 text-sm">out of 10.00</p>
+                <div className="relative glass-dark rounded-2xl p-8 border-2 border-primary/50 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 rounded-2xl"></div>
+                  <div className="relative">
+                    <h3 className="text-white font-semibold text-xl mb-6 text-center">
+                      Your Semester GPA
+                    </h3>
+                    <div className="text-center mb-8">
+                      <div className="inline-block bg-gradient-to-br from-primary/20 to-primary/5 p-8 rounded-2xl border border-primary/30">
+                        <p className="text-7xl font-bold text-primary mb-2 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]">
+                          {semesterGPA.toFixed(2)}
+                        </p>
+                        <p className="text-white/60 text-sm">out of 10.00</p>
+                      </div>
                     </div>
-                  </div>
-                  
-                  {/* Summary */}
-                  <div className="mt-8 pt-6 border-t border-primary/20">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="text-center">
-                        <p className="text-white/70 text-sm mb-1">Total Courses</p>
-                        <p className="text-2xl font-semibold text-white">
-                          {semesterCourses.filter((c) => c.credits > 0 && c.gradePoints > 0).length}
-                        </p>
-                      </div>
-                      <div className="text-center">
-                        <p className="text-white/70 text-sm mb-1">Total Credits</p>
-                        <p className="text-2xl font-semibold text-white">
-                          {semesterCourses.filter((c) => c.credits > 0 && c.gradePoints > 0).reduce((sum, c) => sum + c.credits, 0).toFixed(1)}
-                        </p>
-                      </div>
-                      <div className="text-center">
-                        <p className="text-white/70 text-sm mb-1">Performance</p>
-                        <p className="text-2xl font-semibold text-primary">
-                          {semesterGPA >= 9 ? "Excellent" : semesterGPA >= 8 ? "Very Good" : semesterGPA >= 7 ? "Good" : semesterGPA >= 6 ? "Average" : "Needs Improvement"}
-                        </p>
+                    
+                    {/* Summary */}
+                    <div className="mt-6 pt-6 border-t border-primary/20">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="text-center glass-dark p-4 rounded-xl border border-primary/20">
+                          <p className="text-white/70 text-sm mb-1">Total Courses</p>
+                          <p className="text-2xl font-semibold text-white">
+                            {semesterCourses.filter((c) => c.credits > 0 && c.gradePoints > 0).length}
+                          </p>
+                        </div>
+                        <div className="text-center glass-dark p-4 rounded-xl border border-primary/20">
+                          <p className="text-white/70 text-sm mb-1">Total Credits</p>
+                          <p className="text-2xl font-semibold text-white">
+                            {semesterCourses.filter((c) => c.credits > 0 && c.gradePoints > 0).reduce((sum, c) => sum + c.credits, 0).toFixed(1)}
+                          </p>
+                        </div>
+                        <div className="text-center glass-dark p-4 rounded-xl border border-primary/20">
+                          <p className="text-white/70 text-sm mb-1">Performance</p>
+                          <p className="text-2xl font-semibold text-primary">
+                            {semesterGPA >= 9 ? "Excellent" : semesterGPA >= 8 ? "Very Good" : semesterGPA >= 7 ? "Good" : semesterGPA >= 6 ? "Average" : "Needs Improvement"}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>

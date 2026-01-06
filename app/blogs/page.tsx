@@ -13,33 +13,12 @@ export default function Blogs() {
   
   const blogs = [
     {
-      slug: "classical-ai-vs-quantum-ai",
-      title: "Classical AI Vs Quantum AI",
-      excerpt: "Blog about Classical AI vs Quantum AI vs Photonic AI",
-      image: "/images/blogs/ai-quantum.jpg",
-      category: "Quantum AI",
-      date: "April 15, 2024",
-      author: "Tech Team",
-      readTime: "8 min read",
-      externalLink: "https://medium.com/@vixal/classical-ai-vs-quantum-ai-vs-photonic-ai-4adfc8b99023"
-    },
-    {
-      slug: "how-to-access-dark-web",
-      title: "How To Access Dark Web?",
-      excerpt: "Blog about dark web",
-      image: "/images/blogs/dark-web.jpg",
-      category: "Dark Web",
-      date: "April 16, 2024",
-      author: "Security Team",
-      readTime: "10 min read"
-    },
-    {
       slug: "nallamala-forest",
       title: "Nallamala Forest",
       excerpt: "Blog about Nallamala Forest",
       image: "/images/blogs/nallamala-forest.jpeg",
       category: "Nature",
-      date: "April 17, 2024",
+      date: "December 27, 2025",
       author: "Content Team",
       readTime: "7 min read",
       externalLink: "https://docs.google.com/document/d/1Lae85mICvhP0oSN1IC_dJ9WkOCIhQyaVmbfjod0spH4/edit?tab=t.0"
@@ -54,13 +33,11 @@ export default function Blogs() {
   )
 
   const categoryColors: { [key: string]: string } = {
-    "Quantum AI": "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
-    "Dark Web": "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
     "Nature": "bg-green-500/20 text-green-300 border-green-500/30",
   }
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen">
       <Navbar />
       
       {/* Background animations */}
@@ -109,7 +86,7 @@ export default function Blogs() {
                     alt={blog.title}
                     width={800}
                     height={600}
-                    className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ${blog.slug === "how-to-access-dark-web" ? "object-[50%_40%]" : ""}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
                     <Badge className={categoryColors[blog.category]}>
@@ -128,15 +105,7 @@ export default function Blogs() {
                   </div>
                   
                   <h2 className="text-2xl font-serif font-bold text-white mb-3 transition-colors">
-                    {blog.slug === "classical-ai-vs-quantum-ai" ? (
-                      <>
-                        Classical AI Vs <span className="text-yellow-400">Quantum AI</span>
-                      </>
-                    ) : blog.slug === "how-to-access-dark-web" ? (
-                      <>
-                        How To Access <span className="text-yellow-400">Dark Web</span>?
-                      </>
-                    ) : blog.slug === "nallamala-forest" ? (
+                    {blog.slug === "nallamala-forest" ? (
                       <>
                         <span className="text-yellow-400">Nallamala</span> Forest
                       </>
