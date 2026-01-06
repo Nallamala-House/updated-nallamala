@@ -24,7 +24,7 @@ export default function UpdatesSection() {
       excerpt: "Course Registration for January term 2026",
       image: "/images/updates/iitm.jpeg",
       category: "Course Registration",
-      date: "Deadline : January 2026",
+      date: "Deadline Passed",
       externalLink: ""
     },
     {
