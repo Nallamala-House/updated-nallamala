@@ -79,7 +79,7 @@ export default function UpdatesSection() {
                     update.category === "Course Registration" 
                     ? "object-contain p-2" 
                     : "object-cover"
-                  }`}
+                  } ${update.imagePosition || ""}`}
                 />
                 <div className="absolute top-4 left-4 z-10">
                   <Badge className={`border shadow-lg ${categoryColors[update.category]}`}>
