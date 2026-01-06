@@ -1,9 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 export default function RegionalCarousel() {
   const [rotation, setRotation] = useState(0)
@@ -125,15 +123,14 @@ export default function RegionalCarousel() {
                       transform: `rotateY(${-angle}deg) translateZ(500px)`,
                     }}
                   >
-                    <Link href={`/gallery/${gallery.id}`}>
-                      <div
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          transformStyle: "preserve-3d",
-                        }}
-                        className="rounded-xl overflow-hidden border-2 border-primary/40 hover:border-primary shadow-2xl bg-black cursor-pointer transition-all hover:scale-105"
-                      >
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        transformStyle: "preserve-3d",
+                      }}
+                      className="rounded-xl overflow-hidden border-2 border-primary/40 shadow-2xl bg-black"
+                    >
                       {/* Image */}
                       <div className="h-[280px] w-full bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center">
                         <div className="text-center">
@@ -148,8 +145,7 @@ export default function RegionalCarousel() {
                         <h3 className="text-white font-bold text-base mb-1">{gallery.title}</h3>
                         <p className="text-primary text-xs">{gallery.region} • {gallery.date}</p>
                       </div>
-                      </div>
-                    </Link>
+                    </div>
                   </div>
                 )
               })}
