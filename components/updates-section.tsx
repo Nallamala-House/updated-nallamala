@@ -33,7 +33,7 @@ export default function UpdatesSection() {
       excerpt: "Paradox in Margazhi, 2026",
       image: "/images/updates/magzi.jpeg",
       category: "Event",
-      date: "Registration Closes Soon",
+      date: "Deadline Passed",
       externalLink: "https://iitmparadox.org/events",
       imagePosition: "object-[46%]" 
     },
