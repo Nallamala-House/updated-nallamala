@@ -22,7 +22,7 @@ export default function SignIn() {
   return (
     <main className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20">
+      <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-32">
         <div className="w-full max-w-md">
           {/* Background animations */}
           <div className="absolute inset-0 overflow-hidden -z-10">
