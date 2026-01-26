@@ -557,46 +557,73 @@ export default function CouncilPage() {
 
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <p className="text-primary text-sm uppercase tracking-widest mb-4">Leadership</p>
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
+          <div className="text-center mb-12 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-primary text-sm font-semibold mb-4">
+              <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+              Leadership Team
+            </div>
+            <h1 className="text-5xl md:text-6xl font-serif font-bold text-white mb-4 animate-fade-in" style={{ animationDelay: '0.1s' }}>
               Council & <span className="text-primary">Team</span>
             </h1>
-            <p className="text-white/70 mb-6">Meet the dedicated leaders driving Nallamala House forward</p>
-            <p className="text-primary text-xl font-semibold">{selectedYear}</p>
+            <p className="text-white/70 text-lg mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>Meet the dedicated leaders driving Nallamala House forward</p>
+            <div className="inline-block px-6 py-3 bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/40 rounded-2xl animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              <p className="text-primary text-2xl font-bold">{selectedYear}</p>
+            </div>
           </div>
 
-          {/* Team Tabs - Now at the Top */}
-          <div className="flex justify-center gap-3 mb-8 flex-wrap">
-            {Object.entries(teamLabels).map(([key, label]) => (
-              <button
-                key={key}
-                onClick={() => setSelectedTeam(key)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                  selectedTeam === key
-                    ? "bg-primary text-black"
-                    : "glass-dark text-white/70 hover:text-white border border-white/10 hover:border-primary/30"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+          {/* Team Tabs - Modern Design */}
+          <div className="flex justify-center mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="glass p-2 rounded-2xl border border-primary/30 inline-flex gap-2">
+              {Object.entries(teamLabels).map(([key, label], index) => (
+                <button
+                  key={key}
+                  onClick={() => setSelectedTeam(key)}
+                  className={`relative px-8 py-4 rounded-xl font-bold transition-all duration-500 overflow-hidden group ${
+                    selectedTeam === key
+                      ? "bg-primary text-black shadow-[0_0_30px_rgba(212,175,55,0.4)]"
+                      : "text-white/70 hover:text-white hover:bg-white/5"
+                  }`}
+                  style={{ animationDelay: `${0.5 + index * 0.1}s` }}
+                >
+                  {selectedTeam === key && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary animate-shimmer"></div>
+                  )}
+                  <span className="relative z-10 flex items-center gap-2">
+                    {label}
+                    {selectedTeam === key && (
+                      <span className="w-2 h-2 bg-black rounded-full animate-pulse"></span>
+                    )}
+                  </span>
+                  {selectedTeam !== key && (
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Sub-Team Tabs for 2024-25 Team */}
           {selectedYear === "2024-25" && selectedTeam === "TEAM" && (
-            <div className="flex justify-center gap-2 mb-8 flex-wrap">
-              {Object.entries(subTeamLabels).map(([key, label]) => (
+            <div className="flex justify-center gap-2 mb-8 flex-wrap animate-fade-in">
+              {Object.entries(subTeamLabels).map(([key, label], index) => (
                 <button
                   key={key}
                   onClick={() => setSelectedSubTeam(key)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  className={`relative px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 overflow-hidden group ${
                     selectedSubTeam === key
-                      ? "bg-primary/80 text-black"
-                      : "glass-dark text-white/60 hover:text-white border border-white/10 hover:border-primary/20"
+                      ? "bg-primary/90 text-black border-2 border-primary shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+                      : "glass-dark text-white/60 hover:text-white border border-white/10 hover:border-primary/30"
                   }`}
+                  style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  {label}
+                  {selectedSubTeam !== key && (
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    </div>
+                  )}
+                  <span className="relative z-10">{label}</span>
                 </button>
               ))}
             </div>
@@ -604,11 +631,27 @@ export default function CouncilPage() {
 
           {/* Team Description */}
           {teamDescriptions[selectedTeam] && (
-            <div className="mb-12 max-w-5xl mx-auto">
-              <div className="glass-dark p-8 rounded-2xl border-2 border-primary/30 shadow-xl">
-                <p className="text-white/90 leading-relaxed text-center text-base">
-                  {teamDescriptions[selectedTeam]}
-                </p>
+            <div className="mb-12 max-w-5xl mx-auto animate-fade-in">
+              <div className="relative glass p-8 rounded-3xl border-2 border-primary/30 shadow-[0_0_50px_rgba(212,175,55,0.15)] overflow-hidden group hover:border-primary/50 transition-all duration-500">
+                {/* Animated border glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1500"></div>
+                </div>
+                
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary/40 rounded-tl-3xl"></div>
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-primary/40 rounded-br-3xl"></div>
+                
+                <div className="relative z-10 flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary/20 border-2 border-primary/50 rounded-xl flex items-center justify-center">
+                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <p className="text-white/90 leading-relaxed text-base flex-1 pt-2">
+                    {teamDescriptions[selectedTeam]}
+                  </p>
+                </div>
               </div>
             </div>
           )}
@@ -625,24 +668,37 @@ export default function CouncilPage() {
                   return (
                     <div
                       key={member.id}
-                      className="glass-dark p-6 rounded-xl border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:-translate-y-1"
+                      className="group glass-dark p-6 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)] animate-scale-in relative overflow-hidden"
+                      style={{ animationDelay: `${member.id * 0.05}s` }}
                     >
-                      <div className="mb-4 overflow-hidden rounded-lg aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                        {member.image ? (
-                          <img
-                            src={member.image}
-                            alt={member.name}
-                            style={{ objectPosition: member.objectPosition || 'center' }}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <svg className="w-24 h-24 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                          </svg>
-                        )}
+                      {/* Hover glow effect */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5"></div>
                       </div>
-                      <p className="text-primary text-xs uppercase tracking-widest mb-2">{member.role}</p>
-                      <h3 className="text-lg font-serif font-bold text-white mb-2">{member.name}</h3>
+                      
+                      <div className="relative z-10">
+                        <div className="mb-4 overflow-hidden rounded-xl aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative group-hover:scale-105 transition-transform duration-500">
+                          {member.image ? (
+                            <img
+                              src={member.image}
+                              alt={member.name}
+                              style={{ objectPosition: member.objectPosition || 'center' }}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <svg className="w-24 h-24 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                          )}
+                          
+                          {/* Role badge overlay */}
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
+                            <p className="text-primary text-xs uppercase tracking-widest font-bold">{member.role}</p>
+                          </div>
+                        </div>
+                        
+                        <h3 className="text-xl font-serif font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">{member.name}</h3>
+                      </div>
                     </div>
                   )
                 }
@@ -657,9 +713,75 @@ export default function CouncilPage() {
                   return (
                     <div
                       key={member.id}
-                      className="glass-dark p-6 rounded-xl border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:-translate-y-1"
+                      className="group glass-dark p-6 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)] animate-scale-in relative overflow-hidden"
+                      style={{ animationDelay: `${member.id * 0.05}s` }}
                     >
-                      <div className="mb-4 overflow-hidden rounded-lg aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                      {/* Hover glow effect */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5"></div>
+                      </div>
+                      
+                      <div className="relative z-10">
+                        <div className="mb-4 overflow-hidden rounded-xl aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative group-hover:scale-105 transition-transform duration-500">
+                          {member.image ? (
+                            <img
+                              src={member.image}
+                              alt={member.name}
+                              style={{ objectPosition: member.objectPosition || 'center' }}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <svg className="w-24 h-24 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                          )}
+                          
+                          {/* Role badge overlay */}
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
+                            <p className="text-primary text-xs uppercase tracking-widest font-bold">{member.role}</p>
+                          </div>
+                        </div>
+                        
+                        <h3 className="text-xl font-serif font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">{member.name}</h3>
+                        
+                        {(isLHC ? member.name : isMuskan) && (
+                          <a 
+                            href={`mailto:${member.email}`}
+                            className="flex items-center gap-2 text-white/60 hover:text-primary text-sm mb-3 transition-colors group/email"
+                          >
+                            <Mail size={16} className="group-hover/email:scale-110 transition-transform" />
+                            {member.email}
+                          </a>
+                        )}
+                        
+                        <p className="text-white/70 text-sm italic leading-relaxed">{member.message}</p>
+                      </div>
+                    </div>
+                  )
+                }
+                
+                return (
+                  <button
+                    key={member.id}
+                    onClick={() => setSelectedMember(member)}
+                    className="group glass-dark p-6 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)] text-left cursor-pointer animate-scale-in relative overflow-hidden"
+                    style={{ animationDelay: `${member.id * 0.05}s` }}
+                  >
+                    {/* Hover glow effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5"></div>
+                    </div>
+                    
+                    {/* Click indicator */}
+                    <div className="absolute top-4 right-4 w-8 h-8 bg-primary/20 border border-primary/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
+                      <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                    </div>
+                    
+                    <div className="relative z-10">
+                      <div className="mb-4 overflow-hidden rounded-xl aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative group-hover:scale-105 transition-transform duration-500">
                         {member.image ? (
                           <img
                             src={member.image}
@@ -672,46 +794,24 @@ export default function CouncilPage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                           </svg>
                         )}
+                        
+                        {/* Role badge overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
+                          <p className="text-primary text-xs uppercase tracking-widest font-bold">{member.role}</p>
+                        </div>
                       </div>
-                      <p className="text-primary text-xs uppercase tracking-widest mb-2">{member.role}</p>
-                      <h3 className="text-lg font-serif font-bold text-white mb-2">{member.name}</h3>
-                      {(isLHC ? member.name : isMuskan) && (
-                        <a 
-                          href={`mailto:${member.email}`}
-                          className="text-white/60 hover:text-primary text-sm mb-2 block transition-colors"
-                        >
-                          {member.email}
-                        </a>
-                      )}
-                      <p className="text-white/70 text-sm italic">{member.message}</p>
-                    </div>
-                  )
-                }
-                
-                return (
-                  <button
-                    key={member.id}
-                    onClick={() => setSelectedMember(member)}
-                    className="glass-dark p-6 rounded-xl border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:-translate-y-1 text-left cursor-pointer group"
-                  >
-                    <div className="mb-4 overflow-hidden rounded-lg aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                      {member.image ? (
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          style={{ objectPosition: member.objectPosition || 'center' }}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      ) : (
-                        <svg className="w-24 h-24 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      
+                      <h3 className="text-xl font-serif font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">{member.name}</h3>
+                      <p className="text-white/70 text-sm italic leading-relaxed line-clamp-2">{member.message}</p>
+                      
+                      {/* View details hint */}
+                      <div className="mt-4 flex items-center gap-2 text-primary/60 group-hover:text-primary text-xs font-semibold transition-colors">
+                        <span>View Details</span>
+                        <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
-                      )}
+                      </div>
                     </div>
-                    <p className="text-primary text-xs uppercase tracking-widest mb-2">{member.role}</p>
-                    <h3 className="text-lg font-serif font-bold text-white mb-2">{member.name}</h3>
-                    <p className="text-white/70 text-sm italic">{member.message}</p>
-                    <p className="text-primary text-xs mt-4">Click to view details</p>
                   </button>
                 )
               })}
