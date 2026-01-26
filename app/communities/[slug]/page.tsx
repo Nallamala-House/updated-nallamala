@@ -33,28 +33,32 @@ Recognized as one of the most active communities of Nallamala House, we have pro
 Through dedication, collaboration, and a shared love for words, we have nurtured a thriving literary culture. Today, Chapters & Verses stands as a living testament to our vision—a community where stories are written, voices are heard, and creativity finds its home.`,
     events: [
       {
-        id: 1,
-        title: "Chapters Unlocked",
-        date: "18th February 2024 (Sunday) | 1:00 PM",
-        guest: "Ms. Riya Jhamb (@what_riya_reads) — Renowned Bookstagrammer",
-        description: `Chapters Unlocked marked the inaugural ceremony and book talk session of our literary journey, held as an engaging virtual event on Google Meet. The session featured an insightful conversation with Ms. Riya Jhamb, who shared her perspectives on storytelling, reading culture, and her latest literary work.
+        id: 6,
+        title: "Noor-e-Sama 2.0",
+        date: "21st August 2025",
+        description: `Noor-e-Sama 2.0, organized by the Literary and Oratory Community of Nallamala House, was a captivating virtual evening that celebrated the timeless beauty of Shayari and spoken poetry. The event provided a मंच (stage) where classical ghazals met contemporary expressions, creating a harmonious blend of tradition and modern thought. Poets and poetry enthusiasts from diverse backgrounds came together to share verses that resonated with emotion, reflection, and creativity.
 
-Participants had the opportunity to dive deep into discussions on literature, exchange ideas with fellow book lovers, and engage in meaningful conversations in a warm and inclusive environment. With Ms. Riya's vibrant Instagram community of over 20,000 readers, the event successfully brought together a diverse audience united by a love for books.
-
-The session concluded as an enriching and inspiring experience, setting the tone for many more literary conversations to come.`,
-        image: "/images/communities/events/chapters_unlocked.png"
+Throughout the evening, the audience was immersed in an atmosphere of rhythm, passion, and meaningful dialogue, as each performance added depth to the collective experience. Noor-e-Sama 2.0 was more than just a poetry session—it was a space where words became lanterns, emotions found expression, and silence discovered its voice. The event successfully fostered a sense of connection and artistic appreciation, leaving participants inspired and deeply moved by the power of spoken word.`,
+        image: "/images/events/10.png"
       },
       {
-        id: 2,
-        title: "Harry Potter: Watch Party",
-        date: "Friday, 29th March 2024 | 7:00 PM",
-        guest: "Collaborators: Chapters × Verses × Pop Culture Club, IITM BS",
-        description: `The Harry Potter: Watch Party was a magical movie night where participants stepped into the enchanting world of Harry Potter and the Philosopher's Stone. The virtual screening brought together Potterheads to relive the wonder of Hogwarts School of Witchcraft and Wizardry.
+        id: 5,
+        title: "Noor-e-Sama — A Night of Shayari",
+        date: "15th February 2025",
+        description: `Noor-e-Sama was an enchanting evening curated by Chapters & Verses, the Literary and Oratory Club of Nallamala House, celebrating the luminous art of Shayari. The event featured heartfelt recitations of both classic and contemporary Shayaris by passionate poets and poetry enthusiasts.
 
-As Harry, Ron, and Hermione embarked on their unforgettable journey, viewers experienced themes of friendship, bravery, and the enduring power of love. The event witnessed an overwhelming response, with over 172 participants tuning in, making it a memorable and highly successful community gathering.
+The night brought together lovers of eloquent expression, offering a space to reflect, feel, and connect through words. From seasoned Shayari connoisseurs to first-time listeners, Noor-e-Sama left the audience inspired, moved, and immersed in the timeless beauty of poetry.`,
+        image: "/images/communities/events/noor.png"
+      },
+      {
+        id: 4,
+        title: "Unscripted Pages",
+        date: "24th November 2024",
+        guest: "Collaborators: Pichavaram House × Chapters & Verses, Nallamala House",
+        description: `Unscripted Pages was a collaborative literary competition designed to celebrate creative writing, expression, and presentation. The event unfolded across two rounds, beginning with written submissions based on given themes. Shortlisted participants then advanced to a live Google Meet session, where finalists presented their work and brought their words to life.
 
-Filled with nostalgia, excitement, and shared moments of magic, the watch party truly celebrated the timeless charm of the wizarding world. 🪄🍿✨`,
-        image: "/images/communities/events/harry_potter.png"
+The competition fostered confidence, creativity, and meaningful literary exchange, making it an engaging and memorable experience for all involved.`,
+        image: "/images/communities/events/unscripted.png"
       },
       {
         id: 3,
@@ -70,23 +74,28 @@ Join us on Instagram as we paint a canvas of emotions with every carefully chose
         image: "/images/communities/events/dastaan.png"
       },
       {
-        id: 4,
-        title: "Unscripted Pages",
-        date: "24th November 2024 | 8:00 PM",
-        guest: "Collaborators: Pichavaram House × Chapters & Verses, Nallamala House",
-        description: `Unscripted Pages was a collaborative literary competition designed to celebrate creative writing, expression, and presentation. The event unfolded across two rounds, beginning with written submissions based on given themes. Shortlisted participants then advanced to a live Google Meet session, where finalists presented their work and brought their words to life.
+        id: 2,
+        title: "Harry Potter: Watch Party",
+        date: "29th March 2024",
+        guest: "Collaborators: Chapters × Verses × Pop Culture Club, IITM BS",
+        description: `The Harry Potter: Watch Party was a magical movie night where participants stepped into the enchanting world of Harry Potter and the Philosopher's Stone. The virtual screening brought together Potterheads to relive the wonder of Hogwarts School of Witchcraft and Wizardry.
 
-The competition fostered confidence, creativity, and meaningful literary exchange, making it an engaging and memorable experience for all involved.`,
-        image: "/images/communities/events/unscripted.png"
+As Harry, Ron, and Hermione embarked on their unforgettable journey, viewers experienced themes of friendship, bravery, and the enduring power of love. The event witnessed an overwhelming response, with over 172 participants tuning in, making it a memorable and highly successful community gathering.
+
+Filled with nostalgia, excitement, and shared moments of magic, the watch party truly celebrated the timeless charm of the wizarding world. 🪄🍿✨`,
+        image: "/images/communities/events/harry_potter.png"
       },
       {
-        id: 5,
-        title: "Noor-e-Sama — A Night of Shayari",
-        date: "5th February 2025",
-        description: `Noor-e-Sama was an enchanting evening curated by Chapters & Verses, the Literary and Oratory Club of Nallamala House, celebrating the luminous art of Shayari. The event featured heartfelt recitations of both classic and contemporary Shayaris by passionate poets and poetry enthusiasts.
+        id: 1,
+        title: "Chapters Unlocked",
+        date: "18th February 2024",
+        guest: "Ms. Riya Jhamb (@what_riya_reads) — Renowned Bookstagrammer",
+        description: `Chapters Unlocked marked the inaugural ceremony and book talk session of our literary journey, held as an engaging virtual event on Google Meet. The session featured an insightful conversation with Ms. Riya Jhamb, who shared her perspectives on storytelling, reading culture, and her latest literary work.
 
-The night brought together lovers of eloquent expression, offering a space to reflect, feel, and connect through words. From seasoned Shayari connoisseurs to first-time listeners, Noor-e-Sama left the audience inspired, moved, and immersed in the timeless beauty of poetry.`,
-        image: "/images/communities/events/noor.png"
+Participants had the opportunity to dive deep into discussions on literature, exchange ideas with fellow book lovers, and engage in meaningful conversations in a warm and inclusive environment. With Ms. Riya's vibrant Instagram community of over 20,000 readers, the event successfully brought together a diverse audience united by a love for books.
+
+The session concluded as an enriching and inspiring experience, setting the tone for many more literary conversations to come.`,
+        image: "/images/communities/events/chapters_unlocked.png"
       }
     ]
   },

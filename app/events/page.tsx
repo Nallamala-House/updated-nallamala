@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 import { Calendar, Share2, X } from "lucide-react"
 
-type EventTab = "current" | "upcoming" | "past"
+/* ---------------- TYPES ---------------- */
 
 type EventItem = {
   id: number
@@ -22,12 +22,12 @@ type EventItem = {
   links?: { label: string; url: string }[]
 }
 
+/* ---------------- COMPONENT ---------------- */
+
 export default function Events() {
-  const [activeTab, setActiveTab] = useState<EventTab>("current")
   const [search, setSearch] = useState("")
   const [expandedId, setExpandedId] = useState<number | null>(null)
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null)
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -38,59 +38,16 @@ export default function Events() {
     setExpandedId(expandedId === id ? null : id)
   }
 
-  /* ---------------- CURRENT EVENTS ---------------- */
-  const currentEvents: EventItem[] = [
-    {
-      id: 1,
-      title: "Winter Fest 2025",
-      description:
-        "Ongoing celebration with cultural performances, music, and fun activities for the entire house community.",
-      date: "Dec 23–27, 2025",
-      location: "House Common Area",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=1200&fit=crop",
-      status: "Live Now",
-    },
-    {
-      id: 2,
-      title: "Chess Tournament Finals",
-      description:
-        "The final matches of our inter-house chess championship are being played this week.",
-      date: "Dec 25–26, 2025",
-      location: "Games Room",
-      image:
-        "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=800&h=1200&fit=crop",
-      status: "In Progress",
-    },
-  ]
+  /* ---------------- HELPER: PARSE DATE ---------------- */
+  const parseEventDate = (dateStr: string) => {
+    const match = dateStr.match(/\d{1,2} [A-Za-z]+ \d{4}/)
+    if (match) return new Date(match[0])
 
-  /* ---------------- UPCOMING EVENTS ---------------- */
-  const upcomingEvents: EventItem[] = [
-    {
-      id: 3,
-      title: "New Year Gala 2026",
-      description:
-        "Ring in the new year with an elegant gala featuring live music, dinner, and dancing.",
-      date: "31 Dec 2025",
-      location: "Main Hall",
-      image:
-        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=1200&fit=crop",
-      category: "Cultural",
-    },
-    {
-      id: 4,
-      title: "AI/ML Workshop",
-      description:
-        "Hands-on workshop on latest AI developments and machine learning techniques.",
-      date: "8 Jan 2026",
-      location: "Tech Lab",
-      image:
-        "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=1200&fit=crop",
-      category: "Academic",
-    },
-  ]
+    const yearMatch = dateStr.match(/\d{4}/)
+    return yearMatch ? new Date(Number(yearMatch[0]), 0, 1) : new Date(1970, 0, 1)
+  }
 
-  /* ---------------- PAST EVENTS ---------------- */
+   /* ---------------- PAST EVENTS ---------------- */
   const pastEvents: EventItem[] = [
     // All previous past events (id: 23 to 5) go here, unchanged
     {
@@ -231,7 +188,7 @@ export default function Events() {
   {
     id: 14,
     title: "Noor-e-Sama 2.0",
-    date: "15 February 2025",
+    date: "21 August 2025",
     image: "/images/events/10.png",
     description: (
       <>
@@ -369,7 +326,7 @@ export default function Events() {
   {
     id: 28,
     title: "Noor-e-Sama — A Night of Shayari",
-    date: "5 February 2025",
+    date: "15 February 2025",
     image: "/images/events/24.png",
     description: (
       <>
@@ -426,39 +383,18 @@ export default function Events() {
 },
   ];
 
-   /* ---------------- HELPER: Parse Dates ---------------- */
-  const parseEventDate = (dateStr: string) => {
-    // Try to extract a parsable date, fallback to 1970 if invalid
-    const match = dateStr.match(/\d{1,2} [A-Za-z]+ \d{4}/) // e.g., "18 March 2025"
-    if (match) return new Date(match[0])
-    // Fallback: try year only
-    const yearMatch = dateStr.match(/\d{4}/)
-    return yearMatch ? new Date(Number(yearMatch[0]), 0, 1) : new Date(1970, 0, 1)
-  }
-
-  /* ---------------- SORT EVENTS NEWEST TO OLDEST ---------------- */
-  const sortedCurrentEvents = [...currentEvents].sort(
-    (a, b) => parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
-  )
-  const sortedUpcomingEvents = [...upcomingEvents].sort(
-    (a, b) => parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
-  )
+  /* ---------------- SORT & FILTER ---------------- */
   const sortedPastEvents = [...pastEvents].sort(
     (a, b) => parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
   )
 
-  /* ---------------- FILTERED EVENTS BASED ON TAB & SEARCH ---------------- */
-  const events =
-    activeTab === "current"
-      ? sortedCurrentEvents
-      : activeTab === "upcoming"
-      ? sortedUpcomingEvents
-      : sortedPastEvents
-
-  const filteredEvents = events.filter((event) =>
+  const filteredEvents = sortedPastEvents.filter((event) =>
     event.title.toLowerCase().includes(search.toLowerCase())
   )
 
+  if (!mounted) return null
+
+  /* ---------------- RENDER ---------------- */
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -472,12 +408,14 @@ export default function Events() {
       <div className="max-w-[1400px] mx-auto px-2 pt-24 pb-20">
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-primary text-sm uppercase tracking-widest mb-4">Our Events</p>
+          <p className="text-primary text-sm uppercase tracking-widest mb-4">
+            Our Events
+          </p>
           <h1 className="text-5xl font-serif font-bold text-white mb-4">
-            House <span className="text-primary">Events</span>
+            Past <span className="text-primary">Events</span>
           </h1>
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
-            Discover events and activities that bring our community together
+            Discover the events and moments that shaped our community
           </p>
 
           <input
@@ -489,53 +427,37 @@ export default function Events() {
           />
         </div>
 
-        {/* Tabs */}
-        <div className="flex justify-center gap-4 mb-14 flex-wrap">
-          {(["current", "upcoming", "past"] as EventTab[]).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-6 py-3 rounded-lg font-semibold transition ${
-                activeTab === tab
-                  ? "bg-primary text-black"
-                  : "text-white/70 border border-white/10 hover:border-primary/40"
-              }`}
-            >
-              {tab.charAt(0).toUpperCase() + tab.slice(1)} Events
-            </button>
-          ))}
-        </div>
-
         {/* Events Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredEvents.map((event) => (
             <div
               key={event.id}
               onClick={() => setSelectedEvent(event)}
-              className="transition-all duration-300 flex flex-col rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
+              className="transition-all duration-300 flex flex-col rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
             >
-              <div
-                className="relative h-[420px] bg-black overflow-hidden cursor-pointer"
-                onClick={() => setSelectedImage(event.image)}
-              >
+              <div className="relative h-[420px] bg-black overflow-hidden">
                 <Image
                   src={event.image}
                   alt={event.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
                 />
                 {event.status && (
                   <div className="absolute top-4 right-4">
-                    <Badge className="bg-red-500 text-white">{event.status}</Badge>
+                    <Badge className="bg-red-500 text-white">
+                      {event.status}
+                    </Badge>
                   </div>
                 )}
               </div>
 
               <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {event.title}
+                </h3>
 
                 <div
-                  className={`text-white/70 text-sm leading-relaxed mb-3 flex-1 transition-all ${
+                  className={`text-white/70 text-sm leading-relaxed mb-3 flex-1 ${
                     expandedId === event.id ? "" : "line-clamp-3"
                   }`}
                 >
@@ -559,7 +481,9 @@ export default function Events() {
                     href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
                       event.title
                     )}&details=${encodeURIComponent(
-                      typeof event.description === "string" ? event.description : event.title
+                      typeof event.description === "string"
+                        ? event.description
+                        : event.title
                     )}&location=${encodeURIComponent(event.location || "")}`}
                     target="_blank"
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/5 hover:bg-primary/20 border border-white/10 hover:border-primary/50 rounded-lg text-white/70 hover:text-white transition text-sm"
@@ -592,61 +516,79 @@ export default function Events() {
 
       {/* Selected Event Modal */}
       {selectedEvent && (
-        <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4"
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
           onClick={() => setSelectedEvent(null)}
         >
-          <div
-            className="bg-black border border-white/10 rounded-xl max-w-2xl w-full overflow-hidden relative"
+          <div 
+            className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Close Button */}
             <button
               onClick={() => setSelectedEvent(null)}
-              className="absolute top-3 right-3 text-white/60 hover:text-white text-xl"
+              className="sticky top-4 left-full ml-4 z-10 bg-black/70 hover:bg-black/90 text-white p-3 rounded-full transition shadow-lg"
             >
-              ✕
+              <X size={24} />
             </button>
 
-            <div className="relative h-[300px] bg-black">
-              <Image
-                src={selectedEvent.image}
-                alt={selectedEvent.title}
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-white mb-2">{selectedEvent.title}</h2>
-              <div className="text-white/70 mb-4">{selectedEvent.description}</div>
-              <div className="text-white/60 text-sm">
-                {selectedEvent.date} {selectedEvent.location && <>• {selectedEvent.location}</>}
+            {/* Image Section - Full Visible */}
+            <div className="relative w-full bg-black/50 rounded-t-2xl overflow-hidden -mt-14">
+              <div className="relative w-full h-[400px]">
+                <Image
+                  src={selectedEvent.image}
+                  alt={selectedEvent.title}
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
-          </div>
-        </div>
-      )}
 
-      {/* Image Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="relative max-w-6xl max-h-[90vh] w-full h-full">
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 z-10 text-white hover:text-primary transition p-2 bg-black/50 rounded-full"
-            >
-              <X size={32} />
-            </button>
-            <Image
-              src={selectedImage}
-              alt="Event image"
-              fill
-              className="object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
+            {/* Content Section */}
+            <div className="p-8 space-y-6">
+              {/* Title and Date */}
+              <div className="border-b border-white/10 pb-4">
+                <h2 className="text-4xl font-serif font-bold text-white mb-3">{selectedEvent.title}</h2>
+                <div className="flex items-center gap-3 text-primary text-lg">
+                  <Calendar size={20} />
+                  <span>{selectedEvent.date}</span>
+                  {selectedEvent.location && (
+                    <>
+                      <span className="text-white/40">•</span>
+                      <span className="text-white/80">{selectedEvent.location}</span>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Description */}
+              <div className="space-y-3">
+                {(() => {
+                  // Extract text content from description
+                  let content = '';
+                  if (typeof selectedEvent.description === 'string') {
+                    content = selectedEvent.description;
+                  } else if (selectedEvent.description?.props?.children) {
+                    const children = selectedEvent.description.props.children;
+                    // Handle array of children or single child
+                    if (Array.isArray(children)) {
+                      content = children.join('');
+                    } else if (typeof children === 'string') {
+                      content = children;
+                    }
+                  }
+                  
+                  // Split by new lines and display each paragraph
+                  const paragraphs = content.split('\n').filter((line: string) => line.trim());
+
+                  return paragraphs.map((paragraph, index) => (
+                    <p key={index} className="text-white/70 leading-relaxed text-base">
+                      {paragraph.trim()}
+                    </p>
+                  ));
+                })()}
+              </div>
+            </div>
           </div>
         </div>
       )}
