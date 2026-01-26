@@ -214,13 +214,13 @@ export default function GPACalculator() {
   }
 
   return (
-    <main className="min-h-screen bg-black flex flex-col">
+    <main className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex-1 py-20 px-4 sm:px-6 lg:px-8">
-        {/* Background animations */}
-        <div className="absolute inset-0 overflow-hidden -z-10">
-          <div className="absolute top-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
+        {/* Background glow effects */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -246,7 +246,7 @@ export default function GPACalculator() {
 
           {/* Tabs */}
           <div className="flex justify-center mb-8">
-            <div className="glass-dark rounded-xl p-2 border border-primary/30 inline-flex gap-2 w-full max-w-md">
+            <div className="glass rounded-xl p-2 border border-primary/20 inline-flex gap-2 w-full max-w-md shadow-[0_0_15px_rgba(212,175,55,0.1)]">
               <button
                 onClick={() => setActiveTab("course")}
                 className={`flex-1 py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
@@ -275,7 +275,7 @@ export default function GPACalculator() {
             <>
 
           {/* Selection Cards */}
-          <div className="glass-dark rounded-xl p-8 border border-primary/30 mb-6">
+          <div className="glass rounded-xl p-8 border border-primary/20 mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Degree Program */}
               <div>
@@ -286,7 +286,7 @@ export default function GPACalculator() {
                 <select
                   value={selectedDegree}
                   onChange={(e) => handleDegreeChange(e.target.value as "data-science" | "electronic-systems")}
-                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 transition-all duration-300 appearance-none cursor-pointer"
+                  className="w-full p-4 rounded-lg bg-black/30 border border-primary/20 text-white focus:outline-none focus:border-primary hover:border-primary/60 transition-all duration-300 appearance-none cursor-pointer shadow-inner"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -310,7 +310,7 @@ export default function GPACalculator() {
                   value={selectedLevel}
                   onChange={(e) => handleLevelChange(e.target.value as "foundation" | "diploma" | "degree")}
                   disabled={!selectedDegree}
-                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 appearance-none cursor-pointer"
+                  className="w-full p-4 rounded-lg bg-black/30 border border-primary/20 text-white focus:outline-none focus:border-primary hover:border-primary/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 appearance-none cursor-pointer shadow-inner"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -337,7 +337,7 @@ export default function GPACalculator() {
                   value={selectedCourse?.id || ""}
                   onChange={(e) => handleCourseChange(e.target.value)}
                   disabled={!selectedLevel || availableCourses.length === 0}
-                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 appearance-none cursor-pointer"
+                  className="w-full p-4 rounded-lg bg-black/30 border border-primary/20 text-white focus:outline-none focus:border-primary hover:border-primary/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 appearance-none cursor-pointer shadow-inner"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -360,9 +360,9 @@ export default function GPACalculator() {
           {selectedCourse && (
             <>
               {/* Course Info Card */}
-              <div className="glass-dark rounded-xl p-8 border border-primary/30 mb-6">
+              <div className="glass rounded-xl p-8 border border-primary/20 mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0 shadow-[0_0_10px_rgba(212,175,55,0.2)]">
                     <Calculator className="w-8 h-8 text-primary" />
                   </div>
                   <div className="flex-1">
@@ -372,14 +372,14 @@ export default function GPACalculator() {
                     </p>
                   </div>
                 </div>
-                <div className="bg-black/50 rounded-lg p-4 border border-primary/20">
+                <div className="bg-black/30 rounded-lg p-4 border border-primary/20 shadow-inner">
                   <p className="text-white/50 text-xs mb-2">Grading Formula</p>
                   <p className="text-primary font-mono text-sm">{selectedCourse.formula}</p>
                 </div>
               </div>
 
               {/* Input Fields */}
-              <div className="glass-dark rounded-xl p-8 border border-primary/30 mb-6">
+              <div className="glass rounded-xl p-8 border border-primary/20 mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {selectedCourse.formFields.map((field) => (
                     <div key={field.id}>
@@ -406,7 +406,7 @@ export default function GPACalculator() {
                             if (val < 0) handleInputChange(field.id, "0", field.max)
                           }}
                           placeholder={`0-${field.max}`}
-                          className="w-full p-3 pr-12 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                          className="w-full p-3 pr-12 rounded-lg bg-black/30 border border-primary/20 text-white placeholder:text-white/30 focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(212,175,55,0.3)] transition-all shadow-inner"
                         />
                         <div className="absolute right-3 top-1/2 -translate-y-1/2">
                           {formValues[field.id] ? (
@@ -449,7 +449,7 @@ export default function GPACalculator() {
                         if (val < 0) handleInputChange("Bonus", "0", 5)
                       }}
                       placeholder="0-5"
-                      className="w-full p-3 pr-12 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                      className="w-full p-3 pr-12 rounded-lg bg-black/30 border border-primary/20 text-white placeholder:text-white/30 focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(212,175,55,0.3)] transition-all shadow-inner"
                     />
                     <div className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 text-sm">/5</div>
                   </div>
@@ -474,7 +474,7 @@ export default function GPACalculator() {
 
               {/* Results */}
               {calculatedScore !== null && calculatedGrade !== null && (
-                <div className="glass-dark rounded-xl p-8 border border-primary/30">
+                <div className="glass rounded-xl p-8 border border-primary/20 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
                   <h3 className="text-white font-semibold text-xl mb-4 text-center">Your Results</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="text-center">
@@ -497,12 +497,12 @@ export default function GPACalculator() {
           {activeTab === "semester" && (
             <>
               {/* Formula Card */}
-              <div className="glass-dark rounded-xl p-6 border border-primary/30 mb-8">
+              <div className="glass rounded-xl p-6 border border-primary/20 mb-8 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
                 <div className="flex items-center gap-3 mb-3">
                   <BookOpen className="w-5 h-5 text-primary" />
                   <h3 className="text-white font-semibold">GPA Formula</h3>
                 </div>
-                <div className="bg-black/50 rounded-lg p-4 border border-primary/20">
+                <div className="bg-black/30 rounded-lg p-4 border border-primary/20 shadow-inner">
                   <p className="text-primary font-mono text-sm">
                     GPA = Σ(Credits × Grade Points) / Σ(Credits)
                   </p>
@@ -510,7 +510,8 @@ export default function GPACalculator() {
               </div>
 
               {/* Courses Input */}
-              <div className="glass-dark rounded-xl p-8 border border-primary/30 mb-6">
+              <div className="glass rounded-xl p-8 border border-primary/20 mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-white font-semibold text-xl">Your Courses</h3>
                   <button
@@ -526,7 +527,7 @@ export default function GPACalculator() {
                   {semesterCourses.map((course, index) => (
                     <div
                       key={course.id}
-                      className="bg-black/30 rounded-lg p-4 border border-primary/20"
+                      className="bg-black/20 rounded-lg p-4 border border-primary/20 shadow-inner"
                     >
                       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
                         {/* Course Name */}
@@ -541,7 +542,7 @@ export default function GPACalculator() {
                               updateCourse(course.id, "name", e.target.value)
                             }
                             placeholder="e.g., Mathematics I"
-                            className="w-full p-3 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                            className="w-full p-3 rounded-lg bg-black/30 border border-primary/20 text-white placeholder:text-white/30 focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(212,175,55,0.3)] transition-all shadow-inner"
                           />
                         </div>
 
@@ -564,7 +565,7 @@ export default function GPACalculator() {
                               )
                             }
                             placeholder="0"
-                            className="w-full p-3 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                            className="w-full p-3 rounded-lg bg-black/30 border border-primary/20 text-white placeholder:text-white/30 focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(212,175,55,0.3)] transition-all shadow-inner"
                           />
                         </div>
 
@@ -582,7 +583,7 @@ export default function GPACalculator() {
                                 parseFloat(e.target.value)
                               )
                             }
-                            className="w-full p-3 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 transition-all duration-300 appearance-none cursor-pointer"
+                            className="w-full p-3 rounded-lg bg-black/30 border border-primary/20 text-white focus:outline-none focus:border-primary hover:border-primary/60 focus:shadow-[0_0_10px_rgba(212,175,55,0.3)] transition-all duration-300 appearance-none cursor-pointer shadow-inner"
                             style={{
                               backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                               backgroundRepeat: 'no-repeat',
@@ -628,14 +629,14 @@ export default function GPACalculator() {
 
               {/* Results - Always visible when there are valid courses */}
               {semesterGPA !== null && (
-                <div className="relative glass-dark rounded-2xl p-8 border-2 border-primary/50 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                <div className="relative glass rounded-2xl p-8 border-2 border-primary/40 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 rounded-2xl"></div>
                   <div className="relative">
                     <h3 className="text-white font-semibold text-xl mb-6 text-center">
                       Your Semester GPA
                     </h3>
                     <div className="text-center mb-8">
-                      <div className="inline-block bg-gradient-to-br from-primary/20 to-primary/5 p-8 rounded-2xl border border-primary/30">
+                      <div className="inline-block bg-gradient-to-br from-primary/20 to-primary/5 p-8 rounded-2xl border border-primary/30 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
                         <p className="text-7xl font-bold text-primary mb-2 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]">
                           {semesterGPA.toFixed(2)}
                         </p>
@@ -646,19 +647,19 @@ export default function GPACalculator() {
                     {/* Summary */}
                     <div className="mt-6 pt-6 border-t border-primary/20">
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div className="text-center glass-dark p-4 rounded-xl border border-primary/20">
+                        <div className="text-center glass p-4 rounded-xl border border-primary/20 shadow-inner">
                           <p className="text-white/70 text-sm mb-1">Total Courses</p>
                           <p className="text-2xl font-semibold text-white">
                             {semesterCourses.filter((c) => c.credits > 0 && c.gradePoints > 0).length}
                           </p>
                         </div>
-                        <div className="text-center glass-dark p-4 rounded-xl border border-primary/20">
+                        <div className="text-center glass p-4 rounded-xl border border-primary/20 shadow-inner">
                           <p className="text-white/70 text-sm mb-1">Total Credits</p>
                           <p className="text-2xl font-semibold text-white">
                             {semesterCourses.filter((c) => c.credits > 0 && c.gradePoints > 0).reduce((sum, c) => sum + c.credits, 0).toFixed(1)}
                           </p>
                         </div>
-                        <div className="text-center glass-dark p-4 rounded-xl border border-primary/20">
+                        <div className="text-center glass p-4 rounded-xl border border-primary/20 shadow-inner">
                           <p className="text-white/70 text-sm mb-1">Performance</p>
                           <p className="text-2xl font-semibold text-primary">
                             {semesterGPA >= 9 ? "Excellent" : semesterGPA >= 8 ? "Very Good" : semesterGPA >= 7 ? "Good" : semesterGPA >= 6 ? "Average" : "Needs Improvement"}

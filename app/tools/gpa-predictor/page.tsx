@@ -207,13 +207,13 @@ export default function GPAPredictor() {
   }
 
   return (
-    <main className="min-h-screen bg-black flex flex-col">
+    <main className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex-1 py-20 px-4 sm:px-6 lg:px-8">
-        {/* Background animations */}
-        <div className="absolute inset-0 overflow-hidden -z-10">
-          <div className="absolute top-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
+        {/* Background glow effects */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -238,7 +238,7 @@ export default function GPAPredictor() {
           </div>
 
           {/* Selection Cards */}
-          <div className="glass-dark rounded-xl p-8 border border-primary/30 mb-6">
+          <div className="glass rounded-xl p-8 border border-primary/20 mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Degree Selection */}
               <div>
@@ -246,7 +246,7 @@ export default function GPAPredictor() {
                 <select
                   value={selectedDegree}
                   onChange={(e) => handleDegreeChange(e.target.value as "data-science" | "electronic-systems")}
-                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 transition-all duration-300 appearance-none cursor-pointer"
+                  className="w-full p-4 rounded-lg bg-black/30 border border-primary/20 text-white focus:outline-none focus:border-primary hover:border-primary/60 transition-all duration-300 appearance-none cursor-pointer shadow-inner"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -267,7 +267,7 @@ export default function GPAPredictor() {
                   value={selectedLevel}
                   onChange={(e) => handleLevelChange(e.target.value as "foundation" | "diploma" | "degree")}
                   disabled={!selectedDegree}
-                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 appearance-none cursor-pointer"
+                  className="w-full p-4 rounded-lg bg-black/30 border border-primary/20 text-white focus:outline-none focus:border-primary hover:border-primary/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 appearance-none cursor-pointer shadow-inner"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -291,7 +291,7 @@ export default function GPAPredictor() {
                   value={selectedCourse?.id || ""}
                   onChange={(e) => handleCourseChange(e.target.value)}
                   disabled={!selectedLevel || availableCourses.length === 0}
-                  className="w-full p-4 rounded-lg bg-black/50 border border-primary/30 text-white focus:outline-none focus:border-primary hover:border-primary/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 appearance-none cursor-pointer"
+                  className="w-full p-4 rounded-lg bg-black/30 border border-primary/20 text-white focus:outline-none focus:border-primary hover:border-primary/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 appearance-none cursor-pointer shadow-inner"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -314,9 +314,9 @@ export default function GPAPredictor() {
           {selectedCourse && (
             <>
               {/* Course Info Card */}
-              <div className="glass-dark rounded-xl p-8 border border-primary/30 mb-6">
+              <div className="glass rounded-xl p-8 border border-primary/20 mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
                 <h3 className="text-white font-semibold text-xl mb-4">{selectedCourse.name}</h3>
-                <div className="bg-black/50 rounded-lg p-4 border border-primary/20">
+                <div className="bg-black/30 rounded-lg p-4 border border-primary/20 shadow-inner">
                   <p className="text-white/70 text-sm mb-2">Formula:</p>
                   <p className="text-primary font-mono text-sm">{selectedCourse.formula}</p>
                 </div>
@@ -329,7 +329,7 @@ export default function GPAPredictor() {
               </div>
 
               {/* Input Fields */}
-              <div className="glass-dark rounded-xl p-8 border border-primary/30 mb-6">
+              <div className="glass rounded-xl p-8 border border-primary/20 mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
                 <h3 className="text-white font-semibold text-lg mb-6">Enter Your Current Marks</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {selectedCourse.formFields
@@ -353,7 +353,7 @@ export default function GPAPredictor() {
                             if (val < 0) handleInputChange(field.id, "0", field.max)
                           }}
                           placeholder={field.description}
-                          className="w-full p-3 rounded-lg bg-black/50 border border-primary/30 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                          className="w-full p-3 rounded-lg bg-black/30 border border-primary/20 text-white placeholder:text-white/30 focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(212,175,55,0.3)] transition-all shadow-inner"
                         />
                       </div>
                     ))}
@@ -378,7 +378,7 @@ export default function GPAPredictor() {
 
               {/* Predictions Results */}
               {predictions.length > 0 && (
-                <div className="relative glass-dark rounded-2xl p-8 border-2 border-primary/50 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                <div className="relative glass rounded-2xl p-8 border-2 border-primary/40 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 rounded-2xl"></div>
                   <div className="relative">
                     <h3 className="text-white font-semibold text-xl mb-6 text-center">
@@ -389,9 +389,9 @@ export default function GPAPredictor() {
                       {predictions.map((pred) => (
                         <div
                           key={pred.grade}
-                          className={`glass-dark p-6 rounded-xl border-2 transition-all ${
+                          className={`glass p-6 rounded-xl border-2 transition-all shadow-inner ${
                             pred.possible
-                              ? "border-primary/30 hover:border-primary/50"
+                              ? "border-primary/30 hover:border-primary/50 hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]"
                               : "border-red-500/30 opacity-60"
                           }`}
                         >
