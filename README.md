@@ -6,7 +6,7 @@ Official website for Nallamala House, IIT Madras BS Degree Program. A comprehens
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/PRODHOSH/nallamala-website.git
+git clone github.com/Nallamala-House/updated-nallamala
 cd nallamala-house-website
 ```
 
