@@ -28,7 +28,6 @@ export default function Events() {
   const [search, setSearch] = useState("")
   const [expandedId, setExpandedId] = useState<number | null>(null)
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null)
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -436,10 +435,7 @@ export default function Events() {
               onClick={() => setSelectedEvent(event)}
               className="transition-all duration-300 flex flex-col rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
             >
-              <div
-                className="relative h-[420px] bg-black overflow-hidden"
-                onClick={() => setSelectedImage(event.image)}
-              >
+              <div className="relative h-[420px] bg-black overflow-hidden">
                 <Image
                   src={event.image}
                   alt={event.title}
@@ -520,66 +516,79 @@ export default function Events() {
 
       {/* Selected Event Modal */}
       {selectedEvent && (
-        <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4"
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
           onClick={() => setSelectedEvent(null)}
         >
-          <div
-            className="bg-black border border-white/10 rounded-xl max-w-2xl w-full overflow-hidden relative"
+          <div 
+            className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Close Button */}
             <button
               onClick={() => setSelectedEvent(null)}
-              className="absolute top-3 right-3 text-white/60 hover:text-white"
+              className="sticky top-4 left-full ml-4 z-10 bg-black/70 hover:bg-black/90 text-white p-3 rounded-full transition shadow-lg"
             >
-              ✕
+              <X size={24} />
             </button>
 
-            <div className="relative h-[300px] bg-black">
-              <Image
-                src={selectedEvent.image}
-                alt={selectedEvent.title}
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-white mb-2">
-                {selectedEvent.title}
-              </h2>
-              <div className="text-white/70 mb-4">
-                {selectedEvent.description}
-              </div>
-              <div className="text-white/60 text-sm">
-                {selectedEvent.date}
-                {selectedEvent.location && <> • {selectedEvent.location}</>}
+            {/* Image Section - Full Visible */}
+            <div className="relative w-full bg-black/50 rounded-t-2xl overflow-hidden -mt-14">
+              <div className="relative w-full h-[400px]">
+                <Image
+                  src={selectedEvent.image}
+                  alt={selectedEvent.title}
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
-          </div>
-        </div>
-      )}
 
-      {/* Image Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="relative max-w-6xl max-h-[90vh] w-full h-full">
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 z-10 text-white hover:text-primary p-2 bg-black/50 rounded-full"
-            >
-              <X size={32} />
-            </button>
-            <Image
-              src={selectedImage}
-              alt="Event image"
-              fill
-              className="object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
+            {/* Content Section */}
+            <div className="p-8 space-y-6">
+              {/* Title and Date */}
+              <div className="border-b border-white/10 pb-4">
+                <h2 className="text-4xl font-serif font-bold text-white mb-3">{selectedEvent.title}</h2>
+                <div className="flex items-center gap-3 text-primary text-lg">
+                  <Calendar size={20} />
+                  <span>{selectedEvent.date}</span>
+                  {selectedEvent.location && (
+                    <>
+                      <span className="text-white/40">•</span>
+                      <span className="text-white/80">{selectedEvent.location}</span>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Description */}
+              <div className="space-y-3">
+                {(() => {
+                  // Extract text content from description
+                  let content = '';
+                  if (typeof selectedEvent.description === 'string') {
+                    content = selectedEvent.description;
+                  } else if (selectedEvent.description?.props?.children) {
+                    const children = selectedEvent.description.props.children;
+                    // Handle array of children or single child
+                    if (Array.isArray(children)) {
+                      content = children.join('');
+                    } else if (typeof children === 'string') {
+                      content = children;
+                    }
+                  }
+                  
+                  // Split by new lines and display each paragraph
+                  const paragraphs = content.split('\n').filter((line: string) => line.trim());
+
+                  return paragraphs.map((paragraph, index) => (
+                    <p key={index} className="text-white/70 leading-relaxed text-base">
+                      {paragraph.trim()}
+                    </p>
+                  ));
+                })()}
+              </div>
+            </div>
           </div>
         </div>
       )}
