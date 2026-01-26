@@ -264,10 +264,10 @@ export default function CouncilPage() {
           name: "Pavithra Chakravarthy",
           role: "Website Manager",
           message: "Crafting seamless digital experiences.",
-          email: "pavithra@nallamala.house",
-          linkedin: "linkedin.com/in/pavithra-chakravarthy",
+          email: "24f2005798@ds.study.iitm.ac.in",
+          linkedin: "https://www.linkedin.com/in/pavithra-chakravarthy-98a940312?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
           image: "/images/2025-26/website_manager_2.jpeg",
-          bio: "Oversees content management, user experience, and ensures our website reflects the vibrant spirit of Nallamala House.",
+          bio: "Website Manager — managing the maintenance and reliability of the official house website.",
         },
         {
           id: 7,
