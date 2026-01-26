@@ -40,7 +40,7 @@ export default function RootLayout({
           opacity: 0.59
         }}>
           <Beams
-            beamWidth={3}
+            beamWidth={3.3}
             beamHeight={30}
             beamNumber={20}
             lightColor="#ffd700"
