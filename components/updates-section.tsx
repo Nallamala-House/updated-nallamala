@@ -3,45 +3,53 @@
 import { useState } from "react"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-import { Search, ExternalLink } from "lucide-react"
+import { ExternalLink } from "lucide-react"
+
+type UpdateItem = {
+  slug: string
+  title: string
+  excerpt: string
+  image: string
+  category: "Course Registration" | "Update"
+  date: string
+  externalLink?: string
+}
 
 export default function UpdatesSection() {
-  const [searchQuery, setSearchQuery] = useState("")
+  const [searchQuery] = useState("")
 
-  const updates = [
+  const updates: UpdateItem[] = [
     {
-      slug: "data science course registration",
+      slug: "data-science-course-registration",
       title: "Data Science Course Registration",
       excerpt: "Course Registration for January term 2026",
       image: "/images/updates/iitm.jpeg",
       category: "Course Registration",
       date: "Deadline Passed",
-      externalLink: ""
     },
     {
-      slug: "electronics system course registration",
+      slug: "electronics-system-course-registration",
       title: "Electronics System Course Registration",
       excerpt: "Course Registration for January term 2026",
       image: "/images/updates/iitm.jpeg",
       category: "Course Registration",
       date: "Deadline Passed",
-      externalLink: ""
     },
     {
-      slug: "paradox in margazhi",
-      title: "Paradox In Margazhi",
-      excerpt: "Paradox in Margazhi, 2026",
-      image: "/images/updates/magzi.jpeg",
-      category: "Event",
-      date: "Deadline Passed",
-      externalLink: "https://iitmparadox.org/events",
-      imagePosition: "object-[46%]" 
+      slug: "profile-update",
+      title: "Profile Update",
+      excerpt: "Update your student profile",
+      image: "/images/updates/iitm.jpeg",
+      category: "Update",
+      date: "Ongoing",
+      externalLink:
+        "https://ds.study.iitm.ac.in/student_dashboard/profile_update",
     },
   ]
 
-  const categoryColors: { [key: string]: string } = {
+  const categoryColors: Record<UpdateItem["category"], string> = {
     "Course Registration": "bg-yellow-500/50 text-white border-yellow-500/30",
-    "Event": "bg-purple-500/70 text-white border-purple-500/30",
+    Update: "bg-yellow-500/50 text-white border-yellow-500/30",
   }
 
   const filteredUpdates = updates.filter(
@@ -51,44 +59,44 @@ export default function UpdatesSection() {
   )
 
   return (
-    <section id="updates" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section id="updates" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">
             Latest <span className="text-primary">Updates</span>
           </h2>
           <div className="h-1 w-20 bg-primary mx-auto mt-4 rounded-full opacity-50" />
         </div>
 
-        {/* Updates Grid */}
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredUpdates.map((update, index) => (
+          {filteredUpdates.map((update) => (
             <article
-              key={`${update.slug}-${index}`}
+              key={update.slug}
               className="glass-dark rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300 flex flex-col group"
             >
-              {/* Optimized Image Container */}
-              <div className="relative h-64 w-full overflow-hidden bg-black flex items-center justify-center">
+              {/* Image container (REQUIRED for fill) */}
+              <div className="relative h-64 w-full bg-black flex items-center justify-center overflow-hidden">
                 <Image
                   src={update.image}
                   alt={update.title}
                   fill
-
-                  className={`transition-transform duration-500 group-hover:scale-105 ${
-                    update.category === "Course Registration" 
-                    ? "object-contain p-2" 
-                    : "object-cover"
-                  } ${update.imagePosition || ""}`}
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
+
                 <div className="absolute top-4 left-4 z-10">
-                  <Badge className={`border shadow-lg ${categoryColors[update.category]}`}>
+                  <Badge
+                    className={`border shadow-lg ${categoryColors[update.category]}`}
+                  >
                     {update.category}
                   </Badge>
                 </div>
               </div>
 
-              {/* Card Content */}
+              {/* Content */}
               <div className="p-6 flex flex-col flex-1">
                 <span className="text-white/50 text-[10px] font-bold uppercase tracking-[0.2em] mb-3">
                   {update.date}
@@ -98,23 +106,22 @@ export default function UpdatesSection() {
                   {update.title}
                 </h3>
 
-                <p className="text-white/70 text-sm mb-6 flex-1 leading-relaxed">
+                <p className="text-white/70 text-sm mb-6 flex-1">
                   {update.excerpt}
                 </p>
 
-                {/* Action Button */}
                 {update.date === "Deadline Passed" ? (
-                  <div className="inline-flex items-center justify-center w-full bg-white/5 text-white/30 border border-white/5 rounded-lg py-3 text-sm font-semibold cursor-not-allowed">
+                  <div className="w-full bg-white/5 text-white/30 border border-white/5 rounded-lg py-3 text-sm font-semibold text-center cursor-not-allowed">
                     Registration Closed
                   </div>
                 ) : (
                   <a
-                    href={update.externalLink || "#"}
+                    href={update.externalLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 w-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 rounded-lg py-3 transition-all text-sm font-bold"
                   >
-                    Register Now
+                    Update Now
                     <ExternalLink size={16} />
                   </a>
                 )}
