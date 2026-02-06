@@ -5,15 +5,42 @@ import { useRouter } from "next/navigation"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
+import { supabase } from "@/lib/supabaseClient"
 
 export default function Queries() {
   const router = useRouter()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const authStatus = localStorage.getItem('isAuthenticated') === 'true'
-    setIsAuthenticated(authStatus)
+    const checkAuth = async () => {
+      // Get initial session
+      const { data: { session } } = await supabase.auth.getSession()
+      setIsAuthenticated(!!session)
+      setLoading(false)
+
+      // Listen for auth changes
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        setIsAuthenticated(!!session)
+      })
+
+      return () => subscription.unsubscribe()
+    }
+
+    checkAuth()
   }, [])
+
+  // Prevent UI flickering while checking session
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-black">
+        <Navbar />
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      </main>
+    )
+  }
 
   return (
     <main className="min-h-screen">
@@ -25,8 +52,9 @@ export default function Queries() {
           <div className="absolute top-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
           <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
         </div>
-        <div className="max-w-2xl w-full text-center relative">
-          <div className="glass p-16 rounded-2xl border border-primary/20 shadow-[0_0_30px_rgba(212,175,55,0.15)]">
+        
+        <div className="max-w-2xl w-full text-center relative z-10">
+          <div className="glass p-16 rounded-2xl border border-primary/20 shadow-[0_0_30px_rgba(212,175,55,0.15)] bg-black/40 backdrop-blur-md">
             {!isAuthenticated ? (
               <>
                 <div className="w-24 h-24 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
@@ -40,7 +68,7 @@ export default function Queries() {
                 </p>
                 <Button 
                   onClick={() => router.push('/signin')}
-                  className="bg-primary hover:bg-primary/90 text-black font-bold text-lg px-10 py-6 rounded-xl"
+                  className="bg-primary hover:bg-primary/90 text-black font-bold text-lg px-10 py-6 rounded-xl transition-all active:scale-95"
                 >
                   Sign In to Access
                 </Button>
@@ -56,6 +84,13 @@ export default function Queries() {
                 <p className="text-white/70 text-lg mb-10 max-w-lg mx-auto">
                   We're working on bringing you a comprehensive Q&A platform. Stay tuned for updates!
                 </p>
+                <Button 
+                  onClick={() => router.push('/tools')}
+                  variant="outline"
+                  className="border-primary/50 text-primary hover:bg-primary/10 font-bold px-8 py-4 rounded-xl"
+                >
+                  Explore Other Tools
+                </Button>
               </>
             )}
           </div>

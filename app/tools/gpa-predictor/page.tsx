@@ -19,20 +19,20 @@ interface GradePrediction {
 
 export default function GPAPredictor() {
   const router = useRouter()
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  // const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [selectedDegree, setSelectedDegree] = useState<"data-science" | "electronic-systems" | "">("")
   const [selectedLevel, setSelectedLevel] = useState<"foundation" | "diploma" | "degree" | "">("")
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null)
   const [formValues, setFormValues] = useState<Record<string, number>>({})
   const [predictions, setPredictions] = useState<GradePrediction[]>([])
 
-  useEffect(() => {
-    const authStatus = localStorage.getItem('isAuthenticated') === 'true'
-    setIsAuthenticated(authStatus)
-    if (!authStatus) {
-      router.push('/signin')
-    }
-  }, [router])
+  // useEffect(() => {
+  //   const authStatus = localStorage.getItem('isAuthenticated') === 'true'
+  //   setIsAuthenticated(authStatus)
+  //   if (!authStatus) {
+  //     router.push('/signin')
+  //   }
+  // }, [router])
 
   // Filter courses based on degree and level
   const availableLevels = selectedDegree
@@ -202,9 +202,9 @@ export default function GPAPredictor() {
     setPredictions([])
   }
 
-  if (!isAuthenticated) {
-    return null
-  }
+  // if (!isAuthenticated) {
+  //   return null
+  // }
 
   return (
     <main className="min-h-screen flex flex-col">

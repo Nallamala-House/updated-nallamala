@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Search, FileText, Book, ClipboardList, ExternalLink, Filter, BookOpen, GraduationCap, FileCheck, Sparkles, ChevronDown } from "lucide-react"
+import { supabase } from "@/lib/supabaseClient"
 
 // Official Documents - Categorized
 const officialDocuments = {
@@ -95,14 +96,31 @@ export default function ResourcesPage() {
   const [selectedSubject, setSelectedSubject] = useState("all")
   const router = useRouter()
 
-  useEffect(() => {
-    const authStatus = localStorage.getItem("isAuthenticated")
-    if (authStatus === "true") {
+useEffect(() => {
+  const checkSession = async () => {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession()
+
+    if (session) {
       setIsAuthenticated(true)
-      // Expand first category by default for documents
       setExpandedCategory("academic")
+    } else {
+      setIsAuthenticated(false)
     }
-  }, [])
+  }
+
+  checkSession()
+}, [])
+
+  // useEffect(() => {
+  //   const authStatus = localStorage.getItem("isAuthenticated")
+  //   if (authStatus === "true") {
+  //     setIsAuthenticated(true)
+  //     // Expand first category by default for documents
+  //     setExpandedCategory("academic")
+  //   }
+  // }, [])
 
   // Get available subjects based on selected stream and level
   const availableSubjects = Array.from(

@@ -5,17 +5,25 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import { supabase } from "@/lib/supabaseClient"
 
 export default function SignIn() {
   const router = useRouter()
 
-  const handleGoogleSignIn = () => {
-    // Add your Google OAuth logic here
-    console.log("IIT Madras Sign In clicked")
-    // For testing: set a flag in localStorage
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('isAuthenticated', 'true')
-      router.push("/")
+  const handleGoogleSignIn = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${location.origin}/auth/callback`,
+        queryParams: {
+          hd: "study.iitm.ac.in",
+        },
+      },
+    })
+
+    if (error) {
+      console.error(error.message)
+      alert("Authentication failed")
     }
   }
 
@@ -24,30 +32,30 @@ export default function SignIn() {
       <Navbar />
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-32">
         <div className="w-full max-w-md">
-          {/* Background animations */}
           <div className="absolute inset-0 overflow-hidden -z-10">
             <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
             <div className="absolute bottom-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
           </div>
 
-          {/* Form Container */}
           <div className="glass-dark p-8 rounded-2xl border border-primary/30 hover:border-primary/60 transition-all duration-300">
-            {/* Header */}
             <div className="text-center mb-8">
               <Link href="/" className="inline-block mb-6">
                 <div className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mx-auto">
-                  <img 
-                    src="/images/nallamala_house_iit_madras_logo.jpg" 
-                    alt="Nallamala House Logo" 
+                  <img
+                    src="/images/nallamala_house_iit_madras_logo.jpg"
+                    alt="Nallamala House Logo"
                     className="w-full h-full object-cover"
                   />
                 </div>
               </Link>
-              <h1 className="text-3xl font-serif font-bold text-white mb-2">Welcome Back</h1>
-              <p className="text-white/70">Sign in with your IIT Madras account</p>
+              <h1 className="text-3xl font-serif font-bold text-white mb-2">
+                Welcome Back
+              </h1>
+              <p className="text-white/70">
+                Sign in with your IIT Madras account
+              </p>
             </div>
 
-            {/* IIT Madras Sign In Button */}
             <div className="space-y-6">
               <Button
                 onClick={handleGoogleSignIn}
@@ -62,20 +70,25 @@ export default function SignIn() {
                 </svg>
                 Sign in with IIT Madras
               </Button>
-              <p className="text-center text-white/50 text-xs">Use your study.iitm.ac.in account</p>
+              <p className="text-center text-white/50 text-xs">
+                Use your study.iitm.ac.in account
+              </p>
             </div>
 
-            {/* Divider */}
             <div className="my-6 flex items-center gap-3">
               <div className="flex-1 h-px bg-primary/20"></div>
-              <span className="text-white/40 text-sm">or continue with email</span>
+              <span className="text-white/40 text-sm">
+                or continue with email
+              </span>
               <div className="flex-1 h-px bg-primary/20"></div>
             </div>
 
-            {/* Footer */}
             <p className="text-center text-white/70 text-sm">
               Don't have an account?{" "}
-              <Link href="/signup" className="text-primary hover:text-primary/80 transition font-semibold">
+              <Link
+                href="/signup"
+                className="text-primary hover:text-primary/80 transition font-semibold"
+              >
                 Sign up
               </Link>
             </p>

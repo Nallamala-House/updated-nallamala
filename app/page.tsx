@@ -1,6 +1,7 @@
-"use client"
+import { redirect } from "next/navigation"
+import { cookies } from "next/headers"
+import { createServerClient } from "@supabase/ssr"
 
-import { useEffect } from "react"
 import Navbar from "@/components/navbar"
 import HeroSection from "@/components/hero-section"
 import VideoSection from "@/components/video-section"
@@ -9,44 +10,44 @@ import RegionalCarousel from "@/components/regional-carousel"
 import UpdatesSection from "@/components/updates-section"
 import Footer from "@/components/footer"
 
-export default function Home() {
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px"
+export default async function Page() {
+  // cookies() IS ASYNC in Next 16
+  const cookieStore = await cookies()
+
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return cookieStore.get(name)?.value
+        },
+        set(name: string, value: string, options) {
+          cookieStore.set({ name, value, ...options })
+        },
+        remove(name: string, options) {
+          cookieStore.set({ name, value: "", ...options })
+        },
+      },
     }
+  )
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate-in")
-        }
-      })
-    }, observerOptions)
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
 
-    // Observe all sections
-    const sections = document.querySelectorAll(".scroll-animate")
-    sections.forEach((section) => observer.observe(section))
-
-    return () => observer.disconnect()
-  }, [])
+  // if (!session) {
+  //   redirect("/signin")
+  // }
 
   return (
     <main className="min-h-screen">
       <Navbar />
       <HeroSection />
-      <div className="scroll-animate">
-        <VideoSection />
-      </div>
-      <div className="scroll-animate">
-        <AboutSection />
-      </div>
-      <div className="scroll-animate">
-        <UpdatesSection />
-      </div>
-      <div className="scroll-animate">
-        <RegionalCarousel />
-      </div>
+      <VideoSection />
+      <AboutSection />
+      <UpdatesSection />
+      <RegionalCarousel />
       <Footer />
     </main>
   )

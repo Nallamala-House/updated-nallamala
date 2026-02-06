@@ -1,10 +1,6 @@
 import { Suspense } from "react"
 import CouncilClient from "./CouncilClient"
 
-function CouncilContent() {
-  return <CouncilClient />
-}
-
 export default function Page() {
   return (
     <Suspense
@@ -14,7 +10,7 @@ export default function Page() {
         </div>
       }
     >
-      <CouncilContent />
+      <CouncilClient />
     </Suspense>
   )
 }

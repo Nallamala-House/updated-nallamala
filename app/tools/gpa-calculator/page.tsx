@@ -30,7 +30,7 @@ const gradePointsOptions = [
 
 export default function GPACalculator() {
   const router = useRouter()
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  // const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [activeTab, setActiveTab] = useState<"course" | "semester">("course")
   
   // Course Grade Calculator State
@@ -63,13 +63,13 @@ export default function GPACalculator() {
     return totalGradePoints / totalCredits
   })()
 
-  useEffect(() => {
-    const authStatus = localStorage.getItem('isAuthenticated') === 'true'
-    setIsAuthenticated(authStatus)
-    if (!authStatus) {
-      router.push('/signin')
-    }
-  }, [router])
+  // useEffect(() => {
+  //   const authStatus = localStorage.getItem('isAuthenticated') === 'true'
+  //   setIsAuthenticated(authStatus)
+  //   if (!authStatus) {
+  //     router.push('/signin')
+  //   }
+  // }, [router])
 
   // Filter courses based on degree and level
   const availableLevels = selectedDegree
@@ -209,9 +209,9 @@ export default function GPACalculator() {
     setSemesterCourses([{ id: "1", name: "", credits: 0, gradePoints: 0 }])
   }
 
-  if (!isAuthenticated) {
-    return null
-  }
+  // if (!isAuthenticated) {
+  //   return null
+  // }
 
   return (
     <main className="min-h-screen flex flex-col">
