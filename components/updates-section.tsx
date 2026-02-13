@@ -10,8 +10,8 @@ type UpdateItem = {
   title: string
   excerpt: string
   image: string
-  category: "Course Registration" | "Update"
-  date: string
+  category: "Registration" | "Update"
+  date: "Deadline Passed" | "Ongoing" | "Upcoming"
   externalLink?: string
 }
 
@@ -20,35 +20,38 @@ export default function UpdatesSection() {
 
   const updates: UpdateItem[] = [
     {
-      slug: "data-science-course-registration",
-      title: "Data Science Course Registration",
-      excerpt: "Course Registration for January term 2026",
-      image: "/images/updates/iitm.jpeg",
-      category: "Course Registration",
-      date: "Deadline Passed",
-    },
-    {
-      slug: "electronics-system-course-registration",
-      title: "Electronics System Course Registration",
-      excerpt: "Course Registration for January term 2026",
-      image: "/images/updates/iitm.jpeg",
-      category: "Course Registration",
-      date: "Deadline Passed",
-    },
-    {
       slug: "profile-update",
       title: "Profile Update",
       excerpt: "Update your student profile",
       image: "/images/updates/iitm.jpeg",
       category: "Update",
-      date: "Ongoing",
+      date: "Deadline Passed",
       externalLink:
         "https://ds.study.iitm.ac.in/student_dashboard/profile_update",
+    },
+    {
+      slug: "SCT Registration Window 2",
+      title: "SCT Registration Window 2",
+      excerpt: "SCT Registration",
+      image: "/images/updates/iitm.jpeg",
+      category: "Registration",
+      date: "Ongoing",
+      externalLink:
+        "https://exams.study.iitm.ac.in/courses/ns_26t1_sct"
+    },
+    {
+      slug: "City Change Window",
+      title: "City Change Window",
+      excerpt: "City Change Window",
+      image: "/images/updates/iitm.jpeg",
+      category: "Update",
+      date: "Upcoming",
     },
   ]
 
   const categoryColors: Record<UpdateItem["category"], string> = {
-    "Course Registration": "bg-yellow-500/50 text-white border-yellow-500/30",
+    "Registration":
+      "bg-yellow-500/50 text-white border-yellow-500/30",
     Update: "bg-yellow-500/50 text-white border-yellow-500/30",
   }
 
@@ -76,7 +79,7 @@ export default function UpdatesSection() {
               key={update.slug}
               className="glass-dark rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300 flex flex-col group"
             >
-              {/* Image container (REQUIRED for fill) */}
+              {/* Image */}
               <div className="relative h-64 w-full bg-black flex items-center justify-center overflow-hidden">
                 <Image
                   src={update.image}
@@ -110,9 +113,14 @@ export default function UpdatesSection() {
                   {update.excerpt}
                 </p>
 
+                {/* Action Button */}
                 {update.date === "Deadline Passed" ? (
                   <div className="w-full bg-white/5 text-white/30 border border-white/5 rounded-lg py-3 text-sm font-semibold text-center cursor-not-allowed">
                     Registration Closed
+                  </div>
+                ) : update.date === "Upcoming" ? (
+                  <div className="w-full bg-primary/10 text-primary border border-primary/30 rounded-lg py-3 text-sm font-semibold text-center">
+                    Upcoming
                   </div>
                 ) : (
                   <a
@@ -121,7 +129,7 @@ export default function UpdatesSection() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 w-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 rounded-lg py-3 transition-all text-sm font-bold"
                   >
-                    Update Now
+                    Register Now
                     <ExternalLink size={16} />
                   </a>
                 )}
