@@ -45,7 +45,8 @@ export default function UpdatesSection() {
       excerpt: "City Change Window",
       image: "/images/updates/iitm.jpeg",
       category: "Update",
-      date: "Upcoming",
+      date: "Ongoing",
+      externalLink: "https://study.iitm.ac.in/ds/",
     },
   ]
 
