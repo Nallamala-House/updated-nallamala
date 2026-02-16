@@ -11,8 +11,9 @@ type UpdateItem = {
   excerpt: string
   image: string
   category: "Registration" | "Update"
-  date: "Deadline Passed" | "Ongoing" | "Upcoming"
+  date: "Deadline Passed" | "Ongoing" | "Upcoming" | "18th feb deadline"
   externalLink?: string
+  buttonText?: string
 }
 
 export default function UpdatesSection() {
@@ -35,18 +36,19 @@ export default function UpdatesSection() {
       excerpt: "SCT Registration",
       image: "/images/updates/iitm.jpeg",
       category: "Registration",
-      date: "Ongoing",
+      date: "Deadline Passed",
       externalLink:
         "https://exams.study.iitm.ac.in/courses/ns_26t1_sct"
     },
     {
       slug: "City Change Window",
-      title: "City Change Window",
-      excerpt: "City Change Window",
+      title: "Quiz - 1 Exam City Change",
+      excerpt: "Use IITM mail to access",
       image: "/images/updates/iitm.jpeg",
       category: "Update",
-      date: "Ongoing",
-      externalLink: "https://study.iitm.ac.in/ds/",
+      date: "18th feb deadline",
+      externalLink: "https://ds.study.iitm.ac.in/student_dashboard/edit_exam_city_preference/",
+      buttonText: "Change Now"
     },
   ]
 
@@ -130,7 +132,7 @@ export default function UpdatesSection() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 w-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 rounded-lg py-3 transition-all text-sm font-bold"
                   >
-                    Register Now
+                    {update.buttonText || "Register Now"}
                     <ExternalLink size={16} />
                   </a>
                 )}
