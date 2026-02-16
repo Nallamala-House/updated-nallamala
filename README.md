@@ -17,3 +17,4 @@ Open [http://localhost:3000](http://localhost:3000) in a browser.
 
 Proprietary and confidential.
 All rights reserved. The source code may not be copied, modified, distributed, or used without written permission from the Nallamala House Council.
+
