@@ -46,7 +46,7 @@ export default function UpdatesSection() {
       excerpt: "Use IITM mail to access",
       image: "/images/updates/iitm.jpeg",
       category: "Update",
-      date: "18th feb deadline",
+      date: "Deadline Passed",
       externalLink: "https://ds.study.iitm.ac.in/student_dashboard/edit_exam_city_preference/",
       buttonText: "Change Now"
     },
