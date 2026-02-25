@@ -4,8 +4,9 @@ import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-import { Instagram, Link as LinkIcon, X, Calendar, Linkedin } from "lucide-react"
+import { Instagram, Link as LinkIcon, X, Calendar, Linkedin, ArrowLeft } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 type CommunityEvent = {
   id: number
@@ -298,6 +299,17 @@ export default function CommunityDetail() {
         </div>
 
         <div className="max-w-6xl mx-auto">
+          {/* Back Button */}
+          <div className="mb-8">
+            <Link
+              href="/communities"
+              className="inline-flex items-center gap-2 text-white/70 hover:text-primary transition-colors duration-200 text-sm font-medium group"
+            >
+              <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform duration-200" />
+              Back to Communities
+            </Link>
+          </div>
+
           {/* Hero Section */}
           <div className="relative mb-16 rounded-2xl overflow-hidden border border-primary/30">
             <div className="relative h-96">
@@ -406,44 +418,48 @@ export default function CommunityDetail() {
       {/* Event Modal */}
       {selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
-          <div className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
-            {/* Header with Image */}
-            <div className="relative h-80 overflow-hidden">
+          <div className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row">
+            {/* Left — Image */}
+            <div className="relative md:w-1/2 h-72 md:h-auto flex-shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl">
               <Image
                 src={selectedEvent.image}
                 alt={selectedEvent.title}
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+
+            {/* Right — Details */}
+            <div className="relative flex-1 flex flex-col overflow-y-auto">
               <button
                 onClick={() => setSelectedEvent(null)}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition"
+                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition z-10"
               >
                 <X size={24} />
               </button>
-              <div className="absolute bottom-6 left-6 right-6">
-                <h2 className="text-4xl font-serif font-bold text-white mb-3">{selectedEvent.title}</h2>
-                <div className="flex items-center gap-2 text-primary text-lg">
-                  <Calendar size={20} />
+
+              <div className="p-8 space-y-4">
+                <h2 className="text-3xl font-serif font-bold text-white pr-10">{selectedEvent.title}</h2>
+                <div className="flex items-center gap-2 text-primary text-base">
+                  <Calendar size={18} />
                   <span>{selectedEvent.date}</span>
                 </div>
-              </div>
-            </div>
 
-            {/* Content */}
-            <div className="p-8 space-y-4">
-              {selectedEvent.guest && (
-                <div className="glass-dark p-4 rounded-lg border border-primary/20">
-                  <p className="text-white font-semibold">{selectedEvent.guest}</p>
+                {selectedEvent.guest && (
+                  <div className="glass-dark p-4 rounded-lg border border-primary/20">
+                    <p className="text-white font-semibold">{selectedEvent.guest}</p>
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  {selectedEvent.description.split('\n\n').map((paragraph, index) => (
+                    <p key={index} className="text-white/70 leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
-              )}
-              
-              {selectedEvent.description.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="text-white/70 leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
+              </div>
             </div>
           </div>
         </div>

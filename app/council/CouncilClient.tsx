@@ -399,7 +399,7 @@ export default function CouncilPage() {
             id: 24,
             name: "Nikhil Kumar",
             role: "Management Member",
-            image: "/images/2024-25/nikhil_kumar.png",
+            image: null,
           },
         ],
         CONTENT: [
