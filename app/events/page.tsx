@@ -516,77 +516,71 @@ export default function Events() {
 
       {/* Selected Event Modal */}
       {selectedEvent && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
           onClick={() => setSelectedEvent(null)}
         >
-          <div 
-            className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto"
+          <div
+            className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedEvent(null)}
-              className="sticky top-4 left-full ml-4 z-10 bg-black/70 hover:bg-black/90 text-white p-3 rounded-full transition shadow-lg"
-            >
-              <X size={24} />
-            </button>
-
-            {/* Image Section - Full Visible */}
-            <div className="relative w-full bg-black/50 rounded-t-2xl overflow-hidden -mt-14">
-              <div className="relative w-full h-[400px]">
-                <Image
-                  src={selectedEvent.image}
-                  alt={selectedEvent.title}
-                  fill
-                  className="object-contain"
-                />
-              </div>
+            {/* Left — Image */}
+            <div className="relative md:w-1/2 h-72 md:h-auto flex-shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl bg-black/50">
+              <Image
+                src={selectedEvent.image}
+                alt={selectedEvent.title}
+                fill
+                className="object-contain"
+              />
             </div>
 
-            {/* Content Section */}
-            <div className="p-8 space-y-6">
-              {/* Title and Date */}
-              <div className="border-b border-white/10 pb-4">
-                <h2 className="text-4xl font-serif font-bold text-white mb-3">{selectedEvent.title}</h2>
-                <div className="flex items-center gap-3 text-primary text-lg">
-                  <Calendar size={20} />
-                  <span>{selectedEvent.date}</span>
-                  {selectedEvent.location && (
-                    <>
-                      <span className="text-white/40">•</span>
-                      <span className="text-white/80">{selectedEvent.location}</span>
-                    </>
-                  )}
+            {/* Right — Details */}
+            <div className="relative flex-1 flex flex-col overflow-y-auto">
+              <button
+                onClick={() => setSelectedEvent(null)}
+                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition z-10"
+              >
+                <X size={24} />
+              </button>
+
+              <div className="p-8 space-y-6">
+                {/* Title and Date */}
+                <div className="border-b border-white/10 pb-4 pr-10">
+                  <h2 className="text-3xl font-serif font-bold text-white mb-3">{selectedEvent.title}</h2>
+                  <div className="flex items-center gap-3 text-primary text-base">
+                    <Calendar size={18} />
+                    <span>{selectedEvent.date}</span>
+                    {selectedEvent.location && (
+                      <>
+                        <span className="text-white/40">•</span>
+                        <span className="text-white/80">{selectedEvent.location}</span>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              {/* Description */}
-              <div className="space-y-3">
-                {(() => {
-                  // Extract text content from description
-                  let content = '';
-                  if (typeof selectedEvent.description === 'string') {
-                    content = selectedEvent.description;
-                  } else if (selectedEvent.description?.props?.children) {
-                    const children = selectedEvent.description.props.children;
-                    // Handle array of children or single child
-                    if (Array.isArray(children)) {
-                      content = children.join('');
-                    } else if (typeof children === 'string') {
-                      content = children;
+                {/* Description */}
+                <div className="space-y-3">
+                  {(() => {
+                    let content = '';
+                    if (typeof selectedEvent.description === 'string') {
+                      content = selectedEvent.description;
+                    } else if (selectedEvent.description?.props?.children) {
+                      const children = selectedEvent.description.props.children;
+                      if (Array.isArray(children)) {
+                        content = children.join('');
+                      } else if (typeof children === 'string') {
+                        content = children;
+                      }
                     }
-                  }
-                  
-                  // Split by new lines and display each paragraph
-                  const paragraphs = content.split('\n').filter((line: string) => line.trim());
-
-                  return paragraphs.map((paragraph, index) => (
-                    <p key={index} className="text-white/70 leading-relaxed text-base">
-                      {paragraph.trim()}
-                    </p>
-                  ));
-                })()}
+                    const paragraphs = content.split('\n').filter((line: string) => line.trim());
+                    return paragraphs.map((paragraph, index) => (
+                      <p key={index} className="text-white/70 leading-relaxed text-base">
+                        {paragraph.trim()}
+                      </p>
+                    ));
+                  })()}
+                </div>
               </div>
             </div>
           </div>
