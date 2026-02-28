@@ -23,7 +23,7 @@ const communityData: any = {
     shortDescription: "Bringing together readers and writers to explore literature, engage in discussions, and celebrate the magic of words.",
     image: "/images/communities/chapters_verses.png",
     color: "from-pink-600 to-pink-400",
-    membershipForm: "https://forms.gle/KJNB7MXu4A17hjDK7",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
     instagram: "https://www.instagram.com/chaptersxverses_iitm/",
     aboutUs: `Chapters & Verses is the literary and oratory soul of Nallamala House—a vibrant community of 200+ passionate readers, writers, and storytellers. Founded in 2024, the community was born from a simple yet powerful idea: to create a shared space where words connect minds and stories bring people together.
 
@@ -105,7 +105,7 @@ The session concluded as an enriching and inspiring experience, setting the tone
     shortDescription: "A student-driven community dedicated to nurturing interest and excellence in AI and Data Science.",
     image: "/images/communities/ai_dw.png",
     color: "from-green-600 to-green-400",
-    membershipForm: "https://docs.google.com/forms/d/e/1FAIpQLSfBnfqxe1-qQLNQ7RM0EOHuLMzuo4Ip2F-_-mWDe8hwPA92Pw/viewform",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
     linkedin: "https://www.linkedin.com/company/ai-innovators-data-wizards-aidw-iit-madras/",
     aboutUs: `AIDW is a student-driven community dedicated to nurturing interest and excellence in Artificial Intelligence and Data Science. The club serves as a platform for students who are curious about emerging technologies and eager to transform theoretical knowledge into practical skills. By fostering an environment of collaboration and experimentation, AIDW enables learners from diverse backgrounds to explore AI concepts without barriers related to prior experience or expertise.
 
@@ -165,7 +165,7 @@ The challenge encouraged out-of-the-box thinking, teamwork, and practical applic
     shortDescription: "The coding and developer community empowering students to explore, build, and innovate through technology.",
     image: "/images/communities/shunya.png",
     color: "from-blue-600 to-blue-400",
-    membershipForm: "https://forms.gle/KJNB7MXu4A17hjDK7",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
     instagram: "https://www.instagram.com/shunya_iitm?igsh=aHFtNW83ZHJldHE=",
     linkedin: "https://www.linkedin.com/company/sunya-developers-club/",
     aboutUs: `Shunya is the coding and developer community of Nallamala House, created to empower IIT Madras BS students to explore, build, and innovate through technology. Guided by the belief that "Nothing Seems Difficult," Shunya brings together curious minds, problem-solvers, and creators under one collaborative platform.
@@ -221,7 +221,7 @@ The event reflected Shunya's continued efforts to bring industry-relevant knowle
     shortDescription: "Nallamala houses the official chess community.",
     image: "/images/communities/chess.png",
     color: "from-purple-600 to-purple-400",
-    membershipForm: "https://docs.google.com/forms/d/e/1FAIpQLSeoYlVvpI7QmmNOknWcJiUrmKKpR3r0zl33Fc9ILKjRQ1psRg/viewform",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
     instagram: "https://www.instagram.com/grandmastersguild/",
     linkedin: "https://www.linkedin.com/company/grandmastersguild/",
     aboutUs: `Grandmaster's Guild is the official chess community of Nallamala House, bringing together chess enthusiasts of all skill levels. Whether you're a beginner learning the basics or an experienced player looking to refine your strategies, the guild provides a welcoming space for everyone passionate about the game.
@@ -236,7 +236,7 @@ Recognized as a hub for chess culture within IIT Madras BS, Grandmaster's Guild 
     shortDescription: "Building strong financial awareness, practical understanding, and leadership among students.",
     image: "/images/communities/cifer.png",
     color: "from-yellow-600 to-yellow-400",
-    membershipForm: "https://docs.google.com/forms/d/e/1FAIpQLSfCge_fE_cl-QVgdxbS2choNkcxXnenN2FIl9dptT5SE5Fl2w/viewform",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
     instagram: "https://www.instagram.com/cifer.iitm/",
     aboutUs: `CIFER (Nallamala Finance Community) is a student-led initiative dedicated to building strong financial awareness, practical understanding, and leadership among students. With a growing network of 200+ active members, the community serves as a collaborative space for individuals interested in financial markets, corporate finance, entrepreneurship, and real-world money management.
 
