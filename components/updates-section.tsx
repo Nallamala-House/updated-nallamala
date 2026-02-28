@@ -11,7 +11,7 @@ type UpdateItem = {
   excerpt: string
   image: string
   category: "Registration" | "Update"
-  date: "Deadline Passed" | "Ongoing" | "Upcoming" | "18th feb deadline"
+  date: "Deadline Passed" | "Ongoing" | "Upcoming" | "Deadline : 1st March, 2026"
   externalLink?: string
   buttonText?: string
 }
@@ -41,14 +41,14 @@ export default function UpdatesSection() {
         "https://exams.study.iitm.ac.in/courses/ns_26t1_sct"
     },
     {
-      slug: "City Change Window",
-      title: "Quiz - 1 Exam City Change",
+      slug: "Course Drop Window",
+      title: "Course Drop Window",
       excerpt: "Use IITM mail to access",
       image: "/images/updates/iitm.jpeg",
       category: "Update",
-      date: "Deadline Passed",
-      externalLink: "https://ds.study.iitm.ac.in/student_dashboard/edit_exam_city_preference/",
-      buttonText: "Change Now"
+      date: "Deadline : 1st March, 2026",
+      externalLink: "https://ds.study.iitm.ac.in/student_dashboard/select_drop_course",
+      buttonText: "Drop Now"
     },
   ]
 
