@@ -4,6 +4,7 @@ import { Playfair_Display } from "next/font/google"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Beams from "@/components/Beams"
+import { GlobalLoader } from "@/components/global-loader"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -16,8 +17,8 @@ export const metadata: Metadata = {
     "Nallamala House - A prestigious student housing community at IIT Madras fostering excellence, innovation, and community spirit.",
   generator: "v0.app",
   icons: {
-    icon: "/images/nallamala_house_iit_madras_logo.jpg",
-    apple: "/images/nallamala_house_iit_madras_logo.jpg",
+    icon: "/images/loading_nallamala.jpg",
+    apple: "/images/loading_nallamala.jpg",
   },
 }
 
@@ -29,12 +30,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${_playfair.variable} font-sans antialiased bg-black`} style={{ background: '#000' }}>
-        <div style={{ 
-          position: 'fixed', 
-          top: 0, 
-          left: 0, 
-          width: '100vw', 
-          height: '100vh', 
+        <GlobalLoader />
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
           zIndex: -1,
           pointerEvents: 'none',
           opacity: 0.5

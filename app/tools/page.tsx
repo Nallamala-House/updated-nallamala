@@ -7,6 +7,7 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { supabase } from "@/lib/supabaseClient"
+import { LoadingCube } from "@/components/loading-cube"
 
 export default function Tools() {
   const router = useRouter()
@@ -60,7 +61,7 @@ export default function Tools() {
       <main className="min-h-screen bg-black">
         <Navbar />
         <div className="flex items-center justify-center min-h-screen">
-          <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+          <LoadingCube />
         </div>
       </main>
     )
@@ -88,7 +89,7 @@ export default function Tools() {
               <p className="text-white/70 text-lg mb-10 max-w-lg mx-auto">
                 Please sign in with your IIT Madras account to access academic tools and calculators
               </p>
-              <Button 
+              <Button
                 onClick={() => router.push('/signin')}
                 className="bg-primary hover:bg-primary/90 text-black font-bold text-lg px-10 py-6 rounded-xl transition-all active:scale-95"
               >
@@ -104,7 +105,7 @@ export default function Tools() {
             <div className="absolute top-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
             <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
           </div>
-          
+
           {/* Header */}
           <div className="text-center mb-16 relative z-10">
             <p className="text-primary text-sm uppercase tracking-widest mb-4">Academic Tools</p>
@@ -119,7 +120,7 @@ export default function Tools() {
           {/* Tools Grid */}
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto relative z-10">
             {tools.map((tool, index) => (
-              <Link 
+              <Link
                 key={index}
                 href={tool.link}
                 className="group"
