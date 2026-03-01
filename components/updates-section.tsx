@@ -11,7 +11,7 @@ type UpdateItem = {
   excerpt: string
   image: string
   category: "Registration" | "Update"
-  date: "Deadline Passed" | "Ongoing" | "Upcoming" | "Deadline : 1st March, 2026"
+  date: "Deadline Passed" | "Ongoing" | "Upcoming"
   externalLink?: string
   buttonText?: string
 }
@@ -46,7 +46,7 @@ export default function UpdatesSection() {
       excerpt: "Use IITM mail to access",
       image: "/images/updates/iitm.jpeg",
       category: "Update",
-      date: "Deadline : 1st March, 2026",
+      date: "Deadline Passed",
       externalLink: "https://ds.study.iitm.ac.in/student_dashboard/select_drop_course",
       buttonText: "Drop Now"
     },
