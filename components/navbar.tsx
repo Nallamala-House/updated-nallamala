@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import { supabase } from "@/lib/supabaseClient"
 
 export default function Navbar() {
@@ -13,6 +13,7 @@ export default function Navbar() {
   const [councilDropdown, setCouncilDropdown] = useState(false)
 
   const router = useRouter()
+  const pathname = usePathname()
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   // ============================
@@ -52,8 +53,10 @@ export default function Navbar() {
   const handleAuthAction = async () => {
     if (isAuthenticated) {
       await supabase.auth.signOut()
+      window.dispatchEvent(new Event("start-navigation"))
       router.push("/")
     } else {
+      window.dispatchEvent(new Event("start-navigation"))
       router.push("/signin")
     }
   }
@@ -95,10 +98,14 @@ export default function Navbar() {
   // ============================
   const handleProtectedNav = (href: string, protectedRoute?: boolean) => {
     if (protectedRoute && !isAuthenticated) {
+      window.dispatchEvent(new Event("start-navigation"))
       router.push("/signin")
       return
     }
 
+    if (pathname !== href) {
+      window.dispatchEvent(new Event("start-navigation"))
+    }
     router.push(href)
   }
 
@@ -111,7 +118,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 rounded-full overflow-hidden">
               <img
-                src="/images/nallamala_house_iit_madras_logo.jpg"
+                src="/images/loading_nallamala.jpg"
                 alt="Nallamala House Logo"
                 className="w-full h-full object-cover"
               />
@@ -139,9 +146,8 @@ export default function Navbar() {
                 Council & Team
                 <ChevronDown
                   size={16}
-                  className={`transition-transform ${
-                    councilDropdown ? "rotate-180" : ""
-                  }`}
+                  className={`transition-transform ${councilDropdown ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
