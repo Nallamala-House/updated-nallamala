@@ -5,31 +5,23 @@ import Link from "next/link"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter, usePathname } from "next/navigation"
-import { supabase } from "@/lib/supabaseClient"
+import { useSession, signOut } from "next-auth/react"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [councilDropdown, setCouncilDropdown] = useState(false)
 
   const router = useRouter()
   const pathname = usePathname()
   const dropdownRef = useRef<HTMLDivElement>(null)
 
+  const { data: session, status } = useSession()
+  const isAuthenticated = status === "authenticated"
+
   // ============================
-  // AUTH STATE
+  // CLICK OUTSIDE HANDLER
   // ============================
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      setIsAuthenticated(!!data.session)
-    })
-
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setIsAuthenticated(!!session)
-      }
-    )
-
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
@@ -42,7 +34,6 @@ export default function Navbar() {
     document.addEventListener("mousedown", handleClickOutside)
 
     return () => {
-      listener.subscription.unsubscribe()
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [])
@@ -52,7 +43,7 @@ export default function Navbar() {
   // ============================
   const handleAuthAction = async () => {
     if (isAuthenticated) {
-      await supabase.auth.signOut()
+      await signOut({ redirect: false })
       window.dispatchEvent(new Event("start-navigation"))
       router.push("/")
     } else {

@@ -1,36 +1,19 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { supabase } from "@/lib/supabaseClient"
 import { LoadingCube } from "@/components/loading-cube"
 
 export default function Tools() {
   const router = useRouter()
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const { data: session, status } = useSession()
+  const isAuthenticated = status === "authenticated"
+  const loading = status === "loading"
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      // 1. Check current session status from Supabase
-      const { data: { session } } = await supabase.auth.getSession()
-      setIsAuthenticated(!!session)
-      setLoading(false)
-
-      // 2. Listen for auth changes (logout/login in other tabs)
-      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-        setIsAuthenticated(!!session)
-      })
-
-      return () => subscription.unsubscribe()
-    }
-
-    checkAuth()
-  }, [])
 
   const tools = [
     {

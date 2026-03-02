@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Search, FileText, Book, ClipboardList, ExternalLink, Filter, BookOpen, GraduationCap, FileCheck, Sparkles, ChevronDown } from "lucide-react"
-import { supabase } from "@/lib/supabaseClient"
+import { useSession } from "next-auth/react"
 
 // Type definitions
 type SubjectItem = {
@@ -256,7 +256,7 @@ const studyMaterials = [
   { name: "CT Notes", stream: "Data Science", level: "Foundation", subject: "Computational Thinking", type: "notes", url: "#" },
   { name: "English 1 Notes", stream: "Data Science", level: "Foundation", subject: "English 1", type: "notes", url: "#" },
   { name: "English 2 Notes", stream: "Data Science", level: "Foundation", subject: "English 2", type: "notes", url: "#" },
-  
+
   // Data Science - Diploma
   { name: "Java Notes", stream: "Data Science", level: "Diploma", subject: "Java", type: "notes", url: "#" },
   { name: "DBMS Notes", stream: "Data Science", level: "Diploma", subject: "DBMS", type: "notes", url: "#" },
@@ -265,64 +265,54 @@ const studyMaterials = [
   { name: "PDSA Notes", stream: "Data Science", level: "Diploma", subject: "PDSA", type: "notes", url: "#" },
   { name: "Maths 2 Notes", stream: "Data Science", level: "Diploma", subject: "Mathematics 2", type: "notes", url: "#" },
   { name: "Stats 2 Notes", stream: "Data Science", level: "Diploma", subject: "Statistics 2", type: "notes", url: "#" },
-  
+
   // Data Science - Degree
   { name: "Machine Learning Notes", stream: "Data Science", level: "Degree", subject: "Machine Learning", type: "notes", url: "#" },
   { name: "Business Data Management Notes", stream: "Data Science", level: "Degree", subject: "BDM", type: "notes", url: "#" },
   { name: "Business Analytics Notes", stream: "Data Science", level: "Degree", subject: "BA", type: "notes", url: "#" },
   { name: "Tools in Data Science Notes", stream: "Data Science", level: "Degree", subject: "TDS", type: "notes", url: "#" },
   { name: "System Commands Notes", stream: "Data Science", level: "Degree", subject: "System Commands", type: "notes", url: "#" },
-  
+
   // Electronics - Foundation
   { name: "Python Notes", stream: "Electronics", level: "Foundation", subject: "Python", type: "notes", url: "#" },
   { name: "Statistics Notes", stream: "Electronics", level: "Foundation", subject: "Statistics", type: "notes", url: "#" },
   { name: "Maths Notes", stream: "Electronics", level: "Foundation", subject: "Mathematics", type: "notes", url: "#" },
   { name: "CT Notes", stream: "Electronics", level: "Foundation", subject: "Computational Thinking", type: "notes", url: "#" },
-  
+
   // Electronics - Diploma
   { name: "Digital Circuits Notes", stream: "Electronics", level: "Diploma", subject: "Digital Circuits", type: "notes", url: "#" },
   { name: "Analog Circuits Notes", stream: "Electronics", level: "Diploma", subject: "Analog Circuits", type: "notes", url: "#" },
-  
+
   // Add some books
   { name: "Python Programming Book", stream: "Data Science", level: "Foundation", subject: "Python", type: "books", url: "#" },
   { name: "Data Structures Book", stream: "Data Science", level: "Diploma", subject: "PDSA", type: "books", url: "#" },
 ]
 
 export default function ResourcesPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [activeTab, setActiveTab] = useState<"notes" | "pyqs" | "documents">("documents")
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
-  
+
   // Filters for Notes
   const [selectedStream, setSelectedStream] = useState<"all" | "Data Science" | "Electronics">("all")
   const [selectedLevel, setSelectedLevel] = useState<"all" | "Foundation" | "Diploma" | "Degree">("all")
   const [selectedSubject, setSelectedSubject] = useState("all")
-  
+
   // Filters for PYQs
   const [selectedPyqStream, setSelectedPyqStream] = useState<string>("Data Science - Foundation")
   const [selectedYear, setSelectedYear] = useState<string>("All Years")
   const [selectedTerm, setSelectedTerm] = useState<string>("All Terms")
   const [selectedExamType, setSelectedExamType] = useState<string>("All Exams")
-  
+
   const router = useRouter()
+  const { data: session, status } = useSession()
+  const isAuthenticated = status === "authenticated"
 
-useEffect(() => {
-  const checkSession = async () => {
-    const {
-      data: { session },
-    } = await supabase.auth.getSession()
-
-    if (session) {
-      setIsAuthenticated(true)
+  useEffect(() => {
+    if (isAuthenticated) {
       setExpandedCategory("academic")
-    } else {
-      setIsAuthenticated(false)
     }
-  }
-
-  checkSession()
-}, [])
+  }, [isAuthenticated])
 
   // useEffect(() => {
   //   const authStatus = localStorage.getItem("isAuthenticated")
@@ -367,10 +357,10 @@ useEffect(() => {
     const termData = pyqsData[selectedPyqStream][selectedYear][selectedTerm as keyof Terms]
     if (!termData) return []
     const subjects = termData[selectedExamType as keyof ExamTypes] || []
-    
+
     // Apply search filter
     if (searchQuery) {
-      return subjects.filter((item: SubjectItem) => 
+      return subjects.filter((item: SubjectItem) =>
         item.subject.toLowerCase().includes(searchQuery.toLowerCase())
       )
     }
@@ -384,8 +374,8 @@ useEffect(() => {
   const availableYears = selectedPyqStream && pyqsData[selectedPyqStream]
     ? Object.keys(pyqsData[selectedPyqStream]).sort().reverse()
     : []
-  const availableTerms = selectedPyqStream && selectedYear && pyqsData[selectedPyqStream]?.[selectedYear] 
-    ? Object.keys(pyqsData[selectedPyqStream][selectedYear]) 
+  const availableTerms = selectedPyqStream && selectedYear && pyqsData[selectedPyqStream]?.[selectedYear]
+    ? Object.keys(pyqsData[selectedPyqStream][selectedYear])
     : []
   const availableExamTypes = selectedPyqStream && selectedYear && selectedTerm && pyqsData[selectedPyqStream]?.[selectedYear]?.[selectedTerm as keyof Terms]
     ? Object.keys(pyqsData[selectedPyqStream][selectedYear][selectedTerm as keyof Terms] || {})
@@ -396,11 +386,11 @@ useEffect(() => {
   const filteredDocuments =
     activeTab === "documents"
       ? allDocuments.filter(
-          (doc) =>
-            searchQuery === "" ||
-            doc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            doc.description.toLowerCase().includes(searchQuery.toLowerCase())
-        )
+        (doc) =>
+          searchQuery === "" ||
+          doc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          doc.description.toLowerCase().includes(searchQuery.toLowerCase())
+      )
       : []
 
   if (!isAuthenticated) {
@@ -424,7 +414,7 @@ useEffect(() => {
               <p className="text-white/70 text-lg mb-10 max-w-lg mx-auto">
                 Please sign in with your IIT Madras account to access exclusive study resources, notes, PYQs, and official documents
               </p>
-              <Button 
+              <Button
                 onClick={() => router.push('/signin')}
                 className="bg-primary hover:bg-primary/90 text-black font-bold text-lg px-10 py-6 rounded-xl"
               >
@@ -474,11 +464,10 @@ useEffect(() => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition-all duration-300 ${
-                  activeTab === tab.id
+                className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition-all duration-300 ${activeTab === tab.id
                     ? 'bg-primary text-black shadow-[0_0_30px_rgba(212,175,55,0.3)]'
                     : 'text-white/70 hover:text-white hover:bg-white/5'
-                }`}
+                  }`}
               >
                 <tab.icon size={20} />
                 {tab.label}
@@ -563,7 +552,7 @@ useEffect(() => {
                   </select>
                 </div>
               </div>
-              
+
               <button
                 onClick={() => {
                   setSelectedStream("all")
@@ -595,7 +584,7 @@ useEffect(() => {
                     onChange={(e) => {
                       const newStream = e.target.value
                       setSelectedPyqStream(newStream)
-                      
+
                       // Set defaults based on stream
                       if (newStream === "Data Science - Foundation" || newStream === "Data Science - Diploma" || newStream === "Data Science - Degree") {
                         setSelectedYear("All Years")
@@ -661,7 +650,7 @@ useEffect(() => {
                   </select>
                 </div>
               </div>
-              
+
               <div className="mt-4 flex gap-3">
                 <button
                   onClick={() => {
@@ -697,12 +686,12 @@ useEffect(() => {
                       {category.charAt(0).toUpperCase() + category.slice(1)}
                       <span className="text-white/40 text-base font-normal">({docs.length})</span>
                     </h2>
-                    <ChevronDown 
-                      className={`text-primary transition-transform duration-300 ${expandedCategory === category ? 'rotate-180' : ''}`} 
-                      size={24} 
+                    <ChevronDown
+                      className={`text-primary transition-transform duration-300 ${expandedCategory === category ? 'rotate-180' : ''}`}
+                      size={24}
                     />
                   </button>
-                  
+
                   <div className={`grid md:grid-cols-2 gap-4 transition-all duration-500 ${expandedCategory === category ? 'opacity-100 max-h-[2000px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>
                     {docs.map((doc, index) => (
                       <a
@@ -741,13 +730,13 @@ useEffect(() => {
                   </span>
                 </div>
                 <h2 className="text-2xl font-bold text-white mb-2">
-                  {selectedYear === "All Years" && selectedTerm === "All Terms" && selectedExamType === "All Exams" 
+                  {selectedYear === "All Years" && selectedTerm === "All Terms" && selectedExamType === "All Exams"
                     ? "All Subjects - Previous Year Questions"
                     : `${selectedYear} - ${selectedTerm} - ${selectedExamType}`
                   }
                 </h2>
                 <p className="text-white/60">
-                  {selectedYear === "All Years" 
+                  {selectedYear === "All Years"
                     ? "Subject-wise organized PYQ folders"
                     : "Previous Year Question Papers for all subjects"
                   }
@@ -772,11 +761,11 @@ useEffect(() => {
                         </div>
                         <ExternalLink className="text-white/30 group-hover:text-primary transition opacity-0 group-hover:opacity-100" size={18} />
                       </div>
-                      
+
                       <h3 className="text-white font-bold mb-3 group-hover:text-primary transition text-lg">
                         {item.subject}
                       </h3>
-                      
+
                       <div className="flex flex-wrap gap-2">
                         <span className="px-3 py-1 bg-primary/10 border border-primary/30 rounded-lg text-primary text-xs font-semibold">
                           {selectedPyqStream}
