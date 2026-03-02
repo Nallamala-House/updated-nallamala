@@ -432,395 +432,421 @@ export default function ResourcesPage() {
     <main className="min-h-screen">
       <Navbar />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-        {/* Background glow effects */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-          <div className="absolute top-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
-        </div>
-
-        {/* Header */}
-        <div className="text-center mb-12 relative">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-primary text-sm font-semibold mb-4 animate-fade-in">
-            <Sparkles size={16} />
-            Academic Resources Hub
+      {/* Coming Soon Section */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 min-h-[70vh] flex items-center justify-center animate-fade-in">
+        <div className="glass p-16 rounded-2xl border border-primary/20 text-center w-full max-w-2xl relative overflow-hidden">
+          {/* Background glow effects for the coming soon box */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl opacity-50"></div>
+            <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl opacity-50"></div>
           </div>
-          <h1 className="text-6xl font-serif font-bold text-white mb-4 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            Study <span className="text-primary">Resources</span>
-          </h1>
-          <p className="text-white/70 text-lg max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Access premium course materials, official documents, and study resources
-          </p>
-        </div>
 
-        {/* Tab Navigation */}
-        <div className="max-w-4xl mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-          <div className="glass p-2 rounded-2xl border border-primary/20 flex gap-2">
-            {[
-              { id: "notes", label: "Notes", icon: BookOpen },
-              { id: "pyqs", label: "PYQs", icon: FileCheck },
-              { id: "documents", label: "Documents", icon: FileText }
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition-all duration-300 ${activeTab === tab.id
+          <div className="relative z-10">
+            <div className="w-24 h-24 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+              <BookOpen className="w-12 h-12 text-primary" />
+            </div>
+            <h3 className="text-4xl font-serif font-bold text-white mb-6">Coming Soon</h3>
+            <p className="text-white/70 text-lg max-w-lg mx-auto mb-4">
+              Our comprehensive study resources, including notes, official documents, and PYQs, are currently being updated.
+            </p>
+            <p className="text-primary/80 text-sm font-medium">
+              Check back shortly for the new materials!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {false && (
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+          {/* Background glow effects */}
+          <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+            <div className="absolute top-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+            <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
+
+          {/* Header */}
+          <div className="text-center mb-12 relative">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-primary text-sm font-semibold mb-4 animate-fade-in">
+              <Sparkles size={16} />
+              Academic Resources Hub
+            </div>
+            <h1 className="text-6xl font-serif font-bold text-white mb-4 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              Study <span className="text-primary">Resources</span>
+            </h1>
+            <p className="text-white/70 text-lg max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              Access premium course materials, official documents, and study resources
+            </p>
+          </div>
+
+          {/* Tab Navigation */}
+          <div className="max-w-4xl mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="glass p-2 rounded-2xl border border-primary/20 flex gap-2">
+              {[
+                { id: "notes", label: "Notes", icon: BookOpen },
+                { id: "pyqs", label: "PYQs", icon: FileCheck },
+                { id: "documents", label: "Documents", icon: FileText }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition-all duration-300 ${activeTab === tab.id
                     ? 'bg-primary text-black shadow-[0_0_30px_rgba(212,175,55,0.3)]'
                     : 'text-white/70 hover:text-white hover:bg-white/5'
-                  }`}
-              >
-                <tab.icon size={20} />
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Search Bar */}
-        <div className="max-w-3xl mx-auto mb-10 relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <div className="relative group">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-white/50 group-focus-within:text-primary transition" size={22} />
-            <input
-              type="text"
-              placeholder={`Search ${activeTab === 'documents' ? 'documents' : 'materials'}...`}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-14 pr-6 py-5 bg-black/30 backdrop-blur-xl border border-primary/20 rounded-2xl text-white text-lg placeholder:text-white/50 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all"
-            />
-          </div>
-        </div>
-
-        {/* Filters for Notes */}
-        {activeTab === "notes" && (
-          <div className="max-w-6xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-            <div className="glass p-6 rounded-2xl border border-primary/20">
-              <div className="flex items-center gap-2 mb-4">
-                <Filter className="text-primary" size={18} />
-                <span className="text-white font-semibold">Filter Resources</span>
-              </div>
-              <div className="grid md:grid-cols-3 gap-4">
-                {/* Stream Dropdown */}
-                <div className="relative group">
-                  <label className="text-white/60 text-sm mb-2 block">Stream</label>
-                  <select
-                    value={selectedStream}
-                    onChange={(e) => {
-                      setSelectedStream(e.target.value as any)
-                      setSelectedSubject("all")
-                    }}
-                    className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                  >
-                    <option value="all" className="bg-black">All Streams</option>
-                    <option value="Data Science" className="bg-black">Data Science</option>
-                    <option value="Electronics" className="bg-black">Electronics</option>
-                  </select>
-                </div>
-
-                {/* Level Dropdown */}
-                <div className="relative">
-                  <label className="text-white/60 text-sm mb-2 block">Level</label>
-                  <select
-                    value={selectedLevel}
-                    onChange={(e) => {
-                      setSelectedLevel(e.target.value as any)
-                      setSelectedSubject("all")
-                    }}
-                    className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                  >
-                    <option value="all" className="bg-black">All Levels</option>
-                    <option value="Foundation" className="bg-black">Foundation</option>
-                    <option value="Diploma" className="bg-black">Diploma</option>
-                    <option value="Degree" className="bg-black">Degree</option>
-                  </select>
-                </div>
-
-                {/* Subject Dropdown */}
-                <div className="relative">
-                  <label className="text-white/60 text-sm mb-2 block">Subject</label>
-                  <select
-                    value={selectedSubject}
-                    onChange={(e) => setSelectedSubject(e.target.value)}
-                    className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                  >
-                    <option value="all" className="bg-black">All Subjects</option>
-                    {availableSubjects.map(subject => (
-                      <option key={subject} value={subject} className="bg-black">{subject}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <button
-                onClick={() => {
-                  setSelectedStream("all")
-                  setSelectedLevel("all")
-                  setSelectedSubject("all")
-                }}
-                className="mt-4 px-6 py-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-xl text-primary font-medium transition-all hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
-              >
-                Reset Filters
-              </button>
+                    }`}
+                >
+                  <tab.icon size={20} />
+                  {tab.label}
+                </button>
+              ))}
             </div>
           </div>
-        )}
 
-        {/* Filters for PYQs */}
-        {activeTab === "pyqs" && (
-          <div className="max-w-6xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-            <div className="glass p-6 rounded-2xl border border-primary/20">
-              <div className="flex items-center gap-2 mb-4">
-                <Filter className="text-primary" size={18} />
-                <span className="text-white font-semibold">Filter PYQs</span>
-              </div>
-              <div className="grid md:grid-cols-4 gap-4">
-                {/* Stream/Level Dropdown */}
-                <div className="relative group">
-                  <label className="text-white/60 text-sm mb-2 block">Program</label>
-                  <select
-                    value={selectedPyqStream}
-                    onChange={(e) => {
-                      const newStream = e.target.value
-                      setSelectedPyqStream(newStream)
+          {/* Search Bar */}
+          <div className="max-w-3xl mx-auto mb-10 relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="relative group">
+              <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-white/50 group-focus-within:text-primary transition" size={22} />
+              <input
+                type="text"
+                placeholder={`Search ${activeTab === 'documents' ? 'documents' : 'materials'}...`}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-14 pr-6 py-5 bg-black/30 backdrop-blur-xl border border-primary/20 rounded-2xl text-white text-lg placeholder:text-white/50 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all"
+              />
+            </div>
+          </div>
 
-                      // Set defaults based on stream
-                      if (newStream === "Data Science - Foundation" || newStream === "Data Science - Diploma" || newStream === "Data Science - Degree") {
-                        setSelectedYear("All Years")
-                        setSelectedTerm("All Terms")
-                        setSelectedExamType("All Exams")
-                      } else if (newStream === "Electronics - Degree") {
-                        setSelectedYear("2025")
-                        setSelectedTerm("Term 3")
-                        setSelectedExamType("Quiz 1")
-                      }
-                    }}
-                    className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                  >
-                    {availableStreamLevels.map(stream => (
-                      <option key={stream} value={stream} className="bg-black">{stream}</option>
-                    ))}
-                  </select>
+          {/* Filters for Notes */}
+          {activeTab === "notes" && (
+            <div className="max-w-6xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <div className="glass p-6 rounded-2xl border border-primary/20">
+                <div className="flex items-center gap-2 mb-4">
+                  <Filter className="text-primary" size={18} />
+                  <span className="text-white font-semibold">Filter Resources</span>
+                </div>
+                <div className="grid md:grid-cols-3 gap-4">
+                  {/* Stream Dropdown */}
+                  <div className="relative group">
+                    <label className="text-white/60 text-sm mb-2 block">Stream</label>
+                    <select
+                      value={selectedStream}
+                      onChange={(e) => {
+                        setSelectedStream(e.target.value as any)
+                        setSelectedSubject("all")
+                      }}
+                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
+                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
+                    >
+                      <option value="all" className="bg-black">All Streams</option>
+                      <option value="Data Science" className="bg-black">Data Science</option>
+                      <option value="Electronics" className="bg-black">Electronics</option>
+                    </select>
+                  </div>
+
+                  {/* Level Dropdown */}
+                  <div className="relative">
+                    <label className="text-white/60 text-sm mb-2 block">Level</label>
+                    <select
+                      value={selectedLevel}
+                      onChange={(e) => {
+                        setSelectedLevel(e.target.value as any)
+                        setSelectedSubject("all")
+                      }}
+                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
+                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
+                    >
+                      <option value="all" className="bg-black">All Levels</option>
+                      <option value="Foundation" className="bg-black">Foundation</option>
+                      <option value="Diploma" className="bg-black">Diploma</option>
+                      <option value="Degree" className="bg-black">Degree</option>
+                    </select>
+                  </div>
+
+                  {/* Subject Dropdown */}
+                  <div className="relative">
+                    <label className="text-white/60 text-sm mb-2 block">Subject</label>
+                    <select
+                      value={selectedSubject}
+                      onChange={(e) => setSelectedSubject(e.target.value)}
+                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
+                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
+                    >
+                      <option value="all" className="bg-black">All Subjects</option>
+                      {availableSubjects.map(subject => (
+                        <option key={subject} value={subject} className="bg-black">{subject}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
-                {/* Year Dropdown */}
-                <div className="relative group">
-                  <label className="text-white/60 text-sm mb-2 block">Year</label>
-                  <select
-                    value={selectedYear}
-                    onChange={(e) => setSelectedYear(e.target.value)}
-                    className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                  >
-                    {availableYears.map(year => (
-                      <option key={year} value={year} className="bg-black">{year}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Term Dropdown */}
-                <div className="relative">
-                  <label className="text-white/60 text-sm mb-2 block">Term</label>
-                  <select
-                    value={selectedTerm}
-                    onChange={(e) => setSelectedTerm(e.target.value)}
-                    className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                  >
-                    {availableTerms.map(term => (
-                      <option key={term} value={term} className="bg-black">{term}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Exam Type Dropdown */}
-                <div className="relative">
-                  <label className="text-white/60 text-sm mb-2 block">Exam Type</label>
-                  <select
-                    value={selectedExamType}
-                    onChange={(e) => setSelectedExamType(e.target.value)}
-                    className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                  >
-                    {availableExamTypes.map(examType => (
-                      <option key={examType} value={examType} className="bg-black">{examType}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="mt-4 flex gap-3">
                 <button
                   onClick={() => {
-                    setSelectedPyqStream("Data Science - Foundation")
-                    setSelectedYear("All Years")
-                    setSelectedTerm("All Terms")
-                    setSelectedExamType("All Exams")
+                    setSelectedStream("all")
+                    setSelectedLevel("all")
+                    setSelectedSubject("all")
                   }}
-                  className="px-6 py-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-xl text-primary font-medium transition-all hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+                  className="mt-4 px-6 py-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-xl text-primary font-medium transition-all hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
                 >
                   Reset Filters
                 </button>
-                <div className="flex-1"></div>
-                <div className="px-4 py-2 bg-primary/10 border border-primary/30 rounded-xl text-primary font-medium">
-                  {filteredPYQs.length} Subject{filteredPYQs.length !== 1 ? 's' : ''} Found
+              </div>
+            </div>
+          )}
+
+          {/* Filters for PYQs */}
+          {activeTab === "pyqs" && (
+            <div className="max-w-6xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <div className="glass p-6 rounded-2xl border border-primary/20">
+                <div className="flex items-center gap-2 mb-4">
+                  <Filter className="text-primary" size={18} />
+                  <span className="text-white font-semibold">Filter PYQs</span>
+                </div>
+                <div className="grid md:grid-cols-4 gap-4">
+                  {/* Stream/Level Dropdown */}
+                  <div className="relative group">
+                    <label className="text-white/60 text-sm mb-2 block">Program</label>
+                    <select
+                      value={selectedPyqStream}
+                      onChange={(e) => {
+                        const newStream = e.target.value
+                        setSelectedPyqStream(newStream)
+
+                        // Set defaults based on stream
+                        if (newStream === "Data Science - Foundation" || newStream === "Data Science - Diploma" || newStream === "Data Science - Degree") {
+                          setSelectedYear("All Years")
+                          setSelectedTerm("All Terms")
+                          setSelectedExamType("All Exams")
+                        } else if (newStream === "Electronics - Degree") {
+                          setSelectedYear("2025")
+                          setSelectedTerm("Term 3")
+                          setSelectedExamType("Quiz 1")
+                        }
+                      }}
+                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
+                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
+                    >
+                      {availableStreamLevels.map(stream => (
+                        <option key={stream} value={stream} className="bg-black">{stream}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Year Dropdown */}
+                  <div className="relative group">
+                    <label className="text-white/60 text-sm mb-2 block">Year</label>
+                    <select
+                      value={selectedYear}
+                      onChange={(e) => setSelectedYear(e.target.value)}
+                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
+                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
+                    >
+                      {availableYears.map(year => (
+                        <option key={year} value={year} className="bg-black">{year}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Term Dropdown */}
+                  <div className="relative">
+                    <label className="text-white/60 text-sm mb-2 block">Term</label>
+                    <select
+                      value={selectedTerm}
+                      onChange={(e) => setSelectedTerm(e.target.value)}
+                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
+                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
+                    >
+                      {availableTerms.map(term => (
+                        <option key={term} value={term} className="bg-black">{term}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Exam Type Dropdown */}
+                  <div className="relative">
+                    <label className="text-white/60 text-sm mb-2 block">Exam Type</label>
+                    <select
+                      value={selectedExamType}
+                      onChange={(e) => setSelectedExamType(e.target.value)}
+                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
+                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
+                    >
+                      {availableExamTypes.map(examType => (
+                        <option key={examType} value={examType} className="bg-black">{examType}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex gap-3">
+                  <button
+                    onClick={() => {
+                      setSelectedPyqStream("Data Science - Foundation")
+                      setSelectedYear("All Years")
+                      setSelectedTerm("All Terms")
+                      setSelectedExamType("All Exams")
+                    }}
+                    className="px-6 py-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-xl text-primary font-medium transition-all hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+                  >
+                    Reset Filters
+                  </button>
+                  <div className="flex-1"></div>
+                  <div className="px-4 py-2 bg-primary/10 border border-primary/30 rounded-xl text-primary font-medium">
+                    {filteredPYQs.length} Subject{filteredPYQs.length !== 1 ? 's' : ''} Found
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Content Area */}
-        <div className="max-w-6xl mx-auto">
-          {activeTab === "documents" ? (
-            <div className="space-y-8 animate-fade-in">
-              {Object.entries(officialDocuments).map(([category, docs], idx) => (
-                <div key={category} className="animate-fade-in" style={{ animationDelay: `${0.6 + idx * 0.1}s` }}>
-                  <button
-                    onClick={() => setExpandedCategory(expandedCategory === category ? null : category)}
-                    className="w-full flex items-center justify-between p-5 glass rounded-2xl border border-primary/20 hover:border-primary/40 transition-all mb-4 group"
-                  >
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3 group-hover:text-primary transition">
-                      {category.charAt(0).toUpperCase() + category.slice(1)}
-                      <span className="text-white/40 text-base font-normal">({docs.length})</span>
-                    </h2>
-                    <ChevronDown
-                      className={`text-primary transition-transform duration-300 ${expandedCategory === category ? 'rotate-180' : ''}`}
-                      size={24}
-                    />
-                  </button>
+          {/* Content Area */}
+          <div className="max-w-6xl mx-auto">
+            {activeTab === "documents" ? (
+              <div className="space-y-8 animate-fade-in">
+                {Object.entries(officialDocuments).map(([category, docs], idx) => (
+                  <div key={category} className="animate-fade-in" style={{ animationDelay: `${0.6 + idx * 0.1}s` }}>
+                    <button
+                      onClick={() => setExpandedCategory(expandedCategory === category ? null : category)}
+                      className="w-full flex items-center justify-between p-5 glass rounded-2xl border border-primary/20 hover:border-primary/40 transition-all mb-4 group"
+                    >
+                      <h2 className="text-2xl font-bold text-white flex items-center gap-3 group-hover:text-primary transition">
+                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                        <span className="text-white/40 text-base font-normal">({docs.length})</span>
+                      </h2>
+                      <ChevronDown
+                        className={`text-primary transition-transform duration-300 ${expandedCategory === category ? 'rotate-180' : ''}`}
+                        size={24}
+                      />
+                    </button>
 
-                  <div className={`grid md:grid-cols-2 gap-4 transition-all duration-500 ${expandedCategory === category ? 'opacity-100 max-h-[2000px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                    {docs.map((doc, index) => (
+                    <div className={`grid md:grid-cols-2 gap-4 transition-all duration-500 ${expandedCategory === category ? 'opacity-100 max-h-[2000px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                      {docs.map((doc, index) => (
+                        <a
+                          key={index}
+                          href={doc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group glass p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] animate-scale-in"
+                          style={{ animationDelay: `${index * 0.05}s` }}
+                        >
+                          <div className="flex gap-4">
+                            <div className="w-14 h-14 bg-primary/10 border border-primary/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-primary/20 transition-all">
+                              <FileText className="text-primary" size={24} />
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-white font-semibold mb-2 group-hover:text-primary transition flex items-center justify-between">
+                                {doc.name}
+                                <ExternalLink className="text-white/30 group-hover:text-primary transition opacity-0 group-hover:opacity-100" size={18} />
+                              </h3>
+                              <p className="text-white/50 text-sm">{doc.description}</p>
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : activeTab === "pyqs" ? (
+              <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
+                {/* PYQs Header */}
+                <div className="glass p-6 rounded-2xl border border-primary/20 mb-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-4 py-1.5 bg-primary/20 border border-primary/40 rounded-lg text-primary text-sm font-bold">
+                      {selectedPyqStream}
+                    </span>
+                  </div>
+                  <h2 className="text-2xl font-bold text-white mb-2">
+                    {selectedYear === "All Years" && selectedTerm === "All Terms" && selectedExamType === "All Exams"
+                      ? "All Subjects - Previous Year Questions"
+                      : `${selectedYear} - ${selectedTerm} - ${selectedExamType}`
+                    }
+                  </h2>
+                  <p className="text-white/60">
+                    {selectedYear === "All Years"
+                      ? "Subject-wise organized PYQ folders"
+                      : "Previous Year Question Papers for all subjects"
+                    }
+                  </p>
+                </div>
+
+                {/* PYQs Grid */}
+                {filteredPYQs.length > 0 ? (
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {filteredPYQs.map((item: SubjectItem, index: number) => (
                       <a
                         key={index}
-                        href={doc.url}
+                        href={item.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group glass p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] animate-scale-in"
+                        className="group glass p-6 rounded-2xl border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] animate-scale-in"
                         style={{ animationDelay: `${index * 0.05}s` }}
                       >
-                        <div className="flex gap-4">
-                          <div className="w-14 h-14 bg-primary/10 border border-primary/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-primary/20 transition-all">
-                            <FileText className="text-primary" size={24} />
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="w-12 h-12 bg-primary/10 border border-primary/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
+                            <FileCheck className="text-primary" size={24} />
                           </div>
-                          <div className="flex-1">
-                            <h3 className="text-white font-semibold mb-2 group-hover:text-primary transition flex items-center justify-between">
-                              {doc.name}
-                              <ExternalLink className="text-white/30 group-hover:text-primary transition opacity-0 group-hover:opacity-100" size={18} />
-                            </h3>
-                            <p className="text-white/50 text-sm">{doc.description}</p>
-                          </div>
+                          <ExternalLink className="text-white/30 group-hover:text-primary transition opacity-0 group-hover:opacity-100" size={18} />
+                        </div>
+
+                        <h3 className="text-white font-bold mb-3 group-hover:text-primary transition text-lg">
+                          {item.subject}
+                        </h3>
+
+                        <div className="flex flex-wrap gap-2">
+                          <span className="px-3 py-1 bg-primary/10 border border-primary/30 rounded-lg text-primary text-xs font-semibold">
+                            {selectedPyqStream}
+                          </span>
+                          {selectedYear !== "All Years" && (
+                            <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white/70 text-xs font-semibold">
+                              {selectedYear}
+                            </span>
+                          )}
+                          {selectedTerm !== "All Terms" && (
+                            <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white/70 text-xs font-semibold">
+                              {selectedTerm}
+                            </span>
+                          )}
+                          {selectedExamType !== "All Exams" && (
+                            <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white/70 text-xs font-semibold">
+                              {selectedExamType}
+                            </span>
+                          )}
                         </div>
                       </a>
                     ))}
                   </div>
-                </div>
-              ))}
-            </div>
-          ) : activeTab === "pyqs" ? (
-            <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              {/* PYQs Header */}
-              <div className="glass p-6 rounded-2xl border border-primary/20 mb-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="px-4 py-1.5 bg-primary/20 border border-primary/40 rounded-lg text-primary text-sm font-bold">
-                    {selectedPyqStream}
-                  </span>
-                </div>
-                <h2 className="text-2xl font-bold text-white mb-2">
-                  {selectedYear === "All Years" && selectedTerm === "All Terms" && selectedExamType === "All Exams"
-                    ? "All Subjects - Previous Year Questions"
-                    : `${selectedYear} - ${selectedTerm} - ${selectedExamType}`
-                  }
-                </h2>
-                <p className="text-white/60">
-                  {selectedYear === "All Years"
-                    ? "Subject-wise organized PYQ folders"
-                    : "Previous Year Question Papers for all subjects"
-                  }
-                </p>
+                ) : (
+                  <div className="glass p-16 rounded-2xl border border-primary/20 text-center">
+                    <div className="w-20 h-20 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <ClipboardList className="w-10 h-10 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3">No PYQs Available</h3>
+                    <p className="text-white/60">
+                      No question papers found for {selectedPyqStream}
+                    </p>
+                    <p className="text-white/60">
+                      {selectedYear} - {selectedTerm} - {selectedExamType}
+                    </p>
+                    <p className="text-white/50 text-sm mt-2">
+                      Try selecting a different program, year, term, or exam type
+                    </p>
+                  </div>
+                )}
               </div>
-
-              {/* PYQs Grid */}
-              {filteredPYQs.length > 0 ? (
-                <div className="grid md:grid-cols-3 gap-6">
-                  {filteredPYQs.map((item: SubjectItem, index: number) => (
-                    <a
-                      key={index}
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group glass p-6 rounded-2xl border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] animate-scale-in"
-                      style={{ animationDelay: `${index * 0.05}s` }}
-                    >
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="w-12 h-12 bg-primary/10 border border-primary/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                          <FileCheck className="text-primary" size={24} />
-                        </div>
-                        <ExternalLink className="text-white/30 group-hover:text-primary transition opacity-0 group-hover:opacity-100" size={18} />
-                      </div>
-
-                      <h3 className="text-white font-bold mb-3 group-hover:text-primary transition text-lg">
-                        {item.subject}
-                      </h3>
-
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-primary/10 border border-primary/30 rounded-lg text-primary text-xs font-semibold">
-                          {selectedPyqStream}
-                        </span>
-                        {selectedYear !== "All Years" && (
-                          <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white/70 text-xs font-semibold">
-                            {selectedYear}
-                          </span>
-                        )}
-                        {selectedTerm !== "All Terms" && (
-                          <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white/70 text-xs font-semibold">
-                            {selectedTerm}
-                          </span>
-                        )}
-                        {selectedExamType !== "All Exams" && (
-                          <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white/70 text-xs font-semibold">
-                            {selectedExamType}
-                          </span>
-                        )}
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              ) : (
+            ) : (
+              <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
                 <div className="glass p-16 rounded-2xl border border-primary/20 text-center">
                   <div className="w-20 h-20 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <ClipboardList className="w-10 h-10 text-primary" />
+                    <BookOpen className="w-10 h-10 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">No PYQs Available</h3>
-                  <p className="text-white/60">
-                    No question papers found for {selectedPyqStream}
-                  </p>
-                  <p className="text-white/60">
-                    {selectedYear} - {selectedTerm} - {selectedExamType}
-                  </p>
-                  <p className="text-white/50 text-sm mt-2">
-                    Try selecting a different program, year, term, or exam type
-                  </p>
+                  <h3 className="text-3xl font-bold text-white mb-4">Coming Soon</h3>
+                  <p className="text-white/60 text-lg">Course notes and study materials will be available here shortly.</p>
+                  <p className="text-white/50 text-sm mt-2">We're working hard to bring you the best study resources</p>
                 </div>
-              )}
-            </div>
-          ) : (
-            <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              <div className="glass p-16 rounded-2xl border border-primary/20 text-center">
-                <div className="w-20 h-20 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <BookOpen className="w-10 h-10 text-primary" />
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-4">Coming Soon</h3>
-                <p className="text-white/60 text-lg">Course notes and study materials will be available here shortly.</p>
-                <p className="text-white/50 text-sm mt-2">We're working hard to bring you the best study resources</p>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       <Footer />
     </main>
