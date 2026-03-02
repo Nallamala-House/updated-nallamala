@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Beams from "@/components/Beams"
 import { GlobalLoader } from "@/components/global-loader"
+import { Providers } from "@/components/providers"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -52,7 +53,9 @@ export default function RootLayout({
             rotation={30}
           />
         </div>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
         <Analytics />
       </body>
     </html>
