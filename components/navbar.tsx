@@ -201,8 +201,8 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="lg:hidden bg-black/50 border-t border-primary/20">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="lg:hidden bg-black/95 backdrop-blur-md border-t border-primary/20 max-h-[calc(100vh-4rem)] overflow-y-auto">
+            <div className="px-4 pt-4 pb-6 space-y-2">
               {[...navItemsBefore, ...navItemsAfter].map((item: any) => (
                 <button
                   key={item.label}
@@ -210,7 +210,7 @@ export default function Navbar() {
                     handleProtectedNav(item.href, item.protected)
                     setIsOpen(false)
                   }}
-                  className="block w-full text-left px-3 py-2 text-white/80 hover:text-primary hover:bg-white/5 rounded-lg"
+                  className="block w-full text-left px-4 py-3 text-white/80 hover:text-primary hover:bg-white/5 rounded-lg text-base"
                 >
                   {item.label}
                 </button>
@@ -221,7 +221,7 @@ export default function Navbar() {
                   handleAuthAction()
                   setIsOpen(false)
                 }}
-                className="w-full mt-4 bg-primary text-black font-semibold"
+                className="w-full mt-6 bg-primary text-black font-semibold py-6 text-lg"
               >
                 {isAuthenticated ? "Sign Out" : "Sign In"}
               </Button>

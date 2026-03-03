@@ -56,6 +56,37 @@ export default function RegionalCarousel() {
     },
   ]
 
+  const [width, setWidth] = useState(400)
+  const [height, setHeight] = useState(350)
+  const [translateZ, setTranslateZ] = useState(500)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        // Mobile dimensions
+        setWidth(280)
+        setHeight(260)
+        setTranslateZ(320)
+      } else if (window.innerWidth < 1024) {
+        // Tablet dimensions
+        setWidth(320)
+        setHeight(300)
+        setTranslateZ(400)
+      } else {
+        // Desktop dimensions
+        setWidth(400)
+        setHeight(350)
+        setTranslateZ(500)
+      }
+    }
+
+    // Initial check
+    handleResize()
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
   // Auto-rotate every 4 seconds
   useEffect(() => {
     if (!autoPlay) return
@@ -79,7 +110,7 @@ export default function RegionalCarousel() {
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto overflow-hidden sm:overflow-visible">
         {/* Section Header */}
         <div className="text-center mb-16">
           <p className="text-primary text-sm uppercase tracking-widest mb-4">Regional Network</p>
@@ -90,18 +121,18 @@ export default function RegionalCarousel() {
         </div>
 
         {/* 3D Carousel */}
-        <div className="relative w-full h-[500px] flex items-center justify-center">
-          <div 
-            className="w-full h-full flex items-center justify-center"
-            style={{ 
+        <div className="relative w-full h-[350px] sm:h-[400px] md:h-[500px] flex items-center justify-center">
+          <div
+            className="w-full h-full flex items-center justify-center transform scale-75 sm:scale-100"
+            style={{
               perspective: "1400px",
             }}
           >
             <div
               style={{
                 position: "relative",
-                width: "400px",
-                height: "350px",
+                width: `${width}px`,
+                height: `${height}px`,
                 transformStyle: "preserve-3d",
                 transform: `rotateY(${rotation}deg)`,
                 transition: "transform 1s ease-in-out",
@@ -109,18 +140,18 @@ export default function RegionalCarousel() {
             >
               {galleries.map((gallery, index) => {
                 const angle = (360 / galleries.length) * index
-                
+
                 return (
                   <div
                     key={gallery.id}
                     style={{
                       position: "absolute",
-                      width: "400px",
-                      height: "350px",
+                      width: `${width}px`,
+                      height: `${height}px`,
                       left: "0",
                       top: "0",
                       transformStyle: "preserve-3d",
-                      transform: `rotateY(${-angle}deg) translateZ(500px)`,
+                      transform: `rotateY(${-angle}deg) translateZ(${translateZ}px)`,
                     }}
                   >
                     <div
@@ -129,17 +160,17 @@ export default function RegionalCarousel() {
                         height: "100%",
                         transformStyle: "preserve-3d",
                       }}
-                      className="rounded-xl overflow-hidden border-2 border-primary/40 shadow-2xl bg-black"
+                      className="rounded-xl overflow-hidden border-2 border-primary/40 shadow-2xl bg-black flex flex-col"
                     >
                       {/* Image */}
-                      <div className="h-[280px] w-full bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center">
+                      <div className="flex-1 w-full bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center">
                         <div className="text-center">
-                          <div className="text-5xl font-bold text-white/20 mb-2">📸</div>
-                          <p className="text-2xl font-serif font-bold text-primary mb-1">Coming Soon</p>
-                          <p className="text-white/50 text-sm">Gallery Updates</p>
+                          <div className="text-4xl sm:text-5xl font-bold text-white/20 mb-2">📸</div>
+                          <p className="text-xl sm:text-2xl font-serif font-bold text-primary mb-1">Coming Soon</p>
+                          <p className="text-white/50 text-xs sm:text-sm">Gallery Updates</p>
                         </div>
                       </div>
-                      
+
                       {/* Info */}
                       <div className="h-[70px] bg-black border-t border-primary/30 p-4 flex flex-col justify-center">
                         <h3 className="text-white font-bold text-base mb-1">{gallery.title}</h3>
