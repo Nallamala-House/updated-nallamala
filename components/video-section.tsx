@@ -98,7 +98,7 @@ export default function VideoSection() {
 
   const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!progressRef.current || !videoRef.current) return
-    
+
     const rect = progressRef.current.getBoundingClientRect()
     const clickX = e.clientX - rect.left
     const percentage = clickX / rect.width
@@ -144,16 +144,16 @@ export default function VideoSection() {
               className="w-full aspect-video object-cover cursor-pointer"
               src="/sample.mp4"
             />
-            
+
             {/* Video Controls Overlay - Bottom Controls */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
               {/* Progress Bar */}
-              <div 
+              <div
                 ref={progressRef}
                 onClick={handleProgressClick}
                 className="w-full h-1.5 bg-white/20 rounded-full cursor-pointer mb-3 hover:h-2 transition-all"
               >
-                <div 
+                <div
                   className="h-full bg-primary rounded-full transition-all relative"
                   style={{ width: `${progressPercentage}%` }}
                 >
@@ -172,7 +172,7 @@ export default function VideoSection() {
                   >
                     {isAutoplayPaused ? <Play size={16} /> : <Pause size={16} />}
                   </button>
-                  
+
                   <button
                     onClick={skipBackward}
                     className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white flex items-center justify-center transition"
@@ -180,7 +180,7 @@ export default function VideoSection() {
                   >
                     <SkipBack size={16} />
                   </button>
-                  
+
                   <button
                     onClick={skipForward}
                     className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white flex items-center justify-center transition"
