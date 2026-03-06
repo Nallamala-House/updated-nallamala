@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button"
 
 export default function CommunitiesPage() {
   const router = useRouter()
-  const [selectedCommunity, setSelectedCommunity] = useState(null)
+  const [selectedCommunity, setSelectedCommunity] = useState<any>(null)
 
-  const communities = [
+  const communities: any[] = [
     {
       id: 1,
       name: "Chapters & Verses",
@@ -167,7 +167,7 @@ export default function CommunitiesPage() {
 
           {/* Communities Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {communities.map((community) => {
+            {communities.map((community: any) => {
               const IconComponent = community.icon
               const handleClick = () => {
                 if (community.slug) {
@@ -176,7 +176,7 @@ export default function CommunitiesPage() {
                   setSelectedCommunity(community)
                 }
               }
-              
+
               return (
                 <button
                   key={community.id}
@@ -274,7 +274,7 @@ export default function CommunitiesPage() {
               <div>
                 <h3 className="text-lg font-semibold text-white mb-3">Highlights</h3>
                 <ul className="space-y-2">
-                  {selectedCommunity.achievements.map((achievement, idx) => (
+                  {selectedCommunity.achievements.map((achievement: string, idx: number) => (
                     <li key={idx} className="flex items-start space-x-3 text-white/70">
                       <span className="text-primary font-bold mt-1">•</span>
                       <span>{achievement}</span>
@@ -287,7 +287,7 @@ export default function CommunitiesPage() {
               <div>
                 <h3 className="text-lg font-semibold text-white mb-3">Upcoming Events</h3>
                 <div className="space-y-2">
-                  {selectedCommunity.events.map((event, idx) => (
+                  {selectedCommunity.events.map((event: any, idx: number) => (
                     <div
                       key={idx}
                       className="flex items-center justify-between p-3 bg-white/5 border border-primary/10 rounded-lg"
@@ -303,7 +303,7 @@ export default function CommunitiesPage() {
               <div>
                 <h3 className="text-lg font-semibold text-white mb-3">Club Leads</h3>
                 <div className="flex flex-wrap gap-2">
-                  {selectedCommunity.leads.map((lead, idx) => (
+                  {selectedCommunity.leads.map((lead: string, idx: number) => (
                     <span
                       key={idx}
                       className="px-4 py-2 bg-primary/20 text-primary border border-primary/50 rounded-full text-sm"

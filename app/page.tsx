@@ -25,7 +25,7 @@ export default async function Page() {
       <HeroSection />
       <VideoSection />
       <AboutSection />
-      <UpdatesSection />
+      <UpdatesSection showSearch={false} />
       <RegionalCarousel />
       <Footer />
     </main>

@@ -292,6 +292,7 @@ export default function ResourcesPage() {
   const [activeTab, setActiveTab] = useState<"notes" | "pyqs" | "documents">("documents")
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
+  const [dbResources, setDbResources] = useState<any[]>([])
 
   // Filters for Notes
   const [selectedStream, setSelectedStream] = useState<"all" | "Data Science" | "Electronics">("all")
@@ -311,6 +312,27 @@ export default function ResourcesPage() {
   useEffect(() => {
     if (isAuthenticated) {
       setExpandedCategory("academic")
+
+      // Fetch backend resources
+      const fetchResources = async () => {
+        try {
+          const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
+          const res = await fetch(`${apiUrl}/resources`)
+          const contentType = res.headers.get("content-type")
+          if (contentType && contentType.includes("application/json")) {
+            const json = await res.json()
+            if (json.success) {
+              setDbResources(json.data)
+              setExpandedCategory("latest uploads")
+            }
+          } else {
+            console.error("Failed to fetch resources: Received non-JSON response")
+          }
+        } catch (error) {
+          console.error("Failed to fetch resources:", error)
+        }
+      }
+      fetchResources()
     }
   }, [isAuthenticated])
 
@@ -381,8 +403,21 @@ export default function ResourcesPage() {
     ? Object.keys(pyqsData[selectedPyqStream][selectedYear][selectedTerm as keyof Terms] || {})
     : []
 
+  // Combine hardcoded and backend documents
+  const combinedDocuments: Record<string, any[]> = {
+    ...officialDocuments
+  }
+
+  if (dbResources.length > 0) {
+    combinedDocuments["latest uploads"] = dbResources.map((r: any) => ({
+      name: r.title,
+      url: r.fileId ? `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'}/files/${r.fileId._id || r.fileId}` : r.url,
+      description: r.description || `${r.type.toUpperCase()} File`
+    }))
+  }
+
   // Filter documents for search
-  const allDocuments = Object.values(officialDocuments).flat()
+  const allDocuments = Object.values(combinedDocuments).flat()
   const filteredDocuments =
     activeTab === "documents"
       ? allDocuments.filter(
@@ -433,7 +468,7 @@ export default function ResourcesPage() {
       <Navbar />
 
       {/* Coming Soon Section */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 min-h-[70vh] flex items-center justify-center animate-fade-in">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 min-h-[70vh] flex items-center justify-center animate-fade-in">
         <div className="glass p-16 rounded-2xl border border-primary/20 text-center w-full max-w-2xl relative overflow-hidden">
           {/* Background glow effects for the coming soon box */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -457,7 +492,7 @@ export default function ResourcesPage() {
       </div>
 
       {false && (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
           {/* Background glow effects */}
           <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
             <div className="absolute top-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
@@ -701,7 +736,7 @@ export default function ResourcesPage() {
           <div className="max-w-6xl mx-auto">
             {activeTab === "documents" ? (
               <div className="space-y-8 animate-fade-in">
-                {Object.entries(officialDocuments).map(([category, docs], idx) => (
+                {Object.entries(combinedDocuments).map(([category, docs], idx) => (
                   <div key={category} className="animate-fade-in" style={{ animationDelay: `${0.6 + idx * 0.1}s` }}>
                     <button
                       onClick={() => setExpandedCategory(expandedCategory === category ? null : category)}
