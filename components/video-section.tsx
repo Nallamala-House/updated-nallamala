@@ -142,7 +142,7 @@ export default function VideoSection() {
               playsInline
               onClick={toggleAutoplay}
               className="w-full aspect-video object-cover cursor-pointer"
-              src="/sample.mp4"
+              src="/Landing_Video.mp4"
             />
 
             {/* Video Controls Overlay - Bottom Controls */}
