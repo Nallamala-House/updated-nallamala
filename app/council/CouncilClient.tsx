@@ -42,7 +42,7 @@ export default function CouncilPage() {
           'Accept': 'application/vnd.github.cloak-preview+json'
         }
       })
-        .then(res => res.json())
+        .then(res => res.headers.get("content-type")?.includes("application/json") ? res.json() : Promise.reject("Invalid JSON"))
         .then(data => {
           if (data.total_count !== undefined) {
             setGithubCommits(data.total_count)
@@ -52,7 +52,7 @@ export default function CouncilPage() {
 
       // Fetch PRs count
       fetch('https://api.github.com/search/issues?q=repo:Nallamala-House/updated-nallamala+author:PRODHOSH+type:pr')
-        .then(res => res.json())
+        .then(res => res.headers.get("content-type")?.includes("application/json") ? res.json() : Promise.reject("Invalid JSON"))
         .then(data => {
           if (data.total_count !== undefined) {
             setGithubPRs(data.total_count)
@@ -62,19 +62,19 @@ export default function CouncilPage() {
 
       // Fetch commit details to calculate files changed and lines added
       fetch('https://api.github.com/repos/Nallamala-House/updated-nallamala/commits?author=PRODHOSH&per_page=100')
-        .then(res => res.json())
+        .then(res => res.headers.get("content-type")?.includes("application/json") ? res.json() : Promise.reject("Invalid JSON"))
         .then(commits => {
           if (Array.isArray(commits)) {
             // Fetch detailed stats for each commit
-            const commitPromises = commits.map(commit => 
-              fetch(commit.url).then(res => res.json())
+            const commitPromises = commits.map(commit =>
+              fetch(commit.url).then(res => res.headers.get("content-type")?.includes("application/json") ? res.json() : Promise.reject("Invalid JSON"))
             )
-            
+
             Promise.all(commitPromises)
               .then(detailedCommits => {
                 let totalFiles = new Set()
                 let totalAdditions = 0
-                
+
                 detailedCommits.forEach(commit => {
                   if (commit.files) {
                     commit.files.forEach(file => {
@@ -85,7 +85,7 @@ export default function CouncilPage() {
                     totalAdditions += commit.stats.additions
                   }
                 })
-                
+
                 setGithubFilesChanged(totalFiles.size)
                 setGithubLinesAdded(totalAdditions)
               })
@@ -117,7 +117,7 @@ export default function CouncilPage() {
           message: "Leading with vision and purpose to create lasting impact.",
           email: "nallamala-sec@ds.study.iitm.ac.in",
           linkedin: "https://www.linkedin.com/in/nikhil-kumar-000b20297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-          image: null, 
+          image: null,
           bio: "With exceptional leadership skills, Nikhil has successfully coordinated multiple large-scale initiatives and fostered a culture of excellence within the community.",
         },
         {
@@ -283,7 +283,7 @@ export default function CouncilPage() {
           message: "Crafting compelling narratives and content.",
           email: "23f3001384@ds.study.iitm.ac.in",
           linkedin: "",
-          image: "/images/2025-26/graphic_designer_2.jpeg", 
+          image: "/images/2025-26/graphic_designer_2.jpeg",
           bio: "From Hyderabad, I have joined as a content writer and looking forward to meet you all and network for learning and creating impact.",
         },
       ],
@@ -567,11 +567,10 @@ export default function CouncilPage() {
                 <button
                   key={key}
                   onClick={() => setSelectedTeam(key)}
-                  className={`relative px-8 py-4 rounded-xl font-bold transition-all duration-500 overflow-hidden group ${
-                    selectedTeam === key
+                  className={`relative px-8 py-4 rounded-xl font-bold transition-all duration-500 overflow-hidden group ${selectedTeam === key
                       ? "bg-primary text-black shadow-[0_0_30px_rgba(212,175,55,0.4)]"
                       : "text-white/70 hover:text-white hover:bg-white/5"
-                  }`}
+                    }`}
                   style={{ animationDelay: `${0.5 + index * 0.1}s` }}
                 >
                   {selectedTeam === key && (
@@ -600,11 +599,10 @@ export default function CouncilPage() {
                 <button
                   key={key}
                   onClick={() => setSelectedSubTeam(key)}
-                  className={`relative px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 overflow-hidden group ${
-                    selectedSubTeam === key
+                  className={`relative px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 overflow-hidden group ${selectedSubTeam === key
                       ? "bg-primary/90 text-black border-2 border-primary shadow-[0_0_20px_rgba(212,175,55,0.3)]"
                       : "glass-dark text-white/60 hover:text-white border border-white/10 hover:border-primary/30"
-                  }`}
+                    }`}
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
                   {selectedSubTeam !== key && (
@@ -626,11 +624,11 @@ export default function CouncilPage() {
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1500"></div>
                 </div>
-                
+
                 {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary/40 rounded-tl-3xl"></div>
                 <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-primary/40 rounded-br-3xl"></div>
-                
+
                 <div className="relative z-10 flex items-start gap-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-primary/20 border-2 border-primary/50 rounded-xl flex items-center justify-center">
                     <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -664,7 +662,7 @@ export default function CouncilPage() {
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5"></div>
                       </div>
-                      
+
                       <div className="relative z-10">
                         <div className="mb-4 overflow-hidden rounded-xl aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative group-hover:scale-105 transition-transform duration-500">
                           {member.image ? (
@@ -679,13 +677,13 @@ export default function CouncilPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                           )}
-                          
+
                           {/* Role badge overlay */}
                           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
                             <p className="text-primary text-xs uppercase tracking-widest font-bold">{member.role}</p>
                           </div>
                         </div>
-                        
+
                         <h3 className="text-xl font-serif font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">{member.name}</h3>
                       </div>
                     </div>
@@ -697,7 +695,7 @@ export default function CouncilPage() {
                 const isLHC = selectedTeam === "LHC"
                 const isMuskan = member.id === 17 && member.name === "Muskan Jha"
                 const isNonClickableCommunity = (member.id === 20 || member.id === 21) && selectedTeam === "COMMUNITY"
-                
+
                 if (isLHC || isMuskan || isNonClickableCommunity) {
                   return (
                     <div
@@ -709,7 +707,7 @@ export default function CouncilPage() {
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5"></div>
                       </div>
-                      
+
                       <div className="relative z-10">
                         <div className="mb-4 overflow-hidden rounded-xl aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative group-hover:scale-105 transition-transform duration-500">
                           {member.image ? (
@@ -724,17 +722,17 @@ export default function CouncilPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                           )}
-                          
+
                           {/* Role badge overlay */}
                           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
                             <p className="text-primary text-xs uppercase tracking-widest font-bold">{member.role}</p>
                           </div>
                         </div>
-                        
+
                         <h3 className="text-xl font-serif font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">{member.name}</h3>
-                        
+
                         {(isLHC ? member.name : isMuskan) && (
-                          <a 
+                          <a
                             href={`mailto:${member.email}`}
                             className="flex items-center gap-2 text-white/60 hover:text-primary text-sm mb-3 transition-colors group/email"
                           >
@@ -742,13 +740,13 @@ export default function CouncilPage() {
                             {member.email}
                           </a>
                         )}
-                        
+
                         <p className="text-white/70 text-sm italic leading-relaxed">{member.message}</p>
                       </div>
                     </div>
                   )
                 }
-                
+
                 return (
                   <button
                     key={member.id}
@@ -760,7 +758,7 @@ export default function CouncilPage() {
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5"></div>
                     </div>
-                    
+
                     {/* Click indicator */}
                     <div className="absolute top-4 right-4 w-8 h-8 bg-primary/20 border border-primary/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
                       <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -768,7 +766,7 @@ export default function CouncilPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                       </svg>
                     </div>
-                    
+
                     <div className="relative z-10">
                       <div className="mb-4 overflow-hidden rounded-xl aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center relative group-hover:scale-105 transition-transform duration-500">
                         {member.image ? (
@@ -783,16 +781,16 @@ export default function CouncilPage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                           </svg>
                         )}
-                        
+
                         {/* Role badge overlay */}
                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3">
                           <p className="text-primary text-xs uppercase tracking-widest font-bold">{member.role}</p>
                         </div>
                       </div>
-                      
+
                       <h3 className="text-xl font-serif font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">{member.name}</h3>
                       <p className="text-white/70 text-sm italic leading-relaxed line-clamp-2">{member.message}</p>
-                      
+
                       {/* View details hint */}
                       <div className="mt-4 flex items-center gap-2 text-primary/60 group-hover:text-primary text-xs font-semibold transition-colors">
                         <span>View Details</span>
@@ -864,13 +862,13 @@ export default function CouncilPage() {
                   <div className="flex items-center justify-between mb-6">
                     <h3 className="text-xl font-bold text-white flex items-center gap-2">
                       <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                       </svg>
                       GitHub Contributions
                     </h3>
                     <span className="text-xs text-white/50 bg-white/5 px-3 py-1 rounded-full">updated-nallamala</span>
                   </div>
-                  
+
                   {/* Stats Grid */}
                   <div className="grid grid-cols-4 gap-4">
                     {/* Commits */}
@@ -885,7 +883,7 @@ export default function CouncilPage() {
                         <div className="text-xs text-white/60 font-medium">Commits</div>
                       </div>
                     </div>
-                    
+
                     {/* Pull Requests */}
                     <div className="bg-gradient-to-br from-purple-500/20 to-purple-500/5 p-4 rounded-lg border border-purple-500/30 hover:border-purple-500/50 transition-all hover:scale-105">
                       <div className="flex flex-col items-center text-center">
@@ -898,7 +896,7 @@ export default function CouncilPage() {
                         <div className="text-xs text-white/60 font-medium">Pull Requests</div>
                       </div>
                     </div>
-                    
+
                     {/* Files Changed */}
                     <div className="bg-gradient-to-br from-blue-500/20 to-blue-500/5 p-4 rounded-lg border border-blue-500/30 hover:border-blue-500/50 transition-all hover:scale-105">
                       <div className="flex flex-col items-center text-center">
@@ -911,7 +909,7 @@ export default function CouncilPage() {
                         <div className="text-xs text-white/60 font-medium">Files Changed</div>
                       </div>
                     </div>
-                    
+
                     {/* Lines of Code */}
                     <div className="bg-gradient-to-br from-green-500/20 to-green-500/5 p-4 rounded-lg border border-green-500/30 hover:border-green-500/50 transition-all hover:scale-105">
                       <div className="flex flex-col items-center text-center">
@@ -967,7 +965,7 @@ export default function CouncilPage() {
                       className="flex items-center space-x-3 text-white/70 hover:text-primary transition"
                     >
                       <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                       </svg>
                       <span>GitHub Profile</span>
                     </a>

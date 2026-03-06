@@ -10,7 +10,7 @@ import { Search, ExternalLink } from "lucide-react"
 
 export default function Blogs() {
   const [searchQuery, setSearchQuery] = useState("")
-  
+
   const blogs = [
     {
       slug: "nallamala-forest",
@@ -39,14 +39,14 @@ export default function Blogs() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      
+
       {/* Background animations */}
       <div className="absolute inset-0 overflow-hidden -z-10">
         <div className="absolute top-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-serif font-bold text-white mb-4">
@@ -75,7 +75,7 @@ export default function Blogs() {
         {filteredBlogs.length > 0 ? (
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {filteredBlogs.map((blog) => (
-              <article 
+              <article
                 key={blog.slug}
                 className="glass-dark rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300 h-full flex flex-col group"
               >
@@ -103,7 +103,7 @@ export default function Blogs() {
                     </svg>
                     <span>{blog.date}</span>
                   </div>
-                  
+
                   <h2 className="text-2xl font-serif font-bold text-white mb-3 transition-colors">
                     {blog.slug === "nallamala-forest" ? (
                       <>
@@ -116,7 +116,7 @@ export default function Blogs() {
                   <p className="text-white/70 mb-6 flex-1 leading-relaxed">
                     {blog.excerpt}
                   </p>
-                  
+
                   {/* Read Article Button */}
                   <a
                     href={blog.externalLink || `/blogs/${blog.slug}`}
