@@ -27,9 +27,9 @@ export const authOptions: NextAuthOptions = {
                 if (isAllowedDomain) {
                     // Sync the user to the backend database
                     try {
-                        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+                        const backendUrl = process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || 'http://localhost:3001';
                         // Using fetch with keepalive to ensure it runs even if navigation happens
-                        fetch(`${apiUrl}/users/sync`, {
+                        fetch(`${backendUrl}/api/users/sync`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
