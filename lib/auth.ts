@@ -28,21 +28,30 @@ export const authOptions: NextAuthOptions = {
                     // Sync the user to the backend database
                     try {
                         const backendUrl = process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || 'http://localhost:3001';
-                        // Using fetch with keepalive to ensure it runs even if navigation happens
-                        fetch(`${backendUrl}/api/users/sync`, {
+                        const internalSecret = process.env.INTERNAL_API_SECRET || '';
+                        // Await the sync to ensure user is created before session is established
+                        const syncRes = await fetch(`${backendUrl}/api/users/sync`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
+                                'X-Internal-Secret': internalSecret,
                             },
                             body: JSON.stringify({
                                 name: profile?.name || "",
                                 email: email,
                                 image: (profile as any)?.picture || profile?.image || "",
                             }),
-                            keepalive: true
-                        }).catch(e => console.error("Failed to sync user to backend", e));
+                        });
+                        const syncData = await syncRes.json();
+                        if (syncData.success && syncData.data) {
+                            // Store the backend user info in the account object temporarily
+                            // so it can be picked up by the jwt callback
+                            (account as any).backendUser = syncData.data;
+                        } else {
+                            console.error("User sync failed:", syncData.message);
+                        }
                     } catch (error) {
-                        console.error("Error initiating user sync:", error);
+                        console.error("Error syncing user to backend:", error);
                     }
                     return true;
                 }
@@ -50,5 +59,23 @@ export const authOptions: NextAuthOptions = {
             }
             return true
         },
+        async jwt({ token, account }) {
+            // If we just signed in, account.backendUser will be available from the signIn callback
+            if (account && (account as any).backendUser) {
+                token.id = (account as any).backendUser._id;
+                token.role = (account as any).backendUser.role;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            if (session.user) {
+                (session.user as any).id = token.id;
+                (session.user as any).role = token.role;
+            }
+            return session;
+        },
+    },
+    session: {
+        strategy: "jwt",
     },
 }
