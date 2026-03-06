@@ -31,10 +31,7 @@ export default function Queries() {
   // Fetch queries from backend
   const fetchQueries = async () => {
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
-      const res = await fetch(`${apiUrl}/queries`, {
-        credentials: "include"
-      })
+      const res = await fetch(`/api/queries`)
       const contentType = res.headers.get("content-type")
       if (contentType && contentType.includes("application/json")) {
         const json = await res.json()
@@ -110,13 +107,11 @@ export default function Queries() {
     })
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
-      const res = await fetch(`${apiUrl}/queries`, {
+      const res = await fetch(`/api/queries`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        credentials: "include",
         body: JSON.stringify({ question: questionText })
       })
 

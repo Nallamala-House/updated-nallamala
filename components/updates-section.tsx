@@ -42,7 +42,7 @@ const fetcher = async (url: string) => {
 
 export default function UpdatesSection({ showSearch = true }: { showSearch?: boolean }) {
   const [searchQuery, setSearchQuery] = useState("")
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
+  const apiUrl = '/api'
 
   const { data: json, error, isLoading } = useSWR(`${apiUrl}/updates`, fetcher, {
     refreshInterval: 10000,
@@ -129,7 +129,7 @@ export default function UpdatesSection({ showSearch = true }: { showSearch?: boo
                 <div className="relative h-64 w-full bg-black flex flex-col items-center justify-center overflow-hidden">
                   <div className="relative h-32 w-32 mb-4">
                     <Image
-                      src={update.fileId ? `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'}/files/${typeof update.fileId === 'object' ? update.fileId._id : update.fileId}` : "/images/updates/iitm.jpeg"}
+                      src={update.fileId ? `/api/files/${typeof update.fileId === 'object' ? update.fileId._id : update.fileId}` : "/images/updates/iitm.jpeg"}
                       alt={update.title || "Update image"}
                       fill
                       priority
@@ -183,7 +183,7 @@ export default function UpdatesSection({ showSearch = true }: { showSearch?: boo
                       {update.additionalImages.map((img: any, i: number) => (
                         <div key={i} className="group/img relative h-24 rounded-lg overflow-hidden border border-white/5">
                           <Image
-                            src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'}/files/${typeof img.fileId === 'object' ? img.fileId._id : img.fileId}`}
+                            src={`/api/files/${typeof img.fileId === 'object' ? img.fileId._id : img.fileId}`}
                             alt={img.description || "Additional image"}
                             fill
                             className="object-cover transition-transform group-hover/img:scale-110"
@@ -217,7 +217,7 @@ export default function UpdatesSection({ showSearch = true }: { showSearch?: boo
 
                   {/* Action Button */}
                   <a
-                    href={normalizeUrl(update.buttonLink || "") !== "#" ? normalizeUrl(update.buttonLink || "") : (update.fileId ? `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'}/files/${typeof update.fileId === 'object' ? update.fileId._id : update.fileId}` : "#")}
+                    href={normalizeUrl(update.buttonLink || "") !== "#" ? normalizeUrl(update.buttonLink || "") : (update.fileId ? `/api/files/${typeof update.fileId === 'object' ? update.fileId._id : update.fileId}` : "#")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl py-4 transition-all text-sm font-bold tracking-widest uppercase"

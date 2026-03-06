@@ -316,8 +316,7 @@ export default function ResourcesPage() {
       // Fetch backend resources
       const fetchResources = async () => {
         try {
-          const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
-          const res = await fetch(`${apiUrl}/resources`)
+          const res = await fetch(`/api/resources`)
           const contentType = res.headers.get("content-type")
           if (contentType && contentType.includes("application/json")) {
             const json = await res.json()
@@ -411,7 +410,7 @@ export default function ResourcesPage() {
   if (dbResources.length > 0) {
     combinedDocuments["latest uploads"] = dbResources.map((r: any) => ({
       name: r.title,
-      url: r.fileId ? `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'}/files/${r.fileId._id || r.fileId}` : r.url,
+      url: r.fileId ? `/api/files/${r.fileId._id || r.fileId}` : r.url,
       description: r.description || `${r.type.toUpperCase()} File`
     }))
   }
