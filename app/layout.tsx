@@ -3,8 +3,8 @@ import type { Metadata } from "next"
 import { Playfair_Display } from "next/font/google"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import Beams from "@/components/Beams"
-import { GlobalLoader } from "@/components/global-loader"
+// import Beams from "@/components/Beams"
+// import { GlobalLoader } from "@/components/global-loader"
 import { Providers } from "@/components/providers"
 import "./globals.css"
 
@@ -30,18 +30,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${_playfair.variable} font-sans antialiased bg-black`} style={{ background: '#000' }}>
-        <GlobalLoader />
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          zIndex: -1,
-          pointerEvents: 'none',
-          opacity: 0.5
-        }}>
+      <body
+        className={`${_playfair.variable} font-sans antialiased bg-black`}
+        style={{ background: "#000" }}
+      >
+
+        {/* <GlobalLoader /> */}
+
+        {/*
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            zIndex: -1,
+            pointerEvents: "none",
+            opacity: 0.5,
+          }}
+        >
           <Beams
             beamWidth={3.3}
             beamHeight={30}
@@ -53,9 +61,12 @@ export default function RootLayout({
             rotation={30}
           />
         </div>
+        */}
+
         <Providers>
           {children}
         </Providers>
+
         <Analytics />
       </body>
     </html>
