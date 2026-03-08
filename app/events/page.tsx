@@ -8,7 +8,6 @@ import Image from "next/image"
 import { Calendar, Share2, X } from "lucide-react"
 
 /* ---------------- TYPES ---------------- */
-/* ---------------- TYPES ---------------- */
 
 type EventItem = {
   id: number
@@ -25,31 +24,18 @@ type EventItem = {
 
 /* ---------------- COMPONENT ---------------- */
 
-/* ---------------- COMPONENT ---------------- */
-
 export default function Events() {
   const [search, setSearch] = useState("")
-  const [expandedId, setExpandedId] = useState<number | null>(null)
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  const toggleExpand = (id: number) => {
-    setExpandedId(expandedId === id ? null : id)
-  }
-
   /* ---------------- HELPER: PARSE DATE ---------------- */
-  const parseEventDate = (dateStr: string) => {
-    const match = dateStr.match(/\d{1,2} [A-Za-z]+ \d{4}/)
-    if (match) return new Date(match[0])
 
-    const yearMatch = dateStr.match(/\d{4}/)
-    return yearMatch ? new Date(Number(yearMatch[0]), 0, 1) : new Date(1970, 0, 1)
-  }
-  /* ---------------- HELPER: PARSE DATE ---------------- */
   const parseEventDate = (dateStr: string) => {
     const match = dateStr.match(/\d{1,2} [A-Za-z]+ \d{4}/)
     if (match) return new Date(match[0])
@@ -58,7 +44,7 @@ export default function Events() {
     return yearMatch ? new Date(Number(yearMatch[0]), 0, 1) : new Date(1970, 0, 1)
   }
 
-   /* ---------------- PAST EVENTS ---------------- */
+  /* ---------------- PAST EVENTS ---------------- */
   const pastEvents: EventItem[] = [
     // All previous past events (id: 23 to 5) go here, unchanged
     {
@@ -395,12 +381,11 @@ export default function Events() {
   ];
 
   /* ---------------- SORT & FILTER ---------------- */
-  /* ---------------- SORT & FILTER ---------------- */
+
   const sortedPastEvents = [...pastEvents].sort(
     (a, b) => parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
   )
 
-  const filteredEvents = sortedPastEvents.filter((event) =>
   const filteredEvents = sortedPastEvents.filter((event) =>
     event.title.toLowerCase().includes(search.toLowerCase())
   )
@@ -408,9 +393,7 @@ export default function Events() {
   if (!mounted) return null
 
   /* ---------------- RENDER ---------------- */
-  if (!mounted) return null
 
-  /* ---------------- RENDER ---------------- */
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -427,15 +410,12 @@ export default function Events() {
           <p className="text-primary text-sm uppercase tracking-widest mb-4">
             Our Events
           </p>
-          <p className="text-primary text-sm uppercase tracking-widest mb-4">
-            Our Events
-          </p>
+
           <h1 className="text-5xl font-serif font-bold text-white mb-4">
             Past <span className="text-primary">Events</span>
-            Past <span className="text-primary">Events</span>
           </h1>
+
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
-            Discover the events and moments that shaped our community
             Discover the events and moments that shaped our community
           </p>
 
@@ -455,24 +435,23 @@ export default function Events() {
               key={event.id}
               onClick={() => setSelectedEvent(event)}
               className="transition-all duration-300 flex flex-col rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
-              className="transition-all duration-300 flex flex-col rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
             >
               <div
                 className="relative h-[420px] bg-black overflow-hidden"
-                onClick={() => setSelectedImage(event.image)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setSelectedImage(event.image)
+                }}
               >
                 <Image
                   src={event.image}
                   alt={event.title}
                   fill
                   className="object-cover transition-transform duration-500 hover:scale-105"
-                  className="object-cover transition-transform duration-500 hover:scale-105"
                 />
+
                 {event.status && (
                   <div className="absolute top-4 right-4">
-                    <Badge className="bg-red-500 text-white">
-                      {event.status}
-                    </Badge>
                     <Badge className="bg-red-500 text-white">
                       {event.status}
                     </Badge>
@@ -484,21 +463,15 @@ export default function Events() {
                 <h3 className="text-xl font-bold text-white mb-2">
                   {event.title}
                 </h3>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {event.title}
-                </h3>
 
-                <div
-                  className={`text-white/70 text-sm leading-relaxed mb-3 flex-1 ${
-                    expandedId === event.id ? "" : "line-clamp-3"
-                  }`}
-                >
+                <div className="text-white/70 text-sm leading-relaxed mb-3 flex-1 line-clamp-3">
                   {event.description}
                 </div>
 
                 <div className="flex items-center gap-2 text-white/60 text-sm mb-4 pt-3 border-t border-white/10">
                   <Calendar size={16} className="text-primary" />
                   <span>{event.date}</span>
+
                   {event.location && (
                     <>
                       <span>•</span>
@@ -512,14 +485,9 @@ export default function Events() {
                     onClick={(e) => e.stopPropagation()}
                     href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
                       event.title
-                    )}&details=${encodeURIComponent(
-                      typeof event.description === "string"
-                        ? event.description
-                        : event.title
-                      typeof event.description === "string"
-                        ? event.description
-                        : event.title
-                    )}&location=${encodeURIComponent(event.location || "")}`}
+                    )}&details=${encodeURIComponent(event.title)}&location=${encodeURIComponent(
+                      event.location || ""
+                    )}`}
                     target="_blank"
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/5 hover:bg-primary/20 border border-white/10 hover:border-primary/50 rounded-lg text-white/70 hover:text-white transition text-sm"
                   >
@@ -532,10 +500,7 @@ export default function Events() {
                       e.stopPropagation()
                       navigator.share?.({
                         title: event.title,
-                        text:
-                          typeof event.description === "string"
-                            ? event.description
-                            : event.title,
+                        text: event.title,
                       })
                     }}
                     className="px-4 py-2 bg-white/5 hover:bg-primary/20 border border-white/10 hover:border-primary/50 rounded-lg text-white/70 hover:text-white transition"
@@ -549,7 +514,7 @@ export default function Events() {
         </div>
       </div>
 
-      {/* Selected Event Modal */}
+      {/* Event Modal */}
       {selectedEvent && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
@@ -579,9 +544,11 @@ export default function Events() {
               <h2 className="text-2xl font-bold text-white mb-2">
                 {selectedEvent.title}
               </h2>
+
               <div className="text-white/70 mb-4">
                 {selectedEvent.description}
               </div>
+
               <div className="text-white/60 text-sm">
                 {selectedEvent.date}
                 {selectedEvent.location && <> • {selectedEvent.location}</>}
@@ -604,6 +571,7 @@ export default function Events() {
             >
               <X size={32} />
             </button>
+
             <Image
               src={selectedImage}
               alt="Event image"
