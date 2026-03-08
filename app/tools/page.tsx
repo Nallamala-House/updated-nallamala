@@ -1,21 +1,19 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
+import { LoadingCube } from "@/components/loading-cube"
 
 export default function Tools() {
   const router = useRouter()
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const { data: session, status } = useSession()
+  const isAuthenticated = status === "authenticated"
+  const loading = status === "loading"
 
-  useEffect(() => {
-    // Check authentication status
-    const authStatus = localStorage.getItem('isAuthenticated') === 'true'
-    setIsAuthenticated(authStatus)
-  }, [])
 
   const tools = [
     {
@@ -40,21 +38,32 @@ export default function Tools() {
     }
   ]
 
+  // Show a blank state or a spinner while checking session
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-black">
+        <Navbar />
+        <div className="flex items-center justify-center min-h-screen">
+          <LoadingCube />
+        </div>
+      </main>
+    )
+  }
+
   return (
     <main className="min-h-screen">
       <Navbar />
-      
-      {/* Background animations */}
-      <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute top-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
-      </div>
 
       {!isAuthenticated ? (
-        <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 min-h-screen">
-          <div className="max-w-2xl w-full text-center">
-            <div className="glass-dark p-16 rounded-2xl border border-primary/30">
-              <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-8">
+        <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 min-h-screen relative">
+          {/* Background glow effects */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
+            <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
+          </div>
+          <div className="max-w-2xl w-full text-center relative z-10">
+            <div className="glass p-16 rounded-2xl border border-primary/20 shadow-[0_0_30px_rgba(212,175,55,0.15)] bg-black/40 backdrop-blur-md">
+              <div className="w-24 h-24 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
                 <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
@@ -63,9 +72,9 @@ export default function Tools() {
               <p className="text-white/70 text-lg mb-10 max-w-lg mx-auto">
                 Please sign in with your IIT Madras account to access academic tools and calculators
               </p>
-              <Button 
+              <Button
                 onClick={() => router.push('/signin')}
-                className="bg-primary hover:bg-primary/90 text-black font-bold text-lg px-10 py-6 rounded-xl"
+                className="bg-primary hover:bg-primary/90 text-black font-bold text-lg px-10 py-6 rounded-xl transition-all active:scale-95"
               >
                 Sign In to Access
               </Button>
@@ -73,9 +82,15 @@ export default function Tools() {
           </div>
         </div>
       ) : (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
+          {/* Background glow effects */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
+            <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
+          </div>
+
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 relative z-10">
             <p className="text-primary text-sm uppercase tracking-widest mb-4">Academic Tools</p>
             <h1 className="text-5xl font-serif font-bold text-white mb-4">
               Student <span className="text-primary">Tools</span>
@@ -86,15 +101,15 @@ export default function Tools() {
           </div>
 
           {/* Tools Grid */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto relative z-10">
             {tools.map((tool, index) => (
-              <Link 
+              <Link
                 key={index}
                 href={tool.link}
                 className="group"
               >
-                <div className="glass-dark p-10 rounded-2xl border-2 border-primary/20 hover:border-primary/60 transition-all duration-300 h-full flex flex-col items-center text-center hover:-translate-y-2">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="glass p-10 rounded-2xl border-2 border-primary/20 hover:border-primary/60 transition-all duration-300 h-full flex flex-col items-center text-center hover:-translate-y-2 shadow-[0_0_15px_rgba(212,175,55,0.1)] hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] bg-black/20 backdrop-blur-sm">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
                     {tool.icon}
                   </div>
                   <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">

@@ -97,17 +97,17 @@ export default function AboutSection() {
           </div>
 
           {/* Right Stats Grid */}
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6">
             {animatedStats.map((stat, index) => (
               <div
                 key={stat.label}
                 ref={stat.animation.elementRef}
-                className="glass-dark p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 text-center group"
+                className="glass-dark p-4 sm:p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 text-center group"
               >
-                <div className="text-3xl md:text-4xl font-serif font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
                   {stat.animation.count}{stat.suffix}
                 </div>
-                <p className="text-white/70 text-sm">{stat.label}</p>
+                <p className="text-white/70 text-xs sm:text-sm">{stat.label}</p>
               </div>
             ))}
           </div>

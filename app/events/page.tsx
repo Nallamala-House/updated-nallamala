@@ -8,11 +8,12 @@ import Image from "next/image"
 import { Calendar, Share2, X } from "lucide-react"
 
 /* ---------------- TYPES ---------------- */
+/* ---------------- TYPES ---------------- */
 
 type EventItem = {
   id: number
   title: string
-  description: JSX.Element | string
+  description: React.ReactNode
   date: string
   location?: string
   image: string
@@ -24,11 +25,12 @@ type EventItem = {
 
 /* ---------------- COMPONENT ---------------- */
 
+/* ---------------- COMPONENT ---------------- */
+
 export default function Events() {
   const [search, setSearch] = useState("")
   const [expandedId, setExpandedId] = useState<number | null>(null)
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null)
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -39,6 +41,14 @@ export default function Events() {
     setExpandedId(expandedId === id ? null : id)
   }
 
+  /* ---------------- HELPER: PARSE DATE ---------------- */
+  const parseEventDate = (dateStr: string) => {
+    const match = dateStr.match(/\d{1,2} [A-Za-z]+ \d{4}/)
+    if (match) return new Date(match[0])
+
+    const yearMatch = dateStr.match(/\d{4}/)
+    return yearMatch ? new Date(Number(yearMatch[0]), 0, 1) : new Date(1970, 0, 1)
+  }
   /* ---------------- HELPER: PARSE DATE ---------------- */
   const parseEventDate = (dateStr: string) => {
     const match = dateStr.match(/\d{1,2} [A-Za-z]+ \d{4}/)
@@ -99,87 +109,87 @@ export default function Events() {
         </>
       ),
     },
-  
-     {
-    id: 21,
-    title: "Nostalgia Night",
-    date: "14 November 2025",
-    image: "/images/events/17.png",
-    description: (
-      <>
-        A fun interactive night revisiting childhood memories. The nostalgic interactive session organized by Nallamala House in collaboration with Veritas Oratory Society took participants on a joyful trip down memory lane. Held on 14th November, the event brought together students for an evening filled with laughter, shared memories, and light-hearted conversations about childhood and school days.
-        Through engaging activities such as Never Have I Ever, Truth or Dare, rapid-fire nostalgic debates, and open storytelling, participants relived their funniest classroom moments, embarrassing mishaps, and unforgettable school experiences. The session created a relaxed and inclusive space where stories flowed freely and laughter echoed throughout the virtual room.
-        More than just a fun gathering, the event fostered connection, camaraderie, and shared joy, reminding everyone of the simple moments that shaped their early years. The session concluded on a cheerful note, leaving participants smiling, bonded by memories, and warmed by a sense of collective nostalgia.
 
-      </>
-    ),
-  },
-  {
-    id: 20,
-    title: "AI GENESIS – Agentic AI Framework",
-    date: "12 November 2025",
-    image: "/images/events/16.png",
-    description: (
-      <>
-        Hands-on session on building Agentic AI frameworks.AI GENESIS, an initiative by Nallamala , Nilgiri, and Sundarbans Houses in collaboration with CodeCrafters, successfully continued its learning journey with Session 2, following the strong response to its introductory session on AI Agents. This session shifted the focus from theory to hands-on learning, offering participants a practical deep dive into Agentic AI.
-    Conducted on 12th November, the session titled “Learning Agentic AI by Building an Agentic AI Framework” was led by Siddhant Pandey, an AI Research Engineer at Codebasics. Participants were guided through the core principles of agentic systems by actively building an Agentic AI framework, helping them understand how intelligent agents are designed, structured, and deployed in real-world applications.
-    The session proved to be highly engaging and skill-oriented, enabling learners to bridge the gap between conceptual understanding and practical implementation. As part of the AI GENESIS series, this event strengthened participants’ confidence in working with modern AI paradigms and reinforced the series’ goal of preparing learners for the next wave of artificial intelligence.
-    Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
+    {
+      id: 21,
+      title: "Nostalgia Night",
+      date: "14 November 2025",
+      image: "/images/events/17.png",
+      description: (
+        <>
+          A fun interactive night revisiting childhood memories. The nostalgic interactive session organized by Nallamala House in collaboration with Veritas Oratory Society took participants on a joyful trip down memory lane. Held on 14th November, the event brought together students for an evening filled with laughter, shared memories, and light-hearted conversations about childhood and school days.
+          Through engaging activities such as Never Have I Ever, Truth or Dare, rapid-fire nostalgic debates, and open storytelling, participants relived their funniest classroom moments, embarrassing mishaps, and unforgettable school experiences. The session created a relaxed and inclusive space where stories flowed freely and laughter echoed throughout the virtual room.
+          More than just a fun gathering, the event fostered connection, camaraderie, and shared joy, reminding everyone of the simple moments that shaped their early years. The session concluded on a cheerful note, leaving participants smiling, bonded by memories, and warmed by a sense of collective nostalgia.
 
-      </>
-    ),
-  },
-  {
-    id: 19,
-    title: "AI GENESIS – Intro to AI Agents",
-    date: "10 November 2025",
-    image: "/images/events/15.png",
-    description: (
-      <>
-        Introductory session on AI Agents featuring Dr. Dhaval Mehta. AI GENESIS marked the beginning of an insightful learning series focused on the rapidly evolving field of AI Agents. Organized by Nilgiri, Sundarbans, and Nallamala Houses in collaboration with CodeCrafters, the inaugural session introduced participants to one of the most significant emerging trends in artificial intelligence.
-        The kickoff session, titled “Intro to AI Agents”, was conducted on 10th November and featured Dr. Dhaval Mehta as the guest speaker. The session broke down the fundamental concepts of AI agents, helping participants understand their structure, capabilities, and real-world relevance. Dr. Mehta’s clear explanations and practical insights made complex ideas accessible to learners from diverse technical backgrounds.
-        The event successfully set the foundation for the AI GENESIS series, sparking curiosity and enthusiasm among attendees. It empowered participants with a strong conceptual starting point to explore the future potential of AI agents and emerging intelligent systems.
-        Recording link : https://youtu.be/esmuGxoiBJA?si=abaRV3rYWOJzlruq
-      </>
-    ),
-  },
-  {
-    id: 18,
-    title: "Python OPPE Discussion Session",
-    date: "7 November 2025",
-    image: "/images/events/14.png",
-    description: (
-      <>
-        A focused discussion session clarifying Python OPPE concepts. Nallamala House successfully conducted a focused Python OPPE Discussion Session on 7th November, aimed at helping students clarify key concepts and strengthen their exam readiness. The session featured in-depth discussions on important OPPE topics along with practical insights to enhance conceptual understanding.
-      Participants actively engaged by raising doubts, revisiting core Python concepts, and discussing effective problem-solving strategies. The structured format ensured efficient coverage of essential topics, while a dedicated doubt-solving segment helped address individual queries.
-      The session concluded on a motivating note, emphasizing the importance of strong conceptual clarity over rote learning. Overall, the discussion proved to be a productive and confidence-boosting experience for students preparing for the Python OPPE.
+        </>
+      ),
+    },
+    {
+      id: 20,
+      title: "AI GENESIS – Agentic AI Framework",
+      date: "12 November 2025",
+      image: "/images/events/16.png",
+      description: (
+        <>
+          Hands-on session on building Agentic AI frameworks.AI GENESIS, an initiative by Nallamala , Nilgiri, and Sundarbans Houses in collaboration with CodeCrafters, successfully continued its learning journey with Session 2, following the strong response to its introductory session on AI Agents. This session shifted the focus from theory to hands-on learning, offering participants a practical deep dive into Agentic AI.
+          Conducted on 12th November, the session titled “Learning Agentic AI by Building an Agentic AI Framework” was led by Siddhant Pandey, an AI Research Engineer at Codebasics. Participants were guided through the core principles of agentic systems by actively building an Agentic AI framework, helping them understand how intelligent agents are designed, structured, and deployed in real-world applications.
+          The session proved to be highly engaging and skill-oriented, enabling learners to bridge the gap between conceptual understanding and practical implementation. As part of the AI GENESIS series, this event strengthened participants’ confidence in working with modern AI paradigms and reinforced the series’ goal of preparing learners for the next wave of artificial intelligence.
+          Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
 
-      </>
-    ),
-  },
-  {
-    id: 17,
-    title: "JANMANTHAN: Bihar Edition",
-    date: "3 November 2025",
-    image: "/images/events/13.png",
-    description: (
-      <>
-        A youth dialogue unpacking political manifestos and governance priorities.JANMANTHAN: Bihar Edition was a thought-provoking youth dialogue organized by Nallamala House in collaboration with Veritas, creating a platform where ideas met impact and young voices led meaningful conversations on Bihar’s future. Held on 3rd November 2025, the event brought together participants for in-depth discussions on political manifestos, public promises, and governance priorities.
-      Through structured debates and collaborative sessions, participants critically unpacked manifestos to understand their real-world implications, engaged in open discussions to share diverse perspectives, and collectively contributed to shaping a People’s Manifesto that reflected youth aspirations. The event encouraged informed dialogue, civic awareness, and constructive engagement, empowering attendees to think critically and voice their opinions with confidence.
+        </>
+      ),
+    },
+    {
+      id: 19,
+      title: "AI GENESIS – Intro to AI Agents",
+      date: "10 November 2025",
+      image: "/images/events/15.png",
+      description: (
+        <>
+          Introductory session on AI Agents featuring Dr. Dhaval Mehta. AI GENESIS marked the beginning of an insightful learning series focused on the rapidly evolving field of AI Agents. Organized by Nilgiri, Sundarbans, and Nallamala Houses in collaboration with CodeCrafters, the inaugural session introduced participants to one of the most significant emerging trends in artificial intelligence.
+          The kickoff session, titled “Intro to AI Agents”, was conducted on 10th November and featured Dr. Dhaval Mehta as the guest speaker. The session broke down the fundamental concepts of AI agents, helping participants understand their structure, capabilities, and real-world relevance. Dr. Mehta’s clear explanations and practical insights made complex ideas accessible to learners from diverse technical backgrounds.
+          The event successfully set the foundation for the AI GENESIS series, sparking curiosity and enthusiasm among attendees. It empowered participants with a strong conceptual starting point to explore the future potential of AI agents and emerging intelligent systems.
+          Recording link : https://youtu.be/esmuGxoiBJA?si=abaRV3rYWOJzlruq
+        </>
+      ),
+    },
+    {
+      id: 18,
+      title: "Python OPPE Discussion Session",
+      date: "7 November 2025",
+      image: "/images/events/14.png",
+      description: (
+        <>
+          A focused discussion session clarifying Python OPPE concepts. Nallamala House successfully conducted a focused Python OPPE Discussion Session on 7th November, aimed at helping students clarify key concepts and strengthen their exam readiness. The session featured in-depth discussions on important OPPE topics along with practical insights to enhance conceptual understanding.
+          Participants actively engaged by raising doubts, revisiting core Python concepts, and discussing effective problem-solving strategies. The structured format ensured efficient coverage of essential topics, while a dedicated doubt-solving segment helped address individual queries.
+          The session concluded on a motivating note, emphasizing the importance of strong conceptual clarity over rote learning. Overall, the discussion proved to be a productive and confidence-boosting experience for students preparing for the Python OPPE.
 
-      </>
-    ),
-  },
-  {
-    id: 16,
-    title: "Unraveling Nature’s Code through Quantum Computing",
-    date: "16 October 2025",
-    image: "/images/events/12.png",
-    description: (
-      <>
-        A speaker session by Dr. Monika Aggarwal (IIT Delhi) on quantum computing and natural systems. Nallamala House, in collaboration with the Nature Nurture Society, successfully hosted an insightful speaker session titled “Unraveling Nature’s Code through Quantum Computing”, delivered by Dr. Monika Aggarwal, Professor at IIT Delhi. Conducted on 16th October 2025, the session provided participants with a deep dive into how quantum computing is transforming the understanding of natural systems and complex phenomena.
-        During the session, Dr. Aggarwal shared her extensive expertise in Quantum Computing, 5G technologies, defence systems, and underwater communications, effectively bridging theoretical concepts with impactful real-world research. The discussion encouraged students to move beyond textbook learning and explore the practical applications of advanced technologies.
-        A key highlight of the event was the focus on research collaboration opportunities, offering aspiring innovators a chance to engage with cutting-edge research initiatives. The session concluded as a highly enriching and motivating experience, leaving participants inspired and better equipped to explore future technological frontiers.
+        </>
+      ),
+    },
+    {
+      id: 17,
+      title: "JANMANTHAN: Bihar Edition",
+      date: "3 November 2025",
+      image: "/images/events/13.png",
+      description: (
+        <>
+          A youth dialogue unpacking political manifestos and governance priorities.JANMANTHAN: Bihar Edition was a thought-provoking youth dialogue organized by Nallamala House in collaboration with Veritas, creating a platform where ideas met impact and young voices led meaningful conversations on Bihar’s future. Held on 3rd November 2025, the event brought together participants for in-depth discussions on political manifestos, public promises, and governance priorities.
+          Through structured debates and collaborative sessions, participants critically unpacked manifestos to understand their real-world implications, engaged in open discussions to share diverse perspectives, and collectively contributed to shaping a People’s Manifesto that reflected youth aspirations. The event encouraged informed dialogue, civic awareness, and constructive engagement, empowering attendees to think critically and voice their opinions with confidence.
+
+        </>
+      ),
+    },
+    {
+      id: 16,
+      title: "Unraveling Nature’s Code through Quantum Computing",
+      date: "16 October 2025",
+      image: "/images/events/12.png",
+      description: (
+        <>
+          A speaker session by Dr. Monika Aggarwal (IIT Delhi) on quantum computing and natural systems. Nallamala House, in collaboration with the Nature Nurture Society, successfully hosted an insightful speaker session titled “Unraveling Nature’s Code through Quantum Computing”, delivered by Dr. Monika Aggarwal, Professor at IIT Delhi. Conducted on 16th October 2025, the session provided participants with a deep dive into how quantum computing is transforming the understanding of natural systems and complex phenomena.
+          During the session, Dr. Aggarwal shared her extensive expertise in Quantum Computing, 5G technologies, defence systems, and underwater communications, effectively bridging theoretical concepts with impactful real-world research. The discussion encouraged students to move beyond textbook learning and explore the practical applications of advanced technologies.
+          A key highlight of the event was the focus on research collaboration opportunities, offering aspiring innovators a chance to engage with cutting-edge research initiatives. The session concluded as a highly enriching and motivating experience, leaving participants inspired and better equipped to explore future technological frontiers.
 
 
       </>
@@ -195,130 +205,130 @@ export default function Events() {
       <>
         A virtual evening celebrating Shayari and spoken poetry through powerful performances.Noor-e-Sama 2.0, organized by the Literary and Oratory Community of Nallamala House, was a captivating virtual evening that celebrated the timeless beauty of Shayari and spoken poetry. The event provided a मंच (stage) where classical ghazals met contemporary expressions, creating a harmonious blend of tradition and modern thought. Poets and poetry enthusiasts from diverse backgrounds came together to share verses that resonated with emotion, reflection, and creativity.Throughout the evening, the audience was immersed in an atmosphere of rhythm, passion, and meaningful dialogue, as each performance added depth to the collective experience. Noor-e-Sama 2.0 was more than just a poetry session—it was a space where words became lanterns, emotions found expression, and silence discovered its voice. The event successfully fostered a sense of connection and artistic appreciation, leaving participants inspired and deeply moved by the power of spoken word.
 
-      </>
-    ),
-  },
-  {
-    id: 13,
-    title: "Tri-Color Trails 2.0",
-    date: "6–14 August 2025",
-    image: "/images/events/9.png",
-    description: (
-      <>
-        A nationwide cultural initiative spanning 12 cities across 11 states, celebrating unity in diversity.Tri-Color Trails 2.0 was a nationwide travel and cultural initiative that spanned 12 cities across 11 states, united by one shared spirit of India. Conducted during Independence Week from August 6 to August 14, the journey explored both iconic destinations and hidden gems, bringing people together through shared moments, memories, and cultural experiences. More than a celebration of the tricolor, the event lived its true meaning by immersing participants in the stories, streets, and traditions of diverse states. Presented by Boundless, in collaboration with Sundarbans and Nallamala, Tri-Color Trails 2.0 stood as a celebration of unity in diversity and the collective spirit of the nation.
+        </>
+      ),
+    },
+    {
+      id: 13,
+      title: "Tri-Color Trails 2.0",
+      date: "6–14 August 2025",
+      image: "/images/events/9.png",
+      description: (
+        <>
+          A nationwide cultural initiative spanning 12 cities across 11 states, celebrating unity in diversity.Tri-Color Trails 2.0 was a nationwide travel and cultural initiative that spanned 12 cities across 11 states, united by one shared spirit of India. Conducted during Independence Week from August 6 to August 14, the journey explored both iconic destinations and hidden gems, bringing people together through shared moments, memories, and cultural experiences. More than a celebration of the tricolor, the event lived its true meaning by immersing participants in the stories, streets, and traditions of diverse states. Presented by Boundless, in collaboration with Sundarbans and Nallamala, Tri-Color Trails 2.0 stood as a celebration of unity in diversity and the collective spirit of the nation.
 
-      </>
-    ),
-  },
-  {
-    id: 12,
-    title: "3-Day Python OPPE Revision Bootcamp",
-    date: "17–19 July 2025",
-    image: "/images/events/8.png",
-    description: (
-      <>
-        A 3-day intensive Python OPPE revision bootcamp featuring structured sessions, hands-on practice, and expert guidance.We successfully conducted a 3-Day Python OPPE Revision Bootcamp from 17th to 19th July, aimed at helping students strengthen their coding fundamentals and build confidence for the OPPE. The bootcamp featured structured revision sessions, hands-on practice with expert guidance, and exclusive practice sheets to reinforce key concepts.Over three interactive days, participants engaged in focused learning, problem-solving, and collaborative discussions, making it a valuable and enriching experience. The event provided an excellent opportunity for learners to revise effectively, enhance their Python skills, and connect with like-minded peers in their OPPE preparation journey.
+        </>
+      ),
+    },
+    {
+      id: 12,
+      title: "3-Day Python OPPE Revision Bootcamp",
+      date: "17–19 July 2025",
+      image: "/images/events/8.png",
+      description: (
+        <>
+          A 3-day intensive Python OPPE revision bootcamp featuring structured sessions, hands-on practice, and expert guidance.We successfully conducted a 3-Day Python OPPE Revision Bootcamp from 17th to 19th July, aimed at helping students strengthen their coding fundamentals and build confidence for the OPPE. The bootcamp featured structured revision sessions, hands-on practice with expert guidance, and exclusive practice sheets to reinforce key concepts.Over three interactive days, participants engaged in focused learning, problem-solving, and collaborative discussions, making it a valuable and enriching experience. The event provided an excellent opportunity for learners to revise effectively, enhance their Python skills, and connect with like-minded peers in their OPPE preparation journey.
 
-      </>
-    ),
-  },
-  {
-    id: 11,
-    title: "The Science of Self: Insights from the Bhagavad Gita",
-    date: "23 April 2025",
-    location: "Online",
-    image: "/images/events/7.png",
-    description: (
-      <>
-        A reflective speaker session exploring self-awareness, consciousness, and mind power. The speaker session on “The Science of Self: Insights from the Bhagavad Gita”, featuring Rohith Bhogadi, Founder of Sarathi Academy, was successfully conducted on April 23, 2025.
-        The session offered a unique exploration of the self and consciousness by presenting the teachings of the Bhagavad Gita through a scientific and rational perspective. Participants gained valuable insights into mind power, inner clarity, and self-awareness, while understanding how ancient wisdom can be interpreted and applied in a modern context.
-        By bridging spiritual philosophy with scientific thought, the session encouraged deep reflection and meaningful discussion, leaving attendees with a renewed understanding of the self and practical tools for personal growth.
+        </>
+      ),
+    },
+    {
+      id: 11,
+      title: "The Science of Self: Insights from the Bhagavad Gita",
+      date: "23 April 2025",
+      location: "Online",
+      image: "/images/events/7.png",
+      description: (
+        <>
+          A reflective speaker session exploring self-awareness, consciousness, and mind power. The speaker session on “The Science of Self: Insights from the Bhagavad Gita”, featuring Rohith Bhogadi, Founder of Sarathi Academy, was successfully conducted on April 23, 2025.
+          The session offered a unique exploration of the self and consciousness by presenting the teachings of the Bhagavad Gita through a scientific and rational perspective. Participants gained valuable insights into mind power, inner clarity, and self-awareness, while understanding how ancient wisdom can be interpreted and applied in a modern context.
+          By bridging spiritual philosophy with scientific thought, the session encouraged deep reflection and meaningful discussion, leaving attendees with a renewed understanding of the self and practical tools for personal growth.
 
-        https://www.youtube.com/live/dhjsLk7hob4?si=v9l8V9A4_UqDHtCc
-        https://www.youtube.com/live/KppLybJzRzw?si=c-d_Ty74e97isNZi
+          https://www.youtube.com/live/dhjsLk7hob4?si=v9l8V9A4_UqDHtCc
+          https://www.youtube.com/live/KppLybJzRzw?si=c-d_Ty74e97isNZi
 
-      </>
-    ),
-  },
-  {
-    id: 9,
-    title: "Ethical Hacking Workshop",
-    date: "15–16 Apr 2025",
-    location: "Hybrid",
-    image: "/images/events/5.png",
-    description: (
-      <>
-        An intensive 2-day hands-on workshop introducing participants to ethical hacking, penetration testing, cybersecurity, and live hacking demonstrations.
-      The Ethical Hacking Workshop, organized by Nallamala House in collaboration with SparkIIT Edutech LLP, was successfully conducted as an intensive 2-day hands-on learning experience on April 15–16, 2025.
-        The workshop provided participants with practical exposure to the rapidly evolving field of cybersecurity. Sessions covered essential domains such as ethical hacking, penetration testing, network and web security, cyber forensics, and live hacking demonstrations, enabling learners to understand real-world cyber threats and defensive strategies.
-        With a strong focus on practical labs and real-world scenarios, the workshop allowed participants to learn directly from industry experts while actively engaging in interactive discussions and Q&A sessions. The program concluded with participants receiving certificates of completion, recognizing their newly acquired skills and knowledge in ethical hacking practices.
-        For those who missed the live sessions or wish to revisit the content, the workshop recordings are available:
-        Day 1 Recording: https://www.youtube.com/live/PnMSxVWJ454?si=ACHqybg4dYlS1fiC
-        Day 2 Recording: https://www.youtube.com/live/eIngPdmZj1Q?si=c52zCtk7lXeh26VR
+        </>
+      ),
+    },
+    {
+      id: 9,
+      title: "Ethical Hacking Workshop",
+      date: "15–16 Apr 2025",
+      location: "Hybrid",
+      image: "/images/events/5.png",
+      description: (
+        <>
+          An intensive 2-day hands-on workshop introducing participants to ethical hacking, penetration testing, cybersecurity, and live hacking demonstrations.
+          The Ethical Hacking Workshop, organized by Nallamala House in collaboration with SparkIIT Edutech LLP, was successfully conducted as an intensive 2-day hands-on learning experience on April 15–16, 2025.
+          The workshop provided participants with practical exposure to the rapidly evolving field of cybersecurity. Sessions covered essential domains such as ethical hacking, penetration testing, network and web security, cyber forensics, and live hacking demonstrations, enabling learners to understand real-world cyber threats and defensive strategies.
+          With a strong focus on practical labs and real-world scenarios, the workshop allowed participants to learn directly from industry experts while actively engaging in interactive discussions and Q&A sessions. The program concluded with participants receiving certificates of completion, recognizing their newly acquired skills and knowledge in ethical hacking practices.
+          For those who missed the live sessions or wish to revisit the content, the workshop recordings are available:
+          Day 1 Recording: https://www.youtube.com/live/PnMSxVWJ454?si=ACHqybg4dYlS1fiC
+          Day 2 Recording: https://www.youtube.com/live/eIngPdmZj1Q?si=c52zCtk7lXeh26VR
 
-      </>
-    ),
-  },
-  {
-    id: 8,
-    title: "Bio.pptx 1.0",
-    date: " 18 March – 8 April 2025",
-    location: "Online",
-    image: "/images/events/4.png",
-    description: (
-      <>
-        A term-wise presentation competition fostering research-driven thinking and scientific communication. Participants explored topics at the intersection of biology, space sciences, and sustainability, encouraging interdisciplinary learning and innovation.
-      Bio.pptx 1.0 was successfully organized by the Nature Nurture Society, in collaboration with AVASYA: The Aero Society and Nallamala House, as a term-wise presentation competition held from March 18 to April 8, 2025.
-      The event aimed to foster research-driven thinking and effective scientific communication among students by challenging participants to explore complex concepts at the intersection of biology, space sciences, and sustainability. Through well-structured PowerPoint presentations, participants analyzed critical scientific questions and presented their findings with clarity and creativity.
-      Topics ranged from the origin of life and exoplanet habitability to biosignatures and the possibility of alien life, encouraging interdisciplinary learning and innovation. With a ₹1,800 prize pool, Bio.pptx 1.0 successfully motivated participants to engage deeply with scientific inquiry while enhancing their presentation and analytical skills.
+        </>
+      ),
+    },
+    {
+      id: 8,
+      title: "Bio.pptx 1.0",
+      date: " 18 March – 8 April 2025",
+      location: "Online",
+      image: "/images/events/4.png",
+      description: (
+        <>
+          A term-wise presentation competition fostering research-driven thinking and scientific communication. Participants explored topics at the intersection of biology, space sciences, and sustainability, encouraging interdisciplinary learning and innovation.
+          Bio.pptx 1.0 was successfully organized by the Nature Nurture Society, in collaboration with AVASYA: The Aero Society and Nallamala House, as a term-wise presentation competition held from March 18 to April 8, 2025.
+          The event aimed to foster research-driven thinking and effective scientific communication among students by challenging participants to explore complex concepts at the intersection of biology, space sciences, and sustainability. Through well-structured PowerPoint presentations, participants analyzed critical scientific questions and presented their findings with clarity and creativity.
+          Topics ranged from the origin of life and exoplanet habitability to biosignatures and the possibility of alien life, encouraging interdisciplinary learning and innovation. With a ₹1,800 prize pool, Bio.pptx 1.0 successfully motivated participants to engage deeply with scientific inquiry while enhancing their presentation and analytical skills.
 
-      </>
-    ),
-  },
-  {
-    id: 7,
-    title: "Talk-Sick Night",
-    date: "4 Apr 2025",
-    location: "House Common Area",
-    image: "/images/events/3.png",
-    description: (
-      <>
-        An evening packed with laughter, stories, and unforgettable moments. Participants shared hilarious, embarrassing, and unbelievable experiences in a relaxed and inclusive storytelling space that celebrated genuine expression and connection.
-      The Talk-Sick Night wrapped up as an evening full of laughter, stories, and unforgettable moments on April 4, 2025.
-      From hilarious and embarrassing tales to unbelievable experiences that felt straight out of a movie, participants took the stage to speak, write, and own their stories. The event created a relaxed and inclusive space where everyone felt comfortable sharing—whether narrating their own story or having it brought to life on their behalf.
-      With its fun, interactive storytelling format, zero pressure, and high entertainment value, Talk-Sick Night became a platform for genuine expression and connection. Attendees not only enjoyed a night of pure entertainment but also walked away with shared laughs, new friendships, and truly legendary moments.
+        </>
+      ),
+    },
+    {
+      id: 7,
+      title: "Talk-Sick Night",
+      date: "4 Apr 2025",
+      location: "House Common Area",
+      image: "/images/events/3.png",
+      description: (
+        <>
+          An evening packed with laughter, stories, and unforgettable moments. Participants shared hilarious, embarrassing, and unbelievable experiences in a relaxed and inclusive storytelling space that celebrated genuine expression and connection.
+          The Talk-Sick Night wrapped up as an evening full of laughter, stories, and unforgettable moments on April 4, 2025.
+          From hilarious and embarrassing tales to unbelievable experiences that felt straight out of a movie, participants took the stage to speak, write, and own their stories. The event created a relaxed and inclusive space where everyone felt comfortable sharing—whether narrating their own story or having it brought to life on their behalf.
+          With its fun, interactive storytelling format, zero pressure, and high entertainment value, Talk-Sick Night became a platform for genuine expression and connection. Attendees not only enjoyed a night of pure entertainment but also walked away with shared laughs, new friendships, and truly legendary moments.
 
-      </>
-    ),
-  },
-  {
-    id: 6,
-    title: "Abstract Allegory – The Final Showdown",
-    date: "6 March 2025",
-    location: "House Auditorium",
-    image: "/images/events/2.png",
-    description: (
-      <>
-        A captivating celebration of creativity and spontaneous storytelling. Using abstract paintings as prompts, participants delivered impromptu narrations, blending visual art with expressive oration and sparking engaging discussions.
-      Abstract Allegory – The Final Showdown concluded as a captivating celebration of creativity, imagination, and spontaneous storytelling on March 6, 2025.
-      With abstract paintings as their only prompts, participants took part in a thrilling live impromptu narration round, crafting compelling stories on the spot and bringing visual art to life through words. The event showcased a wide range of interpretations, sparking engaging discussions and highlighting the beauty of diverse perspectives.
-      The showdown stood as a unique fusion of art and oration, where visuals met narratives to create an unforgettable experience. Even the audience was drawn into the excitement, witnessing the power of instant creativity and expressive storytelling unfold live.
+        </>
+      ),
+    },
+    {
+      id: 6,
+      title: "Abstract Allegory – The Final Showdown",
+      date: "6 March 2025",
+      location: "House Auditorium",
+      image: "/images/events/2.png",
+      description: (
+        <>
+          A captivating celebration of creativity and spontaneous storytelling. Using abstract paintings as prompts, participants delivered impromptu narrations, blending visual art with expressive oration and sparking engaging discussions.
+          Abstract Allegory – The Final Showdown concluded as a captivating celebration of creativity, imagination, and spontaneous storytelling on March 6, 2025.
+          With abstract paintings as their only prompts, participants took part in a thrilling live impromptu narration round, crafting compelling stories on the spot and bringing visual art to life through words. The event showcased a wide range of interpretations, sparking engaging discussions and highlighting the beauty of diverse perspectives.
+          The showdown stood as a unique fusion of art and oration, where visuals met narratives to create an unforgettable experience. Even the audience was drawn into the excitement, witnessing the power of instant creativity and expressive storytelling unfold live.
 
-      </>
-    ),
-  },
-  {
-    id: 5,
-    title: "Speaker Session: The Future of Digital Marketing",
-    date: "21 March 2025",
-    location: "House Auditorium",
-    image: "/images/events/1.png",
-    description: (
-      <>
-        An insightful speaker session featuring Sujata Hansda on digital marketing trends, AI, automation, and future career opportunities.
-      Nallamala House successfully organized an insightful speaker session on “The Future of Digital Marketing” featuring Sujata Hansda, Marketing Strategist and Copywriter, on March 21, 2025.
-      The session provided participants with a comprehensive understanding of the rapidly evolving digital marketing landscape. Key discussions focused on emerging trends, the growing role of AI, automation, and data-driven strategies, as well as the skills and career opportunities essential for the future of marketing.
-      Attendees gained valuable insights into how businesses are adapting to digital transformation and learned practical perspectives directly from industry experience. The interactive nature of the session made it highly engaging and informative, leaving participants better equipped to navigate future challenges in the digital marketing domain.
+        </>
+      ),
+    },
+    {
+      id: 5,
+      title: "Speaker Session: The Future of Digital Marketing",
+      date: "21 March 2025",
+      location: "House Auditorium",
+      image: "/images/events/1.png",
+      description: (
+        <>
+          An insightful speaker session featuring Sujata Hansda on digital marketing trends, AI, automation, and future career opportunities.
+          Nallamala House successfully organized an insightful speaker session on “The Future of Digital Marketing” featuring Sujata Hansda, Marketing Strategist and Copywriter, on March 21, 2025.
+          The session provided participants with a comprehensive understanding of the rapidly evolving digital marketing landscape. Key discussions focused on emerging trends, the growing role of AI, automation, and data-driven strategies, as well as the skills and career opportunities essential for the future of marketing.
+          Attendees gained valuable insights into how businesses are adapting to digital transformation and learned practical perspectives directly from industry experience. The interactive nature of the session made it highly engaging and informative, leaving participants better equipped to navigate future challenges in the digital marketing domain.
 
       </>
     ),
@@ -385,14 +395,19 @@ export default function Events() {
   ];
 
   /* ---------------- SORT & FILTER ---------------- */
+  /* ---------------- SORT & FILTER ---------------- */
   const sortedPastEvents = [...pastEvents].sort(
     (a, b) => parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
   )
 
   const filteredEvents = sortedPastEvents.filter((event) =>
+  const filteredEvents = sortedPastEvents.filter((event) =>
     event.title.toLowerCase().includes(search.toLowerCase())
   )
 
+  if (!mounted) return null
+
+  /* ---------------- RENDER ---------------- */
   if (!mounted) return null
 
   /* ---------------- RENDER ---------------- */
@@ -406,16 +421,21 @@ export default function Events() {
         <div className="absolute bottom-32 left-20 w-80 h-80 bg-primary/10 blur-3xl rounded-full" />
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-2 pt-24 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
         {/* Header */}
         <div className="text-center mb-14">
           <p className="text-primary text-sm uppercase tracking-widest mb-4">
             Our Events
           </p>
+          <p className="text-primary text-sm uppercase tracking-widest mb-4">
+            Our Events
+          </p>
           <h1 className="text-5xl font-serif font-bold text-white mb-4">
+            Past <span className="text-primary">Events</span>
             Past <span className="text-primary">Events</span>
           </h1>
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
+            Discover the events and moments that shaped our community
             Discover the events and moments that shaped our community
           </p>
 
@@ -435,6 +455,7 @@ export default function Events() {
               key={event.id}
               onClick={() => setSelectedEvent(event)}
               className="transition-all duration-300 flex flex-col rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
+              className="transition-all duration-300 flex flex-col rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
             >
               <div
                 className="relative h-[420px] bg-black overflow-hidden"
@@ -445,9 +466,13 @@ export default function Events() {
                   alt={event.title}
                   fill
                   className="object-cover transition-transform duration-500 hover:scale-105"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
                 />
                 {event.status && (
                   <div className="absolute top-4 right-4">
+                    <Badge className="bg-red-500 text-white">
+                      {event.status}
+                    </Badge>
                     <Badge className="bg-red-500 text-white">
                       {event.status}
                     </Badge>
@@ -456,6 +481,9 @@ export default function Events() {
               </div>
 
               <div className="p-5 flex flex-col flex-1">
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {event.title}
+                </h3>
                 <h3 className="text-xl font-bold text-white mb-2">
                   {event.title}
                 </h3>
@@ -485,6 +513,9 @@ export default function Events() {
                     href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
                       event.title
                     )}&details=${encodeURIComponent(
+                      typeof event.description === "string"
+                        ? event.description
+                        : event.title
                       typeof event.description === "string"
                         ? event.description
                         : event.title
@@ -521,11 +552,11 @@ export default function Events() {
       {/* Selected Event Modal */}
       {selectedEvent && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
           onClick={() => setSelectedEvent(null)}
         >
           <div
-            className="bg-black border border-white/10 rounded-xl max-w-2xl w-full overflow-hidden relative"
+            className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
             <button

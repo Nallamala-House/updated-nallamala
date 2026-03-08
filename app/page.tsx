@@ -1,52 +1,32 @@
-"use client"
+import { redirect } from "next/navigation"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/auth"
+import dynamic from "next/dynamic"
 
-import { useEffect } from "react"
 import Navbar from "@/components/navbar"
 import HeroSection from "@/components/hero-section"
-import VideoSection from "@/components/video-section"
-import AboutSection from "@/components/about-section"
-import RegionalCarousel from "@/components/regional-carousel"
-import UpdatesSection from "@/components/updates-section"
 import Footer from "@/components/footer"
 
-export default function Home() {
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px"
-    }
+const VideoSection = dynamic(() => import("@/components/video-section"), { loading: () => <div className="h-96 bg-black/20 animate-pulse rounded-xl" /> })
+const AboutSection = dynamic(() => import("@/components/about-section"), { loading: () => <div className="h-64 bg-black/20 animate-pulse rounded-xl" /> })
+const RegionalCarousel = dynamic(() => import("@/components/regional-carousel"), { loading: () => <div className="h-48 bg-black/20 animate-pulse rounded-xl" /> })
+const UpdatesSection = dynamic(() => import("@/components/updates-section"), { loading: () => <div className="h-64 bg-black/20 animate-pulse rounded-xl" /> })
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate-in")
-        }
-      })
-    }, observerOptions)
+export default async function Page() {
+  const session = await getServerSession(authOptions)
 
-    // Observe all sections
-    const sections = document.querySelectorAll(".scroll-animate")
-    sections.forEach((section) => observer.observe(section))
-
-    return () => observer.disconnect()
-  }, [])
+  // if (!session) {
+  //   redirect("/signin")
+  // }
 
   return (
     <main className="min-h-screen">
       <Navbar />
       <HeroSection />
-      <div className="scroll-animate">
-        <VideoSection />
-      </div>
-      <div className="scroll-animate">
-        <AboutSection />
-      </div>
-      <div className="scroll-animate">
-        <UpdatesSection />
-      </div>
-      <div className="scroll-animate">
-        <RegionalCarousel />
-      </div>
+      <VideoSection />
+      <AboutSection />
+      <UpdatesSection showSearch={false} />
+      <RegionalCarousel />
       <Footer />
     </main>
   )

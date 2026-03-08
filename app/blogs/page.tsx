@@ -10,29 +10,8 @@ import { Search, ExternalLink } from "lucide-react"
 
 export default function Blogs() {
   const [searchQuery, setSearchQuery] = useState("")
-  
+
   const blogs = [
-    {
-      slug: "classical-ai-vs-quantum-ai",
-      title: "Classical AI Vs Quantum AI",
-      excerpt: "Blog about Classical AI vs Quantum AI vs Photonic AI",
-      image: "/images/blogs/ai-quantum.jpg",
-      category: "Quantum AI",
-      date: "April 15, 2024",
-      author: "Tech Team",
-      readTime: "8 min read",
-      externalLink: "https://medium.com/@vixal/classical-ai-vs-quantum-ai-vs-photonic-ai-4adfc8b99023"
-    },
-    {
-      slug: "how-to-access-dark-web",
-      title: "How To Access Dark Web?",
-      excerpt: "Blog about dark web",
-      image: "/images/blogs/dark-web.jpg",
-      category: "Dark Web",
-      date: "April 16, 2024",
-      author: "Security Team",
-      readTime: "10 min read"
-    },
     {
       slug: "nallamala-forest",
       title: "Nallamala Forest",
@@ -54,22 +33,20 @@ export default function Blogs() {
   )
 
   const categoryColors: { [key: string]: string } = {
-    "Quantum AI": "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
-    "Dark Web": "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
     "Nature": "bg-green-500/20 text-green-300 border-green-500/30",
   }
 
   return (
     <main className="min-h-screen">
       <Navbar />
-      
+
       {/* Background animations */}
       <div className="absolute inset-0 overflow-hidden -z-10">
         <div className="absolute top-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-20"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-serif font-bold text-white mb-4">
@@ -98,7 +75,7 @@ export default function Blogs() {
         {filteredBlogs.length > 0 ? (
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {filteredBlogs.map((blog) => (
-              <article 
+              <article
                 key={blog.slug}
                 className="glass-dark rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300 h-full flex flex-col group"
               >
@@ -109,7 +86,7 @@ export default function Blogs() {
                     alt={blog.title}
                     width={800}
                     height={600}
-                    className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ${blog.slug === "how-to-access-dark-web" ? "object-[50%_40%]" : ""}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
                     <Badge className={categoryColors[blog.category]}>
@@ -126,17 +103,9 @@ export default function Blogs() {
                     </svg>
                     <span>{blog.date}</span>
                   </div>
-                  
+
                   <h2 className="text-2xl font-serif font-bold text-white mb-3 transition-colors">
-                    {blog.slug === "classical-ai-vs-quantum-ai" ? (
-                      <>
-                        Classical AI Vs <span className="text-yellow-400">Quantum AI</span>
-                      </>
-                    ) : blog.slug === "how-to-access-dark-web" ? (
-                      <>
-                        How To Access <span className="text-yellow-400">Dark Web</span>?
-                      </>
-                    ) : blog.slug === "nallamala-forest" ? (
+                    {blog.slug === "nallamala-forest" ? (
                       <>
                         <span className="text-yellow-400">Nallamala</span> Forest
                       </>
@@ -147,7 +116,7 @@ export default function Blogs() {
                   <p className="text-white/70 mb-6 flex-1 leading-relaxed">
                     {blog.excerpt}
                   </p>
-                  
+
                   {/* Read Article Button */}
                   <a
                     href={blog.externalLink || `/blogs/${blog.slug}`}

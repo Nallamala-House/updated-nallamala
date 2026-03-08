@@ -29,20 +29,18 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Sanskrit Motto */}
         <div
-          className={`mb-6 transition-all duration-1000 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
+          className={`mb-6 transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
         >
           <p className="text-primary text-lg font-serif italic tracking-wide">वसुधैव कुटुम्बकम् - The World is One Family</p>
         </div>
 
         {/* Main Title with Animated Underline */}
         <div
-          className={`mb-6 transition-all duration-1000 delay-200 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
+          className={`mb-6 transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
         >
-          <h1 className="text-6xl md:text-7xl font-serif font-bold text-white inline-block relative">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold text-white inline-block relative">
             Nallamala{" "}
             <span className="bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent">
               House
@@ -56,20 +54,18 @@ export default function HeroSection() {
 
         {/* Tagline */}
         <p
-          className={`text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-400 leading-relaxed ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
+          className={`text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-400 leading-relaxed ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
         >
           In this house, we don't just belong. We create, we inspire, and we lead.
         </p>
 
         {/* CTA Button */}
         <div
-          className={`flex justify-center items-center transition-all duration-1000 delay-600 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
+          className={`flex justify-center items-center transition-all duration-1000 delay-600 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
         >
-          <Button 
+          <Button
             onClick={() => {
               const videoSection = document.getElementById('video-section')
               videoSection?.scrollIntoView({ behavior: 'smooth' })

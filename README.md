@@ -1,46 +1,20 @@
 # Nallamala House Website
 
-Official website for Nallamala House, IIT Madras.
+Official website for Nallamala House, IIT Madras BS Degree Program. Provides members access to announcements, events, council information, and resources.
 
-## Getting Started
+## Setup
 
-### Prerequisites
-- Node.js 18+ 
-- pnpm
-
-### Setup
-
-1. Clone the repository:
 ```bash
-git clone <repo-url>
+git clone https://github.com/Nallamala-House/updated-nallamala
 cd nallamala-house-website
+npm install
+npm run dev
 ```
 
-2. Install dependencies:
-```bash
-pnpm install
-```
+Open [http://localhost:3000](http://localhost:3000) in a browser.
 
-3. Run development server:
-```bash
-pnpm dev
-```
+## License
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Proprietary and confidential.
+All rights reserved. The source code may not be copied, modified, distributed, or used without written permission from the Nallamala House Council.
 
-## Project Structure
-
-- **app/** - Next.js pages and routes
-- **components/** - Reusable React components
-- **lib/** - Utility functions and helpers
-- **public/** - Static assets (images, etc.)
-- **styles/** - CSS files
-
-## Build & Deploy
-
-```bash
-pnpm build
-pnpm start
-```
-
-Deployed on Vercel: [nallamala-house-website](https://vercel.com/prodhoshvs2025-8980s-projects/v0-nallamala-house-website)

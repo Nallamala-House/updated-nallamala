@@ -4,8 +4,9 @@ import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-import { Instagram, Link as LinkIcon, X, Calendar, Linkedin } from "lucide-react"
+import { Instagram, Link as LinkIcon, X, Calendar, Linkedin, ArrowLeft } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 type CommunityEvent = {
   id: number
@@ -22,7 +23,7 @@ const communityData: any = {
     shortDescription: "Bringing together readers and writers to explore literature, engage in discussions, and celebrate the magic of words.",
     image: "/images/communities/chapters_verses.png",
     color: "from-pink-600 to-pink-400",
-    membershipForm: "https://forms.gle/KJNB7MXu4A17hjDK7",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
     instagram: "https://www.instagram.com/chaptersxverses_iitm/",
     aboutUs: `Chapters & Verses is the literary and oratory soul of Nallamala House—a vibrant community of 200+ passionate readers, writers, and storytellers. Founded in 2024, the community was born from a simple yet powerful idea: to create a shared space where words connect minds and stories bring people together.
 
@@ -33,28 +34,32 @@ Recognized as one of the most active communities of Nallamala House, we have pro
 Through dedication, collaboration, and a shared love for words, we have nurtured a thriving literary culture. Today, Chapters & Verses stands as a living testament to our vision—a community where stories are written, voices are heard, and creativity finds its home.`,
     events: [
       {
-        id: 1,
-        title: "Chapters Unlocked",
-        date: "18th February 2024 (Sunday) | 1:00 PM",
-        guest: "Ms. Riya Jhamb (@what_riya_reads) — Renowned Bookstagrammer",
-        description: `Chapters Unlocked marked the inaugural ceremony and book talk session of our literary journey, held as an engaging virtual event on Google Meet. The session featured an insightful conversation with Ms. Riya Jhamb, who shared her perspectives on storytelling, reading culture, and her latest literary work.
+        id: 6,
+        title: "Noor-e-Sama 2.0",
+        date: "21st August 2025",
+        description: `Noor-e-Sama 2.0, organized by the Literary and Oratory Community of Nallamala House, was a captivating virtual evening that celebrated the timeless beauty of Shayari and spoken poetry. The event provided a मंच (stage) where classical ghazals met contemporary expressions, creating a harmonious blend of tradition and modern thought. Poets and poetry enthusiasts from diverse backgrounds came together to share verses that resonated with emotion, reflection, and creativity.
 
-Participants had the opportunity to dive deep into discussions on literature, exchange ideas with fellow book lovers, and engage in meaningful conversations in a warm and inclusive environment. With Ms. Riya's vibrant Instagram community of over 20,000 readers, the event successfully brought together a diverse audience united by a love for books.
-
-The session concluded as an enriching and inspiring experience, setting the tone for many more literary conversations to come.`,
-        image: "/images/communities/events/chapters_unlocked.png"
+Throughout the evening, the audience was immersed in an atmosphere of rhythm, passion, and meaningful dialogue, as each performance added depth to the collective experience. Noor-e-Sama 2.0 was more than just a poetry session—it was a space where words became lanterns, emotions found expression, and silence discovered its voice. The event successfully fostered a sense of connection and artistic appreciation, leaving participants inspired and deeply moved by the power of spoken word.`,
+        image: "/images/events/10.png"
       },
       {
-        id: 2,
-        title: "Harry Potter: Watch Party",
-        date: "Friday, 29th March 2024 | 7:00 PM",
-        guest: "Collaborators: Chapters × Verses × Pop Culture Club, IITM BS",
-        description: `The Harry Potter: Watch Party was a magical movie night where participants stepped into the enchanting world of Harry Potter and the Philosopher's Stone. The virtual screening brought together Potterheads to relive the wonder of Hogwarts School of Witchcraft and Wizardry.
+        id: 5,
+        title: "Noor-e-Sama — A Night of Shayari",
+        date: "15th February 2025",
+        description: `Noor-e-Sama was an enchanting evening curated by Chapters & Verses, the Literary and Oratory Club of Nallamala House, celebrating the luminous art of Shayari. The event featured heartfelt recitations of both classic and contemporary Shayaris by passionate poets and poetry enthusiasts.
 
-As Harry, Ron, and Hermione embarked on their unforgettable journey, viewers experienced themes of friendship, bravery, and the enduring power of love. The event witnessed an overwhelming response, with over 172 participants tuning in, making it a memorable and highly successful community gathering.
+The night brought together lovers of eloquent expression, offering a space to reflect, feel, and connect through words. From seasoned Shayari connoisseurs to first-time listeners, Noor-e-Sama left the audience inspired, moved, and immersed in the timeless beauty of poetry.`,
+        image: "/images/communities/events/noor.png"
+      },
+      {
+        id: 4,
+        title: "Unscripted Pages",
+        date: "24th November 2024",
+        guest: "Collaborators: Pichavaram House × Chapters & Verses, Nallamala House",
+        description: `Unscripted Pages was a collaborative literary competition designed to celebrate creative writing, expression, and presentation. The event unfolded across two rounds, beginning with written submissions based on given themes. Shortlisted participants then advanced to a live Google Meet session, where finalists presented their work and brought their words to life.
 
-Filled with nostalgia, excitement, and shared moments of magic, the watch party truly celebrated the timeless charm of the wizarding world. 🪄🍿✨`,
-        image: "/images/communities/events/harry_potter.png"
+The competition fostered confidence, creativity, and meaningful literary exchange, making it an engaging and memorable experience for all involved.`,
+        image: "/images/communities/events/unscripted.png"
       },
       {
         id: 3,
@@ -70,23 +75,28 @@ Join us on Instagram as we paint a canvas of emotions with every carefully chose
         image: "/images/communities/events/dastaan.png"
       },
       {
-        id: 4,
-        title: "Unscripted Pages",
-        date: "24th November 2024 | 8:00 PM",
-        guest: "Collaborators: Pichavaram House × Chapters & Verses, Nallamala House",
-        description: `Unscripted Pages was a collaborative literary competition designed to celebrate creative writing, expression, and presentation. The event unfolded across two rounds, beginning with written submissions based on given themes. Shortlisted participants then advanced to a live Google Meet session, where finalists presented their work and brought their words to life.
+        id: 2,
+        title: "Harry Potter: Watch Party",
+        date: "29th March 2024",
+        guest: "Collaborators: Chapters × Verses × Pop Culture Club, IITM BS",
+        description: `The Harry Potter: Watch Party was a magical movie night where participants stepped into the enchanting world of Harry Potter and the Philosopher's Stone. The virtual screening brought together Potterheads to relive the wonder of Hogwarts School of Witchcraft and Wizardry.
 
-The competition fostered confidence, creativity, and meaningful literary exchange, making it an engaging and memorable experience for all involved.`,
-        image: "/images/communities/events/unscripted.png"
+As Harry, Ron, and Hermione embarked on their unforgettable journey, viewers experienced themes of friendship, bravery, and the enduring power of love. The event witnessed an overwhelming response, with over 172 participants tuning in, making it a memorable and highly successful community gathering.
+
+Filled with nostalgia, excitement, and shared moments of magic, the watch party truly celebrated the timeless charm of the wizarding world. 🪄🍿✨`,
+        image: "/images/communities/events/harry_potter.png"
       },
       {
-        id: 5,
-        title: "Noor-e-Sama — A Night of Shayari",
-        date: "5th February 2025",
-        description: `Noor-e-Sama was an enchanting evening curated by Chapters & Verses, the Literary and Oratory Club of Nallamala House, celebrating the luminous art of Shayari. The event featured heartfelt recitations of both classic and contemporary Shayaris by passionate poets and poetry enthusiasts.
+        id: 1,
+        title: "Chapters Unlocked",
+        date: "18th February 2024",
+        guest: "Ms. Riya Jhamb (@what_riya_reads) — Renowned Bookstagrammer",
+        description: `Chapters Unlocked marked the inaugural ceremony and book talk session of our literary journey, held as an engaging virtual event on Google Meet. The session featured an insightful conversation with Ms. Riya Jhamb, who shared her perspectives on storytelling, reading culture, and her latest literary work.
 
-The night brought together lovers of eloquent expression, offering a space to reflect, feel, and connect through words. From seasoned Shayari connoisseurs to first-time listeners, Noor-e-Sama left the audience inspired, moved, and immersed in the timeless beauty of poetry.`,
-        image: "/images/communities/events/noor.png"
+Participants had the opportunity to dive deep into discussions on literature, exchange ideas with fellow book lovers, and engage in meaningful conversations in a warm and inclusive environment. With Ms. Riya's vibrant Instagram community of over 20,000 readers, the event successfully brought together a diverse audience united by a love for books.
+
+The session concluded as an enriching and inspiring experience, setting the tone for many more literary conversations to come.`,
+        image: "/images/communities/events/chapters_unlocked.png"
       }
     ]
   },
@@ -95,7 +105,7 @@ The night brought together lovers of eloquent expression, offering a space to re
     shortDescription: "A student-driven community dedicated to nurturing interest and excellence in AI and Data Science.",
     image: "/images/communities/ai_dw.png",
     color: "from-green-600 to-green-400",
-    membershipForm: "https://docs.google.com/forms/d/e/1FAIpQLSfBnfqxe1-qQLNQ7RM0EOHuLMzuo4Ip2F-_-mWDe8hwPA92Pw/viewform",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
     linkedin: "https://www.linkedin.com/company/ai-innovators-data-wizards-aidw-iit-madras/",
     aboutUs: `AIDW is a student-driven community dedicated to nurturing interest and excellence in Artificial Intelligence and Data Science. The club serves as a platform for students who are curious about emerging technologies and eager to transform theoretical knowledge into practical skills. By fostering an environment of collaboration and experimentation, AIDW enables learners from diverse backgrounds to explore AI concepts without barriers related to prior experience or expertise.
 
@@ -155,7 +165,7 @@ The challenge encouraged out-of-the-box thinking, teamwork, and practical applic
     shortDescription: "The coding and developer community empowering students to explore, build, and innovate through technology.",
     image: "/images/communities/shunya.png",
     color: "from-blue-600 to-blue-400",
-    membershipForm: "https://forms.gle/KJNB7MXu4A17hjDK7",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
     instagram: "https://www.instagram.com/shunya_iitm?igsh=aHFtNW83ZHJldHE=",
     linkedin: "https://www.linkedin.com/company/sunya-developers-club/",
     aboutUs: `Shunya is the coding and developer community of Nallamala House, created to empower IIT Madras BS students to explore, build, and innovate through technology. Guided by the belief that "Nothing Seems Difficult," Shunya brings together curious minds, problem-solvers, and creators under one collaborative platform.
@@ -211,7 +221,7 @@ The event reflected Shunya's continued efforts to bring industry-relevant knowle
     shortDescription: "Nallamala houses the official chess community.",
     image: "/images/communities/chess.png",
     color: "from-purple-600 to-purple-400",
-    membershipForm: "https://docs.google.com/forms/d/e/1FAIpQLSeoYlVvpI7QmmNOknWcJiUrmKKpR3r0zl33Fc9ILKjRQ1psRg/viewform",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
     instagram: "https://www.instagram.com/grandmastersguild/",
     linkedin: "https://www.linkedin.com/company/grandmastersguild/",
     aboutUs: `Grandmaster's Guild is the official chess community of Nallamala House, bringing together chess enthusiasts of all skill levels. Whether you're a beginner learning the basics or an experienced player looking to refine your strategies, the guild provides a welcoming space for everyone passionate about the game.
@@ -226,7 +236,7 @@ Recognized as a hub for chess culture within IIT Madras BS, Grandmaster's Guild 
     shortDescription: "Building strong financial awareness, practical understanding, and leadership among students.",
     image: "/images/communities/cifer.png",
     color: "from-yellow-600 to-yellow-400",
-    membershipForm: "https://docs.google.com/forms/d/e/1FAIpQLSfCge_fE_cl-QVgdxbS2choNkcxXnenN2FIl9dptT5SE5Fl2w/viewform",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
     instagram: "https://www.instagram.com/cifer.iitm/",
     aboutUs: `CIFER (Nallamala Finance Community) is a student-led initiative dedicated to building strong financial awareness, practical understanding, and leadership among students. With a growing network of 200+ active members, the community serves as a collaborative space for individuals interested in financial markets, corporate finance, entrepreneurship, and real-world money management.
 
@@ -289,6 +299,17 @@ export default function CommunityDetail() {
         </div>
 
         <div className="max-w-6xl mx-auto">
+          {/* Back Button */}
+          <div className="mb-8">
+            <Link
+              href="/communities"
+              className="inline-flex items-center gap-2 text-white/70 hover:text-primary transition-colors duration-200 text-sm font-medium group"
+            >
+              <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform duration-200" />
+              Back to Communities
+            </Link>
+          </div>
+
           {/* Hero Section */}
           <div className="relative mb-16 rounded-2xl overflow-hidden border border-primary/30">
             <div className="relative h-96">
@@ -397,44 +418,48 @@ export default function CommunityDetail() {
       {/* Event Modal */}
       {selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
-          <div className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
-            {/* Header with Image */}
-            <div className="relative h-80 overflow-hidden">
+          <div className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row">
+            {/* Left — Image */}
+            <div className="relative md:w-1/2 h-72 md:h-auto flex-shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl">
               <Image
                 src={selectedEvent.image}
                 alt={selectedEvent.title}
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+
+            {/* Right — Details */}
+            <div className="relative flex-1 flex flex-col overflow-y-auto">
               <button
                 onClick={() => setSelectedEvent(null)}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition"
+                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition z-10"
               >
                 <X size={24} />
               </button>
-              <div className="absolute bottom-6 left-6 right-6">
-                <h2 className="text-4xl font-serif font-bold text-white mb-3">{selectedEvent.title}</h2>
-                <div className="flex items-center gap-2 text-primary text-lg">
-                  <Calendar size={20} />
+
+              <div className="p-8 space-y-4">
+                <h2 className="text-3xl font-serif font-bold text-white pr-10">{selectedEvent.title}</h2>
+                <div className="flex items-center gap-2 text-primary text-base">
+                  <Calendar size={18} />
                   <span>{selectedEvent.date}</span>
                 </div>
-              </div>
-            </div>
 
-            {/* Content */}
-            <div className="p-8 space-y-4">
-              {selectedEvent.guest && (
-                <div className="glass-dark p-4 rounded-lg border border-primary/20">
-                  <p className="text-white font-semibold">{selectedEvent.guest}</p>
+                {selectedEvent.guest && (
+                  <div className="glass-dark p-4 rounded-lg border border-primary/20">
+                    <p className="text-white font-semibold">{selectedEvent.guest}</p>
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  {selectedEvent.description.split('\n\n').map((paragraph, index) => (
+                    <p key={index} className="text-white/70 leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
-              )}
-              
-              {selectedEvent.description.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="text-white/70 leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
+              </div>
             </div>
           </div>
         </div>
