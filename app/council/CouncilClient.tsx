@@ -553,6 +553,13 @@ export default function CouncilPage() {
     return yearData[selectedYear]?.[selectedTeam] || []
   })()
 
+  const orderedMembers = [...members].sort((a, b) => {
+    const aHasImage = Boolean(a.image)
+    const bHasImage = Boolean(b.image)
+    if (aHasImage === bHasImage) return 0
+    return aHasImage ? -1 : 1
+  })
+
   return (
     <main className="min-h-screen flex flex-col">
       <Navbar />
@@ -664,9 +671,9 @@ export default function CouncilPage() {
           )}
 
           {/* Members Grid */}
-          {members.length > 0 ? (
+          {orderedMembers.length > 0 ? (
             <div className={`grid gap-6 mb-16 ${selectedYear === "2025-26" && selectedTeam === "UHC" ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-2 lg:grid-cols-3"}`}>
-              {members.map((member) => {
+              {orderedMembers.map((member) => {
                 // For 2024-25 only, show simplified cards (no popup, no about/bio)
                 const isSimplified = selectedYear === "2024-25"
                 const isRegional = selectedTeam === "REGIONAL"
