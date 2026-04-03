@@ -51,6 +51,24 @@ export default function Events() {
   const pastEvents: EventItem[] = [
     // All previous past events (id: 23 to 5) go here, unchanged
     {
+      id: 32,
+      title: "Nallamala House Blitz Arena",
+      date: "22 March 2026",
+      location: "Chess.com Club Arena",
+      image: "/images/communities/events/blitz_arena.png",
+      description: (
+        <>
+          Grandmaster&apos;s Guild successfully hosted Nallamala House Blitz Arena, a high-intensity speed-chess showdown that brought the community together for one hour of non-stop action.
+          <br />
+          <br />
+          The event was held on Sunday, 22nd March 2026, from 9:00 PM to 10:00 PM on the Chess.com Club Arena in a 3+0 blitz format. Players battled through rapid-fire rounds, with double points for consecutive wins adding extra pressure and excitement to every match.
+          <br />
+          <br />
+          Exclusive to Nallamala House members, the arena delivered sharp tactics, quick decision-making, and a competitive atmosphere that kept the leaderboard shifting until the end. Blitz Arena concluded as a memorable past event for the Chess community, showcasing resilience, precision, and true blitz spirit.
+        </>
+      ),
+    },
+    {
       id: 24,
       title: "Talent Hunt",
       date: "28 December 2025",
@@ -435,7 +453,7 @@ export default function Events() {
               onClick={() => setSelectedEvent(event)}
               className="transition-all duration-300 flex flex-col rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
             >
-              <div className="relative h-[420px] bg-black overflow-hidden">
+              <div className="relative h-105 bg-black overflow-hidden">
                 <Image
                   src={event.image}
                   alt={event.title}
@@ -520,11 +538,11 @@ export default function Events() {
           onClick={() => setSelectedEvent(null)}
         >
           <div
-            className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row"
+            className="bg-linear-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Left — Image */}
-            <div className="relative md:w-1/2 h-72 md:h-auto flex-shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl bg-black/50">
+            <div className="relative md:w-1/2 h-72 md:h-auto shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl bg-black/50">
               <Image
                 src={selectedEvent.image}
                 alt={selectedEvent.title}

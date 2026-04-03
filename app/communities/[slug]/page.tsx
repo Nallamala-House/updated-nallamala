@@ -229,7 +229,22 @@ The event reflected Shunya's continued efforts to bring industry-relevant knowle
 The community is dedicated to promoting chess as a strategic and intellectual pursuit, hosting tournaments, analysis sessions, and friendly matches that foster competitive spirit and camaraderie. Through regular events and collaborative learning, members develop their tactical thinking, strategic planning, and competitive skills.
 
 Recognized as a hub for chess culture within IIT Madras BS, Grandmaster's Guild celebrates the timeless game while creating opportunities for players to grow, compete, and connect with fellow chess lovers.`,
-    events: []
+    events: [
+      {
+        id: 1,
+        title: "Nallamala House Blitz Arena",
+        date: "22nd March 2026 | 9:00 PM - 10:00 PM",
+        guest: "Chess.com Club Arena | 3+0 Blitz | Exclusive to Nallamala House Members",
+        description: `Grandmaster's Guild, the Chess Community of Nallamala House, successfully conducted Nallamala House Blitz Arena as a high-intensity speed chess showdown.
+
+Held on Sunday, 22nd March 2026 from 9:00 PM to 10:00 PM on the Chess.com Club Arena, the event featured a 3+0 blitz format with 60 minutes of non-stop action. The arena included double points for consecutive wins, creating a highly competitive and dynamic leaderboard throughout the session.
+
+The event saw strong participation from Nallamala House members and delivered an engaging experience full of tactical battles, quick decision-making, and exciting finishes.
+
+Participants fought their way up the rankings with sharp play and consistency, making the Blitz Arena a memorable success for the community.`,
+        image: "/images/communities/events/blitz_arena.png"
+      }
+    ]
   },
   "cifer": {
     name: "CIFER",
@@ -334,7 +349,7 @@ export default function CommunityDetail() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent"></div>
               <div className="absolute bottom-8 left-8 right-8">
                 <h1 className="text-5xl font-serif font-bold text-white mb-4">{community.name}</h1>
                 <p className="text-xl text-white/80 mb-6">{community.shortDescription}</p>
@@ -392,40 +407,49 @@ export default function CommunityDetail() {
           {/* Events Section */}
           <div className="mb-16">
             <h2 className="text-4xl font-serif font-bold text-white mb-6">
-              Featured <span className="text-primary">Events</span>
+              Past <span className="text-primary">Events</span>
             </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {community.events.map((event: CommunityEvent) => (
-                <div
-                  key={event.id}
-                  onClick={() => setSelectedEvent(event)}
-                  className="group rounded-xl overflow-hidden border-2 border-primary/30 hover:border-primary/60 transition-all duration-300 cursor-pointer hover:-translate-y-1"
-                >
-                  <div className="relative h-96 overflow-hidden">
-                    <Image
-                      src={event.image}
-                      alt={event.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                  </div>
-                  <div className="p-6 glass-dark">
-                    <h3 className="text-2xl font-serif font-bold text-white mb-2 group-hover:text-primary transition">
-                      {event.title}
-                    </h3>
-                    <div className="flex items-center gap-2 text-primary text-sm mb-3">
-                      <Calendar size={16} />
-                      <span>{event.date}</span>
+            <p className="text-white/60 mb-6 max-w-2xl">
+              A record of completed matches, tournaments, and community moments from Grandmaster&apos;s Guild.
+            </p>
+            {community.events.length > 0 ? (
+              <div className="grid md:grid-cols-2 gap-6">
+                {community.events.map((event: CommunityEvent) => (
+                  <div
+                    key={event.id}
+                    onClick={() => setSelectedEvent(event)}
+                    className="group rounded-xl overflow-hidden border-2 border-primary/30 hover:border-primary/60 transition-all duration-300 cursor-pointer hover:-translate-y-1"
+                  >
+                    <div className="relative h-96 overflow-hidden">
+                      <Image
+                        src={event.image}
+                        alt={event.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
                     </div>
-                    {event.guest && (
-                      <p className="text-white/60 text-sm mb-3">{event.guest}</p>
-                    )}
-                    <p className="text-primary text-sm font-semibold">Click to learn more</p>
+                    <div className="p-6 glass-dark">
+                      <h3 className="text-2xl font-serif font-bold text-white mb-2 group-hover:text-primary transition">
+                        {event.title}
+                      </h3>
+                      <div className="flex items-center gap-2 text-primary text-sm mb-3">
+                        <Calendar size={16} />
+                        <span>{event.date}</span>
+                      </div>
+                      {event.guest && (
+                        <p className="text-white/60 text-sm mb-3">{event.guest}</p>
+                      )}
+                      <p className="text-primary text-sm font-semibold">View recap</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="glass-dark p-8 rounded-xl border border-primary/20 text-white/60">
+                No past events available yet.
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -433,16 +457,16 @@ export default function CommunityDetail() {
       {/* Event Modal */}
       {selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
-          <div className="bg-gradient-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row">
+          <div className="bg-linear-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row">
             {/* Left — Image */}
-            <div className="relative md:w-1/2 h-72 md:h-auto flex-shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl">
+            <div className="relative md:w-1/2 h-72 md:h-auto shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl">
               <Image
                 src={selectedEvent.image}
                 alt={selectedEvent.title}
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-black/60 to-transparent"></div>
             </div>
 
             {/* Right — Details */}
