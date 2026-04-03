@@ -38,6 +38,22 @@ export default function Events() {
     setExpandedId(expandedId === id ? null : id)
   }
 
+  const extractTextFromNode = (node: any): string => {
+    if (node === null || node === undefined || typeof node === "boolean") return ""
+    if (typeof node === "string" || typeof node === "number") return String(node)
+
+    if (Array.isArray(node)) {
+      return node.map(extractTextFromNode).join("")
+    }
+
+    if (typeof node === "object" && "type" in node && "props" in node) {
+      if (node.type === "br") return "\n"
+      return extractTextFromNode(node.props?.children)
+    }
+
+    return ""
+  }
+
   /* ---------------- HELPER: PARSE DATE ---------------- */
   const parseEventDate = (dateStr: string) => {
     const match = dateStr.match(/\d{1,2} [A-Za-z]+ \d{4}/)
@@ -579,23 +595,13 @@ export default function Events() {
                 {/* Description */}
                 <div className="space-y-3">
                   {(() => {
-                    let content = '';
-                    if (typeof selectedEvent.description === 'string') {
-                      content = selectedEvent.description;
-                    } else if (selectedEvent.description && typeof selectedEvent.description === 'object' && 'props' in (selectedEvent.description as any)) {
-                      const children = (selectedEvent.description as any).props.children;
-                      if (Array.isArray(children)) {
-                        content = children.join('');
-                      } else if (typeof children === 'string') {
-                        content = children;
-                      }
-                    }
-                    const paragraphs = content.split('\n').filter((line: string) => line.trim());
+                    const content = extractTextFromNode(selectedEvent.description)
+                    const paragraphs = content.split(/\n+/).filter((line: string) => line.trim())
                     return paragraphs.map((paragraph, index) => (
                       <p key={index} className="text-white/70 leading-relaxed text-base">
                         {paragraph.trim()}
                       </p>
-                    ));
+                    ))
                   })()}
                 </div>
               </div>
