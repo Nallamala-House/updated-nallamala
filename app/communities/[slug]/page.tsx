@@ -257,6 +257,21 @@ The session provided students with an enriching learning experience and set a st
         image: "/images/communities/events/session.jpg"
       }
     ]
+  },
+  "esports": {
+    name: "E Sports",
+    shortDescription: "The adrenaline-charged gaming community where competition is not just played, but lived.",
+    image: "/images/communities/esports.png",
+    color: "from-red-600 to-orange-500",
+    membershipForm: "https://forms.gle/YtEnPc7wXapaH4RV6",
+    aboutUs: `E Sports is the adrenaline-charged spirit of Nallamala House, where competition isn't just played, it's lived. Built for those who thrive under pressure and chase victory with precision, this community brings together gamers who turn every match into a statement.
+
+From intense battle royales to high-stakes tactical clashes, E Sports is a space where skill sharpens, strategies evolve, and every second counts. It’s not just about playing, it’s about outplaying, outthinking, and outlasting.
+
+Driven by passion and discipline, the community fosters a culture where players grow together, push each other beyond limits, and celebrate the grind as much as the glory. Every scrim, every clutch, every call, it all adds to a journey defined by resilience and ambition.
+
+E Sports stands as a rising arena within Nallamala House, a place where talent finds its edge, competition fuels purpose, and every game becomes a step closer to greatness.`,
+    events: []
   }
 }
 

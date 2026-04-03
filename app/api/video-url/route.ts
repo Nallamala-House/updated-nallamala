@@ -1,6 +1,8 @@
 import { list } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 
+const FALLBACK_VIDEO_URL = 'https://zoamjyrqlfze4djm.public.blob.vercel-storage.com/Landing_Video.mp4';
+
 export async function GET() {
     try {
         const token = process.env.BLOB_READ_WRITE_TOKEN;
@@ -8,7 +10,7 @@ export async function GET() {
         if (!token) {
             console.warn('BLOB_READ_WRITE_TOKEN is missing. Returning fallback URL.');
             return NextResponse.json({
-                url: 'https://zoamjyrqlfze4djm.public.blob.vercel-storage.com',
+                url: FALLBACK_VIDEO_URL,
                 message: 'No blob token configured'
             });
         }
@@ -29,13 +31,13 @@ export async function GET() {
         console.warn('No blob found with prefix Landing_Video, falling back.');
         // Fallback if no blob found
         return NextResponse.json({
-            url: 'https://zoamjyrqlfze4djm.public.blob.vercel-storage.com',
+            url: FALLBACK_VIDEO_URL,
             message: 'No blob found with prefix Landing_Video'
         });
     } catch (error: any) {
         console.error('Error in video-url API:', error);
         return NextResponse.json({
-            url: 'https://zoamjyrqlfze4djm.public.blob.vercel-storage.com',
+            url: FALLBACK_VIDEO_URL,
             error: error.message
         });
     }

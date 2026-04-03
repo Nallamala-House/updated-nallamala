@@ -332,6 +332,15 @@ export default function CouncilPage() {
           image: null,
           bio: "Secretary of CIFER, promoting financial literacy and economic awareness among students.",
         },
+        {
+          id: 22,
+          name: "Abhihar Singh Rathore",
+          role: "Secretary - E Sports",
+          message: "Fueling competitive spirit through skill, strategy, and discipline.",
+          email: "23f2003903@ds.study.iitm.ac.in",
+          image: "/images/2025-26/esports_club.png",
+          bio: "Secretary of E Sports, building a high-energy gaming culture and supporting members to grow through competition and teamwork.",
+        },
       ],
     },
     "2024-25": {

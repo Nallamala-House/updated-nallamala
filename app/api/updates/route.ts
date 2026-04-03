@@ -20,7 +20,19 @@ export async function GET() {
             console.error('Backend /api/updates returned status:', res.status);
             const text = await res.text();
             console.error('Backend response body:', text);
-            return NextResponse.json({ success: false, data: [], message: `Backend error: ${res.status}` }, { status: res.status });
+            return NextResponse.json(
+                {
+                    success: false,
+                    data: [],
+                    message: `Backend error: ${res.status}`,
+                },
+                {
+                    status: 200,
+                    headers: {
+                        'Cache-Control': 'no-store, no-cache, must-revalidate',
+                    },
+                }
+            );
         }
 
         const data = await res.json();
@@ -32,6 +44,18 @@ export async function GET() {
         });
     } catch (error: any) {
         console.error('Proxy GET /api/updates error:', error);
-        return NextResponse.json({ success: false, data: [], message: 'Failed to fetch updates' }, { status: 500 });
+        return NextResponse.json(
+            {
+                success: false,
+                data: [],
+                message: 'Failed to fetch updates',
+            },
+            {
+                status: 200,
+                headers: {
+                    'Cache-Control': 'no-store, no-cache, must-revalidate',
+                },
+            }
+        );
     }
 }
