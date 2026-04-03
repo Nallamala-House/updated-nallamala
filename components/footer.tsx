@@ -144,6 +144,19 @@ export default function Footer() {
                 Pavithra Chakravarthy
               </a>
             </div>
+
+            <div className="mt-3 flex items-center justify-center gap-2 text-xs">
+              <span className="text-white/50">Video Credits :</span>
+              <a
+                href="https://www.instagram.com/desynq1?igsh=cjVnczdhNmY4Mmll"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-primary hover:text-primary/80 transition"
+              >
+                <Instagram size={12} />
+                desynq1
+              </a>
+            </div>
           </div>
           
           <div className="flex flex-col md:flex-row justify-between items-center gap-2">
