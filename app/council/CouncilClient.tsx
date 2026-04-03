@@ -196,7 +196,7 @@ export default function CouncilPage() {
           email: "24f1002222@ds.study.iitm.ac.in",
           phone: "+91-XXXXXXXXXX",
           linkedin: "linkedin.com/in/syed-badar",
-          image: null,
+          image: "/images/2025-26/rc_delhi.png",
           bio: "SYED MOHD BADAR UL ISLAM is committed to fostering community engagement and coordination in the Delhi region.",
         },
         {
@@ -222,6 +222,17 @@ export default function CouncilPage() {
           image: null,
           bio: "Dedicated to coordinating activities and building community engagement in the Lucknow region.",
         },
+        {
+        id: 20,
+        name: "",
+        role: "Regional Coordinator - Kolkata",
+        message: "Serving the Kolkata community.",
+        email: "xxxxxxxxx@nallamala.house",
+        phone: "+91-XXXXXXXXXX",
+        linkedin: "linkedin.com/in/xxxxxxxxx",
+        image: null,
+        bio: "Dedicated to coordinating activities and building community engagement in the Kolkata region.",
+      },
       ],
       WEBOPS: [
         {
@@ -321,7 +332,7 @@ export default function CouncilPage() {
           role: "Secretary - Grandmaster's Guild",
           message: "Leading strategic minds in competitive gaming.",
           email: "24f1002222@ds.study.iitm.ac.in",
-          image: null,
+          image: "/images/2025-26/rc_delhi.png",
           bio: "Secretary of Grandmaster's Guild, fostering competitive gaming and strategic thinking within the community.",
         },
         {
