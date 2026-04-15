@@ -29,6 +29,7 @@ export default function Events() {
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
+  const [activeTab, setActiveTab] = useState<"current" | "past">("current")
 
   useEffect(() => {
     setMounted(true)
@@ -42,8 +43,20 @@ export default function Events() {
 
     const yearMatch = dateStr.match(/\d{4}/)
     return yearMatch ? new Date(Number(yearMatch[0]), 0, 1) : new Date(1970, 0, 1)
-  }
 
+  }
+  
+  const currentEvents: EventItem[] = [
+  {
+    id: 101,
+    title: "Hackathon 2026",
+    date: "20 April 2026",
+    location: "Online",
+    image: "/images/events/current1.png",
+    status: "Ongoing",
+    description: <>24-hour hackathon building real-world solutions.</>,
+  },
+]
   /* ---------------- PAST EVENTS ---------------- */
   const pastEvents: EventItem[] = [
     // All previous past events (id: 23 to 5) go here, unchanged
@@ -378,6 +391,23 @@ export default function Events() {
     </>
   ),
 },
+{
+  id: 32,
+  title: "Innovation Through Teaching and Research: From Ideas to Impact",
+  date: "29 March 2026",
+  image: "/images/events/32.png",
+  description: (
+    <>
+      Nallamala House successfully organized an inspiring speaker session titled “Innovation Through Teaching and Research: From Ideas to Impact”, featuring Dr. Rajesh Kumar Muthu, Professor of Computer Science & Engineering.
+      <br /><br />
+      With over 25 years of global experience across India, the UK, and Mauritius, Dr. Muthu shared valuable insights from his journey as an academician, researcher, and international consultant. A Chartered Engineer (IET, UK) and Senior Member of IEEE, he has contributed to prestigious international projects in biometrics, forensics, and behavioral analysis.
+      <br /><br />
+      The session focused on how innovative ideas can be transformed into impactful real-world solutions through research and collaboration. Participants gained exposure to global research practices, interdisciplinary applications, and the importance of thinking beyond conventional academic boundaries.
+      <br /><br />
+      The event proved to be highly enriching and motivational, encouraging students to explore innovation-driven learning and aspire toward meaningful contributions in research and technology.
+    </>
+  ),
+}
   ];
 
   /* ---------------- SORT & FILTER ---------------- */
@@ -392,6 +422,14 @@ export default function Events() {
 
   if (!mounted) return null
 
+  const filteredCurrentEvents = [...currentEvents]
+  .sort(
+    (a, b) =>
+      parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
+  )
+  .filter((event) =>
+    event.title.toLowerCase().includes(search.toLowerCase())
+  )
   /* ---------------- RENDER ---------------- */
 
   return (
@@ -408,11 +446,11 @@ export default function Events() {
         {/* Header */}
         <div className="text-center mb-14">
           <p className="text-primary text-sm uppercase tracking-widest mb-4">
-            Our Events
+            Nallamala presents
           </p>
 
           <h1 className="text-5xl font-serif font-bold text-white mb-4">
-            Past <span className="text-primary">Events</span>
+             <span className="text-primary">Events</span>
           </h1>
 
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
@@ -428,9 +466,38 @@ export default function Events() {
           />
         </div>
 
+        <div className="flex justify-center mb-10 gap-4">
+  <button
+    onClick={() => setActiveTab("current")}
+    className={`px-6 py-2 rounded-full border ${
+      activeTab === "current"
+        ? "bg-primary text-white border-primary"
+        : "text-white/60 border-white/20 hover:border-primary"
+    }`}
+  >
+    Current Events
+  </button>
+
+  <button
+    onClick={() => setActiveTab("past")}
+    className={`px-6 py-2 rounded-full border ${
+      activeTab === "past"
+        ? "bg-primary text-white border-primary"
+        : "text-white/60 border-white/20 hover:border-primary"
+    }`}
+  >
+    Past Events
+  </button>
+</div>
+
         {/* Events Grid */}
+        <div
+  key={activeTab}
+  className="transition-all duration-500 ease-in-out animate-fade"
+></div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredEvents.map((event) => (
+          {(activeTab === "current" ? filteredCurrentEvents : filteredEvents).map(
+  (event) => (
             <div
               key={event.id}
               onClick={() => setSelectedEvent(event)}
