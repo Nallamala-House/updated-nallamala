@@ -2,7 +2,7 @@
 
 Official website for Nallamala House, IIT Madras BS Degree Program. Provides members access to announcements, events, council information, and resources.
 
-## Setup
+## Setup.
 
 ```bash
 git clone https://github.com/Nallamala-House/updated-nallamala

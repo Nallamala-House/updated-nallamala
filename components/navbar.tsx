@@ -10,6 +10,7 @@ import { useSession, signOut } from "next-auth/react"
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [councilDropdown, setCouncilDropdown] = useState(false)
+  const [mobileCouncilOpen, setMobileCouncilOpen] = useState(false)
 
   const router = useRouter()
   const pathname = usePathname()
@@ -203,7 +204,61 @@ export default function Navbar() {
         {isOpen && (
           <div className="lg:hidden bg-black/95 backdrop-blur-md border-t border-primary/20 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <div className="px-4 pt-4 pb-6 space-y-2">
-              {[...navItemsBefore, ...navItemsAfter].map((item: any) => (
+              {navItemsBefore.map((item: any) => (
+                <button
+                  key={item.label}
+                  onClick={() => {
+                    handleProtectedNav(item.href, item.protected)
+                    setIsOpen(false)
+                  }}
+                  className="block w-full text-left px-4 py-3 text-white/80 hover:text-primary hover:bg-white/5 rounded-lg text-base"
+                >
+                  {item.label}
+                </button>
+              ))}
+
+              <div className="pt-1">
+                <button
+                  onClick={() => setMobileCouncilOpen(!mobileCouncilOpen)}
+                  className="w-full flex items-center justify-between px-4 py-3 text-white/90 hover:text-primary hover:bg-white/5 rounded-lg text-base"
+                >
+                  <span>Council & Team</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform ${mobileCouncilOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {mobileCouncilOpen && (
+                  <div className="mt-1 ml-2 pl-2 border-l border-primary/20 space-y-1">
+                    {councilYears.map((item) =>
+                      item.external ? (
+                        <a
+                          key={item.year}
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsOpen(false)}
+                          className="block px-4 py-2 text-sm text-white/70 hover:text-primary hover:bg-white/5 rounded-lg"
+                        >
+                          {item.year}
+                        </a>
+                      ) : (
+                        <Link
+                          key={item.year}
+                          href={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className="block px-4 py-2 text-sm text-white/70 hover:text-primary hover:bg-white/5 rounded-lg"
+                        >
+                          {item.year}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {navItemsAfter.map((item: any) => (
                 <button
                   key={item.label}
                   onClick={() => {

@@ -3,58 +3,16 @@
 import { useState, useEffect, useRef } from "react"
 import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack } from "lucide-react"
 
-function useCountAnimation(end: number, duration: number = 2000) {
-  const [count, setCount] = useState(0)
-  const [hasAnimated, setHasAnimated] = useState(false)
-  const elementRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
-          setHasAnimated(true)
-          let startTime: number | null = null
-
-          const animate = (currentTime: number) => {
-            if (!startTime) startTime = currentTime
-            const progress = Math.min((currentTime - startTime) / duration, 1)
-            setCount(Math.floor(progress * end))
-
-            if (progress < 1) {
-              requestAnimationFrame(animate)
-            }
-          }
-
-          requestAnimationFrame(animate)
-        }
-      },
-      { threshold: 0.5 }
-    )
-
-    if (elementRef.current) observer.observe(elementRef.current)
-
-    return () => observer.disconnect()
-  }, [end, duration, hasAnimated])
-
-  return { count, elementRef }
-}
-
 export default function VideoSection() {
   const [isAutoplayPaused, setIsAutoplayPaused] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
-
-  // Vercel Blob store root URL (needs a specific file path appended to work)
-  // Using local sample.mp4 as fallback since the blob root URL returns 400
-  const [currentVideoUrl, setCurrentVideoUrl] = useState("https://zoamjyrqlfze4djm.public.blob.vercel-storage.com/Landing_Video.mp4")
+  const [currentVideoUrl, setCurrentVideoUrl] = useState("")
+  const [hasVideoError, setHasVideoError] = useState(false)
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const progressRef = useRef<HTMLDivElement>(null)
-
-  const members = useCountAnimation(500)
-  const events = useCountAnimation(50)
-  const regions = useCountAnimation(7)
 
   useEffect(() => {
     const video = videoRef.current
@@ -72,11 +30,32 @@ export default function VideoSection() {
     }
   }, [])
 
-  const handleVideoError = () => {
-    console.warn("Video failed to load from blob URL, falling back to local sample.mp4")
-    if (currentVideoUrl !== "/sample.mp4") {
-      setCurrentVideoUrl("/sample.mp4")
+  useEffect(() => {
+    const loadVideoUrl = async () => {
+      try {
+        const res = await fetch('/api/video-url', { cache: 'no-store' })
+        if (!res.ok) throw new Error(`Unable to fetch video URL (${res.status})`)
+
+        const json = await res.json()
+        if (json?.url) {
+          setCurrentVideoUrl(json.url)
+          setHasVideoError(false)
+          return
+        }
+      } catch (error) {
+        console.warn('Falling back to static video URL:', error)
+      }
+
+      setCurrentVideoUrl('https://zoamjyrqlfze4djm.public.blob.vercel-storage.com/Landing_Video.mp4')
+      setHasVideoError(false)
     }
+
+    loadVideoUrl()
+  }, [])
+
+  const handleVideoError = () => {
+    console.warn("Video failed to load")
+    setHasVideoError(true)
   }
 
   const toggleAutoplay = () => {
@@ -137,7 +116,7 @@ export default function VideoSection() {
     duration > 0 ? (currentTime / duration) * 100 : 0
 
   return (
-    <section id="video-section" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#0A0A0A]">
+    <section id="video-section" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px] opacity-20 animate-pulse"></div>
@@ -160,22 +139,28 @@ export default function VideoSection() {
         </div>
 
         <div className="relative group max-w-5xl mx-auto">
-          <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-sm shadow-2xl transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-primary/5">
+          <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 bg-transparent backdrop-blur-sm shadow-2xl transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-primary/5">
 
-            <video
-              ref={videoRef}
-              autoPlay
-              loop
-              muted
-              playsInline
-              onError={handleVideoError}
-              onClick={toggleAutoplay}
-              className="w-full aspect-video object-cover cursor-pointer"
-              src={currentVideoUrl}
-            />
+            {currentVideoUrl && !hasVideoError ? (
+              <video
+                ref={videoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                onError={handleVideoError}
+                onClick={toggleAutoplay}
+                className="w-full aspect-video object-cover cursor-pointer"
+                src={currentVideoUrl}
+              />
+            ) : (
+              <div className="w-full aspect-video flex items-center justify-center bg-transparent">
+                <p className="text-white/70 text-sm">Video is currently unavailable.</p>
+              </div>
+            )}
 
             {/* Premium Controls Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 md:p-8">
+            <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 md:p-8">
 
               {/* Progress Bar Container */}
               <div
@@ -226,23 +211,14 @@ export default function VideoSection() {
                     {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
                   </button>
 
-                  <div className="hidden md:block h-4 w-[1px] bg-white/20 mx-2"></div>
+                  <div className="hidden md:block h-4 w-px bg-white/20 mx-2"></div>
 
                   <span className="text-white/90 text-sm font-medium tabular-nums">
                     {formatTime(currentTime)} / {formatTime(duration)}
                   </span>
                 </div>
 
-                <div className="hidden sm:flex items-center gap-8">
-                  <div className="text-right">
-                    <p className="text-primary font-bold text-lg">{members.count}+</p>
-                    <p className="text-white/40 text-[10px] uppercase tracking-tighter">Members</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-primary font-bold text-lg">{events.count}+</p>
-                    <p className="text-white/40 text-[10px] uppercase tracking-tighter">Events</p>
-                  </div>
-                </div>
+                <div className="hidden sm:block" />
               </div>
             </div>
 

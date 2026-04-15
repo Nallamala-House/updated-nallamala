@@ -30,6 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+<<<<<<< HEAD
       <body
         className={`${_playfair.variable} font-sans antialiased bg-black`}
         style={{ background: "#000" }}
@@ -50,6 +51,20 @@ export default function RootLayout({
             opacity: 0.5,
           }}
         >
+=======
+      <body className={`${_playfair.variable} font-sans antialiased bg-black`} style={{ background: '#000' }}>
+        <GlobalLoader />
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: -1,
+          pointerEvents: 'none',
+          opacity: 0.4
+        }}>
+>>>>>>> 8679a2f0eb5c7b303b90330540e1cfbb8db89baf
           <Beams
             beamWidth={3.3}
             beamHeight={30}

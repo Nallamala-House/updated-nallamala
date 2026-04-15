@@ -142,6 +142,28 @@ export default function CommunitiesPage() {
       ],
       leads: ["Finance Team"],
     },
+    {
+      id: 6,
+      name: "E Sports",
+      slug: "esports",
+      category: "Gaming",
+      icon: Trophy,
+      description: "Where competition is lived through strategy, skill, and relentless teamwork.",
+      color: "from-red-600 to-orange-500",
+      image: "/images/communities/esports.png",
+      fullDescription:
+        "E Sports is the adrenaline-charged spirit of Nallamala House, where competition is not just played, it is lived. Built for those who thrive under pressure and chase victory with precision, this community brings together gamers who turn every match into a statement.",
+      members: 0,
+      foundedYear: 2026,
+      achievements: [
+        "Building a focused competitive gaming culture",
+        "Team strategy and scrim-driven practice",
+        "Cross-title tactical collaboration",
+        "Growth through discipline and consistency",
+      ],
+      events: [],
+      leads: ["E Sports Team"],
+    },
   ]
 
   return (
@@ -192,8 +214,8 @@ export default function CommunitiesPage() {
                     />
                   </div>
 
-                  {/* Icon - Use actual image for Chapters & Verses, AIDW, Shunya, Grandmaster's Guild, and CIFER */}
-                  {community.slug === "chapters-verses" || community.slug === "aidw" || community.slug === "shunya" || community.slug === "grandmasters-guild" || community.slug === "cifer" ? (
+                  {/* Icon - Use actual image for communities with official logos */}
+                  {community.slug === "chapters-verses" || community.slug === "aidw" || community.slug === "shunya" || community.slug === "grandmasters-guild" || community.slug === "cifer" || community.slug === "esports" ? (
                     <div className="w-12 h-12 rounded-full mb-4 overflow-hidden border-2 border-primary/50">
                       <img
                         src={community.image}
