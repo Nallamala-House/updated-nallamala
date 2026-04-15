@@ -35,8 +35,6 @@ export default function Events() {
     setMounted(true)
   }, [])
 
-<<<<<<< HEAD
-=======
   const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id)
   }
@@ -57,7 +55,6 @@ export default function Events() {
     return ""
   }
 
->>>>>>> 8679a2f0eb5c7b303b90330540e1cfbb8db89baf
   /* ---------------- HELPER: PARSE DATE ---------------- */
 
   const parseEventDate = (dateStr: string) => {
@@ -82,9 +79,8 @@ export default function Events() {
 ]
   /* ---------------- PAST EVENTS ---------------- */
   const pastEvents: EventItem[] = [
-    // All previous past events (id: 23 to 5) go here, unchanged
     {
-      id: 32,
+      id: 33,
       title: "Nallamala House Blitz Arena",
       date: "22 March 2026",
       location: "Chess.com Club Arena",
@@ -544,17 +540,7 @@ export default function Events() {
               onClick={() => setSelectedEvent(event)}
               className="transition-all duration-300 flex flex-col rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
             >
-<<<<<<< HEAD
-              <div
-                className="relative h-[420px] bg-black overflow-hidden"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setSelectedImage(event.image)
-                }}
-              >
-=======
               <div className="relative h-105 bg-black overflow-hidden">
->>>>>>> 8679a2f0eb5c7b303b90330540e1cfbb8db89baf
                 <Image
                   src={event.image}
                   alt={event.title}
@@ -636,19 +622,8 @@ export default function Events() {
             className="bg-linear-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
-<<<<<<< HEAD
-            <button
-              onClick={() => setSelectedEvent(null)}
-              className="absolute top-3 right-3 text-white/60 hover:text-white"
-            >
-              ✕
-            </button>
-
-            <div className="relative h-[300px] bg-black">
-=======
             {/* Left — Image */}
             <div className="relative md:w-1/2 h-72 md:h-auto shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl bg-black/50">
->>>>>>> 8679a2f0eb5c7b303b90330540e1cfbb8db89baf
               <Image
                 src={selectedEvent.image}
                 alt={selectedEvent.title}
@@ -666,11 +641,6 @@ export default function Events() {
                 {selectedEvent.description}
               </div>
 
-<<<<<<< HEAD
-              <div className="text-white/60 text-sm">
-                {selectedEvent.date}
-                {selectedEvent.location && <> • {selectedEvent.location}</>}
-=======
                 {/* Description */}
                 <div className="space-y-3">
                   {(() => {
@@ -683,11 +653,9 @@ export default function Events() {
                     ))
                   })()}
                 </div>
->>>>>>> 8679a2f0eb5c7b303b90330540e1cfbb8db89baf
               </div>
             </div>
           </div>
-        </div>
       )}
 
       {/* Image Modal */}
