@@ -5,288 +5,102 @@ import { useRouter } from "next/navigation"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Search, FileText, Book, ClipboardList, ExternalLink, Filter, BookOpen, GraduationCap, FileCheck, Sparkles, ChevronDown } from "lucide-react"
+import { 
+  Search, 
+  FileText, 
+  Book, 
+  ClipboardList, 
+  ExternalLink, 
+  Filter, 
+  BookOpen, 
+  GraduationCap, 
+  FileCheck, 
+  Sparkles, 
+  ChevronDown,
+  ChevronRight,
+  Folder,
+  ArrowLeft,
+  Download,
+  FolderOpen,
+  X
+} from "lucide-react"
 import { useSession } from "next-auth/react"
-
-// Type definitions
-type SubjectItem = {
-  subject: string
+interface FileItem {
+  name: string
+  type: "file"
+  path: string
+  size?: number
   url: string
 }
 
-type ExamTypes = {
-  "Quiz 1": SubjectItem[]
-  "Quiz 2": SubjectItem[]
-  "End Term": SubjectItem[]
-  "All Exams"?: SubjectItem[]
+interface FolderItem {
+  name: string
+  type: "directory"
+  path: string
+  children: Array<FileItem | FolderItem>
 }
 
-type Terms = {
-  "Term 1": ExamTypes
-  "Term 2": ExamTypes
-  "Term 3": ExamTypes
-  "All Terms"?: ExamTypes
+interface PyqDataMap {
+  Foundation: Array<FolderItem>
+  Diploma: Array<FolderItem>
 }
 
-type YearData = {
-  [year: string]: Terms
-}
-
-type PYQsDataType = {
-  [streamLevel: string]: YearData
-}
-
-// Official Documents - Categorized
-const officialDocuments = {
-  academic: [
-    { name: "2026 Grading Document", url: "https://docs.google.com/document/u/1/d/e/2PACX-1vSUvKzH7yIXNVwUgRYSIT8M0x1jhFSkslEtj9UPo3dtWI_sJ38Hh_PzbBygpF0vIOo8K7lTy-uYkqdu/pub?urp=gmail_link", description: "Official grading policy and criteria" },
-    { name: "Score Checker", url: "https://score-checker-379619009600.asia-south1.run.app/course_wise", description: "Check your course scores online" },
-    { name: "Course Syllabus", url: "https://docs.google.com/document/u/1/d/e/2PACX-1vSWW4TMd2ujKYOeSay5iCIyTGLtJgM1KWC-Ernu_JdhugLtB0dXV9i966Z-ZaPZ9qAAI1_QtWa3o3br/pub#h.64f8davxbp1d", description: "Complete course syllabus details" },
-    { name: "Course Playlist", url: "https://discourse.onlinedegree.iitm.ac.in/t/course-yt-channel-list-data-science-and-applications/115619", description: "YouTube course video playlists" },
-  ],
-  policies: [
-    { name: "Academic Malpractice Policy", url: "https://docs.google.com/document/d/e/2PACX-1vTt6ndMAI1-Y7Okm3HXmv0OFhFliUJPzkrUkQuX4InovMYewy_CWmFzmE4mUOAl_TjWlSrZNYWUOnG7/pub", description: "Academic integrity guidelines" },
-    { name: "Non-Academic Malpractice Policy", url: "https://docs.google.com/document/d/e/2PACX-1vS3kG688sVzBil9uEFa9mXrnpuMAqE0LU1FpH1-TMDCHZF0XjC1265GmhVePdYvrc0_5qyq8OXwIZUb/pub", description: "Code of conduct and discipline" },
-  ],
-  programs: [
-    { name: "Foundation Announcement", url: "https://docs.google.com/document/u/1/d/e/2PACX-1vT3tXeBI5EnNRbfuJL595x44HL47l-UIVFhQ8A0u5pWZWwuQZf6AovUgpbfOL4FEdgoxB86R83E_b3g/pub#h.srdh0vy92h9g", description: "Foundation level program details" },
-    { name: "Diploma Announcement", url: "https://docs.google.com/document/u/1/d/e/2PACX-1vS5AqaruazbgknMp9pPDXO1YVDFliSpsF0oZdEPp_vMGaX9pPTm_Jpid2OvecYr6AovUgpbfOL4FEdgoxB86R83E_b3g/pub#h.l8xwua84njlp", description: "Diploma level program details" },
-    { name: "Degree Announcement", url: "https://docs.google.com/document/u/1/d/e/2PACX-1vQh79CJlzQiP0KXhVR6Rp1vwMOJA-OXY1hrOjvWk6ypBDYFVbsZOzycc4OHMA7xEK5ezjDEDD0B44QD/pub#h.krgvmoow3xb", description: "Degree level program details" },
-    { name: "M.Tech Pathway", url: "https://docs.google.com/document/u/1/d/e/2PACX-1vRrtiiHlurfHtFnJnDwtNZ0NHAci8PQ7pHsiX3V3SZKmbSmALDk4whCO5La6efs4MSmBLVTH2ZfGJNL/pub", description: "Master's program pathway options" },
-  ],
-  transfers: [
-    { name: "NPTEL Credit Transfer", url: "https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vSJXV0JECyoQvgWvBlVxO13G0KRm5a1qNCRBa7rAw8GDY4e0cfm1KiVCwIgs_ed80ObtzQ1rfx_JWIR/pubhtml?gid=399341609&single=true", description: "Free elective credit transfer" },
-    { name: "HS NPTEL Transfer", url: "https://docs.google.com/document/u/1/d/e/2PACX-1vRrtiiHlurfHtFnJnDwtNZ0NHAci8PQ7pHsiX3V3SZKmbSmALDk4whCO5La6efs4MSmBLVTH2ZfGJNL/pub", description: "Humanities credit transfer" },
-    { name: "SCT Information", url: "https://docs.google.com/document/d/e/2PACX-1vS4Hhh4MsKD2WL8_D26Vw2WJKw0CBtPihZyKrnEM_kefRXm_O75GqTcJA6lR0X_xCiVL5gUi5y6_bjw/pub", description: "Special credit transfer details" },
-    { name: "SCT Form", url: "https://docs.google.com/forms/d/e/1FAIpQLSfgPEfiNK0bTqXj8F5g2nRFJaugfm7Q6Ykkf6lNy0UsnvO7Jw/closedform", description: "Apply for credit transfer" },
-  ],
-  opportunities: [
-    { name: "Course Mentorship", url: "https://docs.google.com/document/d/1-KokspC_tpcZUkr_A_qepK6bp9j-1pQTskI9WmAhc6I/edit?tab=t.0#heading=h.8maoib1anf", description: "Become a course mentor" },
-    { name: "TAship Information", url: "https://docs.google.com/document/d/1T7BJwyFs6otHAWiSXFQ8SvhpYRlm9PPOGZmtKvj_C4U/edit?tab=t.0#heading=h.cxy8jmc2wo04", description: "Teaching assistant positions" },
-  ],
-  resources: [
-    { name: "Document Archive", url: "https://study.iitm.ac.in/ds/archive.html", description: "All official documents archive" },
-    { name: "Official Git Organization", url: "https://github.com/bsc-iitm", description: "GitHub organization repository" },
-    { name: "Official WhatsApp", url: "https://api.whatsapp.com/message/IVROM2UN7XIJL1?autoload=1&app_absent=0", description: "Connect via WhatsApp" },
-    { name: "Document Application Process", url: "https://docs.google.com/document/u/1/d/e/2PACX-1vQnn2cFan5BqTTAByCoqtue-0XSmFXQPT91bADDL_i33tHMh8C0ZJepvFBwze4E5zJbGiBMdQa59VeT/pub", description: "How to apply for documents" },
-  ],
-}
-
-// PYQs Structure: Stream/Level → Year → Term → Exam Type → Subjects
-const pyqsData: PYQsDataType = {
-  "Data Science - Foundation": {
-    "All Years": {
-      "All Terms": {
-        "All Exams": [
-          { subject: "Mathematics 1", url: "https://drive.google.com/drive/u/4/folders/1ZJXWfY8EmKjkhfSnEJmH7FiU9DvnEKI0" },
-          { subject: "Mathematics 2", url: "https://drive.google.com/drive/u/4/folders/1yZbNvo3kEHphcKkevjDrYCypFqmu2PUN" },
-          { subject: "Statistics 1", url: "https://drive.google.com/drive/u/4/folders/1OmBV-wD1nSxRKX1o2XdYzk2loVHbyf-B" },
-          { subject: "Statistics 2", url: "https://drive.google.com/drive/u/4/folders/1WXB2z3JkGO2DPiNOx55Me9DA9bUv2cp5" },
-          { subject: "English 1", url: "https://drive.google.com/drive/u/4/folders/1CG60t1EWSAizNFexbYLMAx66BBixIphk" },
-          { subject: "English 2", url: "https://drive.google.com/drive/u/4/folders/1V-6aHRVxuLgQbCeQhLzw5unCkgnEaYkT" },
-          { subject: "Python Programming", url: "https://drive.google.com/drive/u/4/folders/1QLLTJJ3pfCaWaBS_dAlkOBZfie46J_fO" },
-          { subject: "Computational Thinking", url: "https://drive.google.com/drive/u/4/folders/1ZvRQBptAVmYe6CHKAwLTFn49LhAua9dD" },
-        ],
-        "Quiz 1": [],
-        "Quiz 2": [],
-        "End Term": []
-      },
-      "Term 1": {
-        "Quiz 1": [],
-        "Quiz 2": [],
-        "End Term": []
-      },
-      "Term 2": {
-        "Quiz 1": [],
-        "Quiz 2": [],
-        "End Term": []
-      },
-      "Term 3": {
-        "Quiz 1": [],
-        "Quiz 2": [],
-        "End Term": []
-      }
-    }
-  },
-  "Data Science - Diploma": {
-    "All Years": {
-      "All Terms": {
-        "All Exams": [
-          { subject: "Business Analytics", url: "https://drive.google.com/drive/u/4/folders/18-loHm9slKTamKSwQscUhisgBJykn5Qr" },
-          { subject: "Business Data Management", url: "https://drive.google.com/drive/u/4/folders/1GfciRRUs7GhDnvbboyCCQW0Sq41As_JC" },
-          { subject: "DBMS", url: "https://drive.google.com/drive/u/4/folders/1paQBp9oaP0mNrvH-elbPOTKyxup18b9Q" },
-          { subject: "Deep Learning - GenAI", url: "https://drive.google.com/drive/u/4/folders/1GHS2gE9lEn6HTKxMtnAfNj-1eWvUK0kC" },
-          { subject: "Java Programming", url: "https://drive.google.com/drive/u/4/folders/1zfV9JEsWONBULzG2dsHieuz2oAwdX9jz" },
-          { subject: "MAD-1", url: "https://drive.google.com/drive/u/4/folders/1BaqVsrc3c16Pi9bzDtxXk_i4X2jeblQU" },
-          { subject: "MAD-2", url: "https://drive.google.com/drive/u/4/folders/11ZbagqRNZCuSd38cYwSy6pYAYy0RSdGK" },
-          { subject: "Machine Learning Foundations", url: "https://drive.google.com/drive/u/4/folders/1PSnu-AOGCtQcQSnRQJguVwl3mlpVnNGE" },
-          { subject: "Machine Learning Practice", url: "https://drive.google.com/drive/u/4/folders/1BnE2LKCxZoFxV4iRJB3QRSWBK9FnFOFl" },
-          { subject: "Machine Learning Techniques", url: "https://drive.google.com/drive/u/4/folders/1eqiYI1EKu4I6SGZDZADrHNOleGm5pQWP" },
-          { subject: "PDSA", url: "https://drive.google.com/drive/u/4/folders/1XO3PFSn6kgkoS9zlg_JxxtsdNqsQ9dXp" },
-          { subject: "System Commands", url: "https://drive.google.com/drive/u/4/folders/1tRbkd_xA2U6qfTi3tokBQK-1af4EQpzn" },
-          { subject: "Tools in Data Science", url: "https://drive.google.com/drive/u/4/folders/14TtF6HAH1ctkySwQe6lK13jm3ftIroNe" },
-        ],
-        "Quiz 1": [],
-        "Quiz 2": [],
-        "End Term": []
-      },
-      "Term 1": {
-        "Quiz 1": [],
-        "Quiz 2": [],
-        "End Term": []
-      },
-      "Term 2": {
-        "Quiz 1": [],
-        "Quiz 2": [],
-        "End Term": []
-      },
-      "Term 3": {
-        "Quiz 1": [],
-        "Quiz 2": [],
-        "End Term": []
-      }
-    }
-  },
-  "Data Science - Degree": {
-    // Add your Degree data here
-  },
-  "Electronics - Degree": {
-    "2025": {
-      "Term 3": {
-        "Quiz 1": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1VCCKghozA487u39CQ9ojTkcuTNQ2rHhs" },
-        ],
-        "Quiz 2": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1qMX6s2mOAHuSygqSNpe55Gs5YpliRqQ7" },
-        ],
-        "End Term": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1OTIOpzmAe9O5Q4dFDcHN5qXSfzFNgtoE" },
-        ]
-      },
-      "Term 2": {
-        "Quiz 1": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1vrx9lKNHny1KN-VsgGh5K08pqCOusbwn" },
-        ],
-        "Quiz 2": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1a6Hov44hZMsx__BIoDgOB4zffve2BkuN" },
-        ],
-        "End Term": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1TN6WLSpq4t3JHK9qs7iivvyN0VZ5DUAw" },
-        ]
-      },
-      "Term 1": {
-        "Quiz 1": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1j0Q78VaIe58WHYAKSBMcYSokpw_yarGV" },
-        ],
-        "Quiz 2": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1qwgWjgGL1Ih4gbreB5nqnFFFu0vqHISa" },
-        ],
-        "End Term": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1vesFi_eGGF7E6yyrcQeUdu5a4ovY2Oyn" },
-        ]
-      }
-    },
-    "2024": {
-      "Term 3": {
-        "Quiz 1": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/16f6lSZONphR-oue3rMmZpFGp07k0oElp" },
-        ],
-        "Quiz 2": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/13WuRMBOaomZjnJy_7FvyH2_ejVCncKlp" },
-        ],
-        "End Term": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1w5k7v3cbb5sI3bnq3xkiV7b9K4vchqei" },
-        ]
-      },
-      "Term 2": {
-        "Quiz 1": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1Hp6hohfWKecS1KoCdBIWtoqiclD1TaQh" },
-        ],
-        "Quiz 2": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/18nnVkdKw7_zdr1DupRBq9nHP6tusTp63" },
-        ],
-        "End Term": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1XdK9v72_yc2Q5y1BqcuI-VOgNgqnF5TB" },
-        ]
-      },
-      "Term 1": {
-        "Quiz 1": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1K7IblhxVMSDxJ0oQMMGQlF65jPzwQd6g" },
-        ],
-        "Quiz 2": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1MDWnEOtmLU5QnjsfSWpEBc5i9C9d1oPe" },
-        ],
-        "End Term": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1ZD3U_CZLMllUUVSCZCnhT0IoOn00T7Pq" },
-        ]
-      }
-    },
-    "2023": {
-      "Term 3": {
-        "Quiz 1": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1rr3fXFjm8zjexTzpyTljkR2LawUqTO1x" },
-        ],
-        "Quiz 2": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1rH5h8lCe6E2Y99isyoJZCRfUNmTJFZ5d" },
-        ],
-        "End Term": [
-          { subject: "All Subjects", url: "https://drive.google.com/drive/folders/1QMVzteWgSd5021wfo1XN00BsUuMUcWpy" },
-        ]
-      },
-      "Term 2": {
-        "Quiz 1": [],
-        "Quiz 2": [],
-        "End Term": []
-      },
-      "Term 1": {
-        "Quiz 1": [],
-        "Quiz 2": [],
-        "End Term": []
-      }
-    }
+// Function to dynamically build the folder tree from database resources
+const buildFolderTree = (resources: any[]): PyqDataMap => {
+  const tree: PyqDataMap = {
+    Foundation: [],
+    Diploma: []
   }
+
+  const pyqResources = resources.filter((r: any) => r.section === "pyqs" && r.path)
+
+  pyqResources.forEach((r: any) => {
+    const parts = r.path.split('/')
+    if (parts.length < 2) return // Expecting Level/Course/.../File
+    const level = parts[0] as "Foundation" | "Diploma"
+    if (level !== "Foundation" && level !== "Diploma") return
+
+    let currentChildren: Array<FileItem | FolderItem> = tree[level] as any
+    let currentPath: string = level
+
+    for (let i = 1; i < parts.length; i++) {
+      const part = parts[i]
+      const isLast = i === parts.length - 1
+      currentPath = `${currentPath}/${part}`
+
+      if (isLast) {
+        // It's a file
+        const fileUrl = r.fileId ? `/api/files/${r.fileId._id || r.fileId}` : r.url || "#"
+        const fileItem: FileItem = {
+          name: part,
+          type: "file",
+          path: r.path,
+          url: fileUrl
+        }
+        currentChildren.push(fileItem as any)
+      } else {
+        // It's a directory
+        let folder = currentChildren.find((c: any) => c.type === "directory" && c.name === part) as FolderItem | undefined
+        if (!folder) {
+          folder = {
+            name: part,
+            type: "directory",
+            path: currentPath,
+            children: []
+          }
+          currentChildren.push(folder as any)
+        }
+        currentChildren = folder.children
+      }
+    }
+  })
+
+  // Sort courses alphabetically for clean presentation
+  tree.Foundation.sort((a, b) => a.name.localeCompare(b.name))
+  tree.Diploma.sort((a, b) => a.name.localeCompare(b.name))
+
+  return tree
 }
-
-// Study Materials (Notes and Books)
-const studyMaterials = [
-  // Data Science - Foundation
-  { name: "Python Notes", stream: "Data Science", level: "Foundation", subject: "Python", type: "notes", url: "#" },
-  { name: "Statistics Notes", stream: "Data Science", level: "Foundation", subject: "Statistics", type: "notes", url: "#" },
-  { name: "Maths Notes", stream: "Data Science", level: "Foundation", subject: "Mathematics", type: "notes", url: "#" },
-  { name: "CT Notes", stream: "Data Science", level: "Foundation", subject: "Computational Thinking", type: "notes", url: "#" },
-  { name: "English 1 Notes", stream: "Data Science", level: "Foundation", subject: "English 1", type: "notes", url: "#" },
-  { name: "English 2 Notes", stream: "Data Science", level: "Foundation", subject: "English 2", type: "notes", url: "#" },
-
-  // Data Science - Diploma
-  { name: "Java Notes", stream: "Data Science", level: "Diploma", subject: "Java", type: "notes", url: "#" },
-  { name: "DBMS Notes", stream: "Data Science", level: "Diploma", subject: "DBMS", type: "notes", url: "#" },
-  { name: "AppDev 1 Notes", stream: "Data Science", level: "Diploma", subject: "AppDev 1", type: "notes", url: "#" },
-  { name: "AppDev 2 Notes", stream: "Data Science", level: "Diploma", subject: "AppDev 2", type: "notes", url: "#" },
-  { name: "PDSA Notes", stream: "Data Science", level: "Diploma", subject: "PDSA", type: "notes", url: "#" },
-  { name: "Maths 2 Notes", stream: "Data Science", level: "Diploma", subject: "Mathematics 2", type: "notes", url: "#" },
-  { name: "Stats 2 Notes", stream: "Data Science", level: "Diploma", subject: "Statistics 2", type: "notes", url: "#" },
-
-  // Data Science - Degree
-  { name: "Machine Learning Notes", stream: "Data Science", level: "Degree", subject: "Machine Learning", type: "notes", url: "#" },
-  { name: "Business Data Management Notes", stream: "Data Science", level: "Degree", subject: "BDM", type: "notes", url: "#" },
-  { name: "Business Analytics Notes", stream: "Data Science", level: "Degree", subject: "BA", type: "notes", url: "#" },
-  { name: "Tools in Data Science Notes", stream: "Data Science", level: "Degree", subject: "TDS", type: "notes", url: "#" },
-  { name: "System Commands Notes", stream: "Data Science", level: "Degree", subject: "System Commands", type: "notes", url: "#" },
-
-  // Electronics - Foundation
-  { name: "Python Notes", stream: "Electronics", level: "Foundation", subject: "Python", type: "notes", url: "#" },
-  { name: "Statistics Notes", stream: "Electronics", level: "Foundation", subject: "Statistics", type: "notes", url: "#" },
-  { name: "Maths Notes", stream: "Electronics", level: "Foundation", subject: "Mathematics", type: "notes", url: "#" },
-  { name: "CT Notes", stream: "Electronics", level: "Foundation", subject: "Computational Thinking", type: "notes", url: "#" },
-
-  // Electronics - Diploma
-  { name: "Digital Circuits Notes", stream: "Electronics", level: "Diploma", subject: "Digital Circuits", type: "notes", url: "#" },
-  { name: "Analog Circuits Notes", stream: "Electronics", level: "Diploma", subject: "Analog Circuits", type: "notes", url: "#" },
-
-  // Add some books
-  { name: "Python Programming Book", stream: "Data Science", level: "Foundation", subject: "Python", type: "books", url: "#" },
-  { name: "Data Structures Book", stream: "Data Science", level: "Diploma", subject: "PDSA", type: "books", url: "#" },
-]
 
 export default function ResourcesPage() {
   const [activeTab, setActiveTab] = useState<"notes" | "pyqs" | "documents">("documents")
@@ -299,11 +113,89 @@ export default function ResourcesPage() {
   const [selectedLevel, setSelectedLevel] = useState<"all" | "Foundation" | "Diploma" | "Degree">("all")
   const [selectedSubject, setSelectedSubject] = useState("all")
 
-  // Filters for PYQs
-  const [selectedPyqStream, setSelectedPyqStream] = useState<string>("Data Science - Foundation")
-  const [selectedYear, setSelectedYear] = useState<string>("All Years")
-  const [selectedTerm, setSelectedTerm] = useState<string>("All Terms")
-  const [selectedExamType, setSelectedExamType] = useState<string>("All Exams")
+  // Local Explorer states
+  const [pyqsDatabase, setPyqsDatabase] = useState<PyqDataMap>({ Foundation: [], Diploma: [] })
+  const [localLevel, setLocalLevel] = useState<"Foundation" | "Diploma">("Foundation")
+  const [selectedCourse, setSelectedCourse] = useState<FolderItem | null>(null)
+  const [currentFolder, setCurrentFolder] = useState<FolderItem | null>(null)
+  const [breadcrumbs, setBreadcrumbs] = useState<Array<{ name: string; folder: FolderItem | null }>>([])
+  const [explorerSearchQuery, setExplorerSearchQuery] = useState("")
+
+  // Handle changing levels (Foundation / Diploma)
+  const handleLevelChange = (newLevel: "Foundation" | "Diploma") => {
+    setLocalLevel(newLevel)
+    setSelectedCourse(null)
+    setCurrentFolder(null)
+    setBreadcrumbs([])
+    setExplorerSearchQuery("")
+  }
+
+  // Handle selecting a course
+  const handleCourseSelect = (course: FolderItem) => {
+    setSelectedCourse(course)
+    setCurrentFolder(course)
+    setBreadcrumbs([
+      { name: localLevel, folder: null },
+      { name: course.name, folder: course }
+    ])
+    setExplorerSearchQuery("")
+  }
+
+  // Handle navigating to a subdirectory
+  const handleSubdirSelect = (folder: FolderItem) => {
+    setCurrentFolder(folder)
+    setBreadcrumbs((prev) => [...prev, { name: folder.name, folder }])
+  }
+
+  // Handle clicking a breadcrumb to go back
+  const handleBreadcrumbClick = (index: number) => {
+    const target = breadcrumbs[index]
+    if (index === 0) {
+      setSelectedCourse(null)
+      setCurrentFolder(null)
+      setBreadcrumbs([])
+    } else if (target && target.folder) {
+      setCurrentFolder(target.folder)
+      setBreadcrumbs((prev) => prev.slice(0, index + 1))
+    }
+    setExplorerSearchQuery("")
+  }
+
+  // Go up one level
+  const handleGoUp = () => {
+    if (breadcrumbs.length <= 2) {
+      setSelectedCourse(null)
+      setCurrentFolder(null)
+      setBreadcrumbs([])
+    } else {
+      const parentIndex = breadcrumbs.length - 2
+      const parent = breadcrumbs[parentIndex]
+      if (parent && parent.folder) {
+        setCurrentFolder(parent.folder)
+        setBreadcrumbs((prev) => prev.slice(0, parentIndex + 1))
+      }
+    }
+    setExplorerSearchQuery("")
+  }
+
+  // Recursive search inside explorer
+  const getExplorerSearchResults = () => {
+    if (!explorerSearchQuery || !selectedCourse) return []
+    const results: Array<FileItem> = []
+    const search = (items: Array<any>) => {
+      for (const item of items) {
+        if (item.type === "file") {
+          if (item.name.toLowerCase().includes(explorerSearchQuery.toLowerCase())) {
+            results.push(item)
+          }
+        } else if (item.type === "directory" && item.children) {
+          search(item.children)
+        }
+      }
+    }
+    search(selectedCourse.children)
+    return results
+  }
 
   const router = useRouter()
   const { data: session, status } = useSession()
@@ -322,6 +214,7 @@ export default function ResourcesPage() {
             const json = await res.json()
             if (json.success) {
               setDbResources(json.data)
+              setPyqsDatabase(buildFolderTree(json.data))
               setExpandedCategory("latest uploads")
             }
           } else {
@@ -335,19 +228,22 @@ export default function ResourcesPage() {
     }
   }, [isAuthenticated])
 
-  // useEffect(() => {
-  //   const authStatus = localStorage.getItem("isAuthenticated")
-  //   if (authStatus === "true") {
-  //     setIsAuthenticated(true)
-  //     // Expand first category by default for documents
-  //     setExpandedCategory("academic")
-  //   }
-  // }, [])
-
   // Get available subjects based on selected stream and level
+  const allNotes = dbResources
+    .filter((r: any) => r.section === "notes")
+    .map((r: any) => ({
+      name: r.title,
+      stream: r.stream || "Data Science",
+      level: r.level || "Foundation",
+      subject: r.subject || "General",
+      type: r.resourceType || "notes",
+      url: r.fileId ? `/api/files/${r.fileId._id || r.fileId}` : r.url || "#",
+      description: r.description || ""
+    }))
+
   const availableSubjects = Array.from(
     new Set(
-      studyMaterials
+      allNotes
         .filter(
           (m) =>
             (selectedStream === "all" || m.stream === selectedStream) &&
@@ -358,8 +254,8 @@ export default function ResourcesPage() {
   ).sort()
 
   // Filter study materials for Notes & Books
-  const filteredMaterials = studyMaterials.filter((material) => {
-    const matchesType = material.type === activeTab
+  const filteredMaterials = allNotes.filter((material) => {
+    const matchesType = material.type === "notes" || material.type === "books"
     const matchesStream = selectedStream === "all" || material.stream === selectedStream
     const matchesLevel = selectedLevel === "all" || material.level === selectedLevel
     const matchesSubject = selectedSubject === "all" || material.subject === selectedSubject
@@ -371,49 +267,30 @@ export default function ResourcesPage() {
     return matchesType && matchesStream && matchesLevel && matchesSubject && matchesSearch
   })
 
-  // Get PYQs data based on selected filters
-  const getPYQsData = (): SubjectItem[] => {
-    if (!pyqsData[selectedPyqStream]) return []
-    if (!pyqsData[selectedPyqStream][selectedYear]) return []
-    const termData = pyqsData[selectedPyqStream][selectedYear][selectedTerm as keyof Terms]
-    if (!termData) return []
-    const subjects = termData[selectedExamType as keyof ExamTypes] || []
+  // Get dynamic documents from MongoDB
+  const getMergedDocuments = (): Record<string, any[]> => {
+    const merged: Record<string, any[]> = {}
+    const dbDocs = dbResources.filter((r: any) => r.section === "documents" || !r.section)
+    
+    dbDocs.forEach((r: any) => {
+      const category = r.subCategory || "latest uploads"
+      const name = r.title
+      const url = r.fileId ? `/api/files/${r.fileId._id || r.fileId}` : r.url || "#"
+      const description = r.description || `${r.type.toUpperCase()} File`
 
-    // Apply search filter
-    if (searchQuery) {
-      return subjects.filter((item: SubjectItem) =>
-        item.subject.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    }
-    return subjects
+      if (!merged[category]) {
+        merged[category] = []
+      }
+      const exists = merged[category].some((doc: any) => doc.name === name)
+      if (!exists) {
+        merged[category].push({ name, url, description })
+      }
+    })
+
+    return merged
   }
 
-  const filteredPYQs = getPYQsData()
-
-  // Get available options for dropdowns
-  const availableStreamLevels = Object.keys(pyqsData)
-  const availableYears = selectedPyqStream && pyqsData[selectedPyqStream]
-    ? Object.keys(pyqsData[selectedPyqStream]).sort().reverse()
-    : []
-  const availableTerms = selectedPyqStream && selectedYear && pyqsData[selectedPyqStream]?.[selectedYear]
-    ? Object.keys(pyqsData[selectedPyqStream][selectedYear])
-    : []
-  const availableExamTypes = selectedPyqStream && selectedYear && selectedTerm && pyqsData[selectedPyqStream]?.[selectedYear]?.[selectedTerm as keyof Terms]
-    ? Object.keys(pyqsData[selectedPyqStream][selectedYear][selectedTerm as keyof Terms] || {})
-    : []
-
-  // Combine hardcoded and backend documents
-  const combinedDocuments: Record<string, any[]> = {
-    ...officialDocuments
-  }
-
-  if (dbResources.length > 0) {
-    combinedDocuments["latest uploads"] = dbResources.map((r: any) => ({
-      name: r.title,
-      url: r.fileId ? `/api/files/${r.fileId._id || r.fileId}` : r.url,
-      description: r.description || `${r.type.toUpperCase()} File`
-    }))
-  }
+  const combinedDocuments = getMergedDocuments()
 
   // Filter documents for search
   const allDocuments = Object.values(combinedDocuments).flat()
@@ -466,32 +343,7 @@ export default function ResourcesPage() {
     <main className="min-h-screen">
       <Navbar />
 
-      {/* Coming Soon Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 min-h-[70vh] flex items-center justify-center animate-fade-in">
-        <div className="glass p-16 rounded-2xl border border-primary/20 text-center w-full max-w-2xl relative overflow-hidden">
-          {/* Background glow effects for the coming soon box */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl opacity-50"></div>
-            <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl opacity-50"></div>
-          </div>
-
-          <div className="relative z-10">
-            <div className="w-24 h-24 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
-              <BookOpen className="w-12 h-12 text-primary" />
-            </div>
-            <h3 className="text-4xl font-serif font-bold text-white mb-6">Coming Soon</h3>
-            <p className="text-white/70 text-lg max-w-lg mx-auto mb-4">
-              Our comprehensive study resources, including notes, official documents, and PYQs, are currently being updated.
-            </p>
-            <p className="text-primary/80 text-sm font-medium">
-              Check back shortly for the new materials!
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {false && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
           {/* Background glow effects */}
           <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
             <div className="absolute top-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
@@ -626,110 +478,7 @@ export default function ResourcesPage() {
             </div>
           )}
 
-          {/* Filters for PYQs */}
-          {activeTab === "pyqs" && (
-            <div className="max-w-6xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-              <div className="glass p-6 rounded-2xl border border-primary/20">
-                <div className="flex items-center gap-2 mb-4">
-                  <Filter className="text-primary" size={18} />
-                  <span className="text-white font-semibold">Filter PYQs</span>
-                </div>
-                <div className="grid md:grid-cols-4 gap-4">
-                  {/* Stream/Level Dropdown */}
-                  <div className="relative group">
-                    <label className="text-white/60 text-sm mb-2 block">Program</label>
-                    <select
-                      value={selectedPyqStream}
-                      onChange={(e) => {
-                        const newStream = e.target.value
-                        setSelectedPyqStream(newStream)
 
-                        // Set defaults based on stream
-                        if (newStream === "Data Science - Foundation" || newStream === "Data Science - Diploma" || newStream === "Data Science - Degree") {
-                          setSelectedYear("All Years")
-                          setSelectedTerm("All Terms")
-                          setSelectedExamType("All Exams")
-                        } else if (newStream === "Electronics - Degree") {
-                          setSelectedYear("2025")
-                          setSelectedTerm("Term 3")
-                          setSelectedExamType("Quiz 1")
-                        }
-                      }}
-                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                    >
-                      {availableStreamLevels.map(stream => (
-                        <option key={stream} value={stream} className="bg-black">{stream}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Year Dropdown */}
-                  <div className="relative group">
-                    <label className="text-white/60 text-sm mb-2 block">Year</label>
-                    <select
-                      value={selectedYear}
-                      onChange={(e) => setSelectedYear(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                    >
-                      {availableYears.map(year => (
-                        <option key={year} value={year} className="bg-black">{year}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Term Dropdown */}
-                  <div className="relative">
-                    <label className="text-white/60 text-sm mb-2 block">Term</label>
-                    <select
-                      value={selectedTerm}
-                      onChange={(e) => setSelectedTerm(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                    >
-                      {availableTerms.map(term => (
-                        <option key={term} value={term} className="bg-black">{term}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Exam Type Dropdown */}
-                  <div className="relative">
-                    <label className="text-white/60 text-sm mb-2 block">Exam Type</label>
-                    <select
-                      value={selectedExamType}
-                      onChange={(e) => setSelectedExamType(e.target.value)}
-                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-xl border border-primary/20 rounded-xl text-white appearance-none cursor-pointer focus:outline-none focus:border-primary/50 focus:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all hover:border-primary/40"
-                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em' }}
-                    >
-                      {availableExamTypes.map(examType => (
-                        <option key={examType} value={examType} className="bg-black">{examType}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="mt-4 flex gap-3">
-                  <button
-                    onClick={() => {
-                      setSelectedPyqStream("Data Science - Foundation")
-                      setSelectedYear("All Years")
-                      setSelectedTerm("All Terms")
-                      setSelectedExamType("All Exams")
-                    }}
-                    className="px-6 py-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-xl text-primary font-medium transition-all hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
-                  >
-                    Reset Filters
-                  </button>
-                  <div className="flex-1"></div>
-                  <div className="px-4 py-2 bg-primary/10 border border-primary/30 rounded-xl text-primary font-medium">
-                    {filteredPYQs.length} Subject{filteredPYQs.length !== 1 ? 's' : ''} Found
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* Content Area */}
           <div className="max-w-6xl mx-auto">
@@ -780,107 +529,289 @@ export default function ResourcesPage() {
                 ))}
               </div>
             ) : activeTab === "pyqs" ? (
-              <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
-                {/* PYQs Header */}
-                <div className="glass p-6 rounded-2xl border border-primary/20 mb-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="px-4 py-1.5 bg-primary/20 border border-primary/40 rounded-lg text-primary text-sm font-bold">
-                      {selectedPyqStream}
-                    </span>
+              <div className="space-y-8 animate-fade-in" style={{ animationDelay: "0.15s" }}>
+                {/* Level Tab Selection Switcher */}
+                <div className="flex justify-center">
+                  <div className="glass p-1.5 rounded-xl border border-primary/20 inline-flex gap-2 w-full max-w-md shadow-inner">
+                    <button
+                      onClick={() => handleLevelChange("Foundation")}
+                      className={`flex-1 py-3 px-6 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
+                        localLevel === "Foundation"
+                          ? "bg-primary text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]"
+                          : "text-white/60 hover:text-white"
+                      }`}
+                    >
+                      <BookOpen className="w-4 h-4" />
+                      Foundation
+                    </button>
+                    <button
+                      onClick={() => handleLevelChange("Diploma")}
+                      className={`flex-1 py-3 px-6 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
+                        localLevel === "Diploma"
+                          ? "bg-primary text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]"
+                          : "text-white/60 hover:text-white"
+                      }`}
+                    >
+                      <GraduationCap className="w-4 h-4" />
+                      Diploma
+                    </button>
                   </div>
-                  <h2 className="text-2xl font-bold text-white mb-2">
-                    {selectedYear === "All Years" && selectedTerm === "All Terms" && selectedExamType === "All Exams"
-                      ? "All Subjects - Previous Year Questions"
-                      : `${selectedYear} - ${selectedTerm} - ${selectedExamType}`
-                    }
-                  </h2>
-                  <p className="text-white/60">
-                    {selectedYear === "All Years"
-                      ? "Subject-wise organized PYQ folders"
-                      : "Previous Year Question Papers for all subjects"
-                    }
-                  </p>
                 </div>
 
-                {/* PYQs Grid */}
-                {filteredPYQs.length > 0 ? (
-                  <div className="grid md:grid-cols-3 gap-6">
-                    {filteredPYQs.map((item: SubjectItem, index: number) => (
-                      <a
-                        key={index}
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group glass p-6 rounded-2xl border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(212,175,55,0.2)] animate-scale-in"
-                        style={{ animationDelay: `${index * 0.05}s` }}
-                      >
-                        <div className="flex items-start justify-between mb-4">
-                          <div className="w-12 h-12 bg-primary/10 border border-primary/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                            <FileCheck className="text-primary" size={24} />
+                {selectedCourse === null ? (
+                  /* 1. Courses grid select state */
+                  <div>
+                    <h3 className="text-2xl font-serif text-white mb-6 border-b border-primary/20 pb-3 flex items-center gap-2 animate-fade-in">
+                      <span className="w-2.5 h-2.5 bg-primary rounded-full animate-pulse"></span>
+                      Available {localLevel} Courses
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {(pyqsDatabase[localLevel] || []).map((course, idx) => (
+                        <button
+                          key={course.name}
+                          onClick={() => handleCourseSelect(course)}
+                          className="group text-left p-6 rounded-2xl glass-dark border border-primary/20 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(212,175,55,0.15)] relative overflow-hidden animate-scale-in"
+                          style={{ animationDelay: `${idx * 0.04}s` }}
+                        >
+                          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/5 via-transparent to-transparent"></div>
+                          
+                          <div className="relative z-10 flex items-center gap-4">
+                            <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-all duration-500 shadow-[0_0_10px_rgba(212,175,55,0.1)]">
+                              <Folder className="w-7 h-7" />
+                            </div>
+                            <div>
+                              <h4 className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300">
+                                {course.name}
+                              </h4>
+                              <p className="text-white/50 text-xs mt-1 uppercase tracking-widest">
+                                {localLevel} Level
+                              </p>
+                            </div>
                           </div>
-                          <ExternalLink className="text-white/30 group-hover:text-primary transition opacity-0 group-hover:opacity-100" size={18} />
-                        </div>
 
-                        <h3 className="text-white font-bold mb-3 group-hover:text-primary transition text-lg">
-                          {item.subject}
-                        </h3>
-
-                        <div className="flex flex-wrap gap-2">
-                          <span className="px-3 py-1 bg-primary/10 border border-primary/30 rounded-lg text-primary text-xs font-semibold">
-                            {selectedPyqStream}
-                          </span>
-                          {selectedYear !== "All Years" && (
-                            <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white/70 text-xs font-semibold">
-                              {selectedYear}
-                            </span>
-                          )}
-                          {selectedTerm !== "All Terms" && (
-                            <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white/70 text-xs font-semibold">
-                              {selectedTerm}
-                            </span>
-                          )}
-                          {selectedExamType !== "All Exams" && (
-                            <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white/70 text-xs font-semibold">
-                              {selectedExamType}
-                            </span>
-                          )}
-                        </div>
-                      </a>
-                    ))}
+                          <div className="mt-6 flex items-center gap-2 text-primary/60 group-hover:text-primary text-xs font-semibold transition-colors">
+                            <span>Browse Materials</span>
+                            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                          </div>
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 ) : (
-                  <div className="glass p-16 rounded-2xl border border-primary/20 text-center">
-                    <div className="w-20 h-20 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <ClipboardList className="w-10 h-10 text-primary" />
+                  /* 2. Directory Folder Browser state */
+                  <div className="glass-dark border border-primary/20 rounded-2xl p-6 sm:p-8 shadow-[0_0_30px_rgba(212,175,55,0.05)] relative overflow-hidden animate-scale-in">
+                    
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-primary/20 pb-6">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <button
+                          onClick={handleGoUp}
+                          className="p-2.5 rounded-lg border border-primary/30 text-white/70 hover:text-primary hover:border-primary transition-all flex items-center justify-center bg-black/20 hover:scale-105"
+                          title="Go up a directory"
+                        >
+                          <ArrowLeft className="w-5 h-5" />
+                        </button>
+                        <div className="flex items-center gap-1.5 text-sm sm:text-base font-semibold text-white/50 flex-wrap">
+                          {breadcrumbs.map((crumb, idx) => (
+                            <div key={idx} className="flex items-center gap-1.5">
+                              {idx > 0 && <ChevronRight className="w-4 h-4 text-white/30" />}
+                              <button
+                                onClick={() => handleBreadcrumbClick(idx)}
+                                className={`hover:text-primary transition-colors duration-300 ${
+                                  idx === breadcrumbs.length - 1 ? "text-primary font-bold cursor-default" : "cursor-pointer"
+                                }`}
+                                disabled={idx === breadcrumbs.length - 1}
+                              >
+                                {crumb.name}
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="relative w-full md:w-72">
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40">
+                          <Search className="w-4 h-4" />
+                        </span>
+                        <input
+                          type="text"
+                          value={explorerSearchQuery}
+                          onChange={(e) => setExplorerSearchQuery(e.target.value)}
+                          placeholder={`Search ${selectedCourse.name} files...`}
+                          className="w-full pl-9 pr-8 py-2.5 rounded-lg bg-black/40 border border-primary/20 text-white placeholder:text-white/30 focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(212,175,55,0.2)] transition-all shadow-inner"
+                        />
+                        {explorerSearchQuery && (
+                          <button
+                            onClick={() => setExplorerSearchQuery("")}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+                        )}
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-3">No PYQs Available</h3>
-                    <p className="text-white/60">
-                      No question papers found for {selectedPyqStream}
-                    </p>
-                    <p className="text-white/60">
-                      {selectedYear} - {selectedTerm} - {selectedExamType}
-                    </p>
-                    <p className="text-white/50 text-sm mt-2">
-                      Try selecting a different program, year, term, or exam type
-                    </p>
+
+                    <div className="space-y-3">
+                      {explorerSearchQuery ? (
+                        getExplorerSearchResults().length > 0 ? (
+                          getExplorerSearchResults().map((item) => (
+                            <div
+                              key={item.path}
+                              className="flex items-center justify-between p-4 rounded-xl bg-black/35 border border-primary/10 hover:border-primary/40 hover:bg-black/50 transition-all duration-300 group"
+                            >
+                              <a
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 flex-1 cursor-pointer min-w-0"
+                              >
+                                <div className="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 group-hover:bg-red-500 group-hover:text-white transition-all duration-300">
+                                  <FileText className="w-5 h-5" />
+                                </div>
+                                <div className="min-w-0">
+                                  <p className="text-white font-medium group-hover:text-primary transition-colors text-sm sm:text-base truncate">
+                                    {item.name}
+                                  </p>
+                                  <p className="text-white/40 text-xs truncate">
+                                    Path: {item.path}
+                                  </p>
+                                </div>
+                              </a>
+                              <a
+                                href={item.url}
+                                download
+                                className="p-2.5 rounded-lg bg-primary/10 border border-primary/30 text-primary hover:bg-primary hover:text-black transition-all flex items-center justify-center"
+                                title="Download resource"
+                              >
+                                <Download className="w-4 h-4" />
+                              </a>
+                            </div>
+                          ))
+                        ) : (
+                          <div className="text-center py-12">
+                            <p className="text-white/40 text-lg mb-2">No documents found matching "{explorerSearchQuery}"</p>
+                            <button
+                              onClick={() => setExplorerSearchQuery("")}
+                              className="text-primary hover:underline text-sm font-semibold"
+                            >
+                              Clear Search
+                            </button>
+                          </div>
+                        )
+                      ) : (
+                        (() => {
+                          const dirs = (currentFolder?.children || []).filter((c) => c.type === "directory") as Array<FolderItem>
+                          const files = (currentFolder?.children || []).filter((c) => c.type === "file") as Array<FileItem>
+
+                          if (dirs.length === 0 && files.length === 0) {
+                            return (
+                              <div className="text-center py-12">
+                                <FolderOpen className="w-12 h-12 text-white/20 mx-auto mb-4" />
+                                <p className="text-white/40 text-lg">This folder is empty</p>
+                              </div>
+                            )
+                          }
+
+                          return (
+                            <>
+                              {dirs.map((dir) => (
+                                <button
+                                  key={dir.name}
+                                  onClick={() => handleSubdirSelect(dir)}
+                                  className="w-full flex items-center justify-between p-4 rounded-xl bg-black/20 border border-primary/10 hover:border-primary/45 hover:bg-black/40 transition-all duration-300 text-left group"
+                                >
+                                  <div className="flex items-center gap-3 min-w-0">
+                                    <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-all duration-500">
+                                      <Folder className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-white font-medium group-hover:text-primary transition-colors text-sm sm:text-base truncate">
+                                      {dir.name}
+                                    </span>
+                                  </div>
+                                  <ChevronRight className="w-5 h-5 text-white/30 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300" />
+                                </button>
+                              ))}
+
+                              {files.map((file) => (
+                                <div
+                                  key={file.name}
+                                  className="flex items-center justify-between p-4 rounded-xl bg-black/35 border border-primary/10 hover:border-primary/40 hover:bg-black/50 transition-all duration-300 group"
+                                >
+                                  <a
+                                    href={file.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-3 flex-1 cursor-pointer min-w-0"
+                                  >
+                                    <div className="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 group-hover:bg-red-500 group-hover:text-white transition-all duration-300">
+                                      <FileText className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-white font-medium group-hover:text-primary transition-colors text-sm sm:text-base truncate">
+                                      {file.name}
+                                    </span>
+                                  </a>
+                                  <a
+                                    href={file.url}
+                                    download
+                                    className="p-2.5 rounded-lg bg-primary/10 border border-primary/30 text-primary hover:bg-primary hover:text-black transition-all flex items-center justify-center shadow-md"
+                                    title="Download resource"
+                                  >
+                                    <Download className="w-4 h-4" />
+                                  </a>
+                                </div>
+                              ))}
+                            </>
+                          )
+                        })()
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
             ) : (
-              <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
-                <div className="glass p-16 rounded-2xl border border-primary/20 text-center">
-                  <div className="w-20 h-20 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <BookOpen className="w-10 h-10 text-primary" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white mb-4">Coming Soon</h3>
-                  <p className="text-white/60 text-lg">Course notes and study materials will be available here shortly.</p>
-                  <p className="text-white/50 text-sm mt-2">We're working hard to bring you the best study resources</p>
+              <div className="animate-fade-in" style={{ animationDelay: '0.15s' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredMaterials.map((material, idx) => (
+                    <a
+                      key={idx}
+                      href={material.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group glass p-6 rounded-2xl border border-primary/20 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(212,175,55,0.15)] relative overflow-hidden animate-scale-in"
+                      style={{ animationDelay: `${idx * 0.04}s` }}
+                    >
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/5 via-transparent to-transparent"></div>
+                      
+                      <div className="relative z-10 flex gap-4">
+                        <div className="w-14 h-14 bg-primary/10 border border-primary/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-black transition-all duration-500 shadow-[0_0_10px_rgba(212,175,55,0.1)]">
+                          <BookOpen className="w-7 h-7" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <span className="text-primary/60 text-[10px] font-black uppercase tracking-widest block mb-1">
+                            {material.subject}
+                          </span>
+                          <h3 className="text-white font-bold mb-2 group-hover:text-primary transition-colors duration-300 flex items-center justify-between gap-2 text-lg">
+                            <span className="truncate">{material.name}</span>
+                            <ExternalLink className="text-white/30 group-hover:text-primary transition-all opacity-0 group-hover:opacity-100 flex-shrink-0" size={16} />
+                          </h3>
+                          <p className="text-white/50 text-xs line-clamp-2 leading-relaxed">
+                            {material.description || `${material.stream} • ${material.level} Level Resource`}
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  ))}
                 </div>
+
+                {filteredMaterials.length === 0 && (
+                  <div className="text-center py-20 bg-black/20 border border-dashed border-primary/10 rounded-2xl">
+                    <BookOpen className="w-12 h-12 text-white/20 mx-auto mb-4" />
+                    <p className="text-white/40 text-lg">No study materials found matching selected filters.</p>
+                  </div>
+                )}
               </div>
             )}
           </div>
         </div>
-      )}
 
       <Footer />
     </main>

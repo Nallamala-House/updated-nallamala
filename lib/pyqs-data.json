@@ -1,0 +1,3705 @@
+{
+  "Diploma": [
+    {
+      "name": "BA",
+      "type": "directory",
+      "path": "Diploma/BA",
+      "children": [
+        {
+          "name": "End term",
+          "type": "directory",
+          "path": "Diploma/BA/End term",
+          "children": [
+            {
+              "name": "BA ET T1 FN 2025.pdf",
+              "type": "file",
+              "path": "Diploma/BA/End term/BA ET T1 FN 2025.pdf",
+              "size": 1111879
+            },
+            {
+              "name": "BA ET T3 AN 2024.pdf",
+              "type": "file",
+              "path": "Diploma/BA/End term/BA ET T3 AN 2024.pdf",
+              "size": 964362
+            },
+            {
+              "name": "BA_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/BA/End term/BA_ET(FN)_T2_2025.pdf",
+              "size": 1111879
+            }
+          ]
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Diploma/BA/Quiz 1",
+          "children": [
+            {
+              "name": "BA Q1 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/BA/Quiz 1/BA Q1 T2 2025.pdf",
+              "size": 624595
+            },
+            {
+              "name": "BA Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/BA/Quiz 1/BA Q1 T3 2025.pdf",
+              "size": 533055
+            },
+            {
+              "name": "BA_Q1_T1_2025.pdf",
+              "type": "file",
+              "path": "Diploma/BA/Quiz 1/BA_Q1_T1_2025.pdf",
+              "size": 624591
+            },
+            {
+              "name": "BA_Q1_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/BA/Quiz 1/BA_Q1_T3_2025.pdf",
+              "size": 575589
+            }
+          ]
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Diploma/BA/Quiz 2",
+          "children": [
+            {
+              "name": "BA Q2 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/BA/Quiz 2/BA Q2 T2 2025.pdf",
+              "size": 590681
+            },
+            {
+              "name": "BA Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/BA/Quiz 2/BA Q2 T3 2025.pdf",
+              "size": 615131
+            },
+            {
+              "name": "Business Analytics_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/BA/Quiz 2/Business Analytics_24f3_Quiz2.pdf",
+              "size": 743866
+            },
+            {
+              "name": "Business Analytics_25f1_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/BA/Quiz 2/Business Analytics_25f1_Quiz2.pdf",
+              "size": 726334
+            },
+            {
+              "name": "Business Analytics_Q2_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/BA/Quiz 2/Business Analytics_Q2_T3_2025.pdf",
+              "size": 590681
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BDM",
+      "type": "directory",
+      "path": "Diploma/BDM",
+      "children": [
+        {
+          "name": "End Term",
+          "type": "directory",
+          "path": "Diploma/BDM/End Term",
+          "children": [
+            {
+              "name": "BDM ET T1 FN 2025.pdf",
+              "type": "file",
+              "path": "Diploma/BDM/End Term/BDM ET T1 FN 2025.pdf",
+              "size": 572737
+            },
+            {
+              "name": "BDM ET T3 AN 2024.pdf",
+              "type": "file",
+              "path": "Diploma/BDM/End Term/BDM ET T3 AN 2024.pdf",
+              "size": 722954
+            },
+            {
+              "name": "BDM_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/BDM/End Term/BDM_ET(FN)_T2_2025.pdf",
+              "size": 601479
+            }
+          ]
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Diploma/BDM/Quiz 1",
+          "children": []
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Diploma/BDM/Quiz 2",
+          "children": [
+            {
+              "name": "BDM Q2 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/BDM/Quiz 2/BDM Q2 T2 2025.pdf",
+              "size": 656605
+            },
+            {
+              "name": "BDM Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/BDM/Quiz 2/BDM Q2 T3 2025.pdf",
+              "size": 400843
+            },
+            {
+              "name": "BDM_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/BDM/Quiz 2/BDM_24f3_Quiz2.pdf",
+              "size": 534532
+            },
+            {
+              "name": "Bdm_25f1_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/BDM/Quiz 2/Bdm_25f1_Quiz2.pdf",
+              "size": 537337
+            },
+            {
+              "name": "BDM_Q2_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/BDM/Quiz 2/BDM_Q2_T3_2025.pdf",
+              "size": 429565
+            },
+            {
+              "name": "Bdm_Q2_T3_2025(1).pdf",
+              "type": "file",
+              "path": "Diploma/BDM/Quiz 2/Bdm_Q2_T3_2025(1).pdf",
+              "size": 656603
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DBMS",
+      "type": "directory",
+      "path": "Diploma/DBMS",
+      "children": [
+        {
+          "name": "End term",
+          "type": "directory",
+          "path": "Diploma/DBMS/End term",
+          "children": [
+            {
+              "name": "DBMS ET FN T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/End term/DBMS ET FN T1 2024.pdf",
+              "size": 1310954
+            },
+            {
+              "name": "DBMS ET FN T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/End term/DBMS ET FN T2 2024.pdf",
+              "size": 1220221
+            },
+            {
+              "name": "DBMS ET FN T3 2024.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/End term/DBMS ET FN T3 2024.pdf",
+              "size": 1579597
+            },
+            {
+              "name": "DBMS ET FN T3 2024(1).pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/End term/DBMS ET FN T3 2024(1).pdf",
+              "size": 1312323
+            },
+            {
+              "name": "DBMS ET T1 FN 2025.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/End term/DBMS ET T1 FN 2025.pdf",
+              "size": 2069399
+            },
+            {
+              "name": "DBMS ET T3 AN 2024.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/End term/DBMS ET T3 AN 2024.pdf",
+              "size": 1588148
+            },
+            {
+              "name": "DBMS_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/End term/DBMS_ET(FN)_T2_2025.pdf",
+              "size": 2020307
+            }
+          ]
+        },
+        {
+          "name": "OPPES",
+          "type": "directory",
+          "path": "Diploma/DBMS/OPPES",
+          "children": []
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Diploma/DBMS/Quiz 1",
+          "children": [
+            {
+              "name": "DBMS Q1 T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 1/DBMS Q1 T1 2024.pdf",
+              "size": 1397706
+            },
+            {
+              "name": "DBMS Q1 T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 1/DBMS Q1 T2 2024.pdf",
+              "size": 1243859
+            },
+            {
+              "name": "DBMS Q1 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 1/DBMS Q1 T2 2025.pdf",
+              "size": 1718386
+            },
+            {
+              "name": "DBMS Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 1/DBMS Q1 T3 2025.pdf",
+              "size": 1820957
+            },
+            {
+              "name": "DBMS_Q1_T1_2025.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 1/DBMS_Q1_T1_2025.pdf",
+              "size": 1718377
+            },
+            {
+              "name": "DBMS_Q1_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 1/DBMS_Q1_T3_2025.pdf",
+              "size": 1887505
+            }
+          ]
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Diploma/DBMS/Quiz 2",
+          "children": [
+            {
+              "name": "DBMS Q2 T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 2/DBMS Q2 T1 2024.pdf",
+              "size": 702184
+            },
+            {
+              "name": "DBMS Q2 T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 2/DBMS Q2 T2 2024.pdf",
+              "size": 921830
+            },
+            {
+              "name": "DBMS Q2 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 2/DBMS Q2 T2 2025.pdf",
+              "size": 1131359
+            },
+            {
+              "name": "DBMS Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 2/DBMS Q2 T3 2025.pdf",
+              "size": 1038142
+            },
+            {
+              "name": "DBMS_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 2/DBMS_24f3_Quiz2.pdf",
+              "size": 3767309
+            },
+            {
+              "name": "DBMS_25f1_Quiz2 .pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 2/DBMS_25f1_Quiz2 .pdf",
+              "size": 1059321
+            },
+            {
+              "name": "DBMS_Q2_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 2/DBMS_Q2_T3_2025.pdf",
+              "size": 1038113
+            },
+            {
+              "name": "Dbms_Q2_T3_2025(1).pdf",
+              "type": "file",
+              "path": "Diploma/DBMS/Quiz 2/Dbms_Q2_T3_2025(1).pdf",
+              "size": 1131348
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DL-GenAI",
+      "type": "directory",
+      "path": "Diploma/DL-GenAI",
+      "children": [
+        {
+          "name": "DL-GEN_AI_Q1_T3_2025.pdf",
+          "type": "file",
+          "path": "Diploma/DL-GenAI/DL-GEN_AI_Q1_T3_2025.pdf",
+          "size": 1575340
+        },
+        {
+          "name": "DLGenAI Q2 T3 2025.pdf",
+          "type": "file",
+          "path": "Diploma/DL-GenAI/DLGenAI Q2 T3 2025.pdf",
+          "size": 1791838
+        }
+      ]
+    },
+    {
+      "name": "Java",
+      "type": "directory",
+      "path": "Diploma/Java",
+      "children": [
+        {
+          "name": "End term",
+          "type": "directory",
+          "path": "Diploma/Java/End term",
+          "children": [
+            {
+              "name": "Java ET FN T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/Java/End term/Java ET FN T1 2024.pdf",
+              "size": 3645253
+            },
+            {
+              "name": "Java ET FN T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/Java/End term/Java ET FN T2 2024.pdf",
+              "size": 4095885
+            },
+            {
+              "name": "Java ET FN T3 2024.pdf",
+              "type": "file",
+              "path": "Diploma/Java/End term/Java ET FN T3 2024.pdf",
+              "size": 3861883
+            },
+            {
+              "name": "Java ET FN T3 2024(1).pdf",
+              "type": "file",
+              "path": "Diploma/Java/End term/Java ET FN T3 2024(1).pdf",
+              "size": 3809888
+            },
+            {
+              "name": "Java ET T1 FN 2025.pdf",
+              "type": "file",
+              "path": "Diploma/Java/End term/Java ET T1 FN 2025.pdf",
+              "size": 4178711
+            },
+            {
+              "name": "JAVA_ET(AN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/Java/End term/JAVA_ET(AN)_T2_2025.pdf",
+              "size": 3880234
+            },
+            {
+              "name": "JAVA_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/Java/End term/JAVA_ET(FN)_T2_2025.pdf",
+              "size": 4178711
+            }
+          ]
+        },
+        {
+          "name": "OPPE",
+          "type": "directory",
+          "path": "Diploma/Java/OPPE",
+          "children": []
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Diploma/Java/Quiz 1",
+          "children": [
+            {
+              "name": "Java Q1 T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 1/Java Q1 T1 2024.pdf",
+              "size": 1734024
+            },
+            {
+              "name": "Java Q1 T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 1/Java Q1 T2 2024.pdf",
+              "size": 1395019
+            },
+            {
+              "name": "Java Q1 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 1/Java Q1 T2 2025.pdf",
+              "size": 2004500
+            },
+            {
+              "name": "Java Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 1/Java Q1 T3 2025.pdf",
+              "size": 2406184
+            },
+            {
+              "name": "JAVA_Q1_T1_2025.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 1/JAVA_Q1_T1_2025.pdf",
+              "size": 1962515
+            },
+            {
+              "name": "JAVA_Q1_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 1/JAVA_Q1_T3_2025.pdf",
+              "size": 2468398
+            }
+          ]
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Diploma/Java/Quiz 2",
+          "children": [
+            {
+              "name": "Java Q2 T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 2/Java Q2 T1 2024.pdf",
+              "size": 2696250
+            },
+            {
+              "name": "Java Q2 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 2/Java Q2 T2 2025.pdf",
+              "size": 2695883
+            },
+            {
+              "name": "Java Q2 T3 2024.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 2/Java Q2 T3 2024.pdf",
+              "size": 2697766
+            },
+            {
+              "name": "Java Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 2/Java Q2 T3 2025.pdf",
+              "size": 1312738
+            },
+            {
+              "name": "Java_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 2/Java_24f3_Quiz2.pdf",
+              "size": 2689027
+            },
+            {
+              "name": "Java_25f1_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 2/Java_25f1_Quiz2.pdf",
+              "size": 2697373
+            },
+            {
+              "name": "JAVA_Q2_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 2/JAVA_Q2_T3_2025.pdf",
+              "size": 1312757
+            },
+            {
+              "name": "Java_Q2_T3_2025(1).pdf",
+              "type": "file",
+              "path": "Diploma/Java/Quiz 2/Java_Q2_T3_2025(1).pdf",
+              "size": 2657496
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MAD 1",
+      "type": "directory",
+      "path": "Diploma/MAD 1",
+      "children": [
+        {
+          "name": "End term",
+          "type": "directory",
+          "path": "Diploma/MAD 1/End term",
+          "children": [
+            {
+              "name": "MAD1 ET FN T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/End term/MAD1 ET FN T1 2024.pdf",
+              "size": 3671996
+            },
+            {
+              "name": "MAD1 ET FN T1 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/End term/MAD1 ET FN T1 2025.pdf",
+              "size": 3385029
+            },
+            {
+              "name": "MAD1 ET FN T3 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/End term/MAD1 ET FN T3 2024.pdf",
+              "size": 3394409
+            },
+            {
+              "name": "MAD1 ET FN T3 2024(1).pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/End term/MAD1 ET FN T3 2024(1).pdf",
+              "size": 3146331
+            },
+            {
+              "name": "MAD1 ET FN T3 2024(2).pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/End term/MAD1 ET FN T3 2024(2).pdf",
+              "size": 2528913
+            },
+            {
+              "name": "MAD1 ET FN T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/End term/MAD1 ET FN T3 2025.pdf",
+              "size": 1311678
+            },
+            {
+              "name": "MAD1 FT AN T1 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/End term/MAD1 FT AN T1 2025.pdf",
+              "size": 1888223
+            },
+            {
+              "name": "MAD1_ET(AN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/End term/MAD1_ET(AN)_T2_2025.pdf",
+              "size": 3563156
+            },
+            {
+              "name": "MAD1_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/End term/MAD1_ET(FN)_T2_2025.pdf",
+              "size": 3385029
+            }
+          ]
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Diploma/MAD 1/Quiz 1",
+          "children": [
+            {
+              "name": "APPDEV1_Q1_T1_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 1/APPDEV1_Q1_T1_2025.pdf",
+              "size": 1934433
+            },
+            {
+              "name": "MAD1 Q1 T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 1/MAD1 Q1 T1 2024.pdf",
+              "size": 1412234
+            },
+            {
+              "name": "MAD1 Q1 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 1/MAD1 Q1 T2 2025.pdf",
+              "size": 1934386
+            },
+            {
+              "name": "MAD1 Q1 T3 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 1/MAD1 Q1 T3 2024.pdf",
+              "size": 1395019
+            },
+            {
+              "name": "MAD1 Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 1/MAD1 Q1 T3 2025.pdf",
+              "size": 1788125
+            },
+            {
+              "name": "MAD1_Q1_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 1/MAD1_Q1_T3_2025.pdf",
+              "size": 1788082
+            }
+          ]
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Diploma/MAD 1/Quiz 2",
+          "children": [
+            {
+              "name": "Appdev1_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 2/Appdev1_24f3_Quiz2.pdf",
+              "size": 2576849
+            },
+            {
+              "name": "appdev1_q2_aug2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 2/appdev1_q2_aug2025.pdf",
+              "size": 1888223
+            },
+            {
+              "name": "MAD 1 Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 2/MAD 1 Q2 T3 2025.pdf",
+              "size": 642179
+            },
+            {
+              "name": "Mad 1_25f1_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 2/Mad 1_25f1_Quiz2.pdf",
+              "size": 1904010
+            },
+            {
+              "name": "MAD1 Q2 T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 2/MAD1 Q2 T1 2024.pdf",
+              "size": 1828075
+            },
+            {
+              "name": "MAD1 Q2 T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 2/MAD1 Q2 T2 2024.pdf",
+              "size": 1864627
+            },
+            {
+              "name": "MAD1 Q2 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 2/MAD1 Q2 T2 2025.pdf",
+              "size": 1888219
+            },
+            {
+              "name": "MAD1_Q2_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 1/Quiz 2/MAD1_Q2_T3_2025.pdf",
+              "size": 642202
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MAD 2",
+      "type": "directory",
+      "path": "Diploma/MAD 2",
+      "children": [
+        {
+          "name": "End term",
+          "type": "directory",
+          "path": "Diploma/MAD 2/End term",
+          "children": [
+            {
+              "name": "Appdev 2_24f3_ET_AN.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/End term/Appdev 2_24f3_ET_AN.pdf",
+              "size": 2042385
+            },
+            {
+              "name": "Appdev 2_24f3_ET_FN.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/End term/Appdev 2_24f3_ET_FN.pdf",
+              "size": 2530587
+            },
+            {
+              "name": "APPDEV2_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/End term/APPDEV2_ET(FN)_T2_2025.pdf",
+              "size": 2329215
+            },
+            {
+              "name": "MAD2 ET FN T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/End term/MAD2 ET FN T1 2024.pdf",
+              "size": 2038029
+            },
+            {
+              "name": "MAD2 ET FN T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/End term/MAD2 ET FN T2 2024.pdf",
+              "size": 1766263
+            },
+            {
+              "name": "MAD2 ET FN T3 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/End term/MAD2 ET FN T3 2024.pdf",
+              "size": 1766263
+            },
+            {
+              "name": "MAD2_ET(AN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/End term/MAD2_ET(AN)_T2_2025.pdf",
+              "size": 2138032
+            },
+            {
+              "name": "MAD2_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/End term/MAD2_ET(FN)_T2_2025.pdf",
+              "size": 2329204
+            }
+          ]
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Diploma/MAD 2/Quiz 1",
+          "children": [
+            {
+              "name": "APPDEV2_Q1_T1_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 1/APPDEV2_Q1_T1_2025.pdf",
+              "size": 1762021
+            },
+            {
+              "name": "MAD2 Q1 T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 1/MAD2 Q1 T1 2024.pdf",
+              "size": 905260
+            },
+            {
+              "name": "MAD2 Q1 T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 1/MAD2 Q1 T2 2024.pdf",
+              "size": 1383003
+            },
+            {
+              "name": "MAD2 Q1 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 1/MAD2 Q1 T2 2025.pdf",
+              "size": 1761983
+            },
+            {
+              "name": "MAD2 Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 1/MAD2 Q1 T3 2025.pdf",
+              "size": 1587269
+            },
+            {
+              "name": "MAD2_Q1_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 1/MAD2_Q1_T3_2025.pdf",
+              "size": 1931805
+            }
+          ]
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Diploma/MAD 2/Quiz 2",
+          "children": [
+            {
+              "name": "App Dev 2_24f3_q2.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 2/App Dev 2_24f3_q2.pdf",
+              "size": 1426531
+            },
+            {
+              "name": "MAD 2 Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 2/MAD 2 Q2 T3 2025.pdf",
+              "size": 779829
+            },
+            {
+              "name": "Mad 2_25f1_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 2/Mad 2_25f1_Quiz2.pdf",
+              "size": 1504149
+            },
+            {
+              "name": "MAD2 Q2 T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 2/MAD2 Q2 T1 2024.pdf",
+              "size": 1261540
+            },
+            {
+              "name": "MAD2 Q2 T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 2/MAD2 Q2 T2 2024.pdf",
+              "size": 2047428
+            },
+            {
+              "name": "MAD2 Q2 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 2/MAD2 Q2 T2 2025.pdf",
+              "size": 2707913
+            },
+            {
+              "name": "MAD2_Q2_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 2/MAD2_Q2_T3_2025.pdf",
+              "size": 779995
+            },
+            {
+              "name": "Mad2_Q2_T3_2025(1).pdf",
+              "type": "file",
+              "path": "Diploma/MAD 2/Quiz 2/Mad2_Q2_T3_2025(1).pdf",
+              "size": 2666325
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MLF",
+      "type": "directory",
+      "path": "Diploma/MLF",
+      "children": [
+        {
+          "name": "End term",
+          "type": "directory",
+          "path": "Diploma/MLF/End term",
+          "children": [
+            {
+              "name": "MLF ET AN T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/End term/MLF ET AN T3 2025.pdf",
+              "size": 364380
+            },
+            {
+              "name": "MLF ET FN T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/End term/MLF ET FN T3 2025.pdf",
+              "size": 389282
+            },
+            {
+              "name": "MLF_24f3_ET_AN.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/End term/MLF_24f3_ET_AN.pdf",
+              "size": 942663
+            },
+            {
+              "name": "MLF_24f3_ET_FN.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/End term/MLF_24f3_ET_FN.pdf",
+              "size": 1150347
+            },
+            {
+              "name": "MLF_ET_T1_(FN)_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/End term/MLF_ET_T1_(FN)_2025.pdf",
+              "size": 1002880
+            },
+            {
+              "name": "MLF_ET(AN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/End term/MLF_ET(AN)_T2_2025.pdf",
+              "size": 877906
+            },
+            {
+              "name": "MLF_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/End term/MLF_ET(FN)_T2_2025.pdf",
+              "size": 1002880
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Diploma/MLF/Notes",
+          "children": []
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Diploma/MLF/Quiz 1",
+          "children": [
+            {
+              "name": "IIT M DIPLOMA AN EXAM QDD4 23 Feb 2025-69-77.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/Quiz 1/IIT M DIPLOMA AN EXAM QDD4 23 Feb 2025-69-77.pdf",
+              "size": 876754
+            },
+            {
+              "name": "MLF Q1 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/Quiz 1/MLF Q1 T2 2025.pdf",
+              "size": 879029
+            },
+            {
+              "name": "MLF Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/Quiz 1/MLF Q1 T3 2025.pdf",
+              "size": 935606
+            },
+            {
+              "name": "MLF_Q1_T1_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/Quiz 1/MLF_Q1_T1_2025.pdf",
+              "size": 879025
+            },
+            {
+              "name": "MLF_Q1_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/Quiz 1/MLF_Q1_T3_2025.pdf",
+              "size": 972605
+            }
+          ]
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Diploma/MLF/Quiz 2",
+          "children": [
+            {
+              "name": "MLF Q2 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/Quiz 2/MLF Q2 T2 2025.pdf",
+              "size": 910481
+            },
+            {
+              "name": "MLF Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/Quiz 2/MLF Q2 T3 2025.pdf",
+              "size": 676387
+            },
+            {
+              "name": "MLF_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/Quiz 2/MLF_24f3_Quiz2.pdf",
+              "size": 849236
+            },
+            {
+              "name": "MLF_Q2_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLF/Quiz 2/MLF_Q2_T3_2025.pdf",
+              "size": 676580
+            },
+            {
+              "name": "mlf_q2_T3_2025(1).pdf",
+              "type": "file",
+              "path": "Diploma/MLF/Quiz 2/mlf_q2_T3_2025(1).pdf",
+              "size": 829309
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MLP",
+      "type": "directory",
+      "path": "Diploma/MLP",
+      "children": [
+        {
+          "name": "End Term",
+          "type": "directory",
+          "path": "Diploma/MLP/End Term",
+          "children": [
+            {
+              "name": "MLP_24f3_ET_AN.pdf",
+              "type": "file",
+              "path": "Diploma/MLP/End Term/MLP_24f3_ET_AN.pdf",
+              "size": 3259288
+            },
+            {
+              "name": "MLP_ET_T1_(FN)_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLP/End Term/MLP_ET_T1_(FN)_2025.pdf",
+              "size": 2041506
+            },
+            {
+              "name": "MLP_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLP/End Term/MLP_ET(FN)_T2_2025.pdf",
+              "size": 2070687
+            }
+          ]
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Diploma/MLP/Quiz 1",
+          "children": [
+            {
+              "name": "Mlp_25f1_Quiz1.pdf",
+              "type": "file",
+              "path": "Diploma/MLP/Quiz 1/Mlp_25f1_Quiz1.pdf",
+              "size": 1282100
+            }
+          ]
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Diploma/MLP/Quiz 2",
+          "children": [
+            {
+              "name": "Mlp_24f3_q2.pdf",
+              "type": "file",
+              "path": "Diploma/MLP/Quiz 2/Mlp_24f3_q2.pdf",
+              "size": 1745409
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MLT",
+      "type": "directory",
+      "path": "Diploma/MLT",
+      "children": [
+        {
+          "name": "ET",
+          "type": "directory",
+          "path": "Diploma/MLT/ET",
+          "children": [
+            {
+              "name": "MLT_24f3_ET_AN.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT_24f3_ET_AN.pdf",
+              "size": 1166227
+            },
+            {
+              "name": "MLT_24f3_ET_FN.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT_24f3_ET_FN.pdf",
+              "size": 1192698
+            },
+            {
+              "name": "MLT_ET_T1_(FN)_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT_ET_T1_(FN)_2025.pdf",
+              "size": 2329204
+            },
+            {
+              "name": "MLT_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT_ET(FN)_T2_2025.pdf",
+              "size": 1309959
+            },
+            {
+              "name": "MLT-ET-AN-T1-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-AN-T1-2024.pdf",
+              "size": 1042921
+            },
+            {
+              "name": "MLT-ET-AN-T1-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-AN-T1-2025.pdf",
+              "size": 1336851
+            },
+            {
+              "name": "MLT-ET-AN-T2-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-AN-T2-2024.pdf",
+              "size": 1205647
+            },
+            {
+              "name": "MLT-ET-AN-T2-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-AN-T2-2025.pdf",
+              "size": 1491454
+            },
+            {
+              "name": "MLT-ET-AN-T3-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-AN-T3-2024.pdf",
+              "size": 1186192
+            },
+            {
+              "name": "MLT-ET-AN-T3-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-AN-T3-2025.pdf",
+              "size": 640782
+            },
+            {
+              "name": "MLT-ET-FN-T1-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-FN-T1-2024.pdf",
+              "size": 1507626
+            },
+            {
+              "name": "MLT-ET-FN-T1-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-FN-T1-2025.pdf",
+              "size": 920919
+            },
+            {
+              "name": "MLT-ET-FN-T2-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-FN-T2-2024.pdf",
+              "size": 1458630
+            },
+            {
+              "name": "MLT-ET-FN-T2-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-FN-T2-2025.pdf",
+              "size": 1309957
+            },
+            {
+              "name": "MLT-ET-FN-T3-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-FN-T3-2024.pdf",
+              "size": 1192728
+            },
+            {
+              "name": "MLT-ET-FN-T3-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/ET/MLT-ET-FN-T3-2025.pdf",
+              "size": 552586
+            }
+          ]
+        },
+        {
+          "name": "QUIZ1",
+          "type": "directory",
+          "path": "Diploma/MLT/QUIZ1",
+          "children": [
+            {
+              "name": "MLT Q1 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ1/MLT Q1 T2 2025.pdf",
+              "size": 856931
+            },
+            {
+              "name": "MLT Q1-T1-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ1/MLT Q1-T1-2024.pdf",
+              "size": 418362
+            },
+            {
+              "name": "MLT Q1-T2-2024 .pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ1/MLT Q1-T2-2024 .pdf",
+              "size": 744162
+            },
+            {
+              "name": "MLT Q1-T3-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ1/MLT Q1-T3-2024.pdf",
+              "size": 895104
+            },
+            {
+              "name": "MLT Q1-T3-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ1/MLT Q1-T3-2025.pdf",
+              "size": 998819
+            },
+            {
+              "name": "MLT_Q1_T1_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ1/MLT_Q1_T1_2025.pdf",
+              "size": 856929
+            },
+            {
+              "name": "MLT_Q1_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ1/MLT_Q1_T3_2025.pdf",
+              "size": 998821
+            },
+            {
+              "name": "MLT-Q1-T1-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ1/MLT-Q1-T1-2025.pdf",
+              "size": 961241
+            },
+            {
+              "name": "MLT-Q1-T2-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ1/MLT-Q1-T2-2025.pdf",
+              "size": 885649
+            }
+          ]
+        },
+        {
+          "name": "QUIZ2",
+          "type": "directory",
+          "path": "Diploma/MLT/QUIZ2",
+          "children": [
+            {
+              "name": "MLT Q2 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ2/MLT Q2 T2 2025.pdf",
+              "size": 1145132
+            },
+            {
+              "name": "MLT_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ2/MLT_24f3_Quiz2.pdf",
+              "size": 879299
+            },
+            {
+              "name": "Mlt_Q2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ2/Mlt_Q2_2025.pdf",
+              "size": 1115533
+            },
+            {
+              "name": "MLT_Q2_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ2/MLT_Q2_T3_2025.pdf",
+              "size": 849777
+            },
+            {
+              "name": "MLT-Q2-T1-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ2/MLT-Q2-T1-2024.pdf",
+              "size": 580159
+            },
+            {
+              "name": "MLT-Q2-T1-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ2/MLT-Q2-T1-2025.pdf",
+              "size": 867749
+            },
+            {
+              "name": "MLT-Q2-T2-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ2/MLT-Q2-T2-2024.pdf",
+              "size": 797581
+            },
+            {
+              "name": "MLT-Q2-T2-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ2/MLT-Q2-T2-2025.pdf",
+              "size": 1146097
+            },
+            {
+              "name": "MLT-Q2-T3-2024.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ2/MLT-Q2-T3-2024.pdf",
+              "size": 991424
+            },
+            {
+              "name": "MLT-Q2-T3-2025.pdf",
+              "type": "file",
+              "path": "Diploma/MLT/QUIZ2/MLT-Q2-T3-2025.pdf",
+              "size": 849663
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PDSA",
+      "type": "directory",
+      "path": "Diploma/PDSA",
+      "children": [
+        {
+          "name": "End term",
+          "type": "directory",
+          "path": "Diploma/PDSA/End term",
+          "children": [
+            {
+              "name": "PDSA_24f3_ET_AN.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/End term/PDSA_24f3_ET_AN.pdf",
+              "size": 1619693
+            },
+            {
+              "name": "PDSA_24f3_ET_FN.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/End term/PDSA_24f3_ET_FN.pdf",
+              "size": 1467313
+            },
+            {
+              "name": "PDSA_ET_T1_(FN)_2025.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/End term/PDSA_ET_T1_(FN)_2025.pdf",
+              "size": 1444057
+            },
+            {
+              "name": "PDSA_ET(AN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/End term/PDSA_ET(AN)_T2_2025.pdf",
+              "size": 1675286
+            },
+            {
+              "name": "PDSA_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/End term/PDSA_ET(FN)_T2_2025.pdf",
+              "size": 1472782
+            }
+          ]
+        },
+        {
+          "name": "OPPE",
+          "type": "directory",
+          "path": "Diploma/PDSA/OPPE",
+          "children": []
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Diploma/PDSA/Quiz 1",
+          "children": [
+            {
+              "name": "PDSA Q1 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/Quiz 1/PDSA Q1 T2 2025.pdf",
+              "size": 1242885
+            },
+            {
+              "name": "PDSA_Q1_T1_2025.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/Quiz 1/PDSA_Q1_T1_2025.pdf",
+              "size": 1213873
+            },
+            {
+              "name": "PDSA_Q1_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/Quiz 1/PDSA_Q1_T3_2025.pdf",
+              "size": 1464480
+            }
+          ]
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Diploma/PDSA/Quiz 2",
+          "children": [
+            {
+              "name": "PDSA Q2 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/Quiz 2/PDSA Q2 T2 2025.pdf",
+              "size": 983564
+            },
+            {
+              "name": "PDSA Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/Quiz 2/PDSA Q2 T3 2025.pdf",
+              "size": 728194
+            },
+            {
+              "name": "Pdsa_24f3_q2.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/Quiz 2/Pdsa_24f3_q2.pdf",
+              "size": 1076512
+            },
+            {
+              "name": "PDSA_Q2_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/Quiz 2/PDSA_Q2_T3_2025.pdf",
+              "size": 728352
+            },
+            {
+              "name": "Pdsa_q2_T3_2025(1).pdf",
+              "type": "file",
+              "path": "Diploma/PDSA/Quiz 2/Pdsa_q2_T3_2025(1).pdf",
+              "size": 914453
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SC",
+      "type": "directory",
+      "path": "Diploma/SC",
+      "children": [
+        {
+          "name": "End term",
+          "type": "directory",
+          "path": "Diploma/SC/End term",
+          "children": [
+            {
+              "name": "SC ET AN T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/SC/End term/SC ET AN T3 2025.pdf",
+              "size": 1158761
+            },
+            {
+              "name": "SC ET FN T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/SC/End term/SC ET FN T1 2024.pdf",
+              "size": 859318
+            },
+            {
+              "name": "SC ET FN T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/SC/End term/SC ET FN T2 2024.pdf",
+              "size": 1834466
+            },
+            {
+              "name": "SC ET FN T3 2024.pdf",
+              "type": "file",
+              "path": "Diploma/SC/End term/SC ET FN T3 2024.pdf",
+              "size": 1126994
+            },
+            {
+              "name": "SC ET FN T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/SC/End term/SC ET FN T3 2025.pdf",
+              "size": 1209182
+            },
+            {
+              "name": "SC_ET_T1_(FN)_2025.pdf",
+              "type": "file",
+              "path": "Diploma/SC/End term/SC_ET_T1_(FN)_2025.pdf",
+              "size": 1588335
+            },
+            {
+              "name": "SC_ET(AN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/SC/End term/SC_ET(AN)_T2_2025.pdf",
+              "size": 1690297
+            },
+            {
+              "name": "SC_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/SC/End term/SC_ET(FN)_T2_2025.pdf",
+              "size": 1609536
+            },
+            {
+              "name": "System Commands_24f3_ET_AN.pdf",
+              "type": "file",
+              "path": "Diploma/SC/End term/System Commands_24f3_ET_AN.pdf",
+              "size": 1286325
+            },
+            {
+              "name": "System commands_24f3_ET_FN.pdf",
+              "type": "file",
+              "path": "Diploma/SC/End term/System commands_24f3_ET_FN.pdf",
+              "size": 1497448
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Diploma/SC/Notes",
+          "children": [
+            {
+              "name": "All_week_notes.txt",
+              "type": "file",
+              "path": "Diploma/SC/Notes/All_week_notes.txt",
+              "size": 74
+            },
+            {
+              "name": "Quiz 1 notes.pdf",
+              "type": "file",
+              "path": "Diploma/SC/Notes/Quiz 1 notes.pdf",
+              "size": 7079879
+            }
+          ]
+        },
+        {
+          "name": "OPPE",
+          "type": "directory",
+          "path": "Diploma/SC/OPPE",
+          "children": []
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Diploma/SC/Quiz 1",
+          "children": [
+            {
+              "name": "SC Q1 T1 2024.pdf",
+              "type": "file",
+              "path": "Diploma/SC/Quiz 1/SC Q1 T1 2024.pdf",
+              "size": 1401598
+            },
+            {
+              "name": "SC Q1 T2 2024.pdf",
+              "type": "file",
+              "path": "Diploma/SC/Quiz 1/SC Q1 T2 2024.pdf",
+              "size": 1768204
+            },
+            {
+              "name": "SC Q1 T2 2025.pdf",
+              "type": "file",
+              "path": "Diploma/SC/Quiz 1/SC Q1 T2 2025.pdf",
+              "size": 1369727
+            },
+            {
+              "name": "SC Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Diploma/SC/Quiz 1/SC Q1 T3 2025.pdf",
+              "size": 1218767
+            },
+            {
+              "name": "SC_Q1_T1_2025.pdf",
+              "type": "file",
+              "path": "Diploma/SC/Quiz 1/SC_Q1_T1_2025.pdf",
+              "size": 1369718
+            },
+            {
+              "name": "SC_Q1_T3_2025.pdf",
+              "type": "file",
+              "path": "Diploma/SC/Quiz 1/SC_Q1_T3_2025.pdf",
+              "size": 1273483
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TDS",
+      "type": "directory",
+      "path": "Diploma/TDS",
+      "children": [
+        {
+          "name": "End term",
+          "type": "directory",
+          "path": "Diploma/TDS/End term",
+          "children": [
+            {
+              "name": "TDS_24f3_ET_FN.pdf",
+              "type": "file",
+              "path": "Diploma/TDS/End term/TDS_24f3_ET_FN.pdf",
+              "size": 1728086
+            },
+            {
+              "name": "TDS_ET_T1_(FN)_2025.pdf",
+              "type": "file",
+              "path": "Diploma/TDS/End term/TDS_ET_T1_(FN)_2025.pdf",
+              "size": 1463675
+            },
+            {
+              "name": "TDS_ET(FN)_T2_2025.pdf",
+              "type": "file",
+              "path": "Diploma/TDS/End term/TDS_ET(FN)_T2_2025.pdf",
+              "size": 1463675
+            },
+            {
+              "name": "TDS-ET-AN-T1-2024.pdf",
+              "type": "file",
+              "path": "Diploma/TDS/End term/TDS-ET-AN-T1-2024.pdf",
+              "size": 107925
+            },
+            {
+              "name": "TDS-ET-AN-T1-2025.pdf",
+              "type": "file",
+              "path": "Diploma/TDS/End term/TDS-ET-AN-T1-2025.pdf",
+              "size": 1087781
+            },
+            {
+              "name": "TDS-ET-AN-T2-2024.pdf",
+              "type": "file",
+              "path": "Diploma/TDS/End term/TDS-ET-AN-T2-2024.pdf",
+              "size": 253826
+            },
+            {
+              "name": "TDS-ET-FN-T1-2024.pdf",
+              "type": "file",
+              "path": "Diploma/TDS/End term/TDS-ET-FN-T1-2024.pdf",
+              "size": 316362
+            },
+            {
+              "name": "TDS-ET-FN-T1-2025.pdf",
+              "type": "file",
+              "path": "Diploma/TDS/End term/TDS-ET-FN-T1-2025.pdf",
+              "size": 566036
+            },
+            {
+              "name": "TDS-ET-FN-T2-2025.pdf",
+              "type": "file",
+              "path": "Diploma/TDS/End term/TDS-ET-FN-T2-2025.pdf",
+              "size": 1463700
+            },
+            {
+              "name": "TDS-ET-FN-T3-2024.pdf",
+              "type": "file",
+              "path": "Diploma/TDS/End term/TDS-ET-FN-T3-2024.pdf",
+              "size": 1728086
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Diploma/TDS/Notes",
+          "children": []
+        }
+      ]
+    }
+  ],
+  "Foundation": [
+    {
+      "name": "CT",
+      "type": "directory",
+      "path": "Foundation/CT",
+      "children": [
+        {
+          "name": "End Term",
+          "type": "directory",
+          "path": "Foundation/CT/End Term",
+          "children": [
+            {
+              "name": "CT ET T1 AN 2024.pdf",
+              "type": "file",
+              "path": "Foundation/CT/End Term/CT ET T1 AN 2024.pdf",
+              "size": 1573255
+            },
+            {
+              "name": "CT ET T1 AN 2024(1).pdf",
+              "type": "file",
+              "path": "Foundation/CT/End Term/CT ET T1 AN 2024(1).pdf",
+              "size": 1573255
+            },
+            {
+              "name": "CT ET T2 AN 2024.pdf",
+              "type": "file",
+              "path": "Foundation/CT/End Term/CT ET T2 AN 2024.pdf",
+              "size": 1882678
+            },
+            {
+              "name": "CT ET T2 AN 2024(1).pdf",
+              "type": "file",
+              "path": "Foundation/CT/End Term/CT ET T2 AN 2024(1).pdf",
+              "size": 1882678
+            },
+            {
+              "name": "CT ET T2 AN 2025.pdf",
+              "type": "file",
+              "path": "Foundation/CT/End Term/CT ET T2 AN 2025.pdf",
+              "size": 2080490
+            },
+            {
+              "name": "CT ET T2 FN 2025.pdf",
+              "type": "file",
+              "path": "Foundation/CT/End Term/CT ET T2 FN 2025.pdf",
+              "size": 2016274
+            },
+            {
+              "name": "CT ET T3 AN 2024.pdf",
+              "type": "file",
+              "path": "Foundation/CT/End Term/CT ET T3 AN 2024.pdf",
+              "size": 1882678
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Foundation/CT/Notes",
+          "children": [
+            {
+              "name": "ct.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Notes/ct.pdf",
+              "size": 43999895
+            }
+          ]
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Foundation/CT/Quiz 1",
+          "children": [
+            {
+              "name": "CT- Q1- T2-2025.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 1/CT- Q1- T2-2025.pdf",
+              "size": 1457680
+            },
+            {
+              "name": "CT-Q1-T1- 2024.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 1/CT-Q1-T1- 2024.pdf",
+              "size": 890959
+            },
+            {
+              "name": "CT-Q1-T2-2024.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 1/CT-Q1-T2-2024.pdf",
+              "size": 1551092
+            },
+            {
+              "name": "CT-Q1-T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 1/CT-Q1-T3 2025.pdf",
+              "size": 1573381
+            },
+            {
+              "name": "CT-Q1-T3-2024.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 1/CT-Q1-T3-2024.pdf",
+              "size": 1882678
+            },
+            {
+              "name": "CT-Q1-T3-2025.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 1/CT-Q1-T3-2025.pdf",
+              "size": 1573403
+            }
+          ]
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Foundation/CT/Quiz 2",
+          "children": [
+            {
+              "name": "CT Q2 T1 2024.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 2/CT Q2 T1 2024.pdf",
+              "size": 1412532
+            },
+            {
+              "name": "CT Q2 T2 2024.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 2/CT Q2 T2 2024.pdf",
+              "size": 1269213
+            },
+            {
+              "name": "CT Q2 T2 2025.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 2/CT Q2 T2 2025.pdf",
+              "size": 1480677
+            },
+            {
+              "name": "CT Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 2/CT Q2 T3 2025.pdf",
+              "size": 1219633
+            },
+            {
+              "name": "CT Q2 T3 2025(1).pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 2/CT Q2 T3 2025(1).pdf",
+              "size": 1219799
+            },
+            {
+              "name": "CT1_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 2/CT1_24f3_Quiz2.pdf",
+              "size": 1205553
+            },
+            {
+              "name": "cT1_25f1_Quiz2 .pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 2/cT1_25f1_Quiz2 .pdf",
+              "size": 1338615
+            },
+            {
+              "name": "Jan 2024.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 2/Jan 2024.pdf",
+              "size": 1412532
+            },
+            {
+              "name": "May 2024.pdf",
+              "type": "file",
+              "path": "Foundation/CT/Quiz 2/May 2024.pdf",
+              "size": 1269213
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "English 1",
+      "type": "directory",
+      "path": "Foundation/English 1",
+      "children": [
+        {
+          "name": "Endterm",
+          "type": "directory",
+          "path": "Foundation/English 1/Endterm",
+          "children": [
+            {
+              "name": "English1 Endterm(FN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Endterm/English1 Endterm(FN)_2025_Term-02.pdf",
+              "size": 901794
+            },
+            {
+              "name": "English1 SEP 2025 DS.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Endterm/English1 SEP 2025 DS.pdf",
+              "size": 646909
+            },
+            {
+              "name": "English1_jan(2024)_et(an).pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Endterm/English1_jan(2024)_et(an).pdf",
+              "size": 199517
+            },
+            {
+              "name": "English1_may(2024)_et(an).pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Endterm/English1_may(2024)_et(an).pdf",
+              "size": 395255
+            },
+            {
+              "name": "English1_sept(2024)_et(an).pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Endterm/English1_sept(2024)_et(an).pdf",
+              "size": 389666
+            },
+            {
+              "name": "IIT M FOUNDATION AN EXAM QDF3 13 July 2025 (1).pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Endterm/IIT M FOUNDATION AN EXAM QDF3 13 July 2025 (1).pdf",
+              "size": 1021954
+            },
+            {
+              "name": "Sem1 English1.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Endterm/Sem1 English1.pdf",
+              "size": 389666
+            },
+            {
+              "name": "Sem1 English1(1).pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Endterm/Sem1 English1(1).pdf",
+              "size": 395255
+            },
+            {
+              "name": "Sem1 English1(2).pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Endterm/Sem1 English1(2).pdf",
+              "size": 199517
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Foundation/English 1/Notes",
+          "children": [
+            {
+              "name": "English 1 Notes",
+              "type": "directory",
+              "path": "Foundation/English 1/Notes/English 1 Notes",
+              "children": [
+                {
+                  "name": "Week 1-6 English.pdf",
+                  "type": "file",
+                  "path": "Foundation/English 1/Notes/English 1 Notes/Week 1-6 English.pdf",
+                  "size": 23562984
+                },
+                {
+                  "name": "Week 7 English.pdf",
+                  "type": "file",
+                  "path": "Foundation/English 1/Notes/English 1 Notes/Week 7 English.pdf",
+                  "size": 1687828
+                },
+                {
+                  "name": "Week 8 English notes.pdf",
+                  "type": "file",
+                  "path": "Foundation/English 1/Notes/English 1 Notes/Week 8 English notes.pdf",
+                  "size": 7339826
+                },
+                {
+                  "name": "Week 9 English .pdf",
+                  "type": "file",
+                  "path": "Foundation/English 1/Notes/English 1 Notes/Week 9 English .pdf",
+                  "size": 5766690
+                }
+              ]
+            },
+            {
+              "name": "ENGLISH-1 W1-9.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Notes/ENGLISH-1 W1-9.pdf",
+              "size": 3537636
+            }
+          ]
+        },
+        {
+          "name": "Quiz1",
+          "type": "directory",
+          "path": "Foundation/English 1/Quiz1",
+          "children": [
+            {
+              "name": "Eng1 Q1 T2 2025.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz1/Eng1 Q1 T2 2025.pdf",
+              "size": 359376
+            },
+            {
+              "name": "Eng1 Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz1/Eng1 Q1 T3 2025.pdf",
+              "size": 754045
+            },
+            {
+              "name": "English1 Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz1/English1 Q1 T3 2025.pdf",
+              "size": 754084
+            },
+            {
+              "name": "English1_jan(2024)_quiz1.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz1/English1_jan(2024)_quiz1.pdf",
+              "size": 112467
+            },
+            {
+              "name": "English1_may(2024)_quiz1.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz1/English1_may(2024)_quiz1.pdf",
+              "size": 306532
+            },
+            {
+              "name": "QDF2 27th Oct 2024 - Unknown IITians.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz1/QDF2 27th Oct 2024 - Unknown IITians.pdf",
+              "size": 11501535
+            },
+            {
+              "name": "QDF3 27th Oct 2024 - Unknown IITians.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz1/QDF3 27th Oct 2024 - Unknown IITians.pdf",
+              "size": 11501375
+            },
+            {
+              "name": "QDF4 27th Oct 2024 - Unknown IITians.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz1/QDF4 27th Oct 2024 - Unknown IITians.pdf",
+              "size": 11501508
+            },
+            {
+              "name": "Sem1 English1.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz1/Sem1 English1.pdf",
+              "size": 112467
+            }
+          ]
+        },
+        {
+          "name": "Quiz2",
+          "type": "directory",
+          "path": "Foundation/English 1/Quiz2",
+          "children": [
+            {
+              "name": "English1_25f1_Quiz2 .pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz2/English1_25f1_Quiz2 .pdf",
+              "size": 662629
+            },
+            {
+              "name": "English1_jan(2024)_quiz2.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz2/English1_jan(2024)_quiz2.pdf",
+              "size": 96647
+            },
+            {
+              "name": "English1_may(2024)_quiz2.pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz2/English1_may(2024)_quiz2.pdf",
+              "size": 414991
+            },
+            {
+              "name": "Quiz 2 (Oct2024).pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz2/Quiz 2 (Oct2024).pdf",
+              "size": 748297
+            },
+            {
+              "name": "Quiz2(Dec 2024).pdf",
+              "type": "file",
+              "path": "Foundation/English 1/Quiz2/Quiz2(Dec 2024).pdf",
+              "size": 661461
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "English 2",
+      "type": "directory",
+      "path": "Foundation/English 2",
+      "children": [
+        {
+          "name": "END TERM",
+          "type": "directory",
+          "path": "Foundation/English 2/END TERM",
+          "children": [
+            {
+              "name": "Eng 2 ET T2 AN.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/END TERM/Eng 2 ET T2 AN.pdf",
+              "size": 345901
+            },
+            {
+              "name": "Eng2 ET T1 AN.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/END TERM/Eng2 ET T1 AN.pdf",
+              "size": 146355
+            },
+            {
+              "name": "Eng2 ET T1 FN  2024.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/END TERM/Eng2 ET T1 FN  2024.pdf",
+              "size": 146355
+            },
+            {
+              "name": "Eng2 ET T3 FN 2024.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/END TERM/Eng2 ET T3 FN 2024.pdf",
+              "size": 402016
+            },
+            {
+              "name": "English2 Endterm(AN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/END TERM/English2 Endterm(AN)_2025_Term-02.pdf",
+              "size": 1043798
+            },
+            {
+              "name": "English2 Endterm(FN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/END TERM/English2 Endterm(FN)_2025_Term-02.pdf",
+              "size": 1455783
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Foundation/English 2/Notes",
+          "children": [
+            {
+              "name": "Week 1-12~ Eng 2.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/Notes/Week 1-12~ Eng 2.pdf",
+              "size": 29191625
+            }
+          ]
+        },
+        {
+          "name": "QUIZ 1",
+          "type": "directory",
+          "path": "Foundation/English 2/QUIZ 1",
+          "children": [
+            {
+              "name": "Eng2 Q1 T1 2024.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 1/Eng2 Q1 T1 2024.pdf",
+              "size": 176759
+            },
+            {
+              "name": "Eng2 Q1 T2 2024.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 1/Eng2 Q1 T2 2024.pdf",
+              "size": 481095
+            },
+            {
+              "name": "Eng2 Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 1/Eng2 Q1 T3 2025.pdf",
+              "size": 677954
+            },
+            {
+              "name": "English2_Q1_T1_2026.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 1/English2_Q1_T1_2026.pdf",
+              "size": 805707
+            },
+            {
+              "name": "English2(2025)_term2_quiz01.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 1/English2(2025)_term2_quiz01.pdf",
+              "size": 336340
+            },
+            {
+              "name": "English2(2025)_term3_quiz01.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 1/English2(2025)_term3_quiz01.pdf",
+              "size": 678003
+            },
+            {
+              "name": "Jan 2024.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 1/Jan 2024.pdf",
+              "size": 87321
+            },
+            {
+              "name": "May 2024.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 1/May 2024.pdf",
+              "size": 176759
+            }
+          ]
+        },
+        {
+          "name": "QUIZ 2",
+          "type": "directory",
+          "path": "Foundation/English 2/QUIZ 2",
+          "children": [
+            {
+              "name": "Eng2 Q2 T1 2024.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/Eng2 Q2 T1 2024.pdf",
+              "size": 124118
+            },
+            {
+              "name": "Eng2 Q2 T3 2024.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/Eng2 Q2 T3 2024.pdf",
+              "size": 383070
+            },
+            {
+              "name": "Eng2 Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/Eng2 Q2 T3 2025.pdf",
+              "size": 763374
+            },
+            {
+              "name": "English1 Quiz2_2025_Term-03.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/English1 Quiz2_2025_Term-03.pdf",
+              "size": 738252
+            },
+            {
+              "name": "English1 quiz2_term2(2025).pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/English1 quiz2_term2(2025).pdf",
+              "size": 702302
+            },
+            {
+              "name": "English2 Quiz2_2025_Term-03.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/English2 Quiz2_2025_Term-03.pdf",
+              "size": 684739
+            },
+            {
+              "name": "English2 quiz2_term2(2025).pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/English2 quiz2_term2(2025).pdf",
+              "size": 922106
+            },
+            {
+              "name": "English2_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/English2_24f3_Quiz2.pdf",
+              "size": 924581
+            },
+            {
+              "name": "English2_25f1_Quiz2 .pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/English2_25f1_Quiz2 .pdf",
+              "size": 1038278
+            },
+            {
+              "name": "Jan 2024.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/Jan 2024.pdf",
+              "size": 124118
+            },
+            {
+              "name": "May 2024.pdf",
+              "type": "file",
+              "path": "Foundation/English 2/QUIZ 2/May 2024.pdf",
+              "size": 383070
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Maths 1",
+      "type": "directory",
+      "path": "Foundation/Maths 1",
+      "children": [
+        {
+          "name": "Maths1_Endterm",
+          "type": "directory",
+          "path": "Foundation/Maths 1/Maths1_Endterm",
+          "children": [
+            {
+              "name": "Maths1 Endterm(FN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Endterm/Maths1 Endterm(FN)_2025_Term-02.pdf",
+              "size": 970875
+            },
+            {
+              "name": "Maths1 sep 2025 AN.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Endterm/Maths1 sep 2025 AN.pdf",
+              "size": 522520
+            },
+            {
+              "name": "Maths1_jan(2024)_et(an).pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Endterm/Maths1_jan(2024)_et(an).pdf",
+              "size": 541822
+            },
+            {
+              "name": "Maths1_may(2024)_et(an).pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Endterm/Maths1_may(2024)_et(an).pdf",
+              "size": 794487
+            },
+            {
+              "name": "Maths1_sept(2024)_et(an).pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Endterm/Maths1_sept(2024)_et(an).pdf",
+              "size": 794487
+            }
+          ]
+        },
+        {
+          "name": "Maths1_Quiz1",
+          "type": "directory",
+          "path": "Foundation/Maths 1/Maths1_Quiz1",
+          "children": [
+            {
+              "name": "Maths1 Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz1/Maths1 Q1 T3 2025.pdf",
+              "size": 885820
+            },
+            {
+              "name": "Maths1_jan(2024)_quiz1.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz1/Maths1_jan(2024)_quiz1.pdf",
+              "size": 322786
+            },
+            {
+              "name": "Maths1_may(2024)_quiz1.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz1/Maths1_may(2024)_quiz1.pdf",
+              "size": 547508
+            },
+            {
+              "name": "Maths1(2025)_term2_quiz01.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz1/Maths1(2025)_term2_quiz01.pdf",
+              "size": 790329
+            },
+            {
+              "name": "Maths1(2025)_term3_quiz01.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz1/Maths1(2025)_term3_quiz01.pdf",
+              "size": 885844
+            }
+          ]
+        },
+        {
+          "name": "Maths1_Quiz2",
+          "type": "directory",
+          "path": "Foundation/Maths 1/Maths1_Quiz2",
+          "children": [
+            {
+              "name": "Maths 1 Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz2/Maths 1 Q2 T3 2025.pdf",
+              "size": 865850
+            },
+            {
+              "name": "Maths_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz2/Maths_24f3_Quiz2.pdf",
+              "size": 871099
+            },
+            {
+              "name": "Maths1 Quiz2_2025_Term-03.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz2/Maths1 Quiz2_2025_Term-03.pdf",
+              "size": 855401
+            },
+            {
+              "name": "Maths1 quiz2_term2(2025).pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz2/Maths1 quiz2_term2(2025).pdf",
+              "size": 764857
+            },
+            {
+              "name": "Maths1_25f1_Quiz2 .pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz2/Maths1_25f1_Quiz2 .pdf",
+              "size": 873503
+            },
+            {
+              "name": "Maths1_jan(2024)_quiz2.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz2/Maths1_jan(2024)_quiz2.pdf",
+              "size": 399321
+            },
+            {
+              "name": "Maths1_may(2024)_quiz2.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Maths1_Quiz2/Maths1_may(2024)_quiz2.pdf",
+              "size": 724884
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Foundation/Maths 1/Notes",
+          "children": [
+            {
+              "name": "Mathematics-1.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Notes/Mathematics-1.pdf",
+              "size": 4919733
+            },
+            {
+              "name": "Maths Week 1 to 10.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 1/Notes/Maths Week 1 to 10.pdf",
+              "size": 21876168
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Maths 2",
+      "type": "directory",
+      "path": "Foundation/Maths 2",
+      "children": [
+        {
+          "name": "End term",
+          "type": "directory",
+          "path": "Foundation/Maths 2/End term",
+          "children": [
+            {
+              "name": "Maths2 Endterm(AN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/End term/Maths2 Endterm(AN)_2025_Term-02.pdf",
+              "size": 1382997
+            },
+            {
+              "name": "Maths2 Endterm(FN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/End term/Maths2 Endterm(FN)_2025_Term-02.pdf",
+              "size": 1295504
+            },
+            {
+              "name": "Maths2 ET T1 AN 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/End term/Maths2 ET T1 AN 2024.pdf",
+              "size": 608455
+            },
+            {
+              "name": "Maths2 ET T2 AN 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/End term/Maths2 ET T2 AN 2024.pdf",
+              "size": 699538
+            },
+            {
+              "name": "Maths2 ET T3 AN 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/End term/Maths2 ET T3 AN 2024.pdf",
+              "size": 1958535
+            },
+            {
+              "name": "Maths2 ET T3 AN 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/End term/Maths2 ET T3 AN 2025.pdf",
+              "size": 853572
+            },
+            {
+              "name": "Maths2 ET T3 FN 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/End term/Maths2 ET T3 FN 2025.pdf",
+              "size": 804324
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Foundation/Maths 2/Notes",
+          "children": [
+            {
+              "name": "IITMOD Maths 2 Week 1-8.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Notes/IITMOD Maths 2 Week 1-8.pdf",
+              "size": 7156294
+            },
+            {
+              "name": "MATHS-2 NOTES W10.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Notes/MATHS-2 NOTES W10.pdf",
+              "size": 8437663
+            },
+            {
+              "name": "MATHS-2 NOTES W11.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Notes/MATHS-2 NOTES W11.pdf",
+              "size": 6209694
+            }
+          ]
+        },
+        {
+          "name": "Quiz 1",
+          "type": "directory",
+          "path": "Foundation/Maths 2/Quiz 1",
+          "children": [
+            {
+              "name": "Maths02(2025) quiz1 term2.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Quiz 1/Maths02(2025) quiz1 term2.pdf",
+              "size": 728983
+            },
+            {
+              "name": "Maths2 Q1 T1 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Quiz 1/Maths2 Q1 T1 2024.pdf",
+              "size": 426001
+            },
+            {
+              "name": "Maths2 Q1 T2 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Quiz 1/Maths2 Q1 T2 2024.pdf",
+              "size": 554183
+            },
+            {
+              "name": "Maths2 Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Quiz 1/Maths2 Q1 T3 2025.pdf",
+              "size": 759019
+            }
+          ]
+        },
+        {
+          "name": "Quiz 2",
+          "type": "directory",
+          "path": "Foundation/Maths 2/Quiz 2",
+          "children": [
+            {
+              "name": "Maths 2 Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Quiz 2/Maths 2 Q2 T3 2025.pdf",
+              "size": 1019984
+            },
+            {
+              "name": "Maths2 Q2 T1 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Quiz 2/Maths2 Q2 T1 2024.pdf",
+              "size": 417382
+            },
+            {
+              "name": "Maths2 Q2 T2 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Quiz 2/Maths2 Q2 T2 2024.pdf",
+              "size": 619740
+            },
+            {
+              "name": "Maths2 quiz2_term2(2025).pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Quiz 2/Maths2 quiz2_term2(2025).pdf",
+              "size": 829474
+            },
+            {
+              "name": "Maths2_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Quiz 2/Maths2_24f3_Quiz2.pdf",
+              "size": 873704
+            },
+            {
+              "name": "Maths2_25f1_Quiz2 .pdf",
+              "type": "file",
+              "path": "Foundation/Maths 2/Quiz 2/Maths2_25f1_Quiz2 .pdf",
+              "size": 871909
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Python",
+      "type": "directory",
+      "path": "Foundation/Python",
+      "children": [
+        {
+          "name": "End Term python",
+          "type": "directory",
+          "path": "Foundation/Python/End Term python",
+          "children": [
+            {
+              "name": "Python Endterm(AN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/Python/End Term python/Python Endterm(AN)_2025_Term-02.pdf",
+              "size": 710971
+            },
+            {
+              "name": "Python Endterm(FN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/Python/End Term python/Python Endterm(FN)_2025_Term-02.pdf",
+              "size": 754057
+            },
+            {
+              "name": "python_jan(2024)_AN_Endterm.pdf",
+              "type": "file",
+              "path": "Foundation/Python/End Term python/python_jan(2024)_AN_Endterm.pdf",
+              "size": 1477202
+            },
+            {
+              "name": "python_May(2024)_AN_Endterm.pdf",
+              "type": "file",
+              "path": "Foundation/Python/End Term python/python_May(2024)_AN_Endterm.pdf",
+              "size": 1368555
+            },
+            {
+              "name": "python_sept(2024)_AN_Endterm.pdf",
+              "type": "file",
+              "path": "Foundation/Python/End Term python/python_sept(2024)_AN_Endterm.pdf",
+              "size": 1228520
+            },
+            {
+              "name": "python_Sept(2025)_AN_Endterm.pdf",
+              "type": "file",
+              "path": "Foundation/Python/End Term python/python_Sept(2025)_AN_Endterm.pdf",
+              "size": 668973
+            },
+            {
+              "name": "python_Sept(2025)_FN_Endterm.pdf",
+              "type": "file",
+              "path": "Foundation/Python/End Term python/python_Sept(2025)_FN_Endterm.pdf",
+              "size": 644550
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Foundation/Python/Notes",
+          "children": [
+            {
+              "name": "Python Cheat Sheet.pdf",
+              "type": "file",
+              "path": "Foundation/Python/Notes/Python Cheat Sheet.pdf",
+              "size": 248523
+            },
+            {
+              "name": "Python Cheatsheet 2024 .pdf",
+              "type": "file",
+              "path": "Foundation/Python/Notes/Python Cheatsheet 2024 .pdf",
+              "size": 2928969
+            },
+            {
+              "name": "Python for everybody (book).pdf",
+              "type": "file",
+              "path": "Foundation/Python/Notes/Python for everybody (book).pdf",
+              "size": 2385991
+            },
+            {
+              "name": "Python IITM (notes).pdf",
+              "type": "file",
+              "path": "Foundation/Python/Notes/Python IITM (notes).pdf",
+              "size": 25724589
+            },
+            {
+              "name": "Week 1 to 11 (notes 1).pdf",
+              "type": "file",
+              "path": "Foundation/Python/Notes/Week 1 to 11 (notes 1).pdf",
+              "size": 23025041
+            }
+          ]
+        },
+        {
+          "name": "OPPEs",
+          "type": "directory",
+          "path": "Foundation/Python/OPPEs",
+          "children": [
+            {
+              "name": "OPPE 1 ( Jan 2025)",
+              "type": "directory",
+              "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)",
+              "children": [
+                {
+                  "name": "OPPE 1 practice questions",
+                  "type": "directory",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/OPPE 1 practice questions",
+                  "children": [
+                    {
+                      "name": "q1.py",
+                      "type": "file",
+                      "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/OPPE 1 practice questions/q1.py",
+                      "size": 3414
+                    },
+                    {
+                      "name": "q2.py",
+                      "type": "file",
+                      "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/OPPE 1 practice questions/q2.py",
+                      "size": 599
+                    },
+                    {
+                      "name": "q3.py",
+                      "type": "file",
+                      "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/OPPE 1 practice questions/q3.py",
+                      "size": 756
+                    },
+                    {
+                      "name": "q4.py",
+                      "type": "file",
+                      "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/OPPE 1 practice questions/q4.py",
+                      "size": 957
+                    }
+                  ]
+                },
+                {
+                  "name": "helper.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/helper.py",
+                  "size": 767
+                },
+                {
+                  "name": "main.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/main.py",
+                  "size": 1067
+                },
+                {
+                  "name": "q1.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q1.py",
+                  "size": 550
+                },
+                {
+                  "name": "q10.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q10.py",
+                  "size": 936
+                },
+                {
+                  "name": "q11.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q11.py",
+                  "size": 1075
+                },
+                {
+                  "name": "q2.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q2.py",
+                  "size": 245
+                },
+                {
+                  "name": "q3.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q3.py",
+                  "size": 685
+                },
+                {
+                  "name": "q4.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q4.py",
+                  "size": 832
+                },
+                {
+                  "name": "q5.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q5.py",
+                  "size": 239
+                },
+                {
+                  "name": "q6.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q6.py",
+                  "size": 415
+                },
+                {
+                  "name": "q7.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q7.py",
+                  "size": 277
+                },
+                {
+                  "name": "q8.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q8.py",
+                  "size": 709
+                },
+                {
+                  "name": "q9.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/q9.py",
+                  "size": 606
+                },
+                {
+                  "name": "questions.md",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/questions.md",
+                  "size": 7272
+                },
+                {
+                  "name": "syllabus.pdf",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 ( Jan 2025)/syllabus.pdf",
+                  "size": 242298
+                }
+              ]
+            },
+            {
+              "name": "OPPE 1 (MAY 2025)",
+              "type": "directory",
+              "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)",
+              "children": [
+                {
+                  "name": "main.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)/main.py",
+                  "size": 381
+                },
+                {
+                  "name": "new_questions.md",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)/new_questions.md",
+                  "size": 9519
+                },
+                {
+                  "name": "q1.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)/q1.py",
+                  "size": 597
+                },
+                {
+                  "name": "q14.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)/q14.py",
+                  "size": 701
+                },
+                {
+                  "name": "q5.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)/q5.py",
+                  "size": 860
+                },
+                {
+                  "name": "q6.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)/q6.py",
+                  "size": 1305
+                },
+                {
+                  "name": "q8.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)/q8.py",
+                  "size": 1027
+                },
+                {
+                  "name": "q9.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)/q9.py",
+                  "size": 1530
+                },
+                {
+                  "name": "questions.md",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)/questions.md",
+                  "size": 7274
+                },
+                {
+                  "name": "syllabus.pdf",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (MAY 2025)/syllabus.pdf",
+                  "size": 242298
+                }
+              ]
+            },
+            {
+              "name": "OPPE 1 (SEPT 2025)",
+              "type": "directory",
+              "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)",
+              "children": [
+                {
+                  "name": "extra_questions.md",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)/extra_questions.md",
+                  "size": 5593
+                },
+                {
+                  "name": "q1.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)/q1.py",
+                  "size": 652
+                },
+                {
+                  "name": "q17.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)/q17.py",
+                  "size": 783
+                },
+                {
+                  "name": "q23.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)/q23.py",
+                  "size": 273
+                },
+                {
+                  "name": "q24.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)/q24.py",
+                  "size": 425
+                },
+                {
+                  "name": "q3.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)/q3.py",
+                  "size": 754
+                },
+                {
+                  "name": "q7.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)/q7.py",
+                  "size": 1201
+                },
+                {
+                  "name": "q9.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)/q9.py",
+                  "size": 737
+                },
+                {
+                  "name": "questions.md",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)/questions.md",
+                  "size": 10104
+                },
+                {
+                  "name": "W.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 1 (SEPT 2025)/W.py",
+                  "size": 556
+                }
+              ]
+            },
+            {
+              "name": "OPPE 2 - Jan 2025",
+              "type": "directory",
+              "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025",
+              "children": [
+                {
+                  "name": "chat_with_chatbot",
+                  "type": "directory",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/chat_with_chatbot",
+                  "children": [
+                    {
+                      "name": "deepseek",
+                      "type": "directory",
+                      "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/chat_with_chatbot/deepseek",
+                      "children": [
+                        {
+                          "name": "__pycache__",
+                          "type": "directory",
+                          "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/chat_with_chatbot/deepseek/__pycache__",
+                          "children": [
+                            {
+                              "name": "r1.cpython-310.pyc",
+                              "type": "file",
+                              "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/chat_with_chatbot/deepseek/__pycache__/r1.cpython-310.pyc",
+                              "size": 294
+                            }
+                          ]
+                        },
+                        {
+                          "name": "r1.py",
+                          "type": "file",
+                          "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/chat_with_chatbot/deepseek/r1.py",
+                          "size": 45
+                        }
+                      ]
+                    },
+                    {
+                      "name": "openai",
+                      "type": "directory",
+                      "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/chat_with_chatbot/openai",
+                      "children": [
+                        {
+                          "name": "chatgpt3.5.py",
+                          "type": "file",
+                          "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/chat_with_chatbot/openai/chatgpt3.5.py",
+                          "size": 17
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "billing.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/billing.csv",
+                  "size": 969
+                },
+                {
+                  "name": "call_logs.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/call_logs.csv",
+                  "size": 3016
+                },
+                {
+                  "name": "called_calls.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/called_calls.csv",
+                  "size": 1021
+                },
+                {
+                  "name": "college_data.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/college_data.csv",
+                  "size": 3015
+                },
+                {
+                  "name": "data.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/data.py",
+                  "size": 5702
+                },
+                {
+                  "name": "declined_calls.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/declined_calls.csv",
+                  "size": 1034
+                },
+                {
+                  "name": "declined_logs.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/declined_logs.csv",
+                  "size": 1034
+                },
+                {
+                  "name": "details.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/details.csv",
+                  "size": 291
+                },
+                {
+                  "name": "details2.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/details2.csv",
+                  "size": 320
+                },
+                {
+                  "name": "emails.txt",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/emails.txt",
+                  "size": 205
+                },
+                {
+                  "name": "emails2.txt",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/emails2.txt",
+                  "size": 100
+                },
+                {
+                  "name": "employee_data.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/employee_data.csv",
+                  "size": 3336
+                },
+                {
+                  "name": "main.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/main.py",
+                  "size": 0
+                },
+                {
+                  "name": "matrix_multiplication.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/matrix_multiplication.py",
+                  "size": 787
+                },
+                {
+                  "name": "mydata.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/mydata.csv",
+                  "size": 140
+                },
+                {
+                  "name": "names.txt",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/names.txt",
+                  "size": 56
+                },
+                {
+                  "name": "para.txt",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/para.txt",
+                  "size": 935
+                },
+                {
+                  "name": "Python Topics for OPPE 2.md",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/Python Topics for OPPE 2.md",
+                  "size": 4224
+                },
+                {
+                  "name": "Python Topics for OPPE 2.pdf",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/Python Topics for OPPE 2.pdf",
+                  "size": 312274
+                },
+                {
+                  "name": "q1.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/q1.py",
+                  "size": 323
+                },
+                {
+                  "name": "q11.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/q11.py",
+                  "size": 1645
+                },
+                {
+                  "name": "q19.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/q19.py",
+                  "size": 710
+                },
+                {
+                  "name": "q23.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/q23.py",
+                  "size": 1336
+                },
+                {
+                  "name": "q27.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/q27.py",
+                  "size": 491
+                },
+                {
+                  "name": "q3.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/q3.py",
+                  "size": 328
+                },
+                {
+                  "name": "q4.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/q4.py",
+                  "size": 671
+                },
+                {
+                  "name": "questions.md",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/questions.md",
+                  "size": 8881
+                },
+                {
+                  "name": "received_calls.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/received_calls.csv",
+                  "size": 1142
+                },
+                {
+                  "name": "sentence.txt",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/sentence.txt",
+                  "size": 248
+                },
+                {
+                  "name": "useful_functions.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/useful_functions.py",
+                  "size": 286
+                },
+                {
+                  "name": "yesterday.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - Jan 2025/yesterday.py",
+                  "size": 2277
+                }
+              ]
+            },
+            {
+              "name": "OPPE 2 - May 2025",
+              "type": "directory",
+              "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025",
+              "children": [
+                {
+                  "name": "csv_file_handling.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/csv_file_handling.py",
+                  "size": 419
+                },
+                {
+                  "name": "csv_reading.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/csv_reading.py",
+                  "size": 280
+                },
+                {
+                  "name": "data.txt",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/data.txt",
+                  "size": 218
+                },
+                {
+                  "name": "emails.txt",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/emails.txt",
+                  "size": 99
+                },
+                {
+                  "name": "file_handling.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/file_handling.py",
+                  "size": 323
+                },
+                {
+                  "name": "log.txt",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/log.txt",
+                  "size": 2436
+                },
+                {
+                  "name": "main.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/main.py",
+                  "size": 1170
+                },
+                {
+                  "name": "movies.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/movies.csv",
+                  "size": 1337
+                },
+                {
+                  "name": "movies.json",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/movies.json",
+                  "size": 4598
+                },
+                {
+                  "name": "mysets.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/mysets.py",
+                  "size": 338
+                },
+                {
+                  "name": "names.txt",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/names.txt",
+                  "size": 136
+                },
+                {
+                  "name": "oppe1_marks.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/oppe1_marks.csv",
+                  "size": 57
+                },
+                {
+                  "name": "Python Topics for OPPE 2.md",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/Python Topics for OPPE 2.md",
+                  "size": 4120
+                },
+                {
+                  "name": "q1.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/q1.py",
+                  "size": 1683
+                },
+                {
+                  "name": "q14.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/q14.py",
+                  "size": 481
+                },
+                {
+                  "name": "q2.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/q2.py",
+                  "size": 2066
+                },
+                {
+                  "name": "q3.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/q3.py",
+                  "size": 1169
+                },
+                {
+                  "name": "q5.py",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/q5.py",
+                  "size": 3496
+                },
+                {
+                  "name": "questions.md",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/questions.md",
+                  "size": 19146
+                },
+                {
+                  "name": "ratings.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/ratings.csv",
+                  "size": 3943
+                },
+                {
+                  "name": "records.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/records.csv",
+                  "size": 207
+                },
+                {
+                  "name": "sales_data.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/sales_data.csv",
+                  "size": 2305
+                },
+                {
+                  "name": "student_scores_with_prediction.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/student_scores_with_prediction.csv",
+                  "size": 992
+                },
+                {
+                  "name": "student_scores.csv",
+                  "type": "file",
+                  "path": "Foundation/Python/OPPEs/OPPE 2 - May 2025/student_scores.csv",
+                  "size": 710
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Python Quiz 01",
+          "type": "directory",
+          "path": "Foundation/Python/Python Quiz 01",
+          "children": [
+            {
+              "name": "Python 2025(term2)quiz01.pdf",
+              "type": "file",
+              "path": "Foundation/Python/Python Quiz 01/Python 2025(term2)quiz01.pdf",
+              "size": 365305
+            },
+            {
+              "name": "Python_jan(2024)_quiz1.pdf",
+              "type": "file",
+              "path": "Foundation/Python/Python Quiz 01/Python_jan(2024)_quiz1.pdf",
+              "size": 919427
+            },
+            {
+              "name": "Python_May(2024)_quiz1.pdf",
+              "type": "file",
+              "path": "Foundation/Python/Python Quiz 01/Python_May(2024)_quiz1.pdf",
+              "size": 1124205
+            },
+            {
+              "name": "Python_sept(2025)_quiz1.pdf",
+              "type": "file",
+              "path": "Foundation/Python/Python Quiz 01/Python_sept(2025)_quiz1.pdf",
+              "size": 574227
+            },
+            {
+              "name": "Python(2025)_term3_quiz01.pdf",
+              "type": "file",
+              "path": "Foundation/Python/Python Quiz 01/Python(2025)_term3_quiz01.pdf",
+              "size": 574239
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Statistics 1",
+      "type": "directory",
+      "path": "Foundation/Statistics 1",
+      "children": [
+        {
+          "name": "End Term",
+          "type": "directory",
+          "path": "Foundation/Statistics 1/End Term",
+          "children": [
+            {
+              "name": "Stat 1 May 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/End Term/Stat 1 May 2024.pdf",
+              "size": 990739
+            },
+            {
+              "name": "Stat_1 Jan 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/End Term/Stat_1 Jan 2024.pdf",
+              "size": 293203
+            },
+            {
+              "name": "Stat_1 Sept 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/End Term/Stat_1 Sept 2024.pdf",
+              "size": 420175
+            },
+            {
+              "name": "Statistics1 SEP 2025 AN.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/End Term/Statistics1 SEP 2025 AN.pdf",
+              "size": 296907
+            },
+            {
+              "name": "Stats1 Endterm(FN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/End Term/Stats1 Endterm(FN)_2025_Term-02.pdf",
+              "size": 850757
+            },
+            {
+              "name": "Stats1Endterm(AN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/End Term/Stats1Endterm(AN)_2025_Term-02.pdf",
+              "size": 788720
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Foundation/Statistics 1/Notes",
+          "children": [
+            {
+              "name": "Week 1 - 10",
+              "type": "directory",
+              "path": "Foundation/Statistics 1/Notes/Week 1 - 10",
+              "children": [
+                {
+                  "name": "Week 1-3.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 1/Notes/Week 1 - 10/Week 1-3.pdf",
+                  "size": 25475421
+                },
+                {
+                  "name": "Week 10.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 1/Notes/Week 1 - 10/Week 10.pdf",
+                  "size": 14008201
+                },
+                {
+                  "name": "Week 4.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 1/Notes/Week 1 - 10/Week 4.pdf",
+                  "size": 25807953
+                },
+                {
+                  "name": "Week 5.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 1/Notes/Week 1 - 10/Week 5.pdf",
+                  "size": 8944653
+                },
+                {
+                  "name": "Week 6.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 1/Notes/Week 1 - 10/Week 6.pdf",
+                  "size": 20022668
+                },
+                {
+                  "name": "Week 7.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 1/Notes/Week 1 - 10/Week 7.pdf",
+                  "size": 15588913
+                },
+                {
+                  "name": "Week 8.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 1/Notes/Week 1 - 10/Week 8.pdf",
+                  "size": 18589726
+                },
+                {
+                  "name": "Week 9.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 1/Notes/Week 1 - 10/Week 9.pdf",
+                  "size": 12061643
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "QUIZ 1",
+          "type": "directory",
+          "path": "Foundation/Statistics 1/QUIZ 1",
+          "children": [
+            {
+              "name": "Jan 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 1/Jan 2024.pdf",
+              "size": 474001
+            },
+            {
+              "name": "May 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 1/May 2024.pdf",
+              "size": 491995
+            },
+            {
+              "name": "Statistics1_Q1_T2_2026.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 1/Statistics1_Q1_T2_2026.pdf",
+              "size": 757219
+            },
+            {
+              "name": "Stats01(2025) quiz1 term2.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 1/Stats01(2025) quiz1 term2.pdf",
+              "size": 460858
+            },
+            {
+              "name": "Stats1 Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 1/Stats1 Q1 T3 2025.pdf",
+              "size": 895203
+            }
+          ]
+        },
+        {
+          "name": "QUIZ 2",
+          "type": "directory",
+          "path": "Foundation/Statistics 1/QUIZ 2",
+          "children": [
+            {
+              "name": "Stats1 Quiz2_2025_Term-03.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 2/Stats1 Quiz2_2025_Term-03.pdf",
+              "size": 593464
+            },
+            {
+              "name": "Stats1 quiz2_term2(2025).pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 2/Stats1 quiz2_term2(2025).pdf",
+              "size": 560640
+            },
+            {
+              "name": "Stats1_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 2/Stats1_24f3_Quiz2.pdf",
+              "size": 669999
+            },
+            {
+              "name": "Stats1_25f1_Quiz2 .pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 2/Stats1_25f1_Quiz2 .pdf",
+              "size": 491114
+            },
+            {
+              "name": "Term1 Statistics1(2024).pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 2/Term1 Statistics1(2024).pdf",
+              "size": 474001
+            },
+            {
+              "name": "Term2 Statistics1(2024).pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 1/QUIZ 2/Term2 Statistics1(2024).pdf",
+              "size": 491995
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Statistics 2",
+      "type": "directory",
+      "path": "Foundation/Statistics 2",
+      "children": [
+        {
+          "name": "END TERM",
+          "type": "directory",
+          "path": "Foundation/Statistics 2/END TERM",
+          "children": [
+            {
+              "name": "Stats2 Endterm(FN)_2025_Term-02.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/END TERM/Stats2 Endterm(FN)_2025_Term-02.pdf",
+              "size": 1933916
+            },
+            {
+              "name": "Stats2 ET AN T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/END TERM/Stats2 ET AN T3 2025.pdf",
+              "size": 1212117
+            },
+            {
+              "name": "Stats2 ET FN T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/END TERM/Stats2 ET FN T3 2025.pdf",
+              "size": 1208287
+            },
+            {
+              "name": "Stats2 ET T1 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/END TERM/Stats2 ET T1 2024.pdf",
+              "size": 1133199
+            },
+            {
+              "name": "Stats2 ET T2 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/END TERM/Stats2 ET T2 2024.pdf",
+              "size": 1233387
+            },
+            {
+              "name": "Stats2 ET T3 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/END TERM/Stats2 ET T3 2024.pdf",
+              "size": 1320075
+            }
+          ]
+        },
+        {
+          "name": "Notes",
+          "type": "directory",
+          "path": "Foundation/Statistics 2/Notes",
+          "children": [
+            {
+              "name": "IITM Notes (week 0-11)",
+              "type": "directory",
+              "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)",
+              "children": [
+                {
+                  "name": "Stats2_Quiz2_formula.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/Stats2_Quiz2_formula.pdf",
+                  "size": 109226
+                },
+                {
+                  "name": "W10_Notes.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/W10_Notes.pdf",
+                  "size": 112219
+                },
+                {
+                  "name": "W11_May2022.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/W11_May2022.pdf",
+                  "size": 83735
+                },
+                {
+                  "name": "W3_notes.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/W3_notes.pdf",
+                  "size": 117445
+                },
+                {
+                  "name": "W4_Notes.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/W4_Notes.pdf",
+                  "size": 109848
+                },
+                {
+                  "name": "W5_Notes.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/W5_Notes.pdf",
+                  "size": 120648
+                },
+                {
+                  "name": "W6_Notes.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/W6_Notes.pdf",
+                  "size": 93347
+                },
+                {
+                  "name": "W7_Notes.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/W7_Notes.pdf",
+                  "size": 75843
+                },
+                {
+                  "name": "W8_Notes.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/W8_Notes.pdf",
+                  "size": 115225
+                },
+                {
+                  "name": "W9_Notes.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/W9_Notes.pdf",
+                  "size": 101040
+                },
+                {
+                  "name": "Week 1 and 2_notes.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/Week 1 and 2_notes.pdf",
+                  "size": 142244
+                },
+                {
+                  "name": "week0_part2.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/week0_part2.pdf",
+                  "size": 129076
+                },
+                {
+                  "name": "Week0-part3.pdf",
+                  "type": "file",
+                  "path": "Foundation/Statistics 2/Notes/IITM Notes (week 0-11)/Week0-part3.pdf",
+                  "size": 97426
+                }
+              ]
+            },
+            {
+              "name": "Important formula sheet.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/Notes/Important formula sheet.pdf",
+              "size": 101524
+            }
+          ]
+        },
+        {
+          "name": "QUIZ 1",
+          "type": "directory",
+          "path": "Foundation/Statistics 2/QUIZ 1",
+          "children": [
+            {
+              "name": "Statistics2_Q2_T2_2026.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 1/Statistics2_Q2_T2_2026.pdf",
+              "size": 950127
+            },
+            {
+              "name": "Stats02(2025) quiz1 term2.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 1/Stats02(2025) quiz1 term2.pdf",
+              "size": 890480
+            },
+            {
+              "name": "Stats2 Q1 T1 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 1/Stats2 Q1 T1 2024.pdf",
+              "size": 536859
+            },
+            {
+              "name": "Stats2 Q1 T2 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 1/Stats2 Q1 T2 2024.pdf",
+              "size": 996595
+            },
+            {
+              "name": "Stats2 Q1 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 1/Stats2 Q1 T3 2025.pdf",
+              "size": 1352377
+            }
+          ]
+        },
+        {
+          "name": "QUIZ 2",
+          "type": "directory",
+          "path": "Foundation/Statistics 2/QUIZ 2",
+          "children": [
+            {
+              "name": "Stats 2 Q2 T3 2025.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 2/Stats 2 Q2 T3 2025.pdf",
+              "size": 1196775
+            },
+            {
+              "name": "Stats2 Q2 T1 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 2/Stats2 Q2 T1 2024.pdf",
+              "size": 724488
+            },
+            {
+              "name": "Stats2 Q2 T2 2024.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 2/Stats2 Q2 T2 2024.pdf",
+              "size": 974095
+            },
+            {
+              "name": "Stats2 quiz2_term2(2025).pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 2/Stats2 quiz2_term2(2025).pdf",
+              "size": 1265775
+            },
+            {
+              "name": "Stats2_24f3_Quiz2.pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 2/Stats2_24f3_Quiz2.pdf",
+              "size": 1758344
+            },
+            {
+              "name": "Stats2_25f1_Quiz2 .pdf",
+              "type": "file",
+              "path": "Foundation/Statistics 2/QUIZ 2/Stats2_25f1_Quiz2 .pdf",
+              "size": 1041635
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

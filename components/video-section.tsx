@@ -46,7 +46,7 @@ export default function VideoSection() {
         console.warn('Falling back to static video URL:', error)
       }
 
-      setCurrentVideoUrl('https://zoamjyrqlfze4djm.public.blob.vercel-storage.com/Landing_Video.mp4')
+      setCurrentVideoUrl('https://cdn.pixabay.com/video/2024/03/03/202844-919000222_large.mp4')
       setHasVideoError(false)
     }
 

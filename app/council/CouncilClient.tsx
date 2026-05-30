@@ -7,17 +7,32 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 
+interface Member {
+  id: number
+  name: string
+  role: string
+  message?: string
+  email?: string
+  phone?: string
+  linkedin?: string
+  github?: string
+  portfolio?: string
+  image?: string | null
+  bio?: string
+  objectPosition?: string
+}
+
 export default function CouncilPage() {
   const searchParams = useSearchParams()
   const yearParam = searchParams.get('year')
   const [selectedYear, setSelectedYear] = useState(yearParam || "2025-26")
   const [selectedTeam, setSelectedTeam] = useState(yearParam === "2024-25" ? "COUNCIL" : "UHC")
   const [selectedSubTeam, setSelectedSubTeam] = useState("WEBOPS") // For 2024-25 Team sub-sections
-  const [selectedMember, setSelectedMember] = useState(null)
-  const [githubCommits, setGithubCommits] = useState(null)
-  const [githubPRs, setGithubPRs] = useState(null)
-  const [githubFilesChanged, setGithubFilesChanged] = useState(null)
-  const [githubLinesAdded, setGithubLinesAdded] = useState(null)
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null)
+  const [githubCommits, setGithubCommits] = useState<number | null>(null)
+  const [githubPRs, setGithubPRs] = useState<number | null>(null)
+  const [githubFilesChanged, setGithubFilesChanged] = useState<number | null>(null)
+  const [githubLinesAdded, setGithubLinesAdded] = useState<number | null>(null)
 
   useEffect(() => {
     if (yearParam) {
@@ -75,9 +90,9 @@ export default function CouncilPage() {
                 let totalFiles = new Set()
                 let totalAdditions = 0
 
-                detailedCommits.forEach(commit => {
+                detailedCommits.forEach((commit: any) => {
                   if (commit.files) {
-                    commit.files.forEach(file => {
+                    commit.files.forEach((file: any) => {
                       totalFiles.add(file.filename)
                     })
                   }
@@ -516,7 +531,7 @@ export default function CouncilPage() {
     },
   }
 
-  const teamLabels = selectedYear === "2024-25" ? {
+  const teamLabels = (selectedYear === "2024-25" ? {
     COUNCIL: "Council",
     TEAM: "Team",
     REGIONAL: "Regional Leaders",
@@ -525,7 +540,7 @@ export default function CouncilPage() {
     LHC: "LHC",
     WEBOPS: "Web Operations",
     COMMUNITY: "Community Leaders",
-  }
+  }) as Record<string, string>
 
   const subTeamLabels = {
     WEBOPS: "WebOps",
@@ -534,7 +549,7 @@ export default function CouncilPage() {
     DESIGN: "Design",
   }
 
-  const teamDescriptions = selectedYear === "2024-25" ? {
+  const teamDescriptions = (selectedYear === "2024-25" ? {
     COUNCIL: "The Council comprises the Secretary, Deputy Secretary, and Web Admin. They form the core leadership of Nallamala House, responsible for overall governance, strategic planning, and ensuring a thriving, inclusive environment for all members.",
     TEAM: "The Team includes our WebOps, Management, Content, and Design members. They work together to manage digital operations, coordinate activities, create engaging content, and design visual materials that represent our house's identity and values.",
     REGIONAL: "Regional Leaders serve as key points of contact between house members across different regions. They coordinate regional meetups, events, and ensure that every member's voice is heard regardless of their location.",
@@ -543,14 +558,15 @@ export default function CouncilPage() {
     LHC: "The Regional Coordinators, often referred to as the Lower House Council (LHC), are an essential part of our student governing body. The Lower House Council serves as the key point of contact between house members and the governing bodies. They are the driving force behind the successful execution of meetups and events, addressing member queries, and ensuring that every member's voice is heard.",
     WEBOPS: "The WebOps team, led by the Web Admin, comprises five dedicated members working under their supervision. The team includes a Website Manager, Video Editor, Graphic Designers, and Developers. They form the core technical team responsible for managing and maintaining all digital and technical aspects of our house, ensuring smooth operation and high-quality output.",
     COMMUNITY: "These are the leaders of our official communities. They are the ones who frequently organize events within the houses to enhance engagement and foster a stronger sense of community among members.",
-  }
+  }) as Record<string, string>
 
   // Get members based on year and team selection
   const members = (() => {
+    const dataForYear = yearData[selectedYear as keyof typeof yearData] as any
     if (selectedYear === "2024-25" && selectedTeam === "TEAM") {
-      return yearData[selectedYear]?.TEAM?.[selectedSubTeam] || []
+      return dataForYear?.TEAM?.[selectedSubTeam] || []
     }
-    return yearData[selectedYear]?.[selectedTeam] || []
+    return dataForYear?.[selectedTeam] || []
   })()
 
   const orderedMembers = [...members].sort((a, b) => {
