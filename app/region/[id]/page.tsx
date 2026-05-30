@@ -135,58 +135,169 @@ export default function RegionPage() {
 
       </div>
 
-      {/* IMAGE GALLERY MODAL */}
-      {selectedImages && (
+      {/* IMAGE GALLERY MODAL WITH 3D CUBE */}
+{selectedImages && (
+  <>
+    <style jsx global>{`
+      @keyframes spinCube {
+        from {
+          transform: rotateY(0deg);
+        }
+        to {
+          transform: rotateY(-360deg);
+        }
+      }
+    `}</style>
+
+    <div
+      className="fixed inset-0 bg-black/95 flex items-center justify-center z-50"
+      onClick={() => setSelectedImages(null)}
+    >
+      <div
+        className="relative flex items-center justify-center w-full h-full"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div
-          className="fixed inset-0 bg-black/95 flex items-center justify-center z-50"
-          onClick={() => setSelectedImages(null)}
+          style={{
+            perspective: "1800px",
+          }}
         >
-          <div className="relative w-full max-w-5xl h-[80vh]">
-
-            <Image
-              src={selectedImages[currentIndex]}
-              alt="gallery"
-              fill
-              className="object-contain"
-            />
-
-            {/* CLOSE */}
-            <button
-              className="absolute top-4 right-4 text-white text-3xl"
-              onClick={() => setSelectedImages(null)}
-            >
-              ✕
-            </button>
-
-            {/* LEFT */}
-            <button
-              className="absolute left-4 top-1/2 text-white text-3xl"
-              onClick={(e) => {
-                e.stopPropagation()
-                setCurrentIndex((prev) =>
-                  prev === 0 ? selectedImages.length - 1 : prev - 1
-                )
+          <div
+            style={{
+              position: "relative",
+              width: "320px",
+              height: "320px",
+              transformStyle: "preserve-3d",
+              animation: "spinCube 25s linear infinite",
+            }}
+          >
+            {/* Front */}
+            <div
+              style={{
+                position: "absolute",
+                width: "320px",
+                height: "320px",
+                transform: "translateZ(160px)",
               }}
             >
-              ‹
-            </button>
+              <div className="relative w-full h-full">
+                <Image
+                  src={selectedImages[0]}
+                  alt="Front"
+                  fill
+                  className="object-cover rounded-xl border border-white/20"
+                />
+              </div>
+            </div>
 
-            {/* RIGHT */}
-            <button
-              className="absolute right-4 top-1/2 text-white text-3xl"
-              onClick={(e) => {
-                e.stopPropagation()
-                setCurrentIndex((prev) =>
-                  prev === selectedImages.length - 1 ? 0 : prev + 1
-                )
+            {/* Right */}
+            <div
+              style={{
+                position: "absolute",
+                width: "320px",
+                height: "320px",
+                transform: "rotateY(90deg) translateZ(160px)",
               }}
             >
-              ›
-            </button>
+              <div className="relative w-full h-full">
+                <Image
+                  src={selectedImages[1] || selectedImages[0]}
+                  alt="Right"
+                  fill
+                  className="object-cover rounded-xl border border-white/20"
+                />
+              </div>
+            </div>
 
+            {/* Back */}
+            <div
+              style={{
+                position: "absolute",
+                width: "320px",
+                height: "320px",
+                transform: "rotateY(180deg) translateZ(160px)",
+              }}
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={selectedImages[2] || selectedImages[0]}
+                  alt="Back"
+                  fill
+                  className="object-cover rounded-xl border border-white/20"
+                />
+              </div>
+            </div>
+
+            {/* Left */}
+            <div
+              style={{
+                position: "absolute",
+                width: "320px",
+                height: "320px",
+                transform: "rotateY(-90deg) translateZ(160px)",
+              }}
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={selectedImages[3] || selectedImages[0]}
+                  alt="Left"
+                  fill
+                  className="object-cover rounded-xl border border-white/20"
+                />
+              </div>
+            </div>
+
+            {/* Top */}
+            <div
+              style={{
+                position: "absolute",
+                width: "320px",
+                height: "320px",
+                transform: "rotateX(90deg) translateZ(160px)",
+              }}
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={selectedImages[4] || selectedImages[0]}
+                  alt="Top"
+                  fill
+                  className="object-cover rounded-xl border border-white/20"
+                />
+              </div>
+            </div>
+
+            {/* Bottom */}
+            <div
+              style={{
+                position: "absolute",
+                width: "320px",
+                height: "320px",
+                transform: "rotateX(-90deg) translateZ(160px)",
+              }}
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={selectedImages[5] || selectedImages[0]}
+                  alt="Bottom"
+                  fill
+                  className="object-cover rounded-xl border border-white/20"
+                />
+              </div>
+            </div>
           </div>
         </div>
-      )}
+
+        {/* Close Button */}
+        <button
+          className="absolute top-6 right-6 text-white text-4xl hover:text-red-400 transition"
+          onClick={() => setSelectedImages(null)}
+        >
+          ✕
+        </button>
+      </div>
+    </div>
+  </>
+)}
 
     </div>
   )

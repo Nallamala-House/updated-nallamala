@@ -169,9 +169,17 @@ export default function Events() {
         <>
           Hands-on session on building Agentic AI frameworks.AI GENESIS, an initiative by Nallamala , Nilgiri, and Sundarbans Houses in collaboration with CodeCrafters, successfully continued its learning journey with Session 2, following the strong response to its introductory session on AI Agents. This session shifted the focus from theory to hands-on learning, offering participants a practical deep dive into Agentic AI.
           Conducted on 12th November, the session titled “Learning Agentic AI by Building an Agentic AI Framework” was led by Siddhant Pandey, an AI Research Engineer at Codebasics. Participants were guided through the core principles of agentic systems by actively building an Agentic AI framework, helping them understand how intelligent agents are designed, structured, and deployed in real-world applications.
-          The session proved to be highly engaging and skill-oriented, enabling learners to bridge the gap between conceptual understanding and practical implementation. As part of the AI GENESIS series, this event strengthened participants’ confidence in working with modern AI paradigms and reinforced the series’ goal of preparing learners for the next wave of artificial intelligence.
-          Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
-
+          The session proved to be highly engaging and skill-oriented, enabling learners to bridge the gap between conceptual understanding and practical implementation. As part of the AI GENESIS series, this event strengthened participants’ confidence in working with modern AI paradigms and reinforced the series’ goal of preparing learners for the next wave of artificial intelligence. 
+        <br />
+          Recording Link:{" "}
+          <a
+            href="https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Watch Here
+          </a>
         </>
       ),
     },
@@ -185,7 +193,16 @@ export default function Events() {
           Introductory session on AI Agents featuring Dr. Dhaval Mehta. AI GENESIS marked the beginning of an insightful learning series focused on the rapidly evolving field of AI Agents. Organized by Nilgiri, Sundarbans, and Nallamala Houses in collaboration with CodeCrafters, the inaugural session introduced participants to one of the most significant emerging trends in artificial intelligence.
           The kickoff session, titled “Intro to AI Agents”, was conducted on 10th November and featured Dr. Dhaval Mehta as the guest speaker. The session broke down the fundamental concepts of AI agents, helping participants understand their structure, capabilities, and real-world relevance. Dr. Mehta’s clear explanations and practical insights made complex ideas accessible to learners from diverse technical backgrounds.
           The event successfully set the foundation for the AI GENESIS series, sparking curiosity and enthusiasm among attendees. It empowered participants with a strong conceptual starting point to explore the future potential of AI agents and emerging intelligent systems.
-          Recording link : https://youtu.be/esmuGxoiBJA?si=abaRV3rYWOJzlruq
+          <br />
+          Recording Link:{" "}
+          <a
+            href="https://youtu.be/esmuGxoiBJA?si=abaRV3rYWOJzlruq"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Watch Here
+          </a>
         </>
       ),
     },
@@ -280,9 +297,19 @@ export default function Events() {
           The session offered a unique exploration of the self and consciousness by presenting the teachings of the Bhagavad Gita through a scientific and rational perspective. Participants gained valuable insights into mind power, inner clarity, and self-awareness, while understanding how ancient wisdom can be interpreted and applied in a modern context.
           By bridging spiritual philosophy with scientific thought, the session encouraged deep reflection and meaningful discussion, leaving attendees with a renewed understanding of the self and practical tools for personal growth.
 
-          https://www.youtube.com/live/dhjsLk7hob4?si=v9l8V9A4_UqDHtCc
-          https://www.youtube.com/live/KppLybJzRzw?si=c-d_Ty74e97isNZi
-
+          <br />
+          Recording Link:{" "}
+          <a
+            href="https://www.youtube.com/live/dhjsLk7hob4?si=v9l8V9A4_UqDHtCc"
+            href="https://www.youtube.com/live/KppLybJzRzw?si=c-d_Ty74e97isNZi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Watch Here
+          </a>
+          
+        
         </>
       ),
     },
@@ -299,9 +326,17 @@ export default function Events() {
           The workshop provided participants with practical exposure to the rapidly evolving field of cybersecurity. Sessions covered essential domains such as ethical hacking, penetration testing, network and web security, cyber forensics, and live hacking demonstrations, enabling learners to understand real-world cyber threats and defensive strategies.
           With a strong focus on practical labs and real-world scenarios, the workshop allowed participants to learn directly from industry experts while actively engaging in interactive discussions and Q&A sessions. The program concluded with participants receiving certificates of completion, recognizing their newly acquired skills and knowledge in ethical hacking practices.
           For those who missed the live sessions or wish to revisit the content, the workshop recordings are available:
-          Day 1 Recording: https://www.youtube.com/live/PnMSxVWJ454?si=ACHqybg4dYlS1fiC
-          Day 2 Recording: https://www.youtube.com/live/eIngPdmZj1Q?si=c52zCtk7lXeh26VR
-
+        <br />
+          Recording Link:{" "}
+          <a
+            href="https://www.youtube.com/live/PnMSxVWJ454?si=ACHqybg4dYlS1fiC"
+            href="https://www.youtube.com/live/eIngPdmZj1Q?si=c52zCtk7lXeh26VR"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Watch Here
+          </a>
         </>
       ),
     },
@@ -442,6 +477,23 @@ export default function Events() {
       The session focused on how innovative ideas can be transformed into impactful real-world solutions through research and collaboration. Participants gained exposure to global research practices, interdisciplinary applications, and the importance of thinking beyond conventional academic boundaries.
       <br /><br />
       The event proved to be highly enriching and motivational, encouraging students to explore innovation-driven learning and aspire toward meaningful contributions in research and technology.
+    </>
+  ),
+},
+{
+  id: 34,
+  title: "Rachna Spardha: A Poetry Duel",
+  date: "26 April 2026",
+  image: "/images/events/33.jpeg",
+  description: (
+    <>
+      Rachna Spardha: A Poetry Duel marked the first-ever inter-house poetry event hosted by Namdapha House and Nallamala House, bringing together the creative energies of the Kavya Community and the Chapters & Verses Community in an exciting poetic face-off.
+      <br /><br />
+      The event invited participants to showcase their creativity through original poetry submissions. Following a competitive selection process, the top contenders from each house advanced to represent their teams in the final live poetry duel held on Sunday, 26th April 2026, from 8:00 PM onwards via Google Meet.
+      <br /><br />
+      Celebrating the beauty of words, emotions, and artistic expression, Rachna Spardha provided a platform for poets to let their imagination flow while engaging in a spirited literary battle. The event fostered creativity, confidence, and appreciation for the art of poetry among participants and audiences alike.
+      <br /><br />
+      Winners were awarded certificates in recognition of their outstanding performances, while the poems securing 1st and 2nd positions earned a special feature on the official Instagram handles of both Namdapha House and Nallamala House. The event concluded as a memorable celebration of poetry, creativity, and inter-house collaboration.
     </>
   ),
 }
@@ -637,9 +689,7 @@ export default function Events() {
                 {selectedEvent.title}
               </h2>
 
-              <div className="text-white/70 mb-4">
-                {selectedEvent.description}
-              </div>
+              
 
                 {/* Description */}
                 <div className="space-y-3">
