@@ -35,10 +35,6 @@ export default function Events() {
     setMounted(true)
   }, [])
 
-  const toggleExpand = (id: number) => {
-    setExpandedId(expandedId === id ? null : id)
-  }
-
   const extractTextFromNode = (node: any): string => {
     if (node === null || node === undefined || typeof node === "boolean") return ""
     if (typeof node === "string" || typeof node === "number") return String(node)
@@ -298,15 +294,23 @@ export default function Events() {
           By bridging spiritual philosophy with scientific thought, the session encouraged deep reflection and meaningful discussion, leaving attendees with a renewed understanding of the self and practical tools for personal growth.
 
           <br />
-          Recording Link:{" "}
+          Recording Links:{" "}
           <a
             href="https://www.youtube.com/live/dhjsLk7hob4?si=v9l8V9A4_UqDHtCc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Link 1
+          </a>{" "}
+          |{" "}
+          <a
             href="https://www.youtube.com/live/KppLybJzRzw?si=c-d_Ty74e97isNZi"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
           >
-            Watch Here
+            Link 2
           </a>
           
         
@@ -327,15 +331,23 @@ export default function Events() {
           With a strong focus on practical labs and real-world scenarios, the workshop allowed participants to learn directly from industry experts while actively engaging in interactive discussions and Q&A sessions. The program concluded with participants receiving certificates of completion, recognizing their newly acquired skills and knowledge in ethical hacking practices.
           For those who missed the live sessions or wish to revisit the content, the workshop recordings are available:
         <br />
-          Recording Link:{" "}
+          Recording Links:{" "}
           <a
             href="https://www.youtube.com/live/PnMSxVWJ454?si=ACHqybg4dYlS1fiC"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Day 1
+          </a>{" "}
+          |{" "}
+          <a
             href="https://www.youtube.com/live/eIngPdmZj1Q?si=c52zCtk7lXeh26VR"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
           >
-            Watch Here
+            Day 2
           </a>
         </>
       ),
