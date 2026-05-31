@@ -26,9 +26,10 @@ type EventItem = {
 
 export default function Events() {
   const [search, setSearch] = useState("")
-  const [expandedId, setExpandedId] = useState<number | null>(null)
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
+  const [activeTab, setActiveTab] = useState<"current" | "past">("current")
 
   useEffect(() => {
     setMounted(true)
@@ -55,19 +56,31 @@ export default function Events() {
   }
 
   /* ---------------- HELPER: PARSE DATE ---------------- */
+
   const parseEventDate = (dateStr: string) => {
     const match = dateStr.match(/\d{1,2} [A-Za-z]+ \d{4}/)
     if (match) return new Date(match[0])
 
     const yearMatch = dateStr.match(/\d{4}/)
     return yearMatch ? new Date(Number(yearMatch[0]), 0, 1) : new Date(1970, 0, 1)
-  }
 
+  }
+  
+  const currentEvents: EventItem[] = [
+  {
+    id: 101,
+    title: "Hackathon 2026",
+    date: "20 April 2026",
+    location: "Online",
+    image: "/images/events/current1.png",
+    status: "Ongoing",
+    description: <>24-hour hackathon building real-world solutions.</>,
+  },
+]
   /* ---------------- PAST EVENTS ---------------- */
   const pastEvents: EventItem[] = [
-    // All previous past events (id: 23 to 5) go here, unchanged
     {
-      id: 32,
+      id: 33,
       title: "Nallamala House Blitz Arena",
       date: "22 March 2026",
       location: "Chess.com Club Arena",
@@ -156,9 +169,17 @@ export default function Events() {
         <>
           Hands-on session on building Agentic AI frameworks.AI GENESIS, an initiative by Nallamala , Nilgiri, and Sundarbans Houses in collaboration with CodeCrafters, successfully continued its learning journey with Session 2, following the strong response to its introductory session on AI Agents. This session shifted the focus from theory to hands-on learning, offering participants a practical deep dive into Agentic AI.
           Conducted on 12th November, the session titled “Learning Agentic AI by Building an Agentic AI Framework” was led by Siddhant Pandey, an AI Research Engineer at Codebasics. Participants were guided through the core principles of agentic systems by actively building an Agentic AI framework, helping them understand how intelligent agents are designed, structured, and deployed in real-world applications.
-          The session proved to be highly engaging and skill-oriented, enabling learners to bridge the gap between conceptual understanding and practical implementation. As part of the AI GENESIS series, this event strengthened participants’ confidence in working with modern AI paradigms and reinforced the series’ goal of preparing learners for the next wave of artificial intelligence.
-          Recording Link : https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp
-
+          The session proved to be highly engaging and skill-oriented, enabling learners to bridge the gap between conceptual understanding and practical implementation. As part of the AI GENESIS series, this event strengthened participants’ confidence in working with modern AI paradigms and reinforced the series’ goal of preparing learners for the next wave of artificial intelligence. 
+        <br />
+          Recording Link:{" "}
+          <a
+            href="https://youtu.be/6kmVEGWJGJc?si=SsbTmyeDaPqs2pDp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Watch Here
+          </a>
         </>
       ),
     },
@@ -172,7 +193,16 @@ export default function Events() {
           Introductory session on AI Agents featuring Dr. Dhaval Mehta. AI GENESIS marked the beginning of an insightful learning series focused on the rapidly evolving field of AI Agents. Organized by Nilgiri, Sundarbans, and Nallamala Houses in collaboration with CodeCrafters, the inaugural session introduced participants to one of the most significant emerging trends in artificial intelligence.
           The kickoff session, titled “Intro to AI Agents”, was conducted on 10th November and featured Dr. Dhaval Mehta as the guest speaker. The session broke down the fundamental concepts of AI agents, helping participants understand their structure, capabilities, and real-world relevance. Dr. Mehta’s clear explanations and practical insights made complex ideas accessible to learners from diverse technical backgrounds.
           The event successfully set the foundation for the AI GENESIS series, sparking curiosity and enthusiasm among attendees. It empowered participants with a strong conceptual starting point to explore the future potential of AI agents and emerging intelligent systems.
-          Recording link : https://youtu.be/esmuGxoiBJA?si=abaRV3rYWOJzlruq
+          <br />
+          Recording Link:{" "}
+          <a
+            href="https://youtu.be/esmuGxoiBJA?si=abaRV3rYWOJzlruq"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Watch Here
+          </a>
         </>
       ),
     },
@@ -215,18 +245,18 @@ export default function Events() {
           A key highlight of the event was the focus on research collaboration opportunities, offering aspiring innovators a chance to engage with cutting-edge research initiatives. The session concluded as a highly enriching and motivating experience, leaving participants inspired and better equipped to explore future technological frontiers.
 
 
-        </>
-      ),
-    },
-
-    {
-      id: 14,
-      title: "Noor-e-Sama 2.0",
-      date: "21 August 2025",
-      image: "/images/events/10.png",
-      description: (
-        <>
-          A virtual evening celebrating Shayari and spoken poetry through powerful performances.Noor-e-Sama 2.0, organized by the Literary and Oratory Community of Nallamala House, was a captivating virtual evening that celebrated the timeless beauty of Shayari and spoken poetry. The event provided a मंच (stage) where classical ghazals met contemporary expressions, creating a harmonious blend of tradition and modern thought. Poets and poetry enthusiasts from diverse backgrounds came together to share verses that resonated with emotion, reflection, and creativity.Throughout the evening, the audience was immersed in an atmosphere of rhythm, passion, and meaningful dialogue, as each performance added depth to the collective experience. Noor-e-Sama 2.0 was more than just a poetry session—it was a space where words became lanterns, emotions found expression, and silence discovered its voice. The event successfully fostered a sense of connection and artistic appreciation, leaving participants inspired and deeply moved by the power of spoken word.
+      </>
+    ),
+  },
+  
+  {
+    id: 14,
+    title: "Noor-e-Sama 2.0",
+    date: "21 August 2025",
+    image: "/images/events/10.png",
+    description: (
+      <>
+        A virtual evening celebrating Shayari and spoken poetry through powerful performances.Noor-e-Sama 2.0, organized by the Literary and Oratory Community of Nallamala House, was a captivating virtual evening that celebrated the timeless beauty of Shayari and spoken poetry. The event provided a मंच (stage) where classical ghazals met contemporary expressions, creating a harmonious blend of tradition and modern thought. Poets and poetry enthusiasts from diverse backgrounds came together to share verses that resonated with emotion, reflection, and creativity.Throughout the evening, the audience was immersed in an atmosphere of rhythm, passion, and meaningful dialogue, as each performance added depth to the collective experience. Noor-e-Sama 2.0 was more than just a poetry session—it was a space where words became lanterns, emotions found expression, and silence discovered its voice. The event successfully fostered a sense of connection and artistic appreciation, leaving participants inspired and deeply moved by the power of spoken word.
 
         </>
       ),
@@ -267,9 +297,19 @@ export default function Events() {
           The session offered a unique exploration of the self and consciousness by presenting the teachings of the Bhagavad Gita through a scientific and rational perspective. Participants gained valuable insights into mind power, inner clarity, and self-awareness, while understanding how ancient wisdom can be interpreted and applied in a modern context.
           By bridging spiritual philosophy with scientific thought, the session encouraged deep reflection and meaningful discussion, leaving attendees with a renewed understanding of the self and practical tools for personal growth.
 
-          https://www.youtube.com/live/dhjsLk7hob4?si=v9l8V9A4_UqDHtCc
-          https://www.youtube.com/live/KppLybJzRzw?si=c-d_Ty74e97isNZi
-
+          <br />
+          Recording Link:{" "}
+          <a
+            href="https://www.youtube.com/live/dhjsLk7hob4?si=v9l8V9A4_UqDHtCc"
+            href="https://www.youtube.com/live/KppLybJzRzw?si=c-d_Ty74e97isNZi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Watch Here
+          </a>
+          
+        
         </>
       ),
     },
@@ -286,9 +326,17 @@ export default function Events() {
           The workshop provided participants with practical exposure to the rapidly evolving field of cybersecurity. Sessions covered essential domains such as ethical hacking, penetration testing, network and web security, cyber forensics, and live hacking demonstrations, enabling learners to understand real-world cyber threats and defensive strategies.
           With a strong focus on practical labs and real-world scenarios, the workshop allowed participants to learn directly from industry experts while actively engaging in interactive discussions and Q&A sessions. The program concluded with participants receiving certificates of completion, recognizing their newly acquired skills and knowledge in ethical hacking practices.
           For those who missed the live sessions or wish to revisit the content, the workshop recordings are available:
-          Day 1 Recording: https://www.youtube.com/live/PnMSxVWJ454?si=ACHqybg4dYlS1fiC
-          Day 2 Recording: https://www.youtube.com/live/eIngPdmZj1Q?si=c52zCtk7lXeh26VR
-
+        <br />
+          Recording Link:{" "}
+          <a
+            href="https://www.youtube.com/live/PnMSxVWJ454?si=ACHqybg4dYlS1fiC"
+            href="https://www.youtube.com/live/eIngPdmZj1Q?si=c52zCtk7lXeh26VR"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Watch Here
+          </a>
         </>
       ),
     },
@@ -353,71 +401,106 @@ export default function Events() {
           The session provided participants with a comprehensive understanding of the rapidly evolving digital marketing landscape. Key discussions focused on emerging trends, the growing role of AI, automation, and data-driven strategies, as well as the skills and career opportunities essential for the future of marketing.
           Attendees gained valuable insights into how businesses are adapting to digital transformation and learned practical perspectives directly from industry experience. The interactive nature of the session made it highly engaging and informative, leaving participants better equipped to navigate future challenges in the digital marketing domain.
 
-        </>
-      ),
-    },
-
-    {
-      id: 28,
-      title: "Noor-e-Sama — A Night of Shayari",
-      date: "15 February 2025",
-      image: "/images/events/24.png",
-      description: (
-        <>
-          Noor-e-Sama was an enchanting evening curated by Chapters & Verses, the Literary and Oratory Club of Nallamala House, celebrating the luminous art of Shayari. The event featured heartfelt recitations of both classic and contemporary Shayaris by passionate poets and poetry enthusiasts.
-          <br />
-          The night brought together lovers of eloquent expression, offering a space to reflect, feel, and connect through words. From seasoned Shayari connoisseurs to first-time listeners, Noor-e-Sama left the audience inspired, moved, and immersed in the timeless beauty of poetry.
-        </>
-      ),
-    },
-    {
-      id: 29,
-      title: "TECHTALK: AI Innovators & Data Wizards (AIDW)",
-      date: "18 March 2025",
-      image: "/images/events/25.png",
-      description: (
-        <>
-          AIDW – IIT Madras successfully concluded with an engaging session on “GenAI in SEEK” featuring Prem Kumar Sharma. The session explored how generative AI is transforming learning platforms and software engineering practices.
-          <br />
-          Key discussions focused on AI-powered doubt resolution, automated debugging for coding assignments, and instant course support using Retrieval-Augmented Generation (RAG). The interactive nature of the session encouraged meaningful discussions and practical takeaways for participants.
-          <br />
-          The event was enriched by active participation from attendees and valuable insights shared by the speaker, making it both informative and impactful. AIDW looks forward to hosting more such knowledge-driven sessions in the future.
-        </>
-      ),
-    },
-    {
-      id: 30,
-      title: "DataSphere: Mastering Big Tech & GenAI",
-      date: "19 April 2025",
-      image: "/images/events/26.png",
-      description: (
-        <>
-          The speaker session was successfully conducted featuring Nischay Agarwal, Senior Data Engineer at Walmart. The session provided participants with valuable insights into building careers in data engineering, AI, and big tech ecosystems.
-          <br />
-          Attendees gained clarity on industry expectations, essential skills required for data and AI roles, and practical guidance on navigating career paths in leading tech companies. The session also featured an engaging interactive Q&A, where participants received direct advice and real-world perspectives from the speaker.
-          <br />
-          The event witnessed active participation and meaningful discussions, making it an insightful and enriching experience for all attendees. AIDW Club looks forward to organizing more such industry-focused sessions in the future.
-        </>
-      ),
-    },
-    {
-      id: 31,
-      title: "From Theory to Practice: The Journey of a Data Scientist",
-      date: "2 October 2024",
-      image: "/images/events/27.png",
-      description: (
-        <>
-          The session was successfully conducted featuring Mr. Manish Mazumder, an ML Engineer and Data Scientist and an IIT Kanpur alumnus. The session offered participants valuable insights into the transition from academic learning to real-world applications in the data science industry.
-          <br />
-          Mr. Mazumder shared his professional journey, highlighting practical challenges, industry expectations, and the skills required to succeed in machine learning and data science roles. The interactive discussion allowed learners to engage directly with the speaker, gaining clarity on career paths, real-world problem-solving, and industry best practices.
-          <br />
-          The session witnessed enthusiastic participation and thoughtful interactions, making it an inspiring and informative experience for all attendees. AIDW Club looks forward to hosting more such knowledge-driven sessions in the future.
-        </>
-      ),
-    },
+      </>
+    ),
+  },
+  
+  {
+    id: 28,
+    title: "Noor-e-Sama — A Night of Shayari",
+    date: "15 February 2025",
+    image: "/images/events/24.png",
+    description: (
+      <>
+        Noor-e-Sama was an enchanting evening curated by Chapters & Verses, the Literary and Oratory Club of Nallamala House, celebrating the luminous art of Shayari. The event featured heartfelt recitations of both classic and contemporary Shayaris by passionate poets and poetry enthusiasts.
+        <br />
+        The night brought together lovers of eloquent expression, offering a space to reflect, feel, and connect through words. From seasoned Shayari connoisseurs to first-time listeners, Noor-e-Sama left the audience inspired, moved, and immersed in the timeless beauty of poetry.
+      </>
+    ),
+  },
+  {
+  id: 29,
+  title: "TECHTALK: AI Innovators & Data Wizards (AIDW)",
+  date: "18 March 2025",
+  image: "/images/events/25.png",
+  description: (
+    <>
+      AIDW – IIT Madras successfully concluded with an engaging session on “GenAI in SEEK” featuring Prem Kumar Sharma. The session explored how generative AI is transforming learning platforms and software engineering practices.
+      <br />
+      Key discussions focused on AI-powered doubt resolution, automated debugging for coding assignments, and instant course support using Retrieval-Augmented Generation (RAG). The interactive nature of the session encouraged meaningful discussions and practical takeaways for participants.
+      <br />
+      The event was enriched by active participation from attendees and valuable insights shared by the speaker, making it both informative and impactful. AIDW looks forward to hosting more such knowledge-driven sessions in the future.
+    </>
+  ),
+},
+{
+  id: 30,
+  title: "DataSphere: Mastering Big Tech & GenAI",
+  date: "19 April 2025",
+  image: "/images/events/26.png",
+  description: (
+    <>
+      The speaker session was successfully conducted featuring Nischay Agarwal, Senior Data Engineer at Walmart. The session provided participants with valuable insights into building careers in data engineering, AI, and big tech ecosystems.
+      <br />
+      Attendees gained clarity on industry expectations, essential skills required for data and AI roles, and practical guidance on navigating career paths in leading tech companies. The session also featured an engaging interactive Q&A, where participants received direct advice and real-world perspectives from the speaker.
+      <br />
+      The event witnessed active participation and meaningful discussions, making it an insightful and enriching experience for all attendees. AIDW Club looks forward to organizing more such industry-focused sessions in the future.
+    </>
+  ),
+},
+{
+  id: 31,
+  title: "From Theory to Practice: The Journey of a Data Scientist",
+  date: "2 October 2024",
+  image: "/images/events/27.png",
+  description: (
+    <>
+      The session was successfully conducted featuring Mr. Manish Mazumder, an ML Engineer and Data Scientist and an IIT Kanpur alumnus. The session offered participants valuable insights into the transition from academic learning to real-world applications in the data science industry.
+      <br />
+      Mr. Mazumder shared his professional journey, highlighting practical challenges, industry expectations, and the skills required to succeed in machine learning and data science roles. The interactive discussion allowed learners to engage directly with the speaker, gaining clarity on career paths, real-world problem-solving, and industry best practices.
+      <br />
+      The session witnessed enthusiastic participation and thoughtful interactions, making it an inspiring and informative experience for all attendees. AIDW Club looks forward to hosting more such knowledge-driven sessions in the future.
+    </>
+  ),
+},
+{
+  id: 32,
+  title: "Innovation Through Teaching and Research: From Ideas to Impact",
+  date: "29 March 2026",
+  image: "/images/events/32.png",
+  description: (
+    <>
+      Nallamala House successfully organized an inspiring speaker session titled “Innovation Through Teaching and Research: From Ideas to Impact”, featuring Dr. Rajesh Kumar Muthu, Professor of Computer Science & Engineering.
+      <br /><br />
+      With over 25 years of global experience across India, the UK, and Mauritius, Dr. Muthu shared valuable insights from his journey as an academician, researcher, and international consultant. A Chartered Engineer (IET, UK) and Senior Member of IEEE, he has contributed to prestigious international projects in biometrics, forensics, and behavioral analysis.
+      <br /><br />
+      The session focused on how innovative ideas can be transformed into impactful real-world solutions through research and collaboration. Participants gained exposure to global research practices, interdisciplinary applications, and the importance of thinking beyond conventional academic boundaries.
+      <br /><br />
+      The event proved to be highly enriching and motivational, encouraging students to explore innovation-driven learning and aspire toward meaningful contributions in research and technology.
+    </>
+  ),
+},
+{
+  id: 34,
+  title: "Rachna Spardha: A Poetry Duel",
+  date: "26 April 2026",
+  image: "/images/events/33.jpeg",
+  description: (
+    <>
+      Rachna Spardha: A Poetry Duel marked the first-ever inter-house poetry event hosted by Namdapha House and Nallamala House, bringing together the creative energies of the Kavya Community and the Chapters & Verses Community in an exciting poetic face-off.
+      <br /><br />
+      The event invited participants to showcase their creativity through original poetry submissions. Following a competitive selection process, the top contenders from each house advanced to represent their teams in the final live poetry duel held on Sunday, 26th April 2026, from 8:00 PM onwards via Google Meet.
+      <br /><br />
+      Celebrating the beauty of words, emotions, and artistic expression, Rachna Spardha provided a platform for poets to let their imagination flow while engaging in a spirited literary battle. The event fostered creativity, confidence, and appreciation for the art of poetry among participants and audiences alike.
+      <br /><br />
+      Winners were awarded certificates in recognition of their outstanding performances, while the poems securing 1st and 2nd positions earned a special feature on the official Instagram handles of both Namdapha House and Nallamala House. The event concluded as a memorable celebration of poetry, creativity, and inter-house collaboration.
+    </>
+  ),
+}
   ];
 
   /* ---------------- SORT & FILTER ---------------- */
+
   const sortedPastEvents = [...pastEvents].sort(
     (a, b) => parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
   )
@@ -428,7 +511,16 @@ export default function Events() {
 
   if (!mounted) return null
 
+  const filteredCurrentEvents = [...currentEvents]
+  .sort(
+    (a, b) =>
+      parseEventDate(b.date).getTime() - parseEventDate(a.date).getTime()
+  )
+  .filter((event) =>
+    event.title.toLowerCase().includes(search.toLowerCase())
+  )
   /* ---------------- RENDER ---------------- */
+
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -443,11 +535,13 @@ export default function Events() {
         {/* Header */}
         <div className="text-center mb-14">
           <p className="text-primary text-sm uppercase tracking-widest mb-4">
-            Our Events
+            Nallamala presents
           </p>
+
           <h1 className="text-5xl font-serif font-bold text-white mb-4">
-            Past <span className="text-primary">Events</span>
+             <span className="text-primary">Events</span>
           </h1>
+
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
             Discover the events and moments that shaped our community
           </p>
@@ -461,9 +555,38 @@ export default function Events() {
           />
         </div>
 
+        <div className="flex justify-center mb-10 gap-4">
+  <button
+    onClick={() => setActiveTab("current")}
+    className={`px-6 py-2 rounded-full border ${
+      activeTab === "current"
+        ? "bg-primary text-white border-primary"
+        : "text-white/60 border-white/20 hover:border-primary"
+    }`}
+  >
+    Current Events
+  </button>
+
+  <button
+    onClick={() => setActiveTab("past")}
+    className={`px-6 py-2 rounded-full border ${
+      activeTab === "past"
+        ? "bg-primary text-white border-primary"
+        : "text-white/60 border-white/20 hover:border-primary"
+    }`}
+  >
+    Past Events
+  </button>
+</div>
+
         {/* Events Grid */}
+        <div
+  key={activeTab}
+  className="transition-all duration-500 ease-in-out animate-fade"
+></div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredEvents.map((event) => (
+          {(activeTab === "current" ? filteredCurrentEvents : filteredEvents).map(
+  (event) => (
             <div
               key={event.id}
               onClick={() => setSelectedEvent(event)}
@@ -476,6 +599,7 @@ export default function Events() {
                   fill
                   className="object-cover transition-transform duration-500 hover:scale-105"
                 />
+
                 {event.status && (
                   <div className="absolute top-4 right-4">
                     <Badge className="bg-red-500 text-white">
@@ -490,16 +614,14 @@ export default function Events() {
                   {event.title}
                 </h3>
 
-                <div
-                  className={`text-white/70 text-sm leading-relaxed mb-3 flex-1 ${expandedId === event.id ? "" : "line-clamp-3"
-                    }`}
-                >
+                <div className="text-white/70 text-sm leading-relaxed mb-3 flex-1 line-clamp-3">
                   {event.description}
                 </div>
 
                 <div className="flex items-center gap-2 text-white/60 text-sm mb-4 pt-3 border-t border-white/10">
                   <Calendar size={16} className="text-primary" />
                   <span>{event.date}</span>
+
                   {event.location && (
                     <>
                       <span>•</span>
@@ -513,11 +635,9 @@ export default function Events() {
                     onClick={(e) => e.stopPropagation()}
                     href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
                       event.title
-                    )}&details=${encodeURIComponent(
-                      typeof event.description === "string"
-                        ? event.description
-                        : event.title
-                    )}&location=${encodeURIComponent(event.location || "")}`}
+                    )}&details=${encodeURIComponent(event.title)}&location=${encodeURIComponent(
+                      event.location || ""
+                    )}`}
                     target="_blank"
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/5 hover:bg-primary/20 border border-white/10 hover:border-primary/50 rounded-lg text-white/70 hover:text-white transition text-sm"
                   >
@@ -530,10 +650,7 @@ export default function Events() {
                       e.stopPropagation()
                       navigator.share?.({
                         title: event.title,
-                        text:
-                          typeof event.description === "string"
-                            ? event.description
-                            : event.title,
+                        text: event.title,
                       })
                     }}
                     className="px-4 py-2 bg-white/5 hover:bg-primary/20 border border-white/10 hover:border-primary/50 rounded-lg text-white/70 hover:text-white transition"
@@ -547,7 +664,7 @@ export default function Events() {
         </div>
       </div>
 
-      {/* Selected Event Modal */}
+      {/* Event Modal */}
       {selectedEvent && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
@@ -567,30 +684,12 @@ export default function Events() {
               />
             </div>
 
-            {/* Right — Details */}
-            <div className="relative flex-1 flex flex-col overflow-y-auto">
-              <button
-                onClick={() => setSelectedEvent(null)}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition z-10"
-              >
-                <X size={24} />
-              </button>
+            <div className="p-6">
+              <h2 className="text-2xl font-bold text-white mb-2">
+                {selectedEvent.title}
+              </h2>
 
-              <div className="p-8 space-y-6">
-                {/* Title and Date */}
-                <div className="border-b border-white/10 pb-4 pr-10">
-                  <h2 className="text-3xl font-serif font-bold text-white mb-3">{selectedEvent.title}</h2>
-                  <div className="flex items-center gap-3 text-primary text-base">
-                    <Calendar size={18} />
-                    <span>{selectedEvent.date}</span>
-                    {selectedEvent.location && (
-                      <>
-                        <span className="text-white/40">•</span>
-                        <span className="text-white/80">{selectedEvent.location}</span>
-                      </>
-                    )}
-                  </div>
-                </div>
+              
 
                 {/* Description */}
                 <div className="space-y-3">
@@ -606,6 +705,30 @@ export default function Events() {
                 </div>
               </div>
             </div>
+          </div>
+      )}
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-6xl max-h-[90vh] w-full h-full">
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 text-white hover:text-primary p-2 bg-black/50 rounded-full"
+            >
+              <X size={32} />
+            </button>
+
+            <Image
+              src={selectedImage}
+              alt="Event image"
+              fill
+              className="object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>
         </div>
       )}

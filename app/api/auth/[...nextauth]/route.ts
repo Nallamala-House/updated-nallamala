@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
-import { authOptions } from "@/lib/auth"
 
-const handler = NextAuth(authOptions)
+const handler = NextAuth({
+  providers: [], // keep empty for now if you don’t use login
+})
 
 export { handler as GET, handler as POST }

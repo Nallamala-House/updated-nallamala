@@ -25,20 +25,8 @@ type UpdateItem = {
   date?: string
 }
 
-const fetcher = async (url: string) => {
-  try {
-    const res = await fetch(`${url}${url.includes('?') ? '&' : '?'}t=${Date.now()}`);
-    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-    const contentType = res.headers.get('content-type');
-    if (!contentType || !contentType.includes('application/json')) {
-      return { success: false, data: [] }; // Return fallback instead of throwing to avoid UI crash
-    }
-    return await res.json();
-  } catch (err) {
-    console.error('Fetch error:', err);
-    throw err;
-  }
-};
+const fetcher = (url: string) =>
+  fetch(url).then((res) => res.json()).catch(() => null)
 
 export default function UpdatesSection({ showSearch = true }: { showSearch?: boolean }) {
   const [searchQuery, setSearchQuery] = useState("")
