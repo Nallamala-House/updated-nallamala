@@ -103,6 +103,7 @@ const buildFolderTree = (resources: any[]): PyqDataMap => {
 }
 
 export default function ResourcesPage() {
+  const [selectedBranch, setSelectedBranch] = useState<"es" | "data-science" | null>(null)
   const [activeTab, setActiveTab] = useState<"notes" | "pyqs" | "documents">("documents")
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
@@ -339,11 +340,144 @@ export default function ResourcesPage() {
     )
   }
 
+  if (selectedBranch === null) {
+    return (
+      <main className="min-h-screen">
+        <Navbar />
+        <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-16 min-h-screen relative">
+          {/* Background glow effects */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+            <div className="absolute top-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+            <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
+          
+          <div className="max-w-4xl w-full text-center relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-primary text-sm font-semibold mb-6 animate-fade-in">
+              <Sparkles size={16} />
+              Academic Resources Hub
+            </div>
+            <h1 className="text-5xl font-serif font-bold text-white mb-4 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              Select your <span className="text-primary">Program</span>
+            </h1>
+            <p className="text-white/70 text-lg mb-12 max-w-lg mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              Choose your branch to access curriculum resources, notes, PYQs, and documents
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto animate-scale-in">
+              {/* Electronic Systems Card */}
+              <button
+                onClick={() => setSelectedBranch("es")}
+                className="group relative glass p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(212,175,55,0.2)] bg-black/20 text-center flex flex-col items-center cursor-pointer w-full"
+              >
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                  <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors font-serif">
+                  Electronic Systems (ES)
+                </h2>
+                <p className="text-white/60 text-sm leading-relaxed mb-6">
+                  Explore academic resources, lecture notes, lab manuals, and papers for the Electronic Systems branch.
+                </p>
+                <span className="text-primary font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center gap-1 mt-auto">
+                  Explore Branch &rarr;
+                </span>
+              </button>
+
+              {/* Data Science Card */}
+              <button
+                onClick={() => setSelectedBranch("data-science")}
+                className="group relative glass p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(212,175,55,0.2)] bg-black/20 text-center flex flex-col items-center cursor-pointer w-full"
+              >
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                  <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors font-serif">
+                  Data Science (DS)
+                </h2>
+                <p className="text-white/60 text-sm leading-relaxed mb-6">
+                  Access notes, official textbooks, PYQs, and reference documents curated for the Data Science & Applications program.
+                </p>
+                <span className="text-primary font-semibold group-hover:translate-x-2 transition-transform inline-flex items-center gap-1 mt-auto">
+                  Explore Branch &rarr;
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </main>
+    )
+  }
+
+  if (selectedBranch === "es") {
+    return (
+      <main className="min-h-screen">
+        <Navbar />
+        <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-16 min-h-screen relative">
+          {/* Background glow effects */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+            <div className="absolute top-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+            <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
+
+          <div className="max-w-2xl w-full text-center relative z-10">
+            {/* Back to Branch Selector Button */}
+            <button
+              onClick={() => setSelectedBranch(null)}
+              className="inline-flex items-center gap-2 text-white/70 hover:text-primary transition-colors mb-8 cursor-pointer"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              Back to Branch Selector
+            </button>
+
+            <div className="glass p-12 sm:p-16 rounded-3xl border-2 border-primary/20 shadow-[0_0_50px_rgba(212,175,55,0.15)] bg-black/40 backdrop-blur-md relative overflow-hidden group">
+              {/* Corner accents */}
+              <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-primary/40 rounded-tl-3xl"></div>
+              <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-primary/40 rounded-br-3xl"></div>
+
+              <div className="w-24 h-24 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+
+              <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+                Electronic Systems <span className="text-primary italic">Coming Soon</span>
+              </h1>
+              
+              <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-lg mx-auto">
+                We are currently curating, sorting, and uploading premium study resources, notes, and manuals for the Electronic Systems (ES) branch.
+              </p>
+
+              <div className="inline-flex gap-2 items-center text-primary font-bold">
+                <span className="w-2.5 h-2.5 bg-primary rounded-full animate-ping"></span>
+                <span>Curating Resources in Progress...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </main>
+    )
+  }
+
   return (
     <main className="min-h-screen">
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        {/* Back to Branch Selector */}
+        <button
+          onClick={() => setSelectedBranch(null)}
+          className="inline-flex items-center gap-2 text-white/70 hover:text-primary transition-colors mb-6 cursor-pointer"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Change Program / Branch
+        </button>
           {/* Background glow effects */}
           <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
             <div className="absolute top-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
