@@ -211,6 +211,9 @@ export default function CommunitiesPage() {
                       src={community.image || "/placeholder.svg"}
                       alt={community.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        e.currentTarget.src = "/images/updates/iitm.jpeg"
+                      }}
                     />
                   </div>
 
@@ -221,6 +224,9 @@ export default function CommunitiesPage() {
                         src={community.image}
                         alt={`${community.name} logo`}
                         className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.src = "/images/updates/iitm.jpeg"
+                        }}
                       />
                     </div>
                   ) : (

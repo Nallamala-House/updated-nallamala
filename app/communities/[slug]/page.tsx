@@ -34,6 +34,20 @@ Recognized as one of the most active communities of Nallamala House, we have pro
 Through dedication, collaboration, and a shared love for words, we have nurtured a thriving literary culture. Today, Chapters & Verses stands as a living testament to our vision—a community where stories are written, voices are heard, and creativity finds its home.`,
     events: [
       {
+        id: 7,
+        title: "Rachna Spardha: A Poetry Duel",
+        date: "26th April 2026",
+        guest: "Collaborators: Namdapha House × Nallamala House × Kavya Community × Chapters & Verses",
+        description: `Rachna Spardha: A Poetry Duel marked the first-ever inter-house poetry event hosted by Namdapha House and Nallamala House, bringing together the creative energies of the Kavya Community and the Chapters & Verses Community in an exciting poetic face-off.
+
+The event invited participants to showcase their creativity through original poetry submissions. Following a competitive selection process, the top contenders from each house advanced to represent their teams in the final live poetry duel held on Sunday, 26th April 2026, from 8:00 PM onwards via Google Meet.
+
+Celebrating the beauty of words, emotions, and artistic expression, Rachna Spardha provided a platform for poets to let their imagination flow while engaging in a spirited literary battle. The event fostered creativity, confidence, and appreciation for the art of poetry among participants and audiences alike.
+
+Winners were awarded certificates in recognition of their outstanding performances, while the poems securing 1st and 2nd positions earned a special feature on the official Instagram handles of both Namdapha House and Nallamala House. The event concluded as a memorable celebration of poetry, creativity, and inter-house collaboration.`,
+        image: "/images/events/33.jpeg"
+      },
+      {
         id: 6,
         title: "Noor-e-Sama 2.0",
         date: "21st August 2025",
@@ -290,6 +304,67 @@ E Sports stands as a rising arena within Nallamala House, a place where talent f
   }
 }
 
+function EventCard({ event, communityImage, onClick }: { event: CommunityEvent; communityImage: string; onClick: () => void }) {
+  const [imgSrc, setImgSrc] = useState(event.image)
+
+  useEffect(() => {
+    setImgSrc(event.image)
+  }, [event.image])
+
+  return (
+    <div
+      onClick={onClick}
+      className="group rounded-xl overflow-hidden border-2 border-primary/30 hover:border-primary/60 transition-all duration-300 cursor-pointer hover:-translate-y-1"
+    >
+      <div className="relative h-96 overflow-hidden bg-black/55">
+        <Image
+          src={imgSrc}
+          alt={event.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          onError={() => {
+            setImgSrc(communityImage)
+          }}
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+      </div>
+      <div className="p-6 glass-dark">
+        <h3 className="text-2xl font-serif font-bold text-white mb-2 group-hover:text-primary transition">
+          {event.title}
+        </h3>
+        <div className="flex items-center gap-2 text-primary text-sm mb-3">
+          <Calendar size={16} />
+          <span>{event.date}</span>
+        </div>
+        {event.guest && (
+          <p className="text-white/60 text-sm mb-3">{event.guest}</p>
+        )}
+        <p className="text-primary text-sm font-semibold">View recap</p>
+      </div>
+    </div>
+  )
+}
+
+function ModalImage({ src, fallback, alt }: { src: string; fallback: string; alt: string }) {
+  const [imgSrc, setImgSrc] = useState(src)
+  
+  useEffect(() => {
+    setImgSrc(src)
+  }, [src])
+
+  return (
+    <Image
+      src={imgSrc}
+      alt={alt}
+      fill
+      className="object-cover"
+      onError={() => {
+        setImgSrc(fallback)
+      }}
+    />
+  )
+}
+
 export default function CommunityDetail() {
   const params = useParams()
   const slug = params.slug as string
@@ -415,34 +490,12 @@ export default function CommunityDetail() {
             {community.events.length > 0 ? (
               <div className="grid md:grid-cols-2 gap-6">
                 {community.events.map((event: CommunityEvent) => (
-                  <div
+                  <EventCard
                     key={event.id}
+                    event={event}
+                    communityImage={community.image}
                     onClick={() => setSelectedEvent(event)}
-                    className="group rounded-xl overflow-hidden border-2 border-primary/30 hover:border-primary/60 transition-all duration-300 cursor-pointer hover:-translate-y-1"
-                  >
-                    <div className="relative h-96 overflow-hidden">
-                      <Image
-                        src={event.image}
-                        alt={event.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                    </div>
-                    <div className="p-6 glass-dark">
-                      <h3 className="text-2xl font-serif font-bold text-white mb-2 group-hover:text-primary transition">
-                        {event.title}
-                      </h3>
-                      <div className="flex items-center gap-2 text-primary text-sm mb-3">
-                        <Calendar size={16} />
-                        <span>{event.date}</span>
-                      </div>
-                      {event.guest && (
-                        <p className="text-white/60 text-sm mb-3">{event.guest}</p>
-                      )}
-                      <p className="text-primary text-sm font-semibold">View recap</p>
-                    </div>
-                  </div>
+                  />
                 ))}
               </div>
             ) : (
@@ -459,12 +512,11 @@ export default function CommunityDetail() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
           <div className="bg-linear-to-b from-white/10 to-white/5 border border-primary/30 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row">
             {/* Left — Image */}
-            <div className="relative md:w-1/2 h-72 md:h-auto shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl">
-              <Image
+            <div className="relative md:w-1/2 h-72 md:h-auto shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl bg-black/50">
+              <ModalImage
                 src={selectedEvent.image}
+                fallback={community.image}
                 alt={selectedEvent.title}
-                fill
-                className="object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-black/60 to-transparent"></div>
             </div>
