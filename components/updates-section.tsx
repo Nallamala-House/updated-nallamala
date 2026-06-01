@@ -5,6 +5,7 @@ import useSWR from "swr"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
+import ScrollReveal from "@/components/ScrollReveal"
 
 type UpdateItem = {
   _id: string
@@ -19,7 +20,7 @@ type UpdateItem = {
   secondaryTitle?: string
   buttonText?: string
   buttonLink?: string
-  links?: { text: string; url: string }[]
+  links?: { label: string; url: string }[]
   additionalImages?: { fileId: any; description?: string }[]
   category?: "Registration" | "Update"
   date?: string
@@ -42,12 +43,9 @@ export default function UpdatesSection({ showSearch = true }: { showSearch?: boo
   const updates = json?.success ? json.data : []
   const loading = isLoading
 
-
-
   const categoryColors: Record<string, string> = {
-    "Registration":
-      "bg-yellow-500/50 text-white border-yellow-500/30",
-    Update: "bg-yellow-500/50 text-white border-yellow-500/30",
+    "Registration": "bg-primary/20 text-primary border-primary/30",
+    Update: "bg-primary/20 text-primary border-primary/30",
   }
 
   // Ensure URLs always have a protocol prefix
@@ -66,10 +64,10 @@ export default function UpdatesSection({ showSearch = true }: { showSearch?: boo
   )
 
   return (
-    <section id="updates" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section id="updates" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8">
+      <ScrollReveal className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">
             Latest <span className="text-primary">Updates</span>
           </h2>
@@ -108,116 +106,137 @@ export default function UpdatesSection({ showSearch = true }: { showSearch?: boo
               No updates available at the moment.
             </div>
           ) : (
-            filteredUpdates.map((update: UpdateItem) => (
-              <article
+            filteredUpdates.map((update: UpdateItem, index: number) => (
+              <ScrollReveal
                 key={update._id}
-                className="glass-dark rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300 flex flex-col group"
+                variant="slide-up"
+                delay={index * 80}
+                duration={850}
+                className="h-full w-full flex flex-col"
               >
-                {/* Image / Logo Section */}
-                <div className="relative h-64 w-full bg-black flex flex-col items-center justify-center overflow-hidden">
-                  <div className="relative h-32 w-32 mb-4">
-                    <Image
-                      src={update.fileId ? `/api/files/${typeof update.fileId === 'object' ? update.fileId._id : update.fileId}` : "/images/updates/iitm.jpeg"}
-                      alt={update.title || "Update image"}
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-contain transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
+                <article
+                  className="relative bg-black/20 backdrop-blur-md rounded-2xl overflow-hidden border border-primary/20 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(212,175,55,0.15)] flex flex-col group h-full w-full"
+                >
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none -z-10" />
 
-                  {update.secondaryTitle && (
-                    <div className="text-center px-4 z-10">
-                      <p className="text-white font-bold text-xs tracking-widest uppercase mb-1">
-                        {update.secondaryTitle.split('\n')[0]}
-                      </p>
-                      {update.secondaryTitle.split('\n').slice(1).map((line: string, i: number) => (
-                        <p key={i} className="text-white font-bold text-sm tracking-widest uppercase">
-                          {line}
+                  {/* Image / Logo Section */}
+                  <div className="relative h-48 w-full bg-transparent flex flex-col items-center justify-center overflow-hidden border-b border-primary/10">
+                    <div className="relative h-24 w-24 mb-3">
+                      <Image
+                        src={update.fileId ? `/api/files/${typeof update.fileId === 'object' ? update.fileId._id : update.fileId}` : "/images/updates/iitm.jpeg"}
+                        alt={update.title || "Update image"}
+                        fill
+                        priority
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-contain transition-transform duration-500 group-hover:scale-110 mix-blend-screen"
+                      />
+                    </div>
+
+                    {update.secondaryTitle && (
+                      <div className="text-center px-4 z-10">
+                        <p className="text-white font-bold text-xs tracking-widest uppercase mb-1">
+                          {update.secondaryTitle.split('\n')[0]}
                         </p>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="absolute top-4 left-4 z-10">
-                    <Badge
-                      className={`border shadow-lg ${categoryColors["Update"]}`}
-                    >
-                      {update.badgeText || "Update"}
-                    </Badge>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex flex-col items-center mb-6">
-                    {update.statusText && (
-                      <span className="text-white/50 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
-                        {update.statusText}
-                      </span>
+                        {update.secondaryTitle.split('\n').slice(1).map((line: string, i: number) => (
+                          <p key={i} className="text-white font-bold text-sm tracking-widest uppercase">
+                            {line}
+                          </p>
+                        ))}
+                      </div>
                     )}
-                    <h3 className="text-2xl font-serif font-bold text-white text-center leading-tight">
-                      {update.title}
-                    </h3>
+
+                    <div className="absolute top-4 left-4 z-10">
+                      <Badge
+                        className={`border shadow-lg ${categoryColors["Update"] || "bg-primary/20 text-primary border-primary/30"}`}
+                      >
+                        {update.badgeText || "Update"}
+                      </Badge>
+                    </div>
                   </div>
 
-                  <p className="text-white/70 text-sm mb-6 flex-1 text-center italic">
-                    {update.description}
-                  </p>
-
-                  {/* Additional Images Section */}
-                  {update.additionalImages && update.additionalImages.length > 0 && (
-                    <div className="grid grid-cols-2 gap-2 mb-6">
-                      {update.additionalImages.map((img: any, i: number) => (
-                        <div key={i} className="group/img relative h-24 rounded-lg overflow-hidden border border-white/5">
-                          <Image
-                            src={`/api/files/${typeof img.fileId === 'object' ? img.fileId._id : img.fileId}`}
-                            alt={img.description || "Additional image"}
-                            fill
-                            className="object-cover transition-transform group-hover/img:scale-110"
-                          />
-                          {img.description && (
-                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center p-2">
-                              <span className="text-[8px] text-white text-center font-medium line-clamp-2">{img.description}</span>
-                            </div>
-                          )}
-                        </div>
-                      ))}
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex flex-col items-center mb-6">
+                      {update.statusText && (
+                        <span className="text-primary/70 text-[10px] font-black uppercase tracking-widest mb-2">
+                          {update.statusText}
+                        </span>
+                      )}
+                      <h3 className="text-2xl font-serif font-bold text-white group-hover:text-primary text-center leading-tight transition-colors duration-300">
+                        {update.title}
+                      </h3>
                     </div>
-                  )}
 
-                  {/* Links Section */}
-                  {update.links && update.links.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-6 justify-center">
-                      {update.links.map((link: any, i: number) => (
+                    <p className="text-white/70 text-sm mb-6 flex-1 text-center italic">
+                      {update.description}
+                    </p>
+
+                    {/* Additional Images Section */}
+                    {update.additionalImages && update.additionalImages.length > 0 && (
+                      <div className="grid grid-cols-2 gap-2 mb-6">
+                        {update.additionalImages.map((img: any, i: number) => (
+                          <div key={i} className="group/img relative h-24 rounded-lg overflow-hidden border border-white/5">
+                            <Image
+                              src={`/api/files/${typeof img.fileId === 'object' ? img.fileId._id : img.fileId}`}
+                              alt={img.description || "Additional image"}
+                              fill
+                              className="object-cover transition-transform group-hover/img:scale-110"
+                            />
+                            {img.description && (
+                              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center p-2">
+                                <span className="text-[8px] text-white text-center font-medium line-clamp-2">{img.description}</span>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Links Section */}
+                    {update.links && update.links.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-6 justify-center">
+                        {update.links.map((link: any, i: number) => (
+                          <a
+                            key={i}
+                            href={normalizeUrl(link.url || "")}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 rounded-full px-3 py-1 transition-all flex items-center gap-1"
+                          >
+                            {link.label || "Link"} <ExternalLink size={10} />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Action Button */}
+                    <div className="mt-auto">
+                      {update.buttonLink?.trim() || update.fileId ? (
                         <a
-                          key={i}
-                          href={normalizeUrl(link.url)}
+                          href={normalizeUrl(update.buttonLink || "") !== "#" ? normalizeUrl(update.buttonLink || "") : (update.fileId ? `/api/files/${typeof update.fileId === 'object' ? update.fileId._id : update.fileId}` : "#")}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[10px] font-bold text-primary hover:text-white border border-primary/30 px-3 py-1 rounded-full transition-colors flex items-center gap-1"
+                          className="inline-flex items-center justify-center gap-2 w-full bg-primary/10 hover:bg-primary text-primary hover:text-black border border-primary/20 hover:border-primary rounded-xl py-3.5 transition-all duration-300 text-xs font-bold tracking-widest uppercase shadow-[0_0_15px_rgba(212,175,55,0.1)]"
                         >
-                          {link.text} <ExternalLink size={10} />
+                          {update.buttonText || (update.fileId ? "View Attachment" : "Apply Now")}
                         </a>
-                      ))}
+                      ) : (
+                        <button
+                          disabled
+                          className="inline-flex items-center justify-center gap-2 w-full bg-white/5 text-white/35 border border-white/5 rounded-xl py-3.5 text-xs font-bold tracking-widest uppercase cursor-not-allowed opacity-50 pointer-events-none"
+                        >
+                          {update.buttonText || "Apply Now"}
+                        </button>
+                      )}
                     </div>
-                  )}
-
-                  {/* Action Button */}
-                  <a
-                    href={normalizeUrl(update.buttonLink || "") !== "#" ? normalizeUrl(update.buttonLink || "") : (update.fileId ? `/api/files/${typeof update.fileId === 'object' ? update.fileId._id : update.fileId}` : "#")}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl py-4 transition-all text-sm font-bold tracking-widest uppercase"
-                  >
-                    {update.buttonText || (update.fileId ? "View Attachment" : "Apply Now")}
-                  </a>
-                </div>
-              </article>
+                  </div>
+                </article>
+              </ScrollReveal>
             ))
           )}
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

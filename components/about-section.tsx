@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import ScrollReveal from "@/components/ScrollReveal"
 
 function useCountAnimation(end: number, duration: number = 2000) {
   const [count, setCount] = useState(0)
@@ -52,10 +53,10 @@ export default function AboutSection() {
     animation: useCountAnimation(stat.end)
   }))
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <ScrollReveal className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <p className="text-primary text-sm uppercase tracking-widest mb-4">About Us</p>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
             A Community of <span className="text-primary">Excellence</span>
@@ -99,20 +100,27 @@ export default function AboutSection() {
           {/* Right Stats Grid */}
           <div className="grid grid-cols-2 gap-4 sm:gap-6">
             {animatedStats.map((stat, index) => (
-              <div
+              <ScrollReveal
                 key={stat.label}
-                ref={stat.animation.elementRef}
-                className="glass-dark p-4 sm:p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 text-center group"
+                variant="scale-up"
+                delay={index * 80}
+                duration={700}
+                className="h-full"
               >
-                <div className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
-                  {stat.animation.count}{stat.suffix}
+                <div
+                  ref={stat.animation.elementRef}
+                  className="glass-dark p-4 sm:p-6 rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 text-center group h-full flex flex-col justify-center"
+                >
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
+                    {stat.animation.count}{stat.suffix}
+                  </div>
+                  <p className="text-white/70 text-xs sm:text-sm">{stat.label}</p>
                 </div>
-                <p className="text-white/70 text-xs sm:text-sm">{stat.label}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

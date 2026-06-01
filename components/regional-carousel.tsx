@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { regions } from "@/data/regions"
+import ScrollReveal from "@/components/ScrollReveal"
 
 export default function RegionalCarousel() {
   const [rotation, setRotation] = useState(0)
@@ -58,10 +59,10 @@ export default function RegionalCarousel() {
   }
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto overflow-hidden sm:overflow-visible">
+    <section className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8">
+      <ScrollReveal className="max-w-7xl mx-auto overflow-hidden sm:overflow-visible">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <p className="text-primary text-sm uppercase tracking-widest mb-4">
             Regional Network
           </p>
@@ -144,7 +145,7 @@ export default function RegionalCarousel() {
             <ChevronRight size={28} />
           </button>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack } from "lucide-react"
+import ScrollReveal from "@/components/ScrollReveal"
 
 export default function VideoSection() {
   const [isAutoplayPaused, setIsAutoplayPaused] = useState(false)
@@ -116,15 +117,15 @@ export default function VideoSection() {
     duration > 0 ? (currentTime / duration) * 100 : 0
 
   return (
-    <section id="video-section" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="video-section" className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px] opacity-20 animate-pulse"></div>
         <div className="absolute bottom-1/4 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px] opacity-20 animate-pulse delay-1000"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+      <ScrollReveal className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-8">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest mb-4 border border-primary/20">
             Immersive Experience
           </span>
@@ -139,7 +140,10 @@ export default function VideoSection() {
         </div>
 
         <div className="relative group max-w-5xl mx-auto">
-          <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 bg-transparent backdrop-blur-sm shadow-2xl transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-primary/5">
+          {/* Ambient Glow / Ambilight screen glow to blend the video card with the forest-gold theme */}
+          <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 via-emerald-500/10 to-transparent rounded-3xl blur-2xl pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
+
+          <div className="relative w-full rounded-2xl overflow-hidden border border-primary/25 bg-black/40 backdrop-blur-md shadow-2xl transition-all duration-500 group-hover:border-primary/60 group-hover:shadow-primary/20">
 
             {currentVideoUrl && !hasVideoError ? (
               <video
@@ -233,7 +237,7 @@ export default function VideoSection() {
             )}
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }
