@@ -24,6 +24,27 @@ type EventItem = {
 
 /* ---------------- COMPONENT ---------------- */
 
+function EventImage({ src, alt, fill, className, ...props }: any) {
+  const [imgSrc, setImgSrc] = useState(src)
+
+  useEffect(() => {
+    setImgSrc(src)
+  }, [src])
+
+  return (
+    <Image
+      src={imgSrc}
+      alt={alt}
+      fill={fill}
+      className={className}
+      onError={() => {
+        setImgSrc("/images/updates/iitm.jpeg")
+      }}
+      {...props}
+    />
+  )
+}
+
 export default function Events() {
   const [search, setSearch] = useState("")
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null)
@@ -605,7 +626,7 @@ export default function Events() {
               className="transition-all duration-300 flex flex-col rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20"
             >
               <div className="relative h-105 bg-black overflow-hidden">
-                <Image
+                <EventImage
                   src={event.image}
                   alt={event.title}
                   fill
@@ -688,7 +709,7 @@ export default function Events() {
           >
             {/* Left — Image */}
             <div className="relative md:w-1/2 h-72 md:h-auto shrink-0 overflow-hidden rounded-t-2xl md:rounded-t-none md:rounded-l-2xl bg-black/50">
-              <Image
+              <EventImage
                 src={selectedEvent.image}
                 alt={selectedEvent.title}
                 fill
