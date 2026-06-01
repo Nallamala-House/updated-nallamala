@@ -11,6 +11,35 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [councilDropdown, setCouncilDropdown] = useState(false)
   const [mobileCouncilOpen, setMobileCouncilOpen] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
+  const lastScrollYRef = useRef(0)
+ 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      const lastScrollY = lastScrollYRef.current
+      
+      // 1. Scroll Progress Bar
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight
+      if (totalScroll > 0) {
+        const currentProgress = (currentScrollY / totalScroll) * 100
+        setScrollProgress(currentProgress)
+      }
+ 
+      // 2. Hide/Show logic with a 10px scroll threshold to avoid jittery state updates
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false)
+      } else if (currentScrollY < lastScrollY - 8 || currentScrollY <= 20) {
+        setIsVisible(true)
+      }
+      
+      lastScrollYRef.current = currentScrollY
+    }
+ 
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const router = useRouter()
   const pathname = usePathname()
@@ -102,32 +131,47 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-lg border-b border-primary/20">
+    <nav className={`fixed top-0 w-full z-50 transition-transform duration-500 ease-in-out bg-black/15 backdrop-blur-md border-b border-primary/10 shadow-[0_4px_30px_rgba(0,0,0,0.15)] ${
+      isVisible ? "translate-y-0" : "-translate-y-full"
+    }`}>
+      {/* Scroll Progress Bar */}
+      <div
+        className="absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-100 ease-out shadow-[0_0_10px_rgba(212,175,55,0.9)]"
+        style={{ width: `${scrollProgress}%` }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-
+ 
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full overflow-hidden">
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-primary/30">
               <img
                 src="/images/loading_nallamala.jpg"
                 alt="Nallamala House Logo"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover animate-[spin_18s_linear_infinite]"
               />
             </div>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center space-x-1">
-            {navItemsBefore.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="px-4 py-2 text-sm text-white/80 hover:text-primary hover:bg-white/5 rounded-lg"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItemsBefore.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`px-4 py-2 text-sm transition-all duration-300 rounded-lg relative ${
+                    isActive ? "text-primary bg-white/5 font-bold" : "text-white/80 hover:text-primary hover:bg-white/5"
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)] animate-fade-in" />
+                  )}
+                </Link>
+              )
+            })}
 
             {/* Council Dropdown */}
             <div className="relative" ref={dropdownRef}>
@@ -171,15 +215,23 @@ export default function Navbar() {
               )}
             </div>
 
-            {navItemsAfter.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => handleProtectedNav(item.href, item.protected)}
-                className="px-4 py-2 text-sm text-white/80 hover:text-primary hover:bg-white/5 rounded-lg"
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItemsAfter.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <button
+                  key={item.label}
+                  onClick={() => handleProtectedNav(item.href, item.protected)}
+                  className={`px-4 py-2 text-sm transition-all duration-300 rounded-lg relative cursor-pointer ${
+                    isActive ? "text-primary bg-white/5 font-bold" : "text-white/80 hover:text-primary hover:bg-white/5"
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)] animate-fade-in" />
+                  )}
+                </button>
+              )
+            })}
           </div>
 
           {/* Right Section */}

@@ -3,9 +3,10 @@ import type { Metadata } from "next"
 import { Playfair_Display } from "next/font/google"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-// import Beams from "@/components/Beams"
+import Beams from "@/components/Beams"
 // import { GlobalLoader } from "@/components/global-loader"
 import { Providers } from "@/components/providers"
+import ScrollToTop from "@/components/ScrollToTop"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -37,7 +38,6 @@ export default function RootLayout({
 
         {/* <GlobalLoader /> */}
 
-        {/*
         <div
           style={{
             position: "fixed",
@@ -61,10 +61,10 @@ export default function RootLayout({
             rotation={30}
           />
         </div>
-        */}
 
         <Providers>
           {children}
+          <ScrollToTop />
         </Providers>
 
         <Analytics />
